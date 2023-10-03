@@ -130,8 +130,8 @@ public class HuespedData {
    }
                
    public List<Huesped> listarHuesped(){
-       String sql="SELECT (idHuesped,nombre,apellido,dni,domicilio, correo,celular,estado)"
-               + "FROM huesped";
+       String sql="SELECT idHuesped,nombre,apellido,dni,domicilio, correo,celular,estado FROM huesped";// "SELECT * FROM huesped ";
+
        ArrayList<Huesped> huesped = new ArrayList<>();
        
        
