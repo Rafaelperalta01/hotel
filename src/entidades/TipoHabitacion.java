@@ -11,14 +11,14 @@ package entidades;
  */
 public class TipoHabitacion {
     
-    private int idCategoria;
+    private int idTipoHabitacion;
     private int cantCamas;
     private int cantPersonas;
     private String tipoCama;
     private double precio;
 
-    public TipoHabitacion(int idCategoria, int cantCamas, int cantPersonas, String tipoCama, double precio) {
-        this.idCategoria = idCategoria;
+    public TipoHabitacion(int idTipoHabitacion, int cantCamas, int cantPersonas, String tipoCama, double precio) {
+        this.idTipoHabitacion= idTipoHabitacion;
         this.cantCamas = cantCamas;
         this.cantPersonas = cantPersonas;
         this.tipoCama = tipoCama;
@@ -34,12 +34,12 @@ public class TipoHabitacion {
 
     public TipoHabitacion() {}
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public int getIdTipoHabitacion() {
+        return idTipoHabitacion;
     }
 
     public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+        this.idTipoHabitacion= idCategoria;
     }
 
     public int getCantCamas() {
@@ -76,7 +76,7 @@ public class TipoHabitacion {
 
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "idCategoria=" + idCategoria + ", cantCamas=" + cantCamas + 
+        return "TipoHabitacion{" + "idCategoria=" + idTipoHabitacion + ", cantCamas=" + cantCamas + 
                 ", cantPersonas=" + cantPersonas + ", tipoCama=" + tipoCama + ", precio=" + precio + '}';
     }
     
