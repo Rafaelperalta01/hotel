@@ -21,7 +21,7 @@ public class Main {
         Connection con=Conexion.getConexion();
      Huesped reserva1 = new Huesped(4,"Roberto","Perez",26974345,"Libertador 432","glopez@gmail.com","113445224564",true);
      HuespedData data = new HuespedData();
-     
+     ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
     // data.guardarHuesped(reserva1);
     
      //data.modificarHuesped(reserva1);
@@ -37,7 +37,7 @@ public class Main {
          System.out.println("");
      }
      
-     
+      ///////////////////////////////////PRUEBAS DATA///////////////////////////////////
 
         
     }
