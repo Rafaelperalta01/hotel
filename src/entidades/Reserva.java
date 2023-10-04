@@ -16,16 +16,18 @@ public class Reserva {
     private int idReserva;
     private Habitacion idHabitacion;
     private Huesped idHuesped;
+    private Usuarios idUsuarios;
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
     private double importeTotal;
     private int cantPersonas;
     private boolean estado;
 
-    public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped, LocalDate fechaEntrada, LocalDate fechaSalida, double importeTotal, int cantPersonas, boolean estado) {
+    public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped,Usuarios idUsuarios, LocalDate fechaEntrada, LocalDate fechaSalida, double importeTotal, int cantPersonas, boolean estado) {
         this.idReserva = idReserva;
         this.idHabitacion = idHabitacion;
         this.idHuesped = idHuesped;
+        this.idUsuarios= idUsuarios;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.importeTotal = importeTotal;
@@ -33,9 +35,10 @@ public class Reserva {
         this.estado = estado;
     }
 
-    public Reserva(Habitacion idHabitacion, Huesped idHuesped, LocalDate fechaEntrada, LocalDate fechaSalida, double importeTotal, int cantPersonas, boolean estado) {
+    public Reserva(Habitacion idHabitacion, Huesped idHuesped,Usuarios idUsuarios, LocalDate fechaEntrada, LocalDate fechaSalida, double importeTotal, int cantPersonas, boolean estado) {
         this.idHabitacion = idHabitacion;
         this.idHuesped = idHuesped;
+         this.idUsuarios= idUsuarios;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
         this.importeTotal = importeTotal;
@@ -68,6 +71,15 @@ public class Reserva {
     public void setIdHuesped(Huesped idHuesped) {
         this.idHuesped = idHuesped;
     }
+
+    public Usuarios getIdUsuarios() {
+        return idUsuarios;
+    }
+
+    public void setIdUsuarios(Usuarios idUsuarios) {
+        this.idUsuarios = idUsuarios;
+    }
+    
 
     public LocalDate getFechaEntrada() {
         return fechaEntrada;
@@ -111,11 +123,10 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva{" + "idReserva=" + idReserva + ", idHabitacion=" + idHabitacion + 
-                ", idHuesped=" + idHuesped + ", fechaEntrada=" + fechaEntrada + ", fechaSalida="
-                + fechaSalida + ", importeTotal=" + importeTotal + ", cantPersonas=" + 
-                cantPersonas + ", estado=" + estado + '}';
+        return "Reserva{" + "idReserva=" + idReserva + ", idHabitacion=" + idHabitacion + ", idHuesped=" + idHuesped + ", idUsuarios=" + idUsuarios + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", importeTotal=" + importeTotal + ", cantPersonas=" + cantPersonas + ", estado=" + estado + '}';
     }
+
+ 
     
     
     
