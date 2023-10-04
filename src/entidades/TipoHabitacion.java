@@ -38,8 +38,8 @@ public class TipoHabitacion {
         return idTipoHabitacion;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idTipoHabitacion= idCategoria;
+    public void setIdTipoHabitacion(int idTipoHabitacion) {
+        this.idTipoHabitacion= idTipoHabitacion;
     }
 
     public int getCantCamas() {
