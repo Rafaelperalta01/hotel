@@ -2,7 +2,7 @@
 
 <ClassDiagram name="entidades">
   <ClassDiagramComponents>
-    <Class name="Habitacion" package="entidades" visibility="public" xPosition="-92.0" yPosition="8.0">
+    <Class name="Habitacion" package="entidades" visibility="public" xPosition="88.0" yPosition="-79.0">
       <Fields>
         <Field name="idHabitacion" type="int" visibility="private"/>
         <Field name="idTipoHabitacion" type="TipoHabitacion" visibility="private"/>
@@ -48,7 +48,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Huesped" package="entidades" visibility="public" xPosition="454.0" yPosition="-27.0">
+    <Class name="Huesped" package="entidades" visibility="public" xPosition="872.0" yPosition="10.0">
       <Fields>
         <Field name="idHuesped" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -117,7 +117,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Reserva" package="entidades" visibility="public" xPosition="-285.0" yPosition="-225.0">
+    <Class name="Reserva" package="entidades" visibility="public" xPosition="502.0" yPosition="153.0">
       <Fields>
         <Field name="idReserva" type="int" visibility="private"/>
         <Field name="idHabitacion" type="Habitacion" visibility="private"/>
@@ -186,7 +186,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="TipoHabitacion" package="entidades" visibility="public" xPosition="-243.0" yPosition="357.0">
+    <Class name="TipoHabitacion" package="entidades" visibility="public" xPosition="68.0" yPosition="280.0">
       <Fields>
         <Field name="idTipoHabitacion" type="int" visibility="private"/>
         <Field name="cantCamas" type="int" visibility="private"/>
@@ -234,7 +234,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Usuarios" package="entidades" visibility="public" xPosition="827.0" yPosition="-301.0">
+    <Class name="Usuarios" package="entidades" visibility="public" xPosition="641.0" yPosition="219.0">
       <Fields>
         <Field name="idUsuario" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -305,8 +305,9 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="idHuesped" source="entidades.Reserva" target="entidades.Huesped" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="idTipoHabitacion" source="entidades.Habitacion" target="entidades.TipoHabitacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="idHabitacion" source="entidades.Reserva" target="entidades.Habitacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="as" source="entidades.Reserva" target="entidades.Huesped" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="asoci" source="entidades.Reserva" target="entidades.Habitacion" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="." source="entidades.Habitacion" target="entidades.TipoHabitacion" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="aso" source="entidades.Reserva" target="entidades.Usuarios" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

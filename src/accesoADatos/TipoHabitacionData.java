@@ -84,9 +84,9 @@ public class TipoHabitacionData {
          }
         
     }
-    public void buscarTipoHabPorId( int id){
+    public TipoHabitacion buscarTipoHabPorId( int id){
         String sql="SELECT idTipoHabitacion,cantPersonas,cantCamas,tipoDeCama,precio FROM tipohabitacion";
-        
+         TipoHabitacion tipoHab=null;
         
          try {
              PreparedStatement ps=con.prepareStatement(sql);
@@ -95,7 +95,7 @@ public class TipoHabitacionData {
              ResultSet rs=ps.executeQuery();
              
              if(rs.next()){
-                 TipoHabitacion tipoHab=new TipoHabitacion();
+                 tipoHab=new TipoHabitacion();
                  
                  tipoHab.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
                  tipoHab.setCantPersonas(rs.getInt("cantPersonas"));
@@ -115,6 +115,7 @@ public class TipoHabitacionData {
          } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null,"Error al acceder a la tabla tipo de habitacion");
          }
+         return tipoHab;
     }
    
     public void modificarPrecioTipoDeHabitacion(TipoHabitacion tHab){
