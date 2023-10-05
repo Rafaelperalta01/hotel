@@ -39,19 +39,24 @@ public class Main {
 //         System.out.println("");
 //     }
      
-      ///////////////////////////////////PRUEBAS DATA///////////////////////////////////
+      ///////////////////////////////////PRUEBAS tipo de habitacion DATA///////////////////////////////////
       
-        TipoHabitacion doble=new TipoHabitacion(6,5, 1, "5 plazas", 20000,true);
-            TipoHabitacion triple=new TipoHabitacion(3, 2, "2 plazas", 20000,true);// sin id, objeto para guardar tiponuevo
+        TipoHabitacion doble=new TipoHabitacion(6,"triple",5, 1, "5 plazas", 20000,true);
+            TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
         TipoHabitacionData tipoData=new TipoHabitacionData();
-      //  tipoData.guardarTipoHabitacion(triple);
+       tipoData.guardarTipoHabitacion(simple);
      //   tipoData.modificarTipoDeHabitacion(doble);
     //    tipoData.modificarPrecioTipoDeHabitacion(doble);
+  //  tipoData.eliminarTipoHabitacion(8);
     
      //   TipoHabitacion buscado=tipoData.buscarTipoHabPorId(1);
            
 //        if(buscado!=null){
 //            System.out.println("Tipo de cama: "+ buscado.getTipoCama());
+//        }
+
+//        for(TipoHabitacion tipo:tipoData.listarTipoHabitacion()){               //se listan los estado 0 y los 1...ver si ponemos la condicion en la sentencia sql
+//                  System.out.println("Tipo de cama: "+ tipo.getTipoCama());
 //        }
     }
 }

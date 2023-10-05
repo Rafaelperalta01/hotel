@@ -32,15 +32,17 @@ public class TipoHabitacionData {
     
     public void guardarTipoHabitacion( TipoHabitacion tHab){
         
-        String sql="INSERT INTO tipohabitacion (cantPersonas,cantCamas,tipoDeCama,precio)"
-                + "VALUES (?,?,?,?) ";
+        String sql="INSERT INTO tipohabitacion (categoria,cantPersonas,cantCamas,tipoDeCama,precio,estado)"
+                + "VALUES (?,?,?,?,?,?) ";
         
          try {
              PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-             ps.setInt(1,tHab.getCantPersonas());
-             ps.setInt(2, tHab.getCantCamas());
-             ps.setString(3, tHab.getTipoCama());
-             ps.setDouble(4,tHab.getPrecio());
+             ps.setString(1, tHab.getCategoria());
+             ps.setInt(2,tHab.getCantPersonas());
+             ps.setInt(3, tHab.getCantCamas());
+             ps.setString(4, tHab.getTipoCama());
+             ps.setDouble(5,tHab.getPrecio());
+             ps.setBoolean(6, tHab.isEstado());
              
              ps.executeUpdate();
              ResultSet rs=ps.executeQuery();
@@ -59,15 +61,16 @@ public class TipoHabitacionData {
     
     }
     public void modificarTipoDeHabitacion(TipoHabitacion tHab){
-        String sql="UPDATE tipohabitacion SET cantPersonas=?,cantCamas=?,tipoDeCama=?,precio=? WHERE idTipoHabitacion=?" ;
+        String sql="UPDATE tipohabitacion SET categoria=?,cantPersonas=?,cantCamas=?,tipoDeCama=?,precio=? WHERE idTipoHabitacion=?" ;
         
          try {
              PreparedStatement ps=con.prepareStatement(sql);
-             ps.setInt(1,tHab.getCantPersonas());
-             ps.setInt(2, tHab.getCantCamas());
-             ps.setString(3, tHab.getTipoCama());
-             ps.setDouble(4, tHab.getPrecio());
-             ps.setInt(5, tHab.getIdTipoHabitacion());
+             ps.setString(1, tHab.getCategoria());
+             ps.setInt(2,tHab.getCantPersonas());
+             ps.setInt(3, tHab.getCantCamas());
+             ps.setString(4, tHab.getTipoCama());
+             ps.setDouble(5, tHab.getPrecio());
+             ps.setInt(6, tHab.getIdTipoHabitacion());
 
              int exito = ps.executeUpdate();
 
@@ -85,7 +88,7 @@ public class TipoHabitacionData {
         
     }
     public TipoHabitacion buscarTipoHabPorId( int id){
-        String sql="SELECT idTipoHabitacion,cantPersonas,cantCamas,tipoDeCama,precio FROM tipohabitacion";
+        String sql="SELECT idTipoHabitacion,cantPersonas,cantCamas,tipoDeCama,precio,estado FROM tipohabitacion";
          TipoHabitacion tipoHab=null;
         
          try {
@@ -97,11 +100,13 @@ public class TipoHabitacionData {
              if(rs.next()){
                  tipoHab=new TipoHabitacion();
                  
+                 tipoHab.setCategoria(rs.getString("categoria"));
                  tipoHab.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
                  tipoHab.setCantPersonas(rs.getInt("cantPersonas"));
                  tipoHab.setCantCamas(rs.getInt("cantCamas"));
                  tipoHab.setTipoCama(rs.getString("tipoDeCama"));
                  tipoHab.setPrecio(rs.getDouble("precio"));
+                 tipoHab.setEstado(rs.getBoolean("estado"));
                  
              }else{
                 JOptionPane.showMessageDialog(null,"No existe el tipo de habitacion con el id proporcionado");
@@ -152,7 +157,7 @@ public class TipoHabitacionData {
             int fila = ps.executeUpdate();
             
             if(fila == 1){
-                JOptionPane.showMessageDialog(null,"Se eliminó el tipo de habitacion solicitado.");                           
+                JOptionPane.showMessageDialog(null,"Se eliminó el tipo de habitacion solicitada.");                           
             }
             ps.close();
             
@@ -161,7 +166,7 @@ public class TipoHabitacionData {
         }
     }
       public List<TipoHabitacion> listarTipoHabitacion(){
-       String sql="SELECT idTipoHabitacion,cantPersonas,cantCamas,tipoDeCama,precio,estado FROM tipohabitacion";
+       String sql="SELECT idTipoHabitacion,categoria,cantPersonas,cantCamas,tipoDeCama,precio,estado FROM tipohabitacion";
 
        ArrayList<TipoHabitacion> thabitacion = new ArrayList<>();
        
@@ -173,6 +178,7 @@ public class TipoHabitacionData {
            while (rs.next()) {
               TipoHabitacion tipoHab=new TipoHabitacion();
                tipoHab.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
+                tipoHab.setCategoria(rs.getString("categoria"));
               tipoHab.setCantPersonas(rs.getInt("cantPersonas"));
               tipoHab.setCantCamas(rs.getInt("cantCamas"));
                tipoHab.setTipoCama(rs.getString("tipoDeCama"));

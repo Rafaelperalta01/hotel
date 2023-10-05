@@ -12,14 +12,16 @@ package entidades;
 public class TipoHabitacion {
     
     private int idTipoHabitacion;
+    private String categoria;
     private int cantCamas;
     private int cantPersonas;
     private String tipoCama;
     private double precio;
     private boolean estado;
 
-    public TipoHabitacion(int idTipoHabitacion, int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado) {
+    public TipoHabitacion(int idTipoHabitacion,String categoria, int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado) {
         this.idTipoHabitacion= idTipoHabitacion;
+        this.categoria=categoria;
         this.cantCamas = cantCamas;
         this.cantPersonas = cantPersonas;
         this.tipoCama = tipoCama;
@@ -27,7 +29,8 @@ public class TipoHabitacion {
         this.estado=estado;
     }
 
-    public TipoHabitacion(int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado) {
+    public TipoHabitacion(String categoria,int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado) {
+        this.categoria=categoria;
         this.cantCamas = cantCamas;
         this.cantPersonas = cantPersonas;
         this.tipoCama = tipoCama;
@@ -44,6 +47,15 @@ public class TipoHabitacion {
     public void setIdTipoHabitacion(int idTipoHabitacion) {
         this.idTipoHabitacion= idTipoHabitacion;
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
 
     public int getCantCamas() {
         return cantCamas;
@@ -84,12 +96,13 @@ public class TipoHabitacion {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
     @Override
     public String toString() {
-        return "TipoHabitacion{" + "idCategoria=" + idTipoHabitacion + ", cantCamas=" + cantCamas + 
-                ", cantPersonas=" + cantPersonas + ", tipoCama=" + tipoCama + ", precio=" + precio + '}';
+        return "TipoHabitacion{" + "idTipoHabitacion=" + idTipoHabitacion + ", categoria=" + categoria + ", cantCamas=" + cantCamas + ", cantPersonas=" + cantPersonas + ", tipoCama=" + tipoCama + ", precio=" + precio + ", estado=" + estado + '}';
     }
+    
+   
     
     
     
