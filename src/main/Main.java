@@ -41,7 +41,7 @@ public class Main {
      
       ///////////////////////////////////PRUEBAS DATA///////////////////////////////////
       
-        TipoHabitacion doble=new TipoHabitacion(6,2, 1, "2 plazas", 15000);
+        TipoHabitacion doble=new TipoHabitacion(6,2, 1, "2 plazas", 20000,true);
         
         TipoHabitacionData tipoData=new TipoHabitacionData();
         

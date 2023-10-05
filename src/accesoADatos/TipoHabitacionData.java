@@ -114,19 +114,20 @@ public class TipoHabitacionData {
     }
    
      public void modificarPrecioTipoDeHabitacion(TipoHabitacion tHab){
-        String sql="UPDATE tipohabitacion SET precio=?";
+        String sql="UPDATE tipohabitacion SET precio=? WHERE idTipoHabitacion=?";
         
          try {
              PreparedStatement ps=con.prepareStatement(sql);
             
              ps.setDouble(1, tHab.getPrecio());
+             ps.setInt(2, tHab.getIdTipoHabitacion());
 
              int exito = ps.executeUpdate();
 
              if (exito == 1) {
-                 JOptionPane.showMessageDialog(null, "Modificcion exitosa");
+                 JOptionPane.showMessageDialog(null, "Modificacion exitosa");
              } else {
-                 JOptionPane.showMessageDialog(null, "no se que escribir aca");
+                 JOptionPane.showMessageDialog(null, "No se pudo hacer la modificacion solicitada");
              }
     
              ps.close();
