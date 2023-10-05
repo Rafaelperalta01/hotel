@@ -178,7 +178,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese valores válidos");
             limpiarCampos();
         }
-
+        //comentario absolutamente al pedo.
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
