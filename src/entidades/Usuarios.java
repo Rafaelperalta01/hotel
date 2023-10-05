@@ -78,7 +78,7 @@ public class Usuarios {
     public String getSexo() {
         return sexo;
     }
-
+    
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
@@ -106,7 +106,7 @@ public class Usuarios {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     @Override
     public String toString() {
         return "Usuarios{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido 
