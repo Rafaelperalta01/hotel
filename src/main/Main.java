@@ -41,10 +41,10 @@ public class Main {
      
       ///////////////////////////////////PRUEBAS tipo de habitacion DATA///////////////////////////////////
       
-        TipoHabitacion doble=new TipoHabitacion(6,"triple",5, 1, "5 plazas", 20000,true);
-            TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
+        TipoHabitacion simple1=new TipoHabitacion("estandar simple 1",1, 1, "simple", 10000,true);
+         //   TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
         TipoHabitacionData tipoData=new TipoHabitacionData();
-       tipoData.guardarTipoHabitacion(simple);
+       tipoData.guardarTipoHabitacion(simple1);
      //   tipoData.modificarTipoDeHabitacion(doble);
     //    tipoData.modificarPrecioTipoDeHabitacion(doble);
   //  tipoData.eliminarTipoHabitacion(8);

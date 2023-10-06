@@ -45,7 +45,7 @@ public class TipoHabitacionData {
              ps.setBoolean(6, tHab.isEstado());
              
              ps.executeUpdate();
-             ResultSet rs=ps.executeQuery();
+             ResultSet rs=ps.getGeneratedKeys();
              
              if(rs.next()){
                  tHab.setIdTipoHabitacion(rs.getInt(1));
