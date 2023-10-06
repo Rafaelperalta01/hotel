@@ -53,14 +53,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/iniciar.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DNI:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña:");
-
-        tfDni.setBackground(new java.awt.Color(255, 255, 255));
 
         btnIngresar.setBackground(new java.awt.Color(204, 204, 255));
         btnIngresar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -70,9 +66,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-
-        tfContraseña.setBackground(new java.awt.Color(255, 255, 255));
-        tfContraseña.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

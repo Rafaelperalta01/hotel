@@ -2,7 +2,7 @@
 
 <ClassDiagram name="entidades">
   <ClassDiagramComponents>
-    <Class name="Habitacion" package="entidades" visibility="public" xPosition="-92.0" yPosition="8.0">
+    <Class name="Habitacion" package="entidades" visibility="public" xPosition="80.0" yPosition="61.0">
       <Fields>
         <Field name="idHabitacion" type="int" visibility="private"/>
         <Field name="idTipoHabitacion" type="TipoHabitacion" visibility="private"/>
@@ -48,7 +48,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Huesped" package="entidades" visibility="public" xPosition="454.0" yPosition="-27.0">
+    <Class name="Huesped" package="entidades" visibility="public" xPosition="649.0" yPosition="61.0">
       <Fields>
         <Field name="idHuesped" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -117,7 +117,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Reserva" package="entidades" visibility="public" xPosition="-285.0" yPosition="-225.0">
+    <Class name="Reserva" package="entidades" visibility="public" xPosition="13.0" yPosition="156.0">
       <Fields>
         <Field name="idReserva" type="int" visibility="private"/>
         <Field name="idHabitacion" type="Habitacion" visibility="private"/>
@@ -127,12 +127,14 @@
         <Field name="importeTotal" type="double" visibility="private"/>
         <Field name="cantPersonas" type="int" visibility="private"/>
         <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="idUsuarios" type="Usuarios" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
           <Argument type="int" name="idReserva"/>
           <Argument type="Habitacion" name="idHabitacion"/>
           <Argument type="Huesped" name="idHuesped"/>
+          <Argument type="Usuarios" name="idUsuarios"/>
           <Argument type="LocalDate" name="fechaEntrada"/>
           <Argument type="LocalDate" name="fechaSalida"/>
           <Argument type="double" name="importeTotal"/>
@@ -142,6 +144,7 @@
         <Constructor visibility="public">
           <Argument type="Habitacion" name="idHabitacion"/>
           <Argument type="Huesped" name="idHuesped"/>
+          <Argument type="Usuarios" name="idUsuarios"/>
           <Argument type="LocalDate" name="fechaEntrada"/>
           <Argument type="LocalDate" name="fechaSalida"/>
           <Argument type="double" name="importeTotal"/>
@@ -184,29 +187,39 @@
           <Argument type="boolean" name="estado"/>
         </Method>
         <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getidUsuarios" returnType="Usuarios" visibility="public"/>
+        <Method name="setidUsuarios" returnType="void" visibility="public">
+          <Argument type="Usuarios" name="idUsuarios"/>
+        </Method>
       </Methods>
     </Class>
-    <Class name="TipoHabitacion" package="entidades" visibility="public" xPosition="-243.0" yPosition="357.0">
+    <Class name="TipoHabitacion" package="entidades" visibility="public" xPosition="80.0" yPosition="355.0">
       <Fields>
         <Field name="idTipoHabitacion" type="int" visibility="private"/>
         <Field name="cantCamas" type="int" visibility="private"/>
         <Field name="cantPersonas" type="int" visibility="private"/>
         <Field name="tipoCama" type="String" visibility="private"/>
         <Field name="precio" type="double" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="categoria" type="String" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
           <Argument type="int" name="idTipoHabitacion"/>
+          <Argument type="String" name="categoria"/>
           <Argument type="int" name="cantCamas"/>
           <Argument type="int" name="cantPersonas"/>
           <Argument type="String" name="tipoCama"/>
           <Argument type="double" name="precio"/>
+          <Argument type="boolean" name="estado"/>
         </Constructor>
         <Constructor visibility="public">
+          <Argument type="String" name="categoria"/>
           <Argument type="int" name="cantCamas"/>
           <Argument type="int" name="cantPersonas"/>
           <Argument type="String" name="tipoCama"/>
           <Argument type="double" name="precio"/>
+          <Argument type="boolean" name="estado"/>
         </Constructor>
         <Constructor visibility="public"/>
       </Constructors>
@@ -232,9 +245,17 @@
           <Argument type="double" name="precio"/>
         </Method>
         <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getCategoria" returnType="String" visibility="public"/>
+        <Method name="setCategoria" returnType="void" visibility="public">
+          <Argument type="String" name="categoria"/>
+        </Method>
       </Methods>
     </Class>
-    <Class name="Usuarios" package="entidades" visibility="public" xPosition="827.0" yPosition="-301.0">
+    <Class name="Usuarios" package="entidades" visibility="public" xPosition="649.0" yPosition="351.0">
       <Fields>
         <Field name="idUsuario" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -305,8 +326,9 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="idHuesped" source="entidades.Reserva" target="entidades.Huesped" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="idHabitacion" source="entidades.Reserva" target="entidades.Habitacion" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="idUsuario" source="entidades.Reserva" target="entidades.Usuarios" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="idHuesped" source="entidades.Reserva" target="entidades.Huesped" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="idTipoHabitacion" source="entidades.Habitacion" target="entidades.TipoHabitacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="idHabitacion" source="entidades.Reserva" target="entidades.Habitacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
