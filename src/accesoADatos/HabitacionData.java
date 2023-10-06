@@ -46,19 +46,20 @@ public class HabitacionData {
         }
     }
 
-    public void Alta_Habitacion(int numH) {
+    public void Alta_o_Baja_Habitacion(int numH, boolean estado) {
         // este método solo modifica el estado si la habitación está ocupada(1), libre(0)
 
-        String sql = "UPDATE habitacion SET estado = 1 WHERE numHabitacion = ? ";
+        String sql = "UPDATE habitacion SET estado = ? WHERE numHabitacion = ? ";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, numH);
+            ps.setBoolean(1, estado);
+            ps.setInt(2, numH);
 
             int fila = ps.executeUpdate();
 
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "La habitación está ocupada.");
+            if (fila == 1){
+                JOptionPane.showMessageDialog(null, "Se realizo la modificación.");
             }
             ps.close();
 
@@ -67,27 +68,27 @@ public class HabitacionData {
         }
     }
     
-     public void Baja_Habitacion(int numH) {
-        // este método solo modifica el estado si la habitación está ocupada(1), libre(0)
-
-        String sql = "UPDATE habitacion SET estado = 0 WHERE numHabitacion = ? ";
-        PreparedStatement ps = null;
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, numH);
-
-            int fila = ps.executeUpdate();
-
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "La habitación está vacía.");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
-        }
-    }
-    
+//     public void Baja_Habitacion(int numH) {
+//        // este método solo modifica el estado si la habitación está ocupada(1), libre(0)
+//
+//        String sql = "UPDATE habitacion SET estado = 0 WHERE numHabitacion = ? ";
+//        PreparedStatement ps = null;
+//        try {
+//            ps = con.prepareStatement(sql);
+//            ps.setInt(1, numH);
+//
+//            int fila = ps.executeUpdate();
+//
+//            if (fila == 1) {
+//                JOptionPane.showMessageDialog(null, "La habitación está vacía.");
+//            }
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
+//        }
+//    }
+//    
     public void modificarHabitacion(Habitacion hab) {
         
         String sql = "UPDATE habitacion SET idTipoHabitacion = ?, numHabitacion = ?, piso = ? WHERE idHabitacion = ?";
