@@ -6,8 +6,10 @@
 package main;
 
 import accesoADatos.Conexion;
+import accesoADatos.HabitacionData;
 import accesoADatos.HuespedData;
 import accesoADatos.TipoHabitacionData;
+import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
 import java.sql.Connection;
@@ -40,11 +42,11 @@ public class Main {
 //     }
      
       ///////////////////////////////////PRUEBAS tipo de habitacion DATA///////////////////////////////////
-      
-        TipoHabitacion simple1=new TipoHabitacion("estandar simple 1",1, 1, "simple", 10000,true);
-         //   TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
-        TipoHabitacionData tipoData=new TipoHabitacionData();
-       tipoData.guardarTipoHabitacion(simple1);
+//      
+       TipoHabitacion simple1=new TipoHabitacion(8,"estandar Triple",7, 7, "simple", 230,true);
+//            TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
+//        TipoHabitacionData tipoData=new TipoHabitacionData();
+//       tipoData.guardarTipoHabitacion(simple1);
      //   tipoData.modificarTipoDeHabitacion(doble);
     //    tipoData.modificarPrecioTipoDeHabitacion(doble);
   //  tipoData.eliminarTipoHabitacion(8);
@@ -54,9 +56,29 @@ public class Main {
 //        if(buscado!=null){
 //            System.out.println("Tipo de cama: "+ buscado.getTipoCama());
 //        }
+ TipoHabitacionData habiData = new TipoHabitacionData();
+        for(TipoHabitacion tipo:habiData.listarTipoHabitacion()){               //se listan los estado 0 y los 1...ver si ponemos la condicion en la sentencia sql
+                  System.out.println(tipo);
+        }
+   
+   // habiData.guardarTipoHabitacion(simple1);
+    
+      
+     
+       
 
-//        for(TipoHabitacion tipo:tipoData.listarTipoHabitacion()){               //se listan los estado 0 y los 1...ver si ponemos la condicion en la sentencia sql
-//                  System.out.println("Tipo de cama: "+ tipo.getTipoCama());
-//        }
+
+
+//    TipoHabitacion una = new TipoHabitacion();
+//    TipoHabitacionData habiData = new TipoHabitacionData();
+//    una = habiData.buscarTipoHabPorId(2);
+//  
+//    HabitacionData data = new HabitacionData();
+////    Habitacion hab = new Habitacion(una,4,10,true);
+////    data.guardarHabitacion(hab);
+//    data.Alta_o_Baja_Habitacion(20, true);
+
+
+
     }
 }

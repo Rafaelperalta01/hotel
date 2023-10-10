@@ -36,13 +36,13 @@ public class HabitacionData {
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                hab.setIdHabitacion(rs.getInt("idHabitacion"));
-                JOptionPane.showConfirmDialog(null, "Se agregó un Habitación con éxito");
+                hab.setIdHabitacion(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se agregó un Habitación con éxito");
             }
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla habitacion " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion " + ex.getMessage());
         }
     }
 
@@ -177,6 +177,7 @@ public class HabitacionData {
         // lista todas las habitaciones de la base de datos
         
         ArrayList<Habitacion> hab = new ArrayList<>();
+        TipoHabitacionData idata = new TipoHabitacionData();
         String sql = "SELECT * FROM habitacion";
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -188,7 +189,8 @@ public class HabitacionData {
             while (rs.next()) {
                 Habitacion h = new Habitacion();
                 h.setIdHabitacion(rs.getInt("idHabitacion"));
-                h.setIdTipoHabitacion((TipoHabitacion) rs.getObject("idTipoHabitacion"));
+                TipoHabitacion tipo = idata.buscarTipoHabPorId(h.getIdTipoHabitacion().getIdTipoHabitacion());          
+                h.setIdTipoHabitacion(tipo);              
                 h.setNumHabitacion(rs.getInt("numHabitacion"));
                 h.setPiso(rs.getInt("piso"));
                 h.setEstado(rs.getBoolean("estado"));
@@ -207,6 +209,7 @@ public class HabitacionData {
         // lista todas las habitaciones de la base de datos segun si estan disponibles 
 
         ArrayList<Habitacion> hab = new ArrayList<>();
+        TipoHabitacionData idata = new TipoHabitacionData();
         String sql = "SELECT * FROM habitacion WHERE estado = ?";
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -219,7 +222,8 @@ public class HabitacionData {
             while (rs.next()) {
                 Habitacion h = new Habitacion();
                 h.setIdHabitacion(rs.getInt("idHabitacion"));
-                h.setIdTipoHabitacion((TipoHabitacion) rs.getObject("idTipoHabitacion"));
+                TipoHabitacion tipo = idata.buscarTipoHabPorId(h.getIdTipoHabitacion().getIdTipoHabitacion());          
+                h.setIdTipoHabitacion(tipo);  
                 h.setNumHabitacion(rs.getInt("numHabitacion"));
                 h.setPiso(rs.getInt("piso"));
                 h.setEstado(rs.getBoolean("estado"));
@@ -239,6 +243,7 @@ public class HabitacionData {
         // lista por número de piso
 
         ArrayList<Habitacion> hab = new ArrayList<>();
+        TipoHabitacionData idata = new TipoHabitacionData();
         String sql = "SELECT * FROM habitacion WHERE piso = ?";
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -252,7 +257,8 @@ public class HabitacionData {
             while (rs.next()) {
                 Habitacion h = new Habitacion();
                 h.setIdHabitacion(rs.getInt("idHabitacion"));
-                h.setIdTipoHabitacion((TipoHabitacion) rs.getObject("idTipoHabitacion"));
+                TipoHabitacion tipo = idata.buscarTipoHabPorId(h.getIdTipoHabitacion().getIdTipoHabitacion());          
+                h.setIdTipoHabitacion(tipo);  
                 h.setNumHabitacion(rs.getInt("numHabitacion"));
                 h.setPiso(rs.getInt("piso"));
                 h.setEstado(rs.getBoolean("estado"));
@@ -272,6 +278,7 @@ public class HabitacionData {
         // 
 
         ArrayList<Habitacion> hab = new ArrayList<>();
+        TipoHabitacionData idata = new TipoHabitacionData();
         String sql = "SELECT habitacion.* "
                 + "FROM habitacion,tipohabitacion "
                 + "WHERE habitacion.idTipoHabitacion = tipohabitacion.idTipoHabitacion AND tipohabitacion.categoria = ?";
@@ -286,7 +293,8 @@ public class HabitacionData {
             while (rs.next()) {
                 Habitacion h = new Habitacion();
                 h.setIdHabitacion(rs.getInt("idHabitacion"));
-                h.setIdTipoHabitacion((TipoHabitacion) rs.getObject("idTipoHabitacion"));
+                TipoHabitacion tipo = idata.buscarTipoHabPorId(h.getIdTipoHabitacion().getIdTipoHabitacion());          
+                h.setIdTipoHabitacion(tipo);  
                 h.setNumHabitacion(rs.getInt("numHabitacion"));
                 h.setPiso(rs.getInt("piso"));
                 h.setEstado(rs.getBoolean("estado"));

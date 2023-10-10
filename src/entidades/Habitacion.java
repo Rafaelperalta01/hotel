@@ -17,7 +17,7 @@ public class Habitacion {
     private int piso;
     private boolean estado;
 
-    public Habitacion(int idHabitacion, TipoHabitacion idTipoHabitacion, int numHabitacion, boolean estado) {
+    public Habitacion(int idHabitacion, TipoHabitacion idTipoHabitacion, int numHabitacion,int piso, boolean estado) {
         this.idHabitacion = idHabitacion;
         this.idTipoHabitacion = idTipoHabitacion;
         this.numHabitacion = numHabitacion;
@@ -25,7 +25,7 @@ public class Habitacion {
         this.estado = estado;
     }
     
-    public Habitacion(TipoHabitacion idTipoHabitacion, int numHabitacion, boolean estado) {
+    public Habitacion(TipoHabitacion idTipoHabitacion, int numHabitacion, int piso, boolean estado) {
         this.idTipoHabitacion = idTipoHabitacion;
         this.numHabitacion = numHabitacion;
         this.piso = piso;
