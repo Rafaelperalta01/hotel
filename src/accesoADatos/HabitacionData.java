@@ -146,6 +146,7 @@ public class HabitacionData {
     public Habitacion buscarHabitacion(int nroHab) {
         //busca una habitacion por el numero de la habitacion
         Habitacion hab = null;
+        TipoHabitacionData idata = new TipoHabitacionData();
         String sql = "SELECT * FROM habitacion WHERE numHabitacion = ?";
         PreparedStatement ps = null;
 
@@ -158,7 +159,9 @@ public class HabitacionData {
             if (rs.next()) {
                 hab = new Habitacion();
                 hab.setIdHabitacion(rs.getInt("idHabitacion"));
-                hab.setIdTipoHabitacion((TipoHabitacion)rs.getObject("idTipoHabitacion"));
+                TipoHabitacion tipo = idata.buscarTipoHabPorId(hab.getIdTipoHabitacion().getIdTipoHabitacion());          
+                hab.setIdTipoHabitacion(tipo);
+              
                 hab.setNumHabitacion(rs.getInt("numHabitacion"));
                 hab.setPiso(rs.getInt("piso"));
                 hab.setEstado(rs.getBoolean("estado"));
