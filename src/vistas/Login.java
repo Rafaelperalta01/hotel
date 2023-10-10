@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author Lenovo 320
  */
-public class VistaPrincipal extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaPrincipal
      */
-    public VistaPrincipal() {
+    public Login() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -53,10 +53,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/iniciar.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DNI:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña:");
+
+        tfDni.setBackground(new java.awt.Color(255, 255, 255));
 
         btnIngresar.setBackground(new java.awt.Color(204, 204, 255));
         btnIngresar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -66,6 +70,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
+
+        tfContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        tfContraseña.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -156,7 +163,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Bienvenido " + a.getNombre());
                     }
                     this.dispose(); // cierro ventana de login
-                    VistaMenu menu = new VistaMenu(a); // creo clase de la vista del menu. Paso como parametro el objeto del usuario
+                    MenuPrincipal menu = new MenuPrincipal(a); // creo clase de la vista del menu. Paso como parametro el objeto del usuario
                     menu.setVisible(true);// la hago visible (abro la vista del menú)
                 } else { // en caso de que ingrese datos incorrectos
                     JOptionPane.showMessageDialog(null, "Datos incorrectos");
@@ -189,20 +196,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaPrincipal().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }

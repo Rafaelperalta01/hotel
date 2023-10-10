@@ -11,18 +11,18 @@ import entidades.Usuarios;
  *
  * @author Lenovo 320
  */
-public class VistaMenu extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaMenu
      */
-    public VistaMenu(Usuarios a) { //preparo la clase para que reciba el usuario que se lo paso en el login
+    public MenuPrincipal(Usuarios a) { //preparo la clase para que reciba el usuario que se lo paso en el login
         initComponents();
         setLocationRelativeTo(null);
         tfSaludo.setText("Hola, "+a.getNombre()+" !"); // saludo arriba del logo.
     }
 
-    private VistaMenu() { //no se que es. Es una solución que me recomendó netbeans y funcionó.
+    private MenuPrincipal() { //no se que es. Es una solución que me recomendó netbeans y funcionó.
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -270,7 +270,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         // Cerrar programa
         this.dispose(); //cierra ventana menú
-        VistaPrincipal login = new VistaPrincipal(); // crea objeto de la vista del login.
+        Login login = new Login(); // crea objeto de la vista del login.
         login.setVisible(true); // inicia el login
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -316,20 +316,23 @@ public class VistaMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaMenu().setVisible(true);
+                new MenuPrincipal().setVisible(true);
             }
         });
     }
