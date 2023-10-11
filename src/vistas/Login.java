@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Bienvenido " + a.getNombre());
                     }
                     this.dispose(); // cierro ventana de login
-                    MenuPrincipal menu = new MenuPrincipal(a); // creo clase de la vista del menu. Paso como parametro el objeto del usuario
+                   Menu menu = new Menu(); // creo clase de la vista del menu. Paso como parametro el objeto del usuario
                     menu.setVisible(true);// la hago visible (abro la vista del menú)
                 } else { // en caso de que ingrese datos incorrectos
                     JOptionPane.showMessageDialog(null, "Datos incorrectos");
