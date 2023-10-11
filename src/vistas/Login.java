@@ -171,6 +171,8 @@ public class Login extends javax.swing.JFrame {
                 }
             } else { // el en caso de que usuario sea = null.
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                
+                
                 limpiarCampos();
             }
         } catch (NumberFormatException ex) { //si quiero cancherear metiendo datos de otros tipos
