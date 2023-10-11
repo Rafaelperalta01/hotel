@@ -125,7 +125,7 @@ public class GestionTipoHabitacion extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Id Habitacion:");
+        jLabel7.setText("Id tipo Habitacion:");
 
         jBBuscarTipoH1.setBackground(new java.awt.Color(255, 204, 153));
         jBBuscarTipoH1.setText("Editar");
