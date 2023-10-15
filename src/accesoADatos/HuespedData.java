@@ -3,12 +3,14 @@ package accesoADatos;
 
 import entidades.Huesped;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
@@ -92,6 +94,7 @@ public class HuespedData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla huesped"+ex.getMessage());
         }
     }
+   
    public Huesped buscarHuespedPorDni(int dni){
     
     Huesped huesped= null;
@@ -106,39 +109,6 @@ public class HuespedData {
             if(rs.next()){
                huesped = new Huesped();
                huesped.setIdHuesped(rs.getInt("idHuesped"));
-               huesped.setDni(rs.getInt("dni"));
-               
-               huesped.setNombre(rs.getString("nombre"));
-               huesped.setApellido(rs.getString("apellido"));
-               huesped.setDomicilio(rs.getString("domicilio"));
-               huesped.setCorreo(rs.getString("correo"));
-               huesped.setCelular(rs.getString("celular"));
-               }else{
-                JOptionPane.showMessageDialog(null,"No existe el huesped");
-            } 
-            
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped"+ex.getMessage());
-        }
-        
-        return huesped; 
-   }
-   public Huesped buscarHuespedPorId(int id){
-    
-    Huesped huesped= null;
-    String sql = "SELECT idHuesped,nombre, apellido, dni, domicilio, correo, celular FROM huesped WHERE idHuesped=?";
-    PreparedStatement ps = null;
-        try {
-            ps= con.prepareStatement(sql);
-            ps.setInt(1, id);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
-               huesped = new Huesped();
-               huesped.setIdHuesped(id);
                huesped.setDni(rs.getInt("dni"));
                
                huesped.setNombre(rs.getString("nombre"));

@@ -50,34 +50,4 @@ public class UsuariosData {
         }
         return usuario;
     }
-    public Usuarios obtenerUsuarioId(int id) {
-
-        Usuarios usuario = null;
-        PreparedStatement ps = null;
-        String sql = "SELECT idUsuario, nombre, apellido, dni, sexo, direccion, cargo, estado FROM usuario WHERE idUsuario=?";
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                usuario = new Usuarios();
-                usuario.setIdUsuario(id);
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setApellido(rs.getString("apellido"));
-                usuario.setDni(rs.getInt("dni"));
-                usuario.setSexo(rs.getString("sexo"));
-                usuario.setDireccion(rs.getString("direccion"));
-                usuario.setCargo(rs.getString("cargo"));
-                usuario.setEstado(rs.getBoolean("estado"));
-            }
-
-            ps.close();
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla usuario");
-        }
-        return usuario;
-    }
 }

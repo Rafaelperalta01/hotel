@@ -15,8 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,47 +25,40 @@ import javax.swing.JOptionPane;
  */
 public class ReservaData {
      private Connection con= null;
-     HabitacionData habitacion = new HabitacionData();
-     HuespedData huesped = new HuespedData();
-     UsuariosData usuario = new UsuariosData();
-     
 
     public ReservaData() {
         con=Conexion.getConexion();
     }
          
-    public Reserva buscarReservaPorHuesped(int id){
+    public void buscarReservaPorHuesped(int dni){
         Reserva reserva= null;
-        
-        String sql = "SELECT * FROM reserva WHERE idHuesped=?";
+        Habitacion habitacion = null;
+        String sql = "SELECT * FROM reserva WHERE dni=?";
         PreparedStatement ps = null;
         try {
             ps= con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
             
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
                reserva = new Reserva();
+               habitacion = new Habitacion();
                reserva.setIdReserva(rs.getInt("idReserva"));
-               reserva.setIdHabitacion(habitacion.buscarHabitacionId(rs.getInt("idHabitacion")));
-               reserva.setIdHuesped(huesped.buscarHuespedPorId(rs.getInt("idHuesped")));
-               reserva.setIdUsuarios(usuario.obtenerUsuarioId(rs.getInt("idUsuario")));              
-               reserva.setFechaEntrada(rs.getDate("fechaEntrada").toLocalDate());
-               reserva.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());              
-               reserva.setImporteTotal(rs.getDouble("ImporteTotal"));
+               reserva.setIdHabitacion((Habitacion)rs.getObject("idTipoHabitacion"));
+               reserva.setIdHuesped((Huesped)rs.getObject("idHuesped"));
+               reserva.setIdUsuarios((Usuarios)rs.getObject("idUsuario"));
+               reserva.setImporteTotal(rs.getDouble("precio"));
                reserva.setEstado(rs.getBoolean("estado"));
-               
                }else{
-                JOptionPane.showMessageDialog(null,"No existe la Reserva");
+                JOptionPane.showMessageDialog(null,"No existe el huesped");
             } 
             
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Reserva"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped"+ex.getMessage());
         }
-        return reserva;
     }
     
     public void crearReserva(Reserva reserva){
@@ -96,11 +87,11 @@ public class ReservaData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva"+ex.getMessage());
         }
     }
     
-    public void eliminarReserva(int idReserva){
+    public void cancelarReserva(int idReserva){
         PreparedStatement ps = null;
         String sql = "DELETE FROM reserva WHERE idReserva = ?";
         
@@ -118,63 +109,16 @@ public class ReservaData {
         }
         
     }
-     public void modificarReserva(Reserva reserva){
-      // no se si tiene sentdo modificar   
-         String sql = "UPDATE reserva SET idHabitacion =?,"
-                 + "idHuesped=?,idUsuario=?,fechaEntrada=?,fechaSalida=?,ImporteTotal=?,"
-                 + "cantPersonas=?,estado=? WHERE idReserva=?";
-        
-    }
-    public void cancelarReserva(int id){
-        
-        String sql="UPDATE `reserva` SET estado=false WHERE idReserva = ?";
-        PreparedStatement ps = null;
-        
-         try {
-             ps = con.prepareStatement(sql);
-             ps.setInt(1, id);
-             
-             int fila = ps.executeUpdate();
-             if (fila >0){
-             JOptionPane.showMessageDialog(null, "Reserva Cancelada");            
-             }
-             ps.close();
-         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se puede conectar a la tabla reserva"+ ex.getMessage());
-         }
+    
+    public void buscarReservaPorFecha(){
         
     }
     
-   public ArrayList<Reserva> listarReserva(){
-   
-       ArrayList<Reserva> reserva = new ArrayList<>();
-       String sql = "SELECT * FROM reserva WHERE estado = true";
-       PreparedStatement ps = null;
-       ResultSet rs =null;
-       
-         try {
-             ps = con.prepareStatement(sql);
-             rs = ps.executeQuery();
-             
-             while (rs.next()){
-                 Reserva res = new Reserva();
-                 res.setIdReserva(rs.getInt("idReserva"));                
-                 res.setIdHabitacion(habitacion.buscarHabitacionId(rs.getInt("idHabitacion")));               
-                 res.setIdHuesped(huesped.buscarHuespedPorId(rs.getInt("idHuesped")));
-                 res.setIdUsuarios(usuario.obtenerUsuarioId(rs.getInt("idUsuario")));
-                 res.setFechaEntrada(rs.getDate("fechaEntrada").toLocalDate());
-                 res.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());
-                 res.setImporteTotal(rs.getDouble("ImporteTotal"));
-                 res.setCantPersonas(rs.getInt("cantPersonas"));
-                 
-                 reserva.add(res);                 
-             }
-             ps.close();
-         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "No se puede conectar a la tabla reserva"+ ex.getMessage());
-         }
-   
-         return reserva;  
-   }
+    public void modificarReserva(){
+        
+    }
+    
+    
+    
     
 }//------------------fin-------------------
