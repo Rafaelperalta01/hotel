@@ -510,7 +510,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Listado de Reservas"/>
+        <Property name="text" type="java.lang.String" value="Listado de Reservas..."/>
       </Properties>
     </Component>
   </SubComponents>
