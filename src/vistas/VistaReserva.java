@@ -347,7 +347,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel9.setText("Listado de Reservas");
+        jLabel9.setText("Listado de Reservas...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
