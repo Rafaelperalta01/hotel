@@ -151,7 +151,7 @@ public class Login extends javax.swing.JFrame {
         try { //para saber si existe el usuario
             UsuariosData user = new UsuariosData();
             int dni = Integer.parseInt(tfDni.getText());
-            Usuarios a = user.obtenerUsuario(dni);
+            Usuarios a = user.obtenerUsuarioPorDni(dni);
             
             if (a != null) { // si el usuario existe entro en el if
                 boolean existeUsuario = a.isEstado();  //variable accede al estado de user si es activo, existe.
