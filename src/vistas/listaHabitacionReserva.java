@@ -10,9 +10,6 @@ import entidades.Habitacion;
 import entidades.Reserva;
 import entidades.TipoHabitacion;
 import javax.swing.table.DefaultTableModel;
-import static vistas.VistaReserva.jTHabitacion;
-import static vistas.VistaReserva.jTHusped;
-import static vistas.VistaReserva.jTImporte;
 import static vistas.listaHuespedes.jTable1;
 
 /**
@@ -142,8 +139,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
          int fila = jTable1.getSelectedRow();
 
         if (fila != -1) {                      
-            jTHabitacion.setText(jTable1.getValueAt(fila,0).toString());
-            jTImporte.setText(jTable1.getValueAt(fila,7).toString());
+            VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila,0).toString());;
+            VistaReserva.jTImporte.setText(jTable1.getValueAt(fila,7).toString());
         }   
         dispose();
         }
@@ -187,17 +184,6 @@ private void cargarTabla(Habitacion hab) {
 
         for(Habitacion hab:habitacion.listarHabitacion())
             cargarTabla(hab);
-//        TipoHabitacion categoria = new TipoHabitacion(1, "Estandar Doble", 3, 3, "Queen", 15000, true);
-////public TipoHabitacion(int idTipoHabitacion,String categoria, int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado)
-//
-//        Habitacion A1piso2 = new Habitacion(1, categoria, 1, 2, true);
-//        Habitacion A1piso3 = new Habitacion(2, categoria, 3, 3, true);
-//        Habitacion A1piso4 = new Habitacion(3, categoria, 4, 4, true);
-//        Habitacion A1piso5 = new Habitacion(4, categoria, 7, 5, true);
-//        cargarTabla( A1piso2);
-//        cargarTabla( A1piso3);
-//        cargarTabla( A1piso4);
-//        cargarTabla( A1piso5);
 
     }
 }
