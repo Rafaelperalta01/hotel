@@ -193,44 +193,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }
 
     private void llenarTabla() {
-        
-        for(Huesped h:huesped.listarHuesped())
+
+        for (Huesped h : huesped.listarHuesped()) {
             cargarTabla(h);
-        
-        
-//Huesped cualquiera1 = new Huesped(1,"Ramón", "Aviles", 29141034, "Av.Libertad 3456", "Aviles@gmail.com", "11546788676", true);
-//Huesped cualquiera2 = new Huesped(1,"Julio", "Roca", 28141034, "Av.Libertad 3456", "Aviles@gmail.com", "11546788676", true);
-//Huesped cualquiera3 = new Huesped(1,"Marcelo", "Tinelli", 27141034, "Av.Libertad 3456", "Aviles@gmail.com", "11546788676", true);
-//Huesped cualquiera4 = new Huesped(1,"Renato", "Amnevo", 26141034, "Av.Libertad 3456", "Aviles@gmail.com", "11546788676", true);
-//Huesped cualquiera5 = new Huesped(1,"Maximiliano", "Gustcho", 25141034, "Av.Libertad 3456", "Aviles@gmail.com", "11546788676", true);
-//cargarTabla(cualquiera1);
-//cargarTabla(cualquiera2);
-//cargarTabla(cualquiera3);
-//cargarTabla(cualquiera4);
-//cargarTabla(cualquiera5);
+        }
+
     }
-// private void borrarFilas(){
-//    
-//        int filas= jtProductos.getRowCount() -1;
-//        for( ;filas>=0;filas--){
-//            modelo.removeRow(filas);
-//        }
-//    }
-//  private void jtNombreKeyReleased(java.awt.event.KeyEvent evt) {                                     
-//     //recorrer nuestra lista de productos
-//     borrarFilas();
-//     for (Producto pro:Menu. listaProductos){
-//         if(pro.getDescripcion().startsWith(jtNombre.getText())){
-//             modelo.addRow(new Object[]{
-//                 pro.getCodigo(),
-//                 pro.getDescripcion(),
-//                 pro.getPrecio(),
-//                 pro.getStock(),});
-//         }    
-//     }
-//    }                                 
-
-
-
-
 }

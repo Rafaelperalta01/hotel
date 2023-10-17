@@ -7,8 +7,11 @@ package vistas;
 
 import accesoADatos.ReservaData;
 import entidades.Reserva;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +37,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         armarCabecera();
         camposApagados();
         listaRegistros();  
-//        algunasReservasManuales();
    
         jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
 
@@ -183,7 +185,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(70, 70, 70)
-                                .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
                                 .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -208,9 +211,9 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                             .addComponent(jTCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
                                 .addComponent(jTHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jBBuscarTipoH, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
+                                .addGap(30, 30, 30)
+                                .addComponent(jBBuscarTipoH, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(83, Short.MAX_VALUE))
                     .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,8 +224,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTHusped, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26))
                             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
                                 .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -291,6 +294,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTablareservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablareservasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablareservas);
 
         jBConsumos.setBackground(new java.awt.Color(255, 204, 153));
@@ -428,14 +436,42 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-         jTHabitacion.setText("");
+        jTHabitacion.setText("");
         jTHusped.setText("");
         jDCfechaEntrada.setDate(null);
         jDCfechaSalida.setDate(null);
         jTCantPersonas.setText("");
-        jTImporte.setText("");      
-        jTAdmin.setText("");  
+        jTImporte.setText("");
+        jTAdmin.setText("");
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jTablareservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablareservasMouseClicked
+  
+         SimpleDateFormat forma = new SimpleDateFormat("yyyy-MM-dd");
+        if (evt.getClickCount() == 2) {
+ 
+            int fila = jTablareservas.getSelectedRow();
+
+            if (fila != -1) {
+                try {
+                    String fechaE =jTablareservas.getValueAt(fila, 10).toString();
+                    String fechaS =jTablareservas.getValueAt(fila, 11).toString();
+                    java.util.Date f =forma.parse(fechaE);
+                    java.util.Date s = forma.parse(fechaS);
+                    jDCfechaEntrada.setDate(f);
+                    jDCfechaSalida.setDate(s);
+                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 7).toString());
+                    jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
+                    jTHusped.setText(jTablareservas.getValueAt(fila, 3).toString() + jTablareservas.getValueAt(fila, 4).toString());
+                    jTImporte.setText(jTablareservas.getValueAt(fila, 12).toString());
+                    jTAdmin.setText("");
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jTablareservasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -494,16 +530,19 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         return aux;
     }
       private void armarCabecera() {
-        modeloTabla.addColumn("NºHabitación ");
-        modeloTabla.addColumn("Piso");
-        modeloTabla.addColumn("Estado");
-        modeloTabla.addColumn("Categoría");
-        modeloTabla.addColumn("Cant.Personas");
-        modeloTabla.addColumn("Cant.Camas");
-        modeloTabla.addColumn("Tipo de Camas");
-        modeloTabla.addColumn("Fecha entrada");
-        modeloTabla.addColumn("Fecha de salida");
-        modeloTabla.addColumn("Precio");
+        modeloTabla.addColumn("NºHabitación ");//0
+        modeloTabla.addColumn("Piso");//1
+        modeloTabla.addColumn("Estado");//2
+        modeloTabla.addColumn("Nombre Huesped");//3
+        modeloTabla.addColumn("Apellido Huesped");//4
+        modeloTabla.addColumn("Dni");//5
+        modeloTabla.addColumn("Categoría");//6
+        modeloTabla.addColumn("Cant.Personas");//7
+        modeloTabla.addColumn("Cant.Camas");//8
+        modeloTabla.addColumn("Tipo de Camas");//9
+        modeloTabla.addColumn("Fecha entrada");//10
+        modeloTabla.addColumn("Fecha de salida");//11
+        modeloTabla.addColumn("Importe total");//12
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -512,6 +551,9 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getIdHabitacion().getNumHabitacion(),
            r.getIdHabitacion().getPiso(),
            r.getIdHabitacion().isEstado(),
+           r.getIdHuesped().getNombre(),
+           r.getIdHuesped().getApellido(),
+           r.getIdHuesped().getDni(),
            r.getIdHabitacion().getIdTipoHabitacion().getCategoria(),
            r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
            r.getIdHabitacion().getIdTipoHabitacion().getCantCamas(),
