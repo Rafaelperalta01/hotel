@@ -56,24 +56,21 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fond.jpg"))); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1274, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1274, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 102));
 
         jMenu1.setBackground(new java.awt.Color(0, 0, 102));
         jMenu1.setBorder(null);
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/clientes.jpg"))); // NOI18N
         jMenu1.setText("Huesped");
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -86,7 +83,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/reserva.jpg"))); // NOI18N
         jMenu2.setText("Reservas");
         jMenu2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -101,7 +97,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/habitacion.jpg"))); // NOI18N
         jMenu3.setText("Habitaciones");
         jMenu3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -114,7 +109,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/admin.jpg"))); // NOI18N
         jMenu4.setText("Usuario");
         jMenu4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jMenuBar1.add(jMenu4);
