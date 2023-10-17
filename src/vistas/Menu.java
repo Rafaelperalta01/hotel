@@ -34,18 +34,21 @@ public class Menu extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         jMenu5.setText("File");
         jMenuBar2.add(jMenu5);
@@ -59,19 +62,6 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 102));
 
-        jMenu1.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu1.setBorder(null);
-        jMenu1.setText("Huesped");
-        jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-
-        jMenuItem1.setText("Buscar huesped");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Crear huesped");
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
         jMenu2.setBackground(new java.awt.Color(0, 0, 102));
         jMenu2.setText("Reservas");
         jMenu2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -84,34 +74,59 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem3);
 
+        jMenuItem12.setText("Lista de Reservas");
+        jMenu2.add(jMenuItem12);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu1.setBackground(new java.awt.Color(0, 0, 102));
+        jMenu1.setBorder(null);
+        jMenu1.setText("Huesped");
+        jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        jMenuItem1.setText("Lista  huesped");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Crear huesped");
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu3.setBackground(new java.awt.Color(0, 0, 102));
         jMenu3.setText("Habitaciones");
         jMenu3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        jMenuItem4.setText("Habitaciones");
+        jMenuItem4.setText("Lista de Habitaciones");
         jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setText("Gestion tipo de Habitacion");
-        jMenu3.add(jMenuItem5);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu4.setText("Usuario");
+        jMenu4.setText("Administrador");
         jMenu4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
+        jMenuItem8.setText("Gestion Usuario");
+        jMenu4.add(jMenuItem8);
+
+        jMenuItem9.setText("Gestion tipo de Habitacion");
+        jMenu4.add(jMenuItem9);
+
+        jMenuItem10.setText("Gestion Producto/Servicio");
+        jMenu4.add(jMenuItem10);
+
+        jMenuItem11.setText("Gestion Habitacion");
+        jMenu4.add(jMenuItem11);
+
         jMenuBar1.add(jMenu4);
 
-        jMenu7.setText("Productos y Servicios");
+        jMenu8.setBackground(new java.awt.Color(0, 0, 102));
+        jMenu8.setText("Usuario");
+        jMenu8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        jMenuItem6.setText("Gestion Productos");
-        jMenu7.add(jMenuItem6);
+        jMenuItem13.setText("Cambiar Sesion");
+        jMenu8.add(jMenuItem13);
 
-        jMenuItem7.setText("Gestion servicios");
-        jMenu7.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
 
@@ -179,15 +194,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
