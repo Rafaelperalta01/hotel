@@ -19,8 +19,9 @@ public class Usuarios {
     private String direccion;
     private String cargo;
     private boolean estado;
+    private String contraseña;
 
-    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado) {
+    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado, String contraseña) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,9 +30,10 @@ public class Usuarios {
         this.direccion = direccion;
         this.cargo = cargo;
         this.estado = estado;
+        this.contraseña = contraseña;
     }
 
-    public Usuarios(String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado) {
+    public Usuarios(String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado,String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -39,6 +41,7 @@ public class Usuarios {
         this.direccion = direccion;
         this.cargo = cargo;
         this.estado = estado;
+        this.contraseña = contraseña;
     }
 
     public Usuarios() {}
@@ -106,12 +109,22 @@ public class Usuarios {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    
     
     @Override
     public String toString() {
         return "Usuarios{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido 
                 + ", dni=" + dni + ", sexo=" + sexo + ", direccion=" + direccion + ", cargo=" 
-                + cargo + ", estado=" + estado + '}';
+                + cargo + ", estado=" + estado + ", contraseña= "+contraseña+ '}';
     }
     
 }

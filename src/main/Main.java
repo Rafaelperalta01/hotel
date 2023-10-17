@@ -9,9 +9,11 @@ import accesoADatos.Conexion;
 import accesoADatos.HabitacionData;
 import accesoADatos.HuespedData;
 import accesoADatos.TipoHabitacionData;
+import accesoADatos.UsuariosData;
 import entidades.Habitacion;
 import entidades.Huesped;
 import entidades.TipoHabitacion;
+import entidades.Usuarios;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class Main {
      
       ///////////////////////////////////PRUEBAS tipo de habitacion DATA///////////////////////////////////
 //      
-       TipoHabitacion simple1=new TipoHabitacion(8,"estandar Triple",7, 7, "simple", 230,true);
+     //  TipoHabitacion simple1=new TipoHabitacion(8,"estandar Triple",7, 7, "simple", 230,true);
 //            TipoHabitacion simple=new TipoHabitacion("DOBLE",2, 1, "QUEEN", 10000,true);// sin id, objeto para guardar tiponuevo
 //        TipoHabitacionData tipoData=new TipoHabitacionData();
 //       tipoData.guardarTipoHabitacion(simple1);
@@ -56,11 +58,11 @@ public class Main {
 //        if(buscado!=null){
 //            System.out.println("Tipo de cama: "+ buscado.getTipoCama());
 //        }
- TipoHabitacionData habiData = new TipoHabitacionData();
-        for(TipoHabitacion tipo:habiData.listarTipoHabitacion()){               //se listan los estado 0 y los 1...ver si ponemos la condicion en la sentencia sql
-                  System.out.println(tipo);
-        }
-   
+ //TipoHabitacionData habiData = new TipoHabitacionData();
+   //     for(TipoHabitacion tipo:habiData.listarTipoHabitacion()){               //se listan los estado 0 y los 1...ver si ponemos la condicion en la sentencia sql
+    //              System.out.println(tipo);
+      //  }
+    
    // habiData.guardarTipoHabitacion(simple1);
     
       
@@ -77,8 +79,47 @@ public class Main {
 ////    Habitacion hab = new Habitacion(una,4,10,true);
 ////    data.guardarHabitacion(hab);
 //    data.Alta_o_Baja_Habitacion(20, true);
+    
+    
 
 
-
+        //***************************prueba UsuariosData**********************************
+        //UsuariosData as = new UsuariosData();
+        //Usuarios a = new Usuarios();
+    
+        //****metodo ObtenerUsuarioPorDni****
+        /*a = as.obtenerUsuarioPorDni(45123619);
+        System.out.println(a);*/
+    
+        //****metodo obtenerUsuarioPorId****
+        /*a = as.obtenerUsuarioId(1);
+        System.out.println(a);*/
+    
+        //****metodo crearUsuario****
+        /*Usuarios user1 = new Usuarios("Ramiro","Diaz",45233560,"Masculino","Cuba 345","Admin",true,"hotel123");
+        as.crearUsuario(user1);*/
+    
+        //****metodo ModificarUsuario****
+        //Usuarios user1 = new Usuarios("Ramiro","Diaz",45233560,"Masculino","Cuba 345","Admin",true,"hotel123");
+        //as.modificarUsuario(user1);
+    
+        //****metodo EliminarUsuarioPorDni****
+        //as.eliminarUsuarioPorDni(45233560);
+    
+    
+        //****Metodo ListarUsuarios(TODOS)****
+        /*for(Usuarios users:as.listarUsuarios()){
+            System.out.println("nombre: "+users.getNombre());
+        }*/
+    
+        //****Metodo ListarAdministradores****
+        /*for(Usuarios users:as.ListarAdninistradores()){
+            System.out.println("nombre: "+users.getNombre());
+        }*/
+    
+        //****Metodo ListarRecepcionistas****
+        /*for(Usuarios users:as.ListarRecepcionistas()){
+            System.out.println("nombre: "+users.getNombre());
+        }*/
     }
 }
