@@ -145,7 +145,7 @@ public class Login extends javax.swing.JFrame {
         tfDni.setText("");
         tfContraseña.setText("");
     }
-
+    //comentario
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         try { //para saber si existe el usuario
