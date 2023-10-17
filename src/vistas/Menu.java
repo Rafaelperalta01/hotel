@@ -35,8 +35,8 @@ public class Menu extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMGestionReserva = new javax.swing.JMenuItem();
+        jMListaReserva = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -66,16 +66,21 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setText("Reservas");
         jMenu2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        jMenuItem3.setText("Gestion de reservas");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMGestionReserva.setText("Gestion de reservas");
+        jMGestionReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMGestionReservaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(jMGestionReserva);
 
-        jMenuItem12.setText("Lista de Reservas");
-        jMenu2.add(jMenuItem12);
+        jMListaReserva.setText("Lista de Reservas");
+        jMListaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMListaReservaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMListaReserva);
 
         jMenuBar1.add(jMenu2);
 
@@ -146,9 +151,13 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMGestionReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionReservaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMGestionReservaActionPerformed
+
+    private void jMListaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListaReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMListaReservaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +197,8 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMGestionReserva;
+    private javax.swing.JMenuItem jMListaReserva;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -200,10 +211,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
