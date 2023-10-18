@@ -58,7 +58,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar2.add(jMenu6);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1059, 627));
 
         escritorio.setPreferredSize(new java.awt.Dimension(1059, 627));
 
@@ -103,9 +102,19 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem1.setText("Lista  huesped");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Crear huesped");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -115,6 +124,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem4.setText("Lista de Habitaciones");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -124,15 +138,35 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem8.setText("Gestion Usuario");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenuItem9.setText("Gestion tipo de Habitacion");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem9);
 
         jMenuItem10.setText("Gestion Producto/Servicio");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem10);
 
         jMenuItem11.setText("Gestion Habitacion");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem11);
 
         jMenuBar1.add(jMenu4);
@@ -142,6 +176,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem13.setText("Cambiar Sesion");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem13);
 
         jMenuBar1.add(jMenu8);
@@ -176,6 +215,84 @@ public class Menu extends javax.swing.JFrame {
     private void jMListaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListaReservaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMListaReservaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        //Abrir vista Lista huespedes
+        escritorio.removeAll();
+        escritorio.repaint();
+        listaHuespedes listaHuesped = new listaHuespedes();
+        escritorio.add(listaHuesped);
+        listaHuesped.setVisible(true);
+        listaHuesped.moveToFront();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //Abrir vista Crear huesped
+        escritorio.removeAll();
+        escritorio.repaint();
+        Huesped huesped = new Huesped();
+        escritorio.add(huesped);
+        huesped.setVisible(true);
+        huesped.moveToFront();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // Lista Habitaciones
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListadoHabitacionesDisponibles hab = new ListadoHabitacionesDisponibles();
+        escritorio.add(hab);
+        hab.setVisible(true);
+        hab.moveToFront();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // Gestion usuarios
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionUsuarios gUsuario = new GestionUsuarios();
+        escritorio.add(gUsuario);
+        gUsuario.setVisible(true);
+        gUsuario.moveToFront();
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // gestion tipo Habitacion
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionTipoHabitacion gHab = new GestionTipoHabitacion();
+        escritorio.add(gHab);
+        gHab.setVisible(true);
+        gHab.moveToFront();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // gestion Productos / servicios
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProductoServicio gps = new ProductoServicio();
+        escritorio.add(gps);
+        gps.setVisible(true);
+        gps.moveToFront();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // Gestion Habitacion
+        escritorio.removeAll();
+        escritorio.repaint();
+        RegistroHabitacion gHab = new RegistroHabitacion();
+        escritorio.add(gHab);
+        gHab.setVisible(true);
+        gHab.moveToFront();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // Cerrar sesion
+        this.dispose();
+        Login log = new Login();
+        log.setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments

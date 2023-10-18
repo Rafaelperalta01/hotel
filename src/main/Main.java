@@ -123,7 +123,49 @@ public class Main {
         /*for(Usuarios users:as.ListarRecepcionistas()){
             System.out.println("nombre: "+users.getNombre());
         }*/
-        //comentario
+        //comentario  
+
+        //***********************pruebas ReservasData******************************
+        /*     HuespedData idHuesped = new HuespedData();
+        Huesped x = idHuesped.buscarHuespedPorDni(29123456);
+        
+        TipoHabitacionData idata = new TipoHabitacionData();
+        TipoHabitacion habit = idata.buscarTipoHabPorId(1);
+
+        HabitacionData numHab = new HabitacionData();
+        Habitacion vacia = numHab.buscarHabitacion(10);
+        
+        double precio = vacia.getIdTipoHabitacion().getPrecio();
+        int cantpersonas = vacia.getIdTipoHabitacion().getCantPersonas();
+        UsuariosData recepcion1 = new UsuariosData();
+        
+        Usuarios pepe = recepcion1.obtenerUsuarioPorDni(24555443);
+
+        LocalDate entrada = LocalDate.now();
+        LocalDate salida = LocalDate.now().plusDays(15);
+        
+        Reserva nueva = new Reserva(vacia, x, pepe, entrada, salida,precio, cantpersonas, true);
+//public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped,Usuarios idUsuarios, 
+
+        ReservaData aux = new ReservaData();
+      //  aux.crearReserva(nueva);
+//              aux.cancelarReserva(7);
+//
+//        Reserva n = aux.buscarReservaPorHuesped(2);
+//        
+//       
+        for (Reserva res:aux.listarReserva()){
+        System.out.println(res);//falta hacer buscar reserva
+        }*/
+
+    
+    //*********************prueba ProductoServicioData****************************
+    
+    ProductoServicioData producto = new ProductoServicioData();
+    ProductoServicio p = new ProductoServicio("Producto","Chocolate","Chocolate negro 50gr",10000,5);
+    producto.guardarProductoServicio(p);
+    
+    
     }
     
 }
