@@ -161,13 +161,27 @@ public class Main {
     
     //*********************prueba ProductoServicioData****************************
     
-    ProductoServicioData producto = new ProductoServicioData();
-    ProductoServicio p = new ProductoServicio("Producto","Chocolate","Chocolate negro 50gr",10000,5);
-    producto.guardarProductoServicio(p);
+    /*ProductoServicioData prod = new ProductoServicioData();
+    ProductoServicio p = new ProductoServicio("Producto","Chocolate","Chocolate negro 50gr",2000,7);
+    ProductoServicio pa = new ProductoServicio("Producto","Coca","2.25ls",15000,2);
+    ProductoServicio paa = new ProductoServicio("Producto","Pepsi","3l",1200,2);
+    ProductoServicio paaa = new ProductoServicio("Producto","Chocolate","Chocolate blanco 100gr",5000,2);
+    prod.guardarProductoServicio(p);
+    prod.guardarProductoServicio(pa);
+    prod.guardarProductoServicio(paa);
+    prod.guardarProductoServicio(paaa);*/
     
+    //prod.modificarProductoServicio(p);
+    //prod.eliminarProductoServicio(1);
+    /*for(ProductoServicio a:prod.listarProductoServicio()){
+        System.out.println(a);
+    }*/
+    /*
+    for(ProductoServicio a:prod.listarProductoServ_X_categoria("Servicio")){
+        System.out.println(a);
+    }*/
     
     }
-    
 }
 
 
