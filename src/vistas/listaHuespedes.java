@@ -171,7 +171,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void armarCabecera() {
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Apellido");
-        modeloTabla.addColumn("DNI");
+       modeloTabla.addColumn("Tipo de Documento");//5
+        modeloTabla.addColumn("Numero de Documento");//6
         modeloTabla.addColumn("Domicilio");
         modeloTabla.addColumn("Email");
         modeloTabla.addColumn("Celular");
@@ -183,7 +184,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         modeloTabla.addRow(new Object[]{
             h.getNombre(),
             h.getApellido(),
-            h.getDni(),
+            h.getTipoDocumento(),
+            h.getNumeroDocumento(),
             h.getDomicilio(),
             h.getCorreo(),
             h.getCelular(),

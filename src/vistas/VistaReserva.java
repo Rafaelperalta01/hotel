@@ -535,14 +535,15 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Estado");//2
         modeloTabla.addColumn("Nombre Huesped");//3
         modeloTabla.addColumn("Apellido Huesped");//4
-        modeloTabla.addColumn("Dni");//5
-        modeloTabla.addColumn("Categoría");//6
-        modeloTabla.addColumn("Cant.Personas");//7
-        modeloTabla.addColumn("Cant.Camas");//8
-        modeloTabla.addColumn("Tipo de Camas");//9
-        modeloTabla.addColumn("Fecha entrada");//10
-        modeloTabla.addColumn("Fecha de salida");//11
-        modeloTabla.addColumn("Importe total");//12
+        modeloTabla.addColumn("Tipo de Documento");//5
+        modeloTabla.addColumn("Numero de Documento");//6
+        modeloTabla.addColumn("Categoría");//7
+        modeloTabla.addColumn("Cant.Personas");//8
+        modeloTabla.addColumn("Cant.Camas");//9
+        modeloTabla.addColumn("Tipo de Camas");//10
+        modeloTabla.addColumn("Fecha entrada");//11
+        modeloTabla.addColumn("Fecha de salida");//12
+        modeloTabla.addColumn("Importe total");//13
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -553,7 +554,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getIdHabitacion().isEstado(),
            r.getIdHuesped().getNombre(),
            r.getIdHuesped().getApellido(),
-           r.getIdHuesped().getDni(),
+           r.getIdHuesped().getTipoDocumento(),
+           r.getIdHuesped().getNumeroDocumento(),
            r.getIdHabitacion().getIdTipoHabitacion().getCategoria(),
            r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
            r.getIdHabitacion().getIdTipoHabitacion().getCantCamas(),
