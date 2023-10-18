@@ -14,34 +14,38 @@ public class Huesped {
     private int idHuesped;
     private String nombre;
     private String apellido;
-    private int dni;
+    private String tipoDocumento;
+    private String numeroDocumento;
     private String domicilio;
     private String correo;
     private String celular;
     private boolean estado;
 
-    public Huesped(int idHuesped, String nombre, String apellido, int dni, String domicilio, String correo, String  celular, boolean estado) {
+    public Huesped() {
+    }
+
+    public Huesped(String nombre, String apellido, String tipoDocumento, String numeroDocumento, String domicilio, String correo, String celular, boolean estado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.celular = celular;
+        this.estado = estado;
+    }
+
+    public Huesped(int idHuesped, String nombre, String apellido, String tipoDocumento, String numeroDocumento, String domicilio, String correo, String celular, boolean estado) {
         this.idHuesped = idHuesped;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
         this.domicilio = domicilio;
         this.correo = correo;
         this.celular = celular;
         this.estado = estado;
     }
-
-    public Huesped(String nombre, String apellido, int dni,String domicilio, String correo, String celular, boolean estado) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.domicilio = domicilio;
-        this.correo = correo;
-        this.celular = celular;
-        this.estado = estado;
-    }
-
-    public Huesped() {}
 
     public int getIdHuesped() {
         return idHuesped;
@@ -67,22 +71,30 @@ public class Huesped {
         this.apellido = apellido;
     }
 
-    public int getDni() {
-        return dni;
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
-    public String getDomicilio(){
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getDomicilio() {
         return domicilio;
     }
-    
-    public void setDomicilio(String domicilio){
+
+    public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
-    
+
     public String getCorreo() {
         return correo;
     }
@@ -91,11 +103,11 @@ public class Huesped {
         this.correo = correo;
     }
 
-    public String  getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(String  celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -106,18 +118,16 @@ public class Huesped {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
+    
+    
 
     @Override
     public String toString() {
-        return "Huesped{" + "idHuesped=" + idHuesped + ", nombre=" + nombre + ", apellido=" 
-                + apellido + ", dni=" + dni +", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + 
-                ", estado=" + estado + '}';
+        return "Huesped{" + "idHuesped=" + idHuesped + ", nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + ", estado=" + estado + '}';
     }
     
-    
-    
-    
-    
-    
-    
+
 }
+
+    

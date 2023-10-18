@@ -8,10 +8,15 @@ package main;
 import accesoADatos.Conexion;
 import accesoADatos.HabitacionData;
 import accesoADatos.HuespedData;
+import accesoADatos.ProductoServicioData;
+import accesoADatos.ReservaData;
 import accesoADatos.TipoHabitacionData;
 import accesoADatos.UsuariosData;
+import entidades.Consumo;
 import entidades.Habitacion;
 import entidades.Huesped;
+import entidades.ProductoServicio;
+import entidades.Reserva;
 import entidades.TipoHabitacion;
 import entidades.Usuarios;
 import java.sql.Connection;
@@ -25,11 +30,14 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Connection con=Conexion.getConexion();
+        
+        ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
+        
 //     Huesped reserva1 = new Huesped(1,"Robertoooooo","Perez",26974345,"Libertador 432","glopez@gmail.com","113445224564",true);
 //     HuespedData data = new HuespedData();
-//     ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
-//    // data.guardarHuesped(reserva1);
-//    
+//     
+    // data.guardarHuesped(reserva1);
+    
 //    data.modificarHuesped(reserva1);
 //     Huesped encontrado = data.buscarHuespedPorDni(26974345);
 //
@@ -65,12 +73,6 @@ public class Main {
     
    // habiData.guardarTipoHabitacion(simple1);
     
-      
-     
-       
-
-
-
 //    TipoHabitacion una = new TipoHabitacion();
 //    TipoHabitacionData habiData = new TipoHabitacionData();
 //    una = habiData.buscarTipoHabPorId(2);
@@ -123,4 +125,7 @@ public class Main {
         }*/
         //comentario
     }
+    
 }
+
+

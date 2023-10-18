@@ -20,17 +20,19 @@ public class HuespedData {
            
     } 
    public void guardarHuesped (Huesped huesped){
-       String sql= " INSERT INTO huesped (nombre,apellido,dni,domicilio, correo,celular,estado)"
-               + "VALUES (?,?,?,?,?,?,?)";
+       String sql= " INSERT INTO huesped (nombre,apellido,tipoDocumento,numeroDocumento,domicilio, correo,celular,estado)"
+               + "VALUES (?,?,?,?,?,?,?,?)";
        try {
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+           
            ps.setString(1, huesped.getNombre());
            ps.setString(2, huesped.getApellido());
-           ps.setInt(3, huesped.getDni());
-           ps.setString(4, huesped.getDomicilio());
-           ps.setString(5, huesped.getCorreo());
-           ps.setString(6, huesped.getCelular());
-           ps.setBoolean(7, huesped.isEstado());
+           ps.setString(3, huesped.getTipoDocumento());
+           ps.setString(4, huesped.getNumeroDocumento());
+           ps.setString(5, huesped.getDomicilio());
+           ps.setString(6, huesped.getCorreo());
+           ps.setString(7, huesped.getCelular());
+           ps.setBoolean(8, huesped.isEstado());
            
            ps.executeUpdate();
             
@@ -42,24 +44,25 @@ public class HuespedData {
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped"+ ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m.guardar)"+ ex.getMessage());
         }
         
     }
    
    public void modificarHuesped(Huesped huesped){
-    String sql = " UPDATE huesped SET nombre = ?, apellido= ?, dni= ?, domicilio = ?, correo = ?, celular = ? WHERE idHuesped = ?";
+    String sql = " UPDATE huesped SET nombre = ?, apellido= ?, tipoDocumento=?, numeroDocumento=?, domicilio = ?, correo = ?, celular = ? WHERE idHuesped = ?";
     PreparedStatement ps = null;
 
     try {
         ps = con.prepareStatement(sql);
         ps.setString(1, huesped.getNombre());
            ps.setString(2, huesped.getApellido());
-           ps.setInt(3, huesped.getDni());
-           ps.setString(4, huesped.getDomicilio());
-           ps.setString(5, huesped.getCorreo());
-           ps.setString(6, huesped.getCelular());
-           ps.setInt(7, huesped.getIdHuesped());
+           ps.setString(3, huesped.getTipoDocumento());
+           ps.setString(4, huesped.getNumeroDocumento());
+           ps.setString(5, huesped.getDomicilio());
+           ps.setString(6, huesped.getCorreo());
+           ps.setString(7, huesped.getCelular());
+           ps.setInt(8, huesped.getIdHuesped());
         
         
         int exito = ps.executeUpdate();
@@ -71,15 +74,15 @@ public class HuespedData {
     }
 
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped"+ex.getMessage());    
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m.modificar)"+ex.getMessage());    
     }
     }
-   public void eliminarHuesped(int dni){
-        String sql = "UPDATE huesped SET estado = 0 WHERE dni = ?";
+   public void eliminarHuesped(String numeroDocumento){
+        String sql = "UPDATE huesped SET estado = 0 WHERE numeroDocumento = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, dni);
+            ps.setString(1, numeroDocumento);
             
             int fila = ps.executeUpdate();
             
@@ -89,27 +92,30 @@ public class HuespedData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla huesped"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla huesped (m.eliminar)"+ex.getMessage());
         }
     }
-   public Huesped buscarHuespedPorDni(int dni){
+   public Huesped buscarHuespedPorDni(String numeroDocumento){
     
     Huesped huesped= null;
-    String sql = "SELECT idHuesped,nombre, apellido, dni, domicilio, correo, celular FROM huesped WHERE dni=?";
+    String sql = "SELECT idHuesped,nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular FROM huesped WHERE numeroDocumento=?";
     PreparedStatement ps = null;
         try {
             ps= con.prepareStatement(sql);
-            ps.setInt(1, dni);
+            ps.setString(1, numeroDocumento);
             
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
                huesped = new Huesped();
                huesped.setIdHuesped(rs.getInt("idHuesped"));
-               huesped.setDni(rs.getInt("dni"));
+             
                
                huesped.setNombre(rs.getString("nombre"));
                huesped.setApellido(rs.getString("apellido"));
+               
+               huesped.setTipoDocumento(rs.getString("tipoDocumento"));
+                huesped.setTipoDocumento(rs.getString("numeroDocumento"));
                huesped.setDomicilio(rs.getString("domicilio"));
                huesped.setCorreo(rs.getString("correo"));
                huesped.setCelular(rs.getString("celular"));
@@ -120,7 +126,7 @@ public class HuespedData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped (m. buscarxdni)"+ex.getMessage());
         }
         
         return huesped; 
@@ -128,7 +134,7 @@ public class HuespedData {
    public Huesped buscarHuespedPorId(int id){
     
     Huesped huesped= null;
-    String sql = "SELECT idHuesped,nombre, apellido, dni, domicilio, correo, celular FROM huesped WHERE idHuesped=?";
+    String sql = "SELECT idHuesped,nombre, apellido, tipoDocumento,numeroDocumento, domicilio, correo, celular FROM huesped WHERE idHuesped=?";
     PreparedStatement ps = null;
         try {
             ps= con.prepareStatement(sql);
@@ -139,7 +145,8 @@ public class HuespedData {
             if(rs.next()){
                huesped = new Huesped();
                huesped.setIdHuesped(id);
-               huesped.setDni(rs.getInt("dni"));
+              huesped.setTipoDocumento(rs.getString("tipoDocumento"));
+                huesped.setTipoDocumento(rs.getString("numeroDocumento"));
                
                huesped.setNombre(rs.getString("nombre"));
                huesped.setApellido(rs.getString("apellido"));
@@ -153,14 +160,14 @@ public class HuespedData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped (m. buscarxid)"+ex.getMessage());
         }
         
         return huesped; 
    }
                
    public List<Huesped> listarHuesped(){
-       String sql="SELECT idHuesped,nombre,apellido,dni,domicilio, correo,celular,estado FROM huesped";// "SELECT * FROM huesped ";
+       String sql="SELECT idHuesped,nombre,apellido,tipoDocumento,numeroDocumento,domicilio, correo,celular,estado FROM huesped";// "SELECT * FROM huesped ";
 
        ArrayList<Huesped> huesped = new ArrayList<>();
        
@@ -174,7 +181,8 @@ public class HuespedData {
                hues.setIdHuesped(rs.getInt("idHuesped"));
                hues.setNombre(rs.getString("nombre"));
                hues.setApellido(rs.getString("apellido"));
-               hues.setDni(rs.getInt("dni"));
+                hues.setTipoDocumento(rs.getString("tipoDocumento"));
+                hues.setTipoDocumento(rs.getString("numeroDocumento"));
                hues.setDomicilio(rs.getString("domicilio"));
                hues.setCorreo(rs.getString("correo"));
                hues.setCelular(rs.getString("celular"));
@@ -186,7 +194,7 @@ public class HuespedData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped"+ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped (m. listar)"+ex.getMessage());
         }
         
         return huesped;
