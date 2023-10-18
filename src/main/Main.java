@@ -123,9 +123,65 @@ public class Main {
         /*for(Usuarios users:as.ListarRecepcionistas()){
             System.out.println("nombre: "+users.getNombre());
         }*/
-        //comentario
-    }
+        //comentario  
+
+        //***********************pruebas ReservasData******************************
+        /*     HuespedData idHuesped = new HuespedData();
+        Huesped x = idHuesped.buscarHuespedPorDni(29123456);
+        
+        TipoHabitacionData idata = new TipoHabitacionData();
+        TipoHabitacion habit = idata.buscarTipoHabPorId(1);
+
+        HabitacionData numHab = new HabitacionData();
+        Habitacion vacia = numHab.buscarHabitacion(10);
+        
+        double precio = vacia.getIdTipoHabitacion().getPrecio();
+        int cantpersonas = vacia.getIdTipoHabitacion().getCantPersonas();
+        UsuariosData recepcion1 = new UsuariosData();
+        
+        Usuarios pepe = recepcion1.obtenerUsuarioPorDni(24555443);
+
+        LocalDate entrada = LocalDate.now();
+        LocalDate salida = LocalDate.now().plusDays(15);
+        
+        Reserva nueva = new Reserva(vacia, x, pepe, entrada, salida,precio, cantpersonas, true);
+//public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped,Usuarios idUsuarios, 
+
+        ReservaData aux = new ReservaData();
+      //  aux.crearReserva(nueva);
+//              aux.cancelarReserva(7);
+//
+//        Reserva n = aux.buscarReservaPorHuesped(2);
+//        
+//       
+        for (Reserva res:aux.listarReserva()){
+        System.out.println(res);//falta hacer buscar reserva
+        }*/
+
     
+    //*********************prueba ProductoServicioData****************************
+    
+    /*ProductoServicioData prod = new ProductoServicioData();
+    ProductoServicio p = new ProductoServicio("Producto","Chocolate","Chocolate negro 50gr",2000,7);
+    ProductoServicio pa = new ProductoServicio("Producto","Coca","2.25ls",15000,2);
+    ProductoServicio paa = new ProductoServicio("Producto","Pepsi","3l",1200,2);
+    ProductoServicio paaa = new ProductoServicio("Producto","Chocolate","Chocolate blanco 100gr",5000,2);
+    prod.guardarProductoServicio(p);
+    prod.guardarProductoServicio(pa);
+    prod.guardarProductoServicio(paa);
+    prod.guardarProductoServicio(paaa);*/
+    
+    //prod.modificarProductoServicio(p);
+    //prod.eliminarProductoServicio(1);
+    /*for(ProductoServicio a:prod.listarProductoServicio()){
+        System.out.println(a);
+    }*/
+    /*
+    for(ProductoServicio a:prod.listarProductoServ_X_categoria("Servicio")){
+        System.out.println(a);
+    }*/
+    
+    }
 }
 
 

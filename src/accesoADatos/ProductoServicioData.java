@@ -79,7 +79,7 @@ public class ProductoServicioData {
     }
     
     public void eliminarProductoServicio (int id){
-          String sql = "DELETE productoservicio WHERE idProductoServicio = ?";
+          String sql = "DELETE FROM productoservicio WHERE idProductoServicio = ?";
       PreparedStatement ps = null;
       
         try {
