@@ -31,7 +31,7 @@ public class HuespedData {
            ps.setString(4, huesped.getNumeroDocumento());
            ps.setString(5, huesped.getDomicilio());
            ps.setString(6, huesped.getCorreo());
-           ps.setString(7, huesped.getCelular());
+           ps.setInt(7, huesped.getCelular());
            ps.setBoolean(8, huesped.isEstado());
            
            ps.executeUpdate();
@@ -61,7 +61,7 @@ public class HuespedData {
            ps.setString(4, huesped.getNumeroDocumento());
            ps.setString(5, huesped.getDomicilio());
            ps.setString(6, huesped.getCorreo());
-           ps.setString(7, huesped.getCelular());
+           ps.setInt(7, huesped.getCelular());
            ps.setInt(8, huesped.getIdHuesped());
         
         
@@ -118,7 +118,7 @@ public class HuespedData {
                huesped.setNumeroDocumento(rs.getString("numeroDocumento"));
                huesped.setDomicilio(rs.getString("domicilio"));
                huesped.setCorreo(rs.getString("correo"));
-               huesped.setCelular(rs.getString("celular"));
+               huesped.setCelular(rs.getInt("celular"));
                }else{
                 JOptionPane.showMessageDialog(null,"No existe el huesped");
             } 
@@ -152,7 +152,7 @@ public class HuespedData {
                 huesped.setApellido(rs.getString("apellido"));
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));
-                huesped.setCelular(rs.getString("celular"));
+                huesped.setCelular(rs.getInt("celular"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el huesped");
             }
@@ -185,7 +185,7 @@ public class HuespedData {
                hues.setNumeroDocumento(rs.getString("numeroDocumento"));
                hues.setDomicilio(rs.getString("domicilio"));
                hues.setCorreo(rs.getString("correo"));
-               hues.setCelular(rs.getString("celular"));
+               hues.setCelular(rs.getInt("celular"));
                hues.setEstado(rs.getBoolean("estado"));
 
                huesped.add(hues);
