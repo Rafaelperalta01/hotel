@@ -23,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
 public class VistaReserva extends javax.swing.JInternalFrame {
     ReservaData reserva = new ReservaData();
     public static String numero ="";
+    public static int dniUser =1;
+    
     private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -463,8 +465,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                     jTCantPersonas.setText(jTablareservas.getValueAt(fila, 8).toString());
                     jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
                     jTHusped.setText(jTablareservas.getValueAt(fila, 3).toString() + jTablareservas.getValueAt(fila, 4).toString());
-                    jTImporte.setText(jTablareservas.getValueAt(fila, 13).toString());
-                    jTAdmin.setText("");
+                    jTImporte.setText(jTablareservas.getValueAt(fila, 13).toString());                    
+                    jTAdmin.setText(jTablareservas.getValueAt(fila, 14).toString());
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
                 }
@@ -498,7 +500,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelListadoRegistroReserva;
     private javax.swing.JPanel jPanelRegistroReserva;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTAdmin;
+    public static javax.swing.JTextField jTAdmin;
     private javax.swing.JTextField jTBuscaReservas;
     public static javax.swing.JTextField jTCantPersonas;
     public static javax.swing.JTextField jTHabitacion;
@@ -544,6 +546,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Fecha entrada");//11
         modeloTabla.addColumn("Fecha de salida");//12
         modeloTabla.addColumn("Importe total");//13
+        modeloTabla.addColumn("Usuario");//14
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -562,7 +565,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getIdHabitacion().getIdTipoHabitacion().getTipoCama(),
            r.getFechaEntrada(),
            r.getFechaSalida(),
-           r.getImporteTotal()
+           r.getImporteTotal(),
+           r.getIdUsuarios().getNombre()
         });
     }
      public void listaRegistros(){     
