@@ -484,8 +484,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBpago;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDCfechaEntrada;
-    private com.toedter.calendar.JDateChooser jDCfechaSalida;
+    public static com.toedter.calendar.JDateChooser jDCfechaEntrada;
+    public static com.toedter.calendar.JDateChooser jDCfechaSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -500,7 +500,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTAdmin;
     private javax.swing.JTextField jTBuscaReservas;
-    private javax.swing.JTextField jTCantPersonas;
+    public static javax.swing.JTextField jTCantPersonas;
     public static javax.swing.JTextField jTHabitacion;
     public static javax.swing.JTextField jTHusped;
     public static javax.swing.JTextField jTImporte;
