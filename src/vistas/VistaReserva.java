@@ -454,16 +454,16 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
             if (fila != -1) {
                 try {
-                    String fechaE =jTablareservas.getValueAt(fila, 10).toString();
-                    String fechaS =jTablareservas.getValueAt(fila, 11).toString();
+                    String fechaE =jTablareservas.getValueAt(fila, 11).toString();
+                    String fechaS =jTablareservas.getValueAt(fila, 12).toString();
                     java.util.Date f =forma.parse(fechaE);
                     java.util.Date s = forma.parse(fechaS);
                     jDCfechaEntrada.setDate(f);
                     jDCfechaSalida.setDate(s);
-                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 7).toString());
+                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 8).toString());
                     jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
                     jTHusped.setText(jTablareservas.getValueAt(fila, 3).toString() + jTablareservas.getValueAt(fila, 4).toString());
-                    jTImporte.setText(jTablareservas.getValueAt(fila, 12).toString());
+                    jTImporte.setText(jTablareservas.getValueAt(fila, 13).toString());
                     jTAdmin.setText("");
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
