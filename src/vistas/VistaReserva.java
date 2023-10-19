@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaReserva extends javax.swing.JInternalFrame {
     ReservaData reserva = new ReservaData();
-    public static int numero;
+    public static String numero ="";
     private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;

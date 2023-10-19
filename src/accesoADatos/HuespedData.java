@@ -115,7 +115,7 @@ public class HuespedData {
                huesped.setApellido(rs.getString("apellido"));
                
                huesped.setTipoDocumento(rs.getString("tipoDocumento"));
-                huesped.setTipoDocumento(rs.getString("numeroDocumento"));
+               huesped.setNumeroDocumento(rs.getString("numeroDocumento"));
                huesped.setDomicilio(rs.getString("domicilio"));
                huesped.setCorreo(rs.getString("correo"));
                huesped.setCelular(rs.getString("celular"));
@@ -142,25 +142,25 @@ public class HuespedData {
             
             ResultSet rs = ps.executeQuery();
             
-            if(rs.next()){
-               huesped = new Huesped();
-               huesped.setIdHuesped(id);
-              huesped.setTipoDocumento(rs.getString("tipoDocumento"));
-                huesped.setTipoDocumento(rs.getString("numeroDocumento"));
-               
-               huesped.setNombre(rs.getString("nombre"));
-               huesped.setApellido(rs.getString("apellido"));
-               huesped.setDomicilio(rs.getString("domicilio"));
-               huesped.setCorreo(rs.getString("correo"));
-               huesped.setCelular(rs.getString("celular"));
-               }else{
-                JOptionPane.showMessageDialog(null,"No existe el huesped");
-            } 
-            
+            if (rs.next()) {
+                huesped = new Huesped();
+                huesped.setIdHuesped(id);
+                huesped.setTipoDocumento(rs.getString("tipoDocumento"));
+                huesped.setNumeroDocumento(rs.getString("numeroDocumento"));
+
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setCelular(rs.getString("celular"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el huesped");
+            }
+
             ps.close();
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped (m. buscarxid)"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m. buscarxid)"+ex.getMessage());
         }
         
         return huesped; 
@@ -181,22 +181,22 @@ public class HuespedData {
                hues.setIdHuesped(rs.getInt("idHuesped"));
                hues.setNombre(rs.getString("nombre"));
                hues.setApellido(rs.getString("apellido"));
-                hues.setTipoDocumento(rs.getString("tipoDocumento"));
-                hues.setTipoDocumento(rs.getString("numeroDocumento"));
+               hues.setTipoDocumento(rs.getString("tipoDocumento"));
+               hues.setNumeroDocumento(rs.getString("numeroDocumento"));
                hues.setDomicilio(rs.getString("domicilio"));
                hues.setCorreo(rs.getString("correo"));
                hues.setCelular(rs.getString("celular"));
                hues.setEstado(rs.getBoolean("estado"));
-               
+
                huesped.add(hues);
-                }
-            
-            ps.close();
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Huesped (m. listar)"+ex.getMessage());
-        }
-        
+           }
+
+           ps.close();
+
+       } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m. listar)" + ex.getMessage());
+       }
+
         return huesped;
 }
                

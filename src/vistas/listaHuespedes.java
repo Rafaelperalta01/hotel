@@ -151,7 +151,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         if (fila != -1) {                      
             VistaReserva.jTHusped.setText(jTable1.getValueAt(fila,0).toString());
-            VistaReserva.numero = (Integer)jTable1.getValueAt(fila,2);
+            VistaReserva.numero = jTable1.getValueAt(fila,3).toString();
+            System.out.println(VistaReserva.numero);
         }
         dispose();
         }
@@ -171,8 +172,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void armarCabecera() {
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Apellido");
-       modeloTabla.addColumn("Tipo de Documento");//5
-        modeloTabla.addColumn("Numero de Documento");//6
+        modeloTabla.addColumn("Tipo de Documento");
+        modeloTabla.addColumn("Numero de Documento");
         modeloTabla.addColumn("Domicilio");
         modeloTabla.addColumn("Email");
         modeloTabla.addColumn("Celular");
