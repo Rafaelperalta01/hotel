@@ -130,6 +130,39 @@ public class ProductoServicioData {
         }
         return prodServ;
     }
+    
+    public ProductoServicio buscarProductoServicioId(int id) {//BUSQUEDA POR ID
+
+        ProductoServicio prodServ = null;
+
+        String sql = "SELECT * FROM productoservicio WHERE idProductoServicio = ?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                prodServ = new ProductoServicio();
+                prodServ.setIdProductoServicio(rs.getInt("idProductoServicio"));
+                prodServ.setCategoria(rs.getString("categoria"));
+                prodServ.setNombre(rs.getString("nombre"));
+                prodServ.setDescripcion(rs.getString("descripcion"));
+                prodServ.setPrecioVenta(rs.getDouble("precioVenta"));
+                prodServ.setStock(rs.getInt("stock"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El producto/servicio no existe");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto/Servicio" + ex.getMessage());
+        }
+        return prodServ;
+    }
 
     public List<ProductoServicio> listarProductoServicio() {
        

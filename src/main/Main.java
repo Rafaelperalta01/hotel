@@ -6,8 +6,10 @@
 package main;
 
 import accesoADatos.Conexion;
+import accesoADatos.CosumoData;
 import accesoADatos.HabitacionData;
 import accesoADatos.HuespedData;
+import accesoADatos.PagosData;
 import accesoADatos.ProductoServicioData;
 import accesoADatos.ReservaData;
 import accesoADatos.TipoHabitacionData;
@@ -20,8 +22,11 @@ import entidades.Reserva;
 import entidades.TipoHabitacion;
 import entidades.Usuarios;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import vistas.Pagos;
 
 /**
  *
@@ -33,23 +38,24 @@ public class Main {
         
         ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
         
-//     Huesped reserva1 = new Huesped(1,"Robertoooooo","Perez",26974345,"Libertador 432","glopez@gmail.com","113445224564",true);
-//     HuespedData data = new HuespedData();
-//     
+    /*Huesped reserva1 = new Huesped(4,"Roberto","Perez","dni","26974349","Libertador 432","glopez@gmail.com","113445224564",true);
+    HuespedData data = new HuespedData();*/
+    
+    //data.guardarHuesped(reserva1);
+     
     // data.guardarHuesped(reserva1);
     
-//    data.modificarHuesped(reserva1);
-//     Huesped encontrado = data.buscarHuespedPorDni(26974345);
-//
-//     if (encontrado != null){
-//         System.out.println("Apellido : "+encontrado.getApellido()+" Nombre: " + encontrado.getNombre());
-//     }
+    //data.modificarHuesped(reserva1);
+    //Huesped encontrado = data.buscarHuespedPorDni("26974349");
+
+     /*if (encontrado != null){
+         System.out.println("Apellido : "+encontrado.getApellido()+"\n Nombre: " + encontrado.getNombre());
+     }*/
 //     
      
-//     for (Huesped huesp:data.listarHuesped()){
-//         System.out.println(huesp.getApellido());
-//         System.out.println("");
-//     }
+     /*for (Huesped huesp:data.listarHuesped()){
+         System.out.println(huesp.getApellido()+"\n");
+     }*/
      
       ///////////////////////////////////PRUEBAS tipo de habitacion DATA///////////////////////////////////
 //      
@@ -162,12 +168,18 @@ public class Main {
     //*********************prueba ProductoServicioData****************************
     
     /*ProductoServicioData prod = new ProductoServicioData();
-    ProductoServicio p = new ProductoServicio("Producto","Chocolate","Chocolate negro 50gr",2000,7);
+    ProductoServicio po = new ProductoServicio("Producto","fanta","2.5l",2200,7);
     ProductoServicio pa = new ProductoServicio("Producto","Coca","2.25ls",15000,2);
     ProductoServicio paa = new ProductoServicio("Producto","Pepsi","3l",1200,2);
-    ProductoServicio paaa = new ProductoServicio("Producto","Chocolate","Chocolate blanco 100gr",5000,2);
-    prod.guardarProductoServicio(p);
-    prod.guardarProductoServicio(pa);
+    ProductoServicio paaa = new ProductoServicio("Producto","Chocolate","Chocolate blanco 100gr",5000,2);*/
+    //prod.guardarProductoServicio(po);
+    /*
+    ProductoServicio buscar = prod.buscarProductoServicio("fanta");
+    if(buscar != null){
+        System.out.println(buscar.getNombre()+" "+buscar.getDescripcion());
+    }
+        
+    /*prod.guardarProductoServicio(pa);
     prod.guardarProductoServicio(paa);
     prod.guardarProductoServicio(paaa);*/
     
@@ -180,6 +192,50 @@ public class Main {
     for(ProductoServicio a:prod.listarProductoServ_X_categoria("Servicio")){
         System.out.println(a);
     }*/
+    
+    //*********************pruebas consumo***********************************
+    /*CosumoData cons = new CosumoData();
+    ReservaData a = new ReservaData();
+    Reserva res = a.buscarReservaPorHuesped(3);
+    ProductoServicioData prd = new ProductoServicioData();
+    ProductoServicio pruducto = prd.buscarProductoServicio("fanta");
+    
+    
+    /*Consumo consumo = new Consumo(res,pruducto,10,0,true);
+    cons.guardarConsumo(consumo);*/
+    
+    /*Consumo buscar = cons.buscarConsumoPorId(1);
+    
+    if(buscar != null){
+        System.out.println(buscar.getIdConsumo()+" "+buscar.getIdProductoServicio().getNombre()+" = $"+buscar.getCostoTotal());
+    }*/
+    
+    /*for(Consumo ar: cons.listarProductoServicio()){
+        System.out.println(ar);
+    }*/
+    
+    //******************************pruebas Habitacion*****************************
+    
+    TipoHabitacionData idata = new TipoHabitacionData();
+    TipoHabitacion habit = idata.buscarTipoHabPorId(1);
+
+        
+        
+    HabitacionData habD = new HabitacionData();
+    Habitacion hab = new Habitacion(5,habit,1,3,true);
+    
+    //habD.guardarHabitacion(hab);
+    //habD.Alta_o_Baja_Habitacion(1, true);
+    //habD.modificarHabitacion(hab);
+    
+    //*****************************prueas PAGO*****************************
+    
+    /*ReservaData a = new ReservaData();
+    Reserva res = a.buscarReservaPorHuesped(3);
+    PagosData pagosD = new PagosData();
+    Pagos pagos = new Pagos(res,10000,"factura A",LocalDate.of(2003, Month.AUGUST, 20),"Mercado pago");
+    
+    pagosD.guardarpagos(pagos);*/
     
     }
 }
