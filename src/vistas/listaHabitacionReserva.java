@@ -9,6 +9,8 @@ import accesoADatos.HabitacionData;
 import entidades.Habitacion;
 import entidades.Reserva;
 import entidades.TipoHabitacion;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.table.DefaultTableModel;
 import static vistas.listaHuespedes.jTable1;
 
@@ -181,9 +183,13 @@ private void cargarTabla(Habitacion hab) {
     }
 
     private void llenarTabla() {
+        LocalDate fecha1 = VistaReserva.jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fecha2 = VistaReserva.jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int personas = Integer.parseInt(VistaReserva.jTCantPersonas.getText());
 
-        for(Habitacion hab:habitacion.listarHabitacion())
+        for (Habitacion hab : habitacion.listarReserva_X_fechasYcantDePersonas(fecha1, fecha2, personas)) {
             cargarTabla(hab);
+        }
 
     }
 }

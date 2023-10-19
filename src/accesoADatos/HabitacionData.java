@@ -4,10 +4,12 @@ package accesoADatos;
 import entidades.Habitacion;
 import entidades.TipoHabitacion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -330,4 +332,49 @@ public class HabitacionData {
 
         return hab;
     }
+  public ArrayList<Habitacion> listarReserva_X_fechasYcantDePersonas(LocalDate fechaE,LocalDate fechaS,int cantP){
+   
+       ArrayList<Habitacion> hab = new ArrayList<>();
+       String sql = "SELECT h.* "
+               + "FROM habitacion h "
+               + "JOIN tipohabitacion t ON h.idTipoHabitacion = t.idTipoHabitacion "
+               + "WHERE h.idHabitacion NOT IN("
+               + "		SELECT DISTINCT r.idHabitacion "
+               + "		FROM reserva r "
+               + "		WHERE (? BETWEEN r.fechaEntrada and r.fechaSalida "
+               + "			OR ? BETWEEN r.fechaEntrada and r.fechaSalida "
+               + "			OR (? < r.fechaEntrada AND ? > r.fechaSalida)) "
+               + "    		) AND t.cantPersonas =? AND h.estado =true";
+       PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Date f1 = Date.valueOf(fechaE);
+            Date f2 = Date.valueOf(fechaS);
+            
+            ps = con.prepareStatement(sql);
+            ps.setDate(1,f1);
+            ps.setDate(2,f2);
+            ps.setDate(3, f1);
+            ps.setDate(4, f2);
+            ps.setInt(5, cantP);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Habitacion h = new Habitacion();
+                h.setIdHabitacion(rs.getInt("idHabitacion"));
+                h.setIdTipoHabitacion(tipo.buscarTipoHabPorId(rs.getInt("idTipoHabitacion")));
+                h.setNumHabitacion(rs.getInt("numHabitacion"));
+                h.setPiso(rs.getInt("piso"));
+                h.setEstado(rs.getBoolean("estado"));
+
+                hab.add(h);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion "+ ex.getMessage());
+         }
+   
+         return hab;  
+   }    
 }//------------------fin-------------------

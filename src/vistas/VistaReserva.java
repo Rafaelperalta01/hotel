@@ -22,7 +22,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaReserva extends javax.swing.JInternalFrame {
     ReservaData reserva = new ReservaData();
-    public static int numero;
+    public static String numero ="";
+    public static int dniUser =1;
+    
     private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -454,17 +456,17 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
             if (fila != -1) {
                 try {
-                    String fechaE =jTablareservas.getValueAt(fila, 10).toString();
-                    String fechaS =jTablareservas.getValueAt(fila, 11).toString();
+                    String fechaE =jTablareservas.getValueAt(fila, 11).toString();
+                    String fechaS =jTablareservas.getValueAt(fila, 12).toString();
                     java.util.Date f =forma.parse(fechaE);
                     java.util.Date s = forma.parse(fechaS);
                     jDCfechaEntrada.setDate(f);
                     jDCfechaSalida.setDate(s);
-                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 7).toString());
+                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 8).toString());
                     jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
                     jTHusped.setText(jTablareservas.getValueAt(fila, 3).toString() + jTablareservas.getValueAt(fila, 4).toString());
-                    jTImporte.setText(jTablareservas.getValueAt(fila, 12).toString());
-                    jTAdmin.setText("");
+                    jTImporte.setText(jTablareservas.getValueAt(fila, 13).toString());                    
+                    jTAdmin.setText(jTablareservas.getValueAt(fila, 14).toString());
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
                 }
@@ -484,8 +486,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBpago;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDCfechaEntrada;
-    private com.toedter.calendar.JDateChooser jDCfechaSalida;
+    public static com.toedter.calendar.JDateChooser jDCfechaEntrada;
+    public static com.toedter.calendar.JDateChooser jDCfechaSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -498,9 +500,9 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelListadoRegistroReserva;
     private javax.swing.JPanel jPanelRegistroReserva;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTAdmin;
+    public static javax.swing.JTextField jTAdmin;
     private javax.swing.JTextField jTBuscaReservas;
-    private javax.swing.JTextField jTCantPersonas;
+    public static javax.swing.JTextField jTCantPersonas;
     public static javax.swing.JTextField jTHabitacion;
     public static javax.swing.JTextField jTHusped;
     public static javax.swing.JTextField jTImporte;
@@ -544,6 +546,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Fecha entrada");//11
         modeloTabla.addColumn("Fecha de salida");//12
         modeloTabla.addColumn("Importe total");//13
+        modeloTabla.addColumn("Usuario");//14
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -562,7 +565,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getIdHabitacion().getIdTipoHabitacion().getTipoCama(),
            r.getFechaEntrada(),
            r.getFechaSalida(),
-           r.getImporteTotal()
+           r.getImporteTotal(),
+           r.getIdUsuarios().getNombre()
         });
     }
      public void listaRegistros(){     
