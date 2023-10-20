@@ -144,11 +144,6 @@ public class Consumos extends javax.swing.JInternalFrame {
 
         jBEliminar.setBackground(new java.awt.Color(255, 204, 153));
         jBEliminar.setText("Eliminar");
-        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEliminarActionPerformed(evt);
-            }
-        });
 
         jTextField3.setBackground(new java.awt.Color(255, 204, 153));
         jTextField3.setText("Consumo Total:");
@@ -168,11 +163,6 @@ public class Consumos extends javax.swing.JInternalFrame {
 
         jTextField4.setBackground(new java.awt.Color(255, 204, 153));
         jTextField4.setText("Total de registros:");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 153));
         jButton2.setText("Salir");
@@ -184,11 +174,6 @@ public class Consumos extends javax.swing.JInternalFrame {
 
         jBEliminar1.setBackground(new java.awt.Color(255, 204, 153));
         jBEliminar1.setText("Editar");
-        jBEliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEliminar1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -260,21 +245,9 @@ public class Consumos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBEliminarActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jBEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBEliminar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

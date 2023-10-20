@@ -9,9 +9,11 @@ import accesoADatos.HabitacionData;
 import entidades.Habitacion;
 import entidades.Reserva;
 import entidades.TipoHabitacion;
+import entidades.Usuarios;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.table.DefaultTableModel;
+import static vistas.VistaReserva.jTAdmin;
 import static vistas.listaHuespedes.jTable1;
 
 /**
@@ -20,6 +22,7 @@ import static vistas.listaHuespedes.jTable1;
  */
 public class listaHabitacionReserva extends javax.swing.JInternalFrame {
 HabitacionData habitacion = new HabitacionData();
+Usuarios user;
 private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -28,7 +31,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     /**
      * Creates new form listaHabitacionreserva
      */
-    public listaHabitacionReserva() {
+    public listaHabitacionReserva(Usuarios u) {
+        this.user = u;
         initComponents();
         armarCabecera();
         llenarTabla();
@@ -136,13 +140,14 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        if (evt.getClickCount() == 2){
+      if (evt.getClickCount() == 2){
             
          int fila = jTable1.getSelectedRow();
 
-        if (fila != -1) {                      
-            VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila,0).toString());;
-            VistaReserva.jTImporte.setText(jTable1.getValueAt(fila,7).toString());
+            if (fila != -1) {
+                VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila, 0).toString());;
+                VistaReserva.jTImporte.setText(jTable1.getValueAt(fila, 7).toString());
+                jTAdmin.setText(user.getNombre() + " , " + user.getCargo());
         }   
         dispose();
         }

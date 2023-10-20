@@ -209,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMGestionReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionReservaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        VistaReserva gestionReserva = new VistaReserva();
+        VistaReserva gestionReserva = new VistaReserva(usuario);
         escritorio.add(gestionReserva);
         gestionReserva.setVisible(true);
         gestionReserva.moveToFront();
