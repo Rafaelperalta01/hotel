@@ -31,7 +31,7 @@ public class HuespedData {
            ps.setString(4, huesped.getNumeroDocumento());
            ps.setString(5, huesped.getDomicilio());
            ps.setString(6, huesped.getCorreo());
-           ps.setString(7, huesped.getCelular());
+           ps.setInt(7, huesped.getCelular());
            ps.setBoolean(8, huesped.isEstado());
            
            ps.executeUpdate();
@@ -61,7 +61,7 @@ public class HuespedData {
            ps.setString(4, huesped.getNumeroDocumento());
            ps.setString(5, huesped.getDomicilio());
            ps.setString(6, huesped.getCorreo());
-           ps.setString(7, huesped.getCelular());
+           ps.setInt(7, huesped.getCelular());
            ps.setInt(8, huesped.getIdHuesped());
         
         
@@ -118,7 +118,7 @@ public class HuespedData {
                huesped.setNumeroDocumento(rs.getString("numeroDocumento"));
                huesped.setDomicilio(rs.getString("domicilio"));
                huesped.setCorreo(rs.getString("correo"));
-               huesped.setCelular(rs.getString("celular"));
+               huesped.setCelular(rs.getInt("celular"));
                }else{
                 JOptionPane.showMessageDialog(null,"No existe el huesped");
             } 
@@ -152,7 +152,7 @@ public class HuespedData {
                 huesped.setApellido(rs.getString("apellido"));
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));
-                huesped.setCelular(rs.getString("celular"));
+                huesped.setCelular(rs.getInt("celular"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el huesped");
             }
@@ -167,7 +167,7 @@ public class HuespedData {
    }
                
    public List<Huesped> listarHuesped(){
-       String sql="SELECT idHuesped,nombre,apellido,tipoDocumento,numeroDocumento,domicilio, correo,celular,estado FROM huesped";// "SELECT * FROM huesped ";
+       String sql="SELECT idHuesped,nombre,apellido,tipoDocumento,numeroDocumento,domicilio, correo,celular,estado FROM huesped WHERE estado =1";// "SELECT * FROM huesped ";
 
        ArrayList<Huesped> huesped = new ArrayList<>();
        
@@ -185,7 +185,7 @@ public class HuespedData {
                hues.setNumeroDocumento(rs.getString("numeroDocumento"));
                hues.setDomicilio(rs.getString("domicilio"));
                hues.setCorreo(rs.getString("correo"));
-               hues.setCelular(rs.getString("celular"));
+               hues.setCelular(rs.getInt("celular"));
                hues.setEstado(rs.getBoolean("estado"));
 
                huesped.add(hues);
@@ -199,7 +199,40 @@ public class HuespedData {
 
         return huesped;
 }
-               
+         public List<Huesped> listarHuespedporDni(String dni) {
+
+        List<Huesped> huesped = new ArrayList<Huesped>();
+        String sql = "SELECT * FROM huesped "
+                + " WHERE numeroDocumento =? ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                     Huesped hues = new Huesped();
+               hues.setIdHuesped(rs.getInt("idHuesped"));
+               hues.setNombre(rs.getString("nombre"));
+               hues.setApellido(rs.getString("apellido"));
+               hues.setTipoDocumento(rs.getString("tipoDocumento"));
+               hues.setNumeroDocumento(rs.getString("numeroDocumento"));
+               hues.setDomicilio(rs.getString("domicilio"));
+               hues.setCorreo(rs.getString("correo"));
+               hues.setCelular(rs.getInt("celular"));
+               hues.setEstado(rs.getBoolean("estado"));
+
+               huesped.add(hues);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener incripciones" + ex.getMessage());
+        }
+
+        return huesped;
+
+    }       
            
       
      

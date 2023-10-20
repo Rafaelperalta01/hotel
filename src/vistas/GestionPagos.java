@@ -9,12 +9,12 @@ package vistas;
  *
  * @author 54911
  */
-public class Pagos extends javax.swing.JInternalFrame {
+public class GestionPagos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Pagos
      */
-    public Pagos() {
+    public GestionPagos() {
         initComponents();
     }
 
