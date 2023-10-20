@@ -10,6 +10,7 @@ import accesoADatos.HuespedData;
 import accesoADatos.ReservaData;
 import accesoADatos.UsuariosData;
 import entidades.Habitacion;
+import entidades.Huesped;
 import entidades.Reserva;
 import entidades.Usuarios;
 import java.text.ParseException;
@@ -133,7 +134,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jLabel3.setText("Huesped:");
 
         jTHusped.setBackground(new java.awt.Color(255, 204, 153));
-        jTHusped.setText("Obligatorio");
 
         jBbuscarHuesped.setBackground(new java.awt.Color(255, 204, 153));
         jBbuscarHuesped.setText("buscar H");
@@ -446,7 +446,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
       if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "se Habilita para generar un registro");
             
-            entidades.Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
+            Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
             Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
            // Usuarios usuario = user.obtenerUsuarioPorDni(dniUsuario);
             LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -466,15 +466,19 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         limpiaCampos();
+        jBGuardar.setEnabled(true);
+        jTablareservas.clearSelection();
+
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jTablareservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablareservasMouseClicked
 
         SimpleDateFormat forma = new SimpleDateFormat("yyyy-MM-dd");
         if (evt.getClickCount() == 2) {
-
+            
+            jBGuardar.setEnabled(false);
             int fila = jTablareservas.getSelectedRow();
-
+            
             if (fila != -1) {
                 try {
                     String fechaE =jTablareservas.getValueAt(fila, 11).toString();
@@ -503,13 +507,13 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         } else {
             int fila = jTablareservas.getSelectedRow();
-            if (fila != -1) {
+            if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
                 Consumos consu = new Consumos();
                 Menu.escritorio.add(consu);
                 consu.moveToFront();
                 consu.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un registro para agregarle un consumo ");
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
             }
         }
     }//GEN-LAST:event_jBConsumosActionPerformed
@@ -519,7 +523,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBBuscarTipoH;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBConsumos;
-    private javax.swing.JButton jBGuardar;
+    public static javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBbuscarHuesped;
     private javax.swing.JButton jBpago;
@@ -546,7 +550,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField jTHusped;
     public static javax.swing.JTextField jTImporte;
     private javax.swing.JTextField jTTotalRegistros;
-    private javax.swing.JTable jTablareservas;
+    public static javax.swing.JTable jTablareservas;
     // End of variables declaration//GEN-END:variables
   public boolean habilitaLista() {
         boolean aux = false;
@@ -628,7 +632,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jTAdmin.setEditable(false);
     }
 
-    public void limpiaCampos() {
+    public static void limpiaCampos() {
         jTHabitacion.setText("");
         jTHusped.setText("");
         jDCfechaEntrada.setDate(null);

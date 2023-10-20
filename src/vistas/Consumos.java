@@ -44,7 +44,7 @@ public class Consumos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField4 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jBsalir = new javax.swing.JButton();
         jBEliminar1 = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
@@ -164,11 +164,11 @@ public class Consumos extends javax.swing.JInternalFrame {
         jTextField4.setBackground(new java.awt.Color(255, 204, 153));
         jTextField4.setText("Total de registros:");
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 153));
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBsalir.setBackground(new java.awt.Color(255, 204, 153));
+        jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBsalirActionPerformed(evt);
             }
         });
 
@@ -192,7 +192,7 @@ public class Consumos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(jBsalir)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
@@ -213,7 +213,7 @@ public class Consumos extends javax.swing.JInternalFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(jBsalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -245,9 +245,12 @@ public class Consumos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        dispose();
+        VistaReserva.jBGuardar.setEnabled(true);
+        VistaReserva.limpiaCampos();
+        VistaReserva.jTablareservas.clearSelection();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -255,8 +258,8 @@ public class Consumos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBEliminar1;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
