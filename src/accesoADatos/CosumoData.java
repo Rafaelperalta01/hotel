@@ -141,7 +141,7 @@ public class CosumoData {
         return consumo; 
    }
                
-   public List<Consumo> listarConsumo(){
+   public List<Consumo> listarProductoServicio(){
        String sql="SELECT * from consumo";
 
        ArrayList<Consumo> consumo = new ArrayList<>();
