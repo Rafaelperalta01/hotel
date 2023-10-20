@@ -233,6 +233,11 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
+        jTbuscarHuesped.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbuscarHuespedMouseClicked(evt);
+            }
+        });
         jTbuscarHuesped.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTbuscarHuespedKeyReleased(evt);
@@ -259,6 +264,11 @@ public boolean isCellEditable(int fila,int columna){
 
         jBEliminar.setBackground(new java.awt.Color(255, 204, 153));
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -400,18 +410,20 @@ public boolean isCellEditable(int fila,int columna){
         if (huesped == null) {
             huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular,true);
             hData.guardarHuesped(huesped);
+                  
+       
         } else {
-            
-               
-        // Si ya está instanciado, actualiza sus propiedades con los nuevos valores
-        huesped.setNombre(nombre);
-        huesped.setApellido(apellido);
-        huesped.setTipoDocumento(tipoDocumento);
-        huesped.setNumeroDocumento(numeroDocumento);
-        huesped.setDomicilio(domicilio);
-        huesped.setCorreo(correo);
-        huesped.setCelular(celular);
-        hData.modificarHuesped(huesped);
+//            
+//               
+//        // Si ya está instanciado, actualiza sus propiedades con los nuevos valores
+//        huesped.setNombre(nombre);
+//        huesped.setApellido(apellido);
+//        huesped.setTipoDocumento(tipoDocumento);
+//        huesped.setNumeroDocumento(numeroDocumento);
+//        huesped.setDomicilio(domicilio);
+//        huesped.setCorreo(correo);
+//        huesped.setCelular(celular);
+//        hData.modificarHuesped(huesped);
     }
                 }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
@@ -419,6 +431,8 @@ public boolean isCellEditable(int fila,int columna){
             
         
                 }
+            limpiarTabla();
+             llenarTabla();
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -432,7 +446,7 @@ public boolean isCellEditable(int fila,int columna){
         borrarFilas();
         String numeroDocumento = jTbuscarHuesped.getText();
         for (Huesped hue : hData.listarHuespedporDni(numeroDocumento) ){
-            
+          
             if(hue.getNumeroDocumento().startsWith(jTbuscarHuesped.getText()))
         cargarTabla(hue);
     }
@@ -445,6 +459,30 @@ public boolean isCellEditable(int fila,int columna){
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTbuscarHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbuscarHuespedMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTbuscarHuespedMouseClicked
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null,
+                "Desea eliminar este Huesped", "Eliminar Huesped", JOptionPane.OK_OPTION);
+        int filaSeleccionada = jTTablaHuesped.getSelectedRow();
+
+        if (respuesta == 0 && filaSeleccionada != -1) {
+
+            String nDoc = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 3);
+
+            hData.eliminarHuesped(nDoc);
+
+            limpiarTabla();
+            llenarTabla();
+           
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
+        }
+
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -500,10 +538,11 @@ public boolean isCellEditable(int fila,int columna){
         modelo.addColumn("Domicilio");
         modelo.addColumn("Correo");
         modelo.addColumn("Celular");
+       // modelo.addColumn("Estado");
         jTTablaHuesped.setModel(modelo);
     }
     
-    private void cargarTabla(Huesped hues){
+    private void cargarTabla(Huesped hues){/////////////ayudaaa quiero agregar estado/////discutir lo elimino o lo dejo como que no esta actualmente hospedado
        modelo.addRow(new Object[]{
             hues.getNombre(),
             hues.getApellido(),
@@ -512,6 +551,7 @@ public boolean isCellEditable(int fila,int columna){
             hues.getDomicilio(),
             hues.getCorreo(),
             hues.getCelular()
+          
           
         });
        
@@ -531,10 +571,10 @@ public boolean isCellEditable(int fila,int columna){
             }
     
       }
-  
+  private void limpiarTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTTablaHuesped.getModel();
+        modeloTabla.setRowCount(0);
 
-   
-
-    
+  }
 
 }/////////////////////////FIN
