@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import entidades.Usuarios;
 import javax.swing.JDesktopPane;
 
 /**
@@ -16,7 +17,9 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menú
      */
-    public Menu() {
+    private static Usuarios usuario;
+    public Menu(Usuarios usuario) {
+        this.usuario = usuario;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -325,7 +328,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(usuario).setVisible(true);
             }
         });
     }
