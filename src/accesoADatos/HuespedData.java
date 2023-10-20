@@ -199,7 +199,40 @@ public class HuespedData {
 
         return huesped;
 }
-               
+         public List<Huesped> listarHuespedporDni(String dni) {
+
+        List<Huesped> huesped = new ArrayList<Huesped>();
+        String sql = "SELECT * FROM huesped "
+                + " WHERE numeroDocumento =? ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                     Huesped hues = new Huesped();
+               hues.setIdHuesped(rs.getInt("idHuesped"));
+               hues.setNombre(rs.getString("nombre"));
+               hues.setApellido(rs.getString("apellido"));
+               hues.setTipoDocumento(rs.getString("tipoDocumento"));
+               hues.setNumeroDocumento(rs.getString("numeroDocumento"));
+               hues.setDomicilio(rs.getString("domicilio"));
+               hues.setCorreo(rs.getString("correo"));
+               hues.setCelular(rs.getInt("celular"));
+               hues.setEstado(rs.getBoolean("estado"));
+
+               huesped.add(hues);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener incripciones" + ex.getMessage());
+        }
+
+        return huesped;
+
+    }       
            
       
      
