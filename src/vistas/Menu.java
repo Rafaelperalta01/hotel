@@ -7,6 +7,7 @@ package vistas;
 
 import entidades.Usuarios;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -292,9 +293,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // Cerrar sesion
-        this.dispose();
-        Login log = new Login();
-        log.setVisible(true);
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Está seguro de que desea cerrar su sesión?", "Confirmar Cierre de Sesión", JOptionPane.YES_NO_OPTION);
+        
+        if (respuesta == JOptionPane.YES_OPTION) {
+            this.dispose();
+            Login log = new Login();
+            log.setVisible(true);
+    }
+        
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
