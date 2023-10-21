@@ -5,8 +5,14 @@
  */
 package vistas;
 
+import accesoADatos.HabitacionData;
+import accesoADatos.HuespedData;
 import accesoADatos.ReservaData;
+import accesoADatos.UsuariosData;
+import entidades.Habitacion;
+import entidades.Huesped;
 import entidades.Reserva;
+import entidades.Usuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,39 +27,46 @@ import javax.swing.table.DefaultTableModel;
  * @author Pc
  */
 public class VistaReserva extends javax.swing.JInternalFrame {
+
+    Usuarios usuario;
     ReservaData reserva = new ReservaData();
-    public static String numero ="";
-    public static int dniUser =1;
-    
+    HuespedData huesped = new HuespedData();
+    HabitacionData habitacion = new HabitacionData();
+    UsuariosData user = new UsuariosData();
+    public static String numDniHuesped = "";
+
     private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
-    };    
+    };
 
     /**
      * Creates new form VistaReserva
      */
-    public VistaReserva() {
-        initComponents();    
+    public VistaReserva(Usuarios u) {
+        this.usuario = u;
+        initComponents();
         armarCabecera();
         camposApagados();
-        listaRegistros();  
-   
+        listaRegistros();
+
         jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
 
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
 
-                if (jDCfechaEntrada.getDate() == null) {                    
+                if (jDCfechaEntrada.getDate() == null) {
                     jDCfechaEntrada.setMinSelectableDate(new Date());
-                    
+                    jDCfechaSalida.setEnabled(false);
+
                 } else if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
 
                     java.util.Date fechaActual = (java.util.Date) evt.getNewValue();
                     LocalDate fsalida = fechaActual.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1);
                     java.util.Date fechanueva = Date.from(fsalida.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    jDCfechaSalida.setEnabled(true);
+                    jDCfechaSalida.setDate(null);
                     jDCfechaSalida.setMinSelectableDate(fechanueva);
-
                 }
             }
         }
@@ -121,7 +134,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jLabel3.setText("Huesped:");
 
         jTHusped.setBackground(new java.awt.Color(255, 204, 153));
-        jTHusped.setText("Obligatorio");
 
         jBbuscarHuesped.setBackground(new java.awt.Color(255, 204, 153));
         jBbuscarHuesped.setText("buscar H");
@@ -305,6 +317,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         jBConsumos.setBackground(new java.awt.Color(255, 204, 153));
         jBConsumos.setText("Consumos");
+        jBConsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsumosActionPerformed(evt);
+            }
+        });
 
         jBpago.setBackground(new java.awt.Color(255, 204, 153));
         jBpago.setText("Realizar Pago");
@@ -403,34 +420,44 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-          dispose();
+        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBbuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarHuespedActionPerformed
         listaHuespedes huesped = new listaHuespedes();
         Menu.escritorio.add(huesped);
         huesped.moveToFront();
-        huesped.setVisible(true);       
+        huesped.setVisible(true);
     }//GEN-LAST:event_jBbuscarHuespedActionPerformed
 
     private void jBBuscarTipoHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarTipoHActionPerformed
-        if (habilitaLista()){
-        listaHabitacionReserva reserva = new listaHabitacionReserva();
-        Menu.escritorio.add(reserva);
-        reserva.moveToFront();
-        reserva.setVisible(true);
-        }else{
-         JOptionPane.showMessageDialog(null, "Complete los campos de fechas de ingreso, fecha de salida y cantidad de personas ");
-         jTHabitacion.setText("");
+        if (habilitaLista()) {
+            listaHabitacionReserva reserva = new listaHabitacionReserva(usuario);
+            Menu.escritorio.add(reserva);
+            reserva.moveToFront();
+            reserva.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Complete los campos de fechas de ingreso, fecha de salida y cantidad de personas ");
+            jTHabitacion.setText("");
         }
     }//GEN-LAST:event_jBBuscarTipoHActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+      if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "se Habilita para generar un registro");
-            //buscar huesped con el dni de numero para traer al huesped y registrarlo en reservas
-            //hacer lo mismo con la habitacion
-            //hacer lo mismo con el usuario
+            
+            Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
+            Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
+           // Usuarios usuario = user.obtenerUsuarioPorDni(dniUsuario);
+            LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate salida = jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            double importe = Double.parseDouble(jTImporte.getText().toString());
+            int canPersonas = Integer.parseInt(jTCantPersonas.getText().toString());
+            Reserva res = new Reserva(hab,hues,this.usuario,entrada,salida,importe,canPersonas,true);
+            reserva.crearReserva(res);
+            limpiaCampos();        
+            modeloTabla.setRowCount(0);
+            listaRegistros();
             
         } else {
             JOptionPane.showMessageDialog(null, "Complete todos los campos para poder generar un registro ");
@@ -438,22 +465,20 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-        jTHabitacion.setText("");
-        jTHusped.setText("");
-        jDCfechaEntrada.setDate(null);
-        jDCfechaSalida.setDate(null);
-        jTCantPersonas.setText("");
-        jTImporte.setText("");
-        jTAdmin.setText("");
+        limpiaCampos();
+        jBGuardar.setEnabled(true);
+        jTablareservas.clearSelection();
+
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jTablareservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablareservasMouseClicked
-  
-         SimpleDateFormat forma = new SimpleDateFormat("yyyy-MM-dd");
-        if (evt.getClickCount() == 2) {
- 
-            int fila = jTablareservas.getSelectedRow();
 
+        SimpleDateFormat forma = new SimpleDateFormat("yyyy-MM-dd");
+        if (evt.getClickCount() == 2) {
+            
+            jBGuardar.setEnabled(false);
+            int fila = jTablareservas.getSelectedRow();
+            
             if (fila != -1) {
                 try {
                     String fechaE =jTablareservas.getValueAt(fila, 11).toString();
@@ -466,7 +491,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                     jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
                     jTHusped.setText(jTablareservas.getValueAt(fila, 3).toString() + jTablareservas.getValueAt(fila, 4).toString());
                     jTImporte.setText(jTablareservas.getValueAt(fila, 13).toString());                    
-                    jTAdmin.setText(jTablareservas.getValueAt(fila, 14).toString());
+                    Usuarios us = user.obtenerUsuarioId(Integer.parseInt(jTablareservas.getValueAt(fila, 14).toString()));
+                    jTAdmin.setText(us.getNombre()+", "+us.getCargo());
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
                 }
@@ -475,12 +501,29 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTablareservasMouseClicked
 
+    private void jBConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsumosActionPerformed
+        if (modeloTabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+
+        } else {
+            int fila = jTablareservas.getSelectedRow();
+            if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
+                Consumos consu = new Consumos();
+                Menu.escritorio.add(consu);
+                consu.moveToFront();
+                consu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
+            }
+        }
+    }//GEN-LAST:event_jBConsumosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarTipoH;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBConsumos;
-    private javax.swing.JButton jBGuardar;
+    public static javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBbuscarHuesped;
     private javax.swing.JButton jBpago;
@@ -507,31 +550,32 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField jTHusped;
     public static javax.swing.JTextField jTImporte;
     private javax.swing.JTextField jTTotalRegistros;
-    private javax.swing.JTable jTablareservas;
+    public static javax.swing.JTable jTablareservas;
     // End of variables declaration//GEN-END:variables
   public boolean habilitaLista() {
         boolean aux = false;
-        
+
         if ((jDCfechaEntrada.getDate() != null)
                 && (jDCfechaSalida.getDate() != null)
                 && (!jTCantPersonas.getText().isEmpty())) {
-            try{
-            int cantp = Integer.parseInt(jTCantPersonas.getText());
-            if (cantp < 0) {
-                JOptionPane.showMessageDialog(null, "La cantidad de personas no puede ser menor que cero");
-                jTCantPersonas.setText("");
-                aux = false;
-            }else{
-             aux= true;
-            }         
-            }catch(NumberFormatException e){
+            try {
+                int cantp = Integer.parseInt(jTCantPersonas.getText());
+                if (cantp < 0) {
+                    JOptionPane.showMessageDialog(null, "La cantidad de personas no puede ser menor que cero");
+                    jTCantPersonas.setText("");
+                    aux = false;
+                } else {
+                    aux = true;
+                }
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Este campo acepta solo números");
                 jTCantPersonas.setText("");
             }
         }
         return aux;
     }
-      private void armarCabecera() {
+
+    private void armarCabecera() {
         modeloTabla.addColumn("NºHabitación ");//0
         modeloTabla.addColumn("Piso");//1
         modeloTabla.addColumn("Estado");//2
@@ -551,7 +595,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }
 
     private void cargarTabla(Reserva r) {
-        modeloTabla.addRow(new Object[]{
+           modeloTabla.addRow(new Object[]{
            r.getIdHabitacion().getNumHabitacion(),
            r.getIdHabitacion().getPiso(),
            r.getIdHabitacion().isEstado(),
@@ -566,25 +610,36 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getFechaEntrada(),
            r.getFechaSalida(),
            r.getImporteTotal(),
-           r.getIdUsuarios().getNombre()
+           r.getIdUsuarios().getIdUsuario()
         });
     }
-     public void listaRegistros(){     
-        for(Reserva res:reserva.listarReserva())
+
+    public void listaRegistros() {
+      int registro = 0;
+        for(Reserva res:reserva.listarReserva()){
             cargarTabla(res);
-     
+            registro++;
+        }
+        jTTotalRegistros.setText("Total de registros: "+registro);
+        
+
     }
+
     public void camposApagados() {
         jTHabitacion.setEditable(false);
         jTHusped.setEditable(false);
         jTImporte.setEditable(false);
         jTAdmin.setEditable(false);
     }
-  
-  
-  
-  
-  
-  
-  
+
+    public static void limpiaCampos() {
+        jTHabitacion.setText("");
+        jTHusped.setText("");
+        jDCfechaEntrada.setDate(null);
+        jDCfechaSalida.setDate(null);
+        jTCantPersonas.setText("");
+        jTImporte.setText("");
+        jTAdmin.setText("");
+
+    }
 }// fin class

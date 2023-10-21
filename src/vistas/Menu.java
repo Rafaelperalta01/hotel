@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import entidades.Usuarios;
 import javax.swing.JDesktopPane;
 
 /**
@@ -16,7 +17,9 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menú
      */
-    public Menu() {
+    private static Usuarios usuario;
+    public Menu(Usuarios usuario) {
+        this.usuario = usuario;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -65,11 +68,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+            .addGap(0, 1059, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 102));
@@ -192,14 +195,12 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 1140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -208,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMGestionReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionReservaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        VistaReserva gestionReserva = new VistaReserva();
+        VistaReserva gestionReserva = new VistaReserva(usuario);
         escritorio.add(gestionReserva);
         gestionReserva.setVisible(true);
         gestionReserva.moveToFront();
@@ -232,7 +233,7 @@ public class Menu extends javax.swing.JFrame {
         //Abrir vista Crear huesped
         escritorio.removeAll();
         escritorio.repaint();
-        GestionHuesped huesped = new GestionHuesped();
+        Huesped huesped = new Huesped();
         escritorio.add(huesped);
         huesped.setVisible(true);
         huesped.moveToFront();
@@ -327,7 +328,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(usuario).setVisible(true);
             }
         });
     }

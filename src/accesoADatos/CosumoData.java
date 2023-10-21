@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 
 public class CosumoData {
      private Connection con= null;
+     ReservaData reserva = new ReservaData();
+     ProductoServicioData prod = new ProductoServicioData();
 
     public CosumoData() {
            con = Conexion.getConexion();
@@ -28,14 +30,20 @@ public class CosumoData {
    public void guardarConsumo(Consumo consumo){
        String sql= " INSERT INTO consumo (idReserva,idProductoServicio,unidades,costoTotal,estado)"
                + "VALUES (?,?,?,?,?)";
+       
+       double precio = consumo.getIdProductoServicio().getPrecioVenta();
+       int cant = consumo.getUnidades();
+       double total = precio * cant;
+       consumo.setCostoTotal(total);
+       
        try {
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-           ps.setInt(1, consumo.getIdReseva().getIdReserva());
+           ps.setInt(1, consumo.getIdReserva().getIdReserva());
            ps.setInt(2, consumo.getIdProductoServicio().getIdProductoServicio());
            ps.setInt(3, consumo.getUnidades());
            ps.setDouble(4, consumo.getCostoTotal());
            ps.setBoolean(5, consumo.isEstado());
-          
+           
            ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();
@@ -113,8 +121,8 @@ public class CosumoData {
             if(rs.next()){
               consumo = new Consumo();
               consumo.setIdCosumo(idConsumo);
-              consumo.setIdReseva((Reserva)rs.getObject("idReserva"));
-              consumo.setIdProductoServicio((ProductoServicio)rs.getObject("idProductoServicio"));
+              consumo.setIdReserva(reserva.buscarReservaPorHuesped(rs.getInt("idReserva")));
+              consumo.setIdProductoServicio(prod.buscarProductoServicioId(rs.getInt("idProductoServicio")));
               consumo.setUnidades(rs.getInt("unidades"));
               consumo.setCostoTotal(rs.getDouble("costoTotal"));
               consumo.setEstado(rs.getBoolean("estado"));
@@ -133,7 +141,7 @@ public class CosumoData {
         return consumo; 
    }
                
-   public List<Consumo> listarConsumo(){
+   public List<Consumo> listarProductoServicio(){
        String sql="SELECT * from consumo";
 
        ArrayList<Consumo> consumo = new ArrayList<>();
@@ -147,8 +155,8 @@ public class CosumoData {
                Consumo consu = new Consumo();
           
                consu.setIdCosumo(rs.getInt("idConsumo"));
-               consu.setIdReseva((Reserva)rs.getObject("idReserva"));
-               consu.setIdProductoServicio((ProductoServicio)rs.getObject("idProductoServicio"));
+               consu.setIdReserva(reserva.buscarReservaPorHuesped(rs.getInt("idReserva")));
+               consu.setIdProductoServicio(prod.buscarProductoServicioId(rs.getInt("idProductoServicio")));
                consu.setUnidades(rs.getInt("unidades"));
                consu.setCostoTotal(rs.getDouble("costoTotal"));
                consu.setEstado(rs.getBoolean("estado"));

@@ -4,7 +4,7 @@ package entidades;
 
 public class Consumo {
     private int idConsumo;
-    private Reserva idReseva;
+    private Reserva idReserva;
     private ProductoServicio idProductoServicio;
     private int unidades;
     private double costoTotal;
@@ -13,17 +13,17 @@ public class Consumo {
     public Consumo() {
     }
 
-    public Consumo(Reserva idReseva, ProductoServicio idProductoServicio, int unidades, double costoTotal, boolean estado) {
-        this.idReseva = idReseva;
+    public Consumo(Reserva idReserva, ProductoServicio idProductoServicio, int unidades, double costoTotal, boolean estado) {
+        this.idReserva = idReserva;
         this.idProductoServicio = idProductoServicio;
         this.unidades = unidades;
         this.costoTotal = costoTotal;
         this.estado = estado;
     }
 
-    public Consumo(int idConsumo, Reserva idReseva, ProductoServicio idProductoServicio, int unidades, double costoTotal, boolean estado) {
+    public Consumo(int idConsumo, Reserva idReserva, ProductoServicio idProductoServicio, int unidades, double costoTotal, boolean estado) {
         this.idConsumo = idConsumo;
-        this.idReseva = idReseva;
+        this.idReserva = idReserva;
         this.idProductoServicio = idProductoServicio;
         this.unidades = unidades;
         this.costoTotal = costoTotal;
@@ -38,12 +38,12 @@ public class Consumo {
         this.idConsumo = idConsumo;
     }
 
-    public Reserva getIdReseva() {
-        return idReseva;
+    public Reserva getIdReserva() {
+        return idReserva;
     }
 
-    public void setIdReseva(Reserva idReseva) {
-        this.idReseva = idReseva;
+    public void setIdReserva(Reserva idReseva) {
+        this.idReserva = idReseva;
     }
 
     public ProductoServicio getIdProductoServicio() {

@@ -9,9 +9,14 @@ import accesoADatos.HabitacionData;
 import entidades.Habitacion;
 import entidades.Reserva;
 import entidades.TipoHabitacion;
+import entidades.Usuarios;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import javax.swing.table.DefaultTableModel;
+import static vistas.VistaReserva.jDCfechaEntrada;
+import static vistas.VistaReserva.jDCfechaSalida;
+import static vistas.VistaReserva.jTAdmin;
 import static vistas.listaHuespedes.jTable1;
 
 /**
@@ -20,6 +25,8 @@ import static vistas.listaHuespedes.jTable1;
  */
 public class listaHabitacionReserva extends javax.swing.JInternalFrame {
 HabitacionData habitacion = new HabitacionData();
+Usuarios user;
+LocalDate fecha1 ,fecha2;
 private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -28,7 +35,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     /**
      * Creates new form listaHabitacionreserva
      */
-    public listaHabitacionReserva() {
+    public listaHabitacionReserva(Usuarios u) {
+        this.user = u;
         initComponents();
         armarCabecera();
         llenarTabla();
@@ -136,15 +144,18 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        if (evt.getClickCount() == 2){
-            
-         int fila = jTable1.getSelectedRow();
+        if (evt.getClickCount() == 2) {
 
-        if (fila != -1) {                      
-            VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila,0).toString());;
-            VistaReserva.jTImporte.setText(jTable1.getValueAt(fila,7).toString());
-        }   
-        dispose();
+            int fila = jTable1.getSelectedRow();
+
+            if (fila != -1) {
+                VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila, 0).toString());;
+                //calcula los dias y los multiplica por el precio de la habitacion
+                double n = (Double.parseDouble(jTable1.getValueAt(fila, 7).toString()) * ChronoUnit.DAYS.between(fecha1, fecha2));
+                VistaReserva.jTImporte.setText(n + "");
+                jTAdmin.setText(user.getNombre() + " , " + user.getCargo());
+            }
+            dispose();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -183,13 +194,12 @@ private void cargarTabla(Habitacion hab) {
     }
 
     private void llenarTabla() {
-        LocalDate fecha1 = VistaReserva.jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fecha2 = VistaReserva.jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        fecha1 = VistaReserva.jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        fecha2 = VistaReserva.jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int personas = Integer.parseInt(VistaReserva.jTCantPersonas.getText());
 
         for (Habitacion hab : habitacion.listarReserva_X_fechasYcantDePersonas(fecha1, fecha2, personas)) {
             cargarTabla(hab);
         }
-
     }
 }

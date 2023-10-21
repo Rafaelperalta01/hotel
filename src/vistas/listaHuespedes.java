@@ -151,8 +151,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         if (fila != -1) {                      
             VistaReserva.jTHusped.setText(jTable1.getValueAt(fila,0).toString());
-            VistaReserva.numero = jTable1.getValueAt(fila,3).toString();
-            System.out.println(VistaReserva.numero);
+            VistaReserva.numDniHuesped = jTable1.getValueAt(fila,3).toString();
         }
         dispose();
         }
