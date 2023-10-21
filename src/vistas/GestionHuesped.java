@@ -391,7 +391,7 @@ public boolean isCellEditable(int fila,int columna){
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
       
-        //
+        // arreglar numero documento ... si esta
         String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
@@ -438,11 +438,12 @@ public boolean isCellEditable(int fila,int columna){
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
    jTbuscarHuesped.setText("");
+   limpiarTabla();
    llenarTabla();
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jTbuscarHuespedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbuscarHuespedKeyReleased
-        // TODO add your handling code here: 
+        
         borrarFilas();
         String numeroDocumento = jTbuscarHuesped.getText();
         for (Huesped hue : hData.listarHuespedporDni(numeroDocumento) ){
