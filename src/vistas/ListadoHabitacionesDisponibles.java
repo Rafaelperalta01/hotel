@@ -5,17 +5,29 @@
  */
 package vistas;
 
+import accesoADatos.HabitacionData;
+import entidades.Habitacion;
+import entidades.Usuarios;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pc
  */
 public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
-
+HabitacionData habitacion = new HabitacionData();
+private DefaultTableModel modeloTabla = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
     /**
      * Creates new form ListadOHabitacionesDisponibles
      */
     public ListadoHabitacionesDisponibles() {
         initComponents();
+        armarCabecera();
+        llenarTabla();
     }
 
     /**
@@ -26,9 +38,9 @@ public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableHabitacion = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
@@ -36,11 +48,19 @@ public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
-        jTextField1.setBackground(new java.awt.Color(255, 204, 153));
-        jTextField1.setText("Busca por n° de Habitacion");
+        jTextBuscar.setBackground(new java.awt.Color(255, 204, 153));
+        jTextBuscar.setText("Busca por n° de Habitacion");
+        jTextBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextBuscarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextBuscarFocusLost(evt);
+            }
+        });
 
-        jTable1.setBackground(new java.awt.Color(255, 204, 153));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableHabitacion.setBackground(new java.awt.Color(255, 204, 153));
+        jTableHabitacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,7 +71,12 @@ public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTableHabitacionKeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableHabitacion);
 
         jTextField2.setBackground(new java.awt.Color(255, 204, 153));
         jTextField2.setText("Total de registros:");
@@ -60,24 +85,25 @@ public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
@@ -114,13 +140,77 @@ public class ListadoHabitacionesDisponibles extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTableHabitacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableHabitacionKeyReleased
+        borrarFilas();
+        for (Habitacion hab : habitacion.listarHabitacion_X_estado(true)) {
+            if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
+
+                modeloTabla.addRow(new Object[]{
+                    hab.getNumHabitacion(),
+                    hab.getPiso(),
+                    hab.isEstado(),
+                    hab.getIdTipoHabitacion().getCategoria(),
+                    hab.getIdTipoHabitacion().getCantPersonas(),
+                    hab.getIdTipoHabitacion().getCantCamas(),
+                    hab.getIdTipoHabitacion().getTipoCama(),
+                    hab.getIdTipoHabitacion().getPrecio()
+                });
+            }
+        }
+    }//GEN-LAST:event_jTableHabitacionKeyReleased
+
+    private void jTextBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusGained
+        jTextBuscar.setText("");
+    }//GEN-LAST:event_jTextBuscarFocusGained
+
+    private void jTextBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusLost
+       jTextBuscar.setText("Buscar por Nª de habitación");  
+    }//GEN-LAST:event_jTextBuscarFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTableHabitacion;
+    private javax.swing.JTextField jTextBuscar;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+ private void armarCabecera() {
+        modeloTabla.addColumn("NºHabitación ");
+        modeloTabla.addColumn("Piso");
+        modeloTabla.addColumn("Estado");
+        modeloTabla.addColumn("Categoría");
+        modeloTabla.addColumn("Cant.Personas");
+        modeloTabla.addColumn("Cant.Camas");
+        modeloTabla.addColumn("Tipo de Camas");
+        modeloTabla.addColumn("Precio");
+        jTableHabitacion.setModel(modeloTabla);
+    }
+
+private void cargarTabla(Habitacion hab) {
+        modeloTabla.addRow(new Object[]{
+            hab.getNumHabitacion(),
+            hab.getPiso(),
+            hab.isEstado(),
+            hab.getIdTipoHabitacion().getCategoria(),
+            hab.getIdTipoHabitacion().getCantPersonas(),
+            hab.getIdTipoHabitacion().getCantCamas(),
+            hab.getIdTipoHabitacion().getTipoCama(),
+            hab.getIdTipoHabitacion().getPrecio()
+        });
+    }
+ private void borrarFilas() {
+
+        int filas = jTableHabitacion.getRowCount() - 1;
+        for (; filas >= 0; filas--) {
+            modeloTabla.removeRow(filas);
+        }
+    }
+    private void llenarTabla() {
+
+        for (Habitacion hab : habitacion.listarHabitacion_X_estado(true)) {
+            cargarTabla(hab);
+        }
+    }
 }
