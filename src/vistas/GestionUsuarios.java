@@ -327,7 +327,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfSexo.setText(user.getSexo());
         tfDireccion.setText(user.getDireccion());
         tfCargo.setText(user.getCargo());
-        
+        //comentario
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
