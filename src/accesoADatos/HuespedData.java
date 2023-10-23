@@ -96,7 +96,7 @@ public class HuespedData {
         }
     }
    public Huesped buscarHuespedPorDni(String numeroDocumento){
-    
+    //RAFAAAAA
     Huesped huesped= null;
     String sql = "SELECT idHuesped,nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular FROM huesped WHERE numeroDocumento=?";
     PreparedStatement ps = null;
