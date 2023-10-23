@@ -172,7 +172,42 @@ public class CosumoData {
         
         return consumo;
 }
+   public ArrayList<Consumo> listarProductoServicioPorIdRegistro(int idReserva){
+     
+       ArrayList<Consumo> consumo = new ArrayList<>();
+      PreparedStatement ps = null;
+            
+       String sql="SELECT * FROM `consumo` WHERE idReserva = ?";
+ 
+       try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idReserva);
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+               Consumo consu = new Consumo();
+          
+               consu.setIdCosumo(rs.getInt("idConsumo"));
+               consu.setIdReserva(reserva.buscarReservaId(idReserva));
+               consu.setIdProductoServicio(prod.buscarProductoServicioId(rs.getInt("idProductoServicio")));
+               consu.setUnidades(rs.getInt("unidades"));
+               consu.setCostoTotal(rs.getDouble("costoTotal"));
+               consu.setEstado(rs.getBoolean("estado"));
                
+               consumo.add(consu);
+                }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Consumo"+ex.getMessage());
+        }
+        
+        return consumo;
+}             
+           
+      
+                   
            
       
      

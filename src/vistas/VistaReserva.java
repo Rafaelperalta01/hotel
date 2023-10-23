@@ -30,7 +30,6 @@ import javax.swing.table.DefaultTableModel;
 public class VistaReserva extends javax.swing.JInternalFrame {
 
     Usuarios usuario;
-    ProductoServicio producto;
     ReservaData reserva = new ReservaData();
     HuespedData huesped = new HuespedData();
     HabitacionData habitacion = new HabitacionData();
@@ -527,10 +526,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         } else {
             int fila = jTablareservas.getSelectedRow();
             if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
-                Consumos consu = new Consumos(producto);
+                Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 15).toString());
+                Consumos consu = new Consumos();
                 Menu.escritorio.add(consu);
                 consu.moveToFront();
-                consu.setVisible(true);
+                consu.setVisible(true);     
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
             }
@@ -610,6 +610,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Fecha de salida");//12
         modeloTabla.addColumn("Importe total");//13
         modeloTabla.addColumn("Usuario");//14
+        modeloTabla.addColumn("idReserva");//15
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -629,7 +630,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getFechaEntrada(),
            r.getFechaSalida(),
            r.getImporteTotal(),
-           r.getIdUsuarios().getIdUsuario()
+           r.getIdUsuarios().getIdUsuario(),
+           r.getIdReserva()
         });
     }
 

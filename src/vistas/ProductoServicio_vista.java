@@ -6,6 +6,7 @@
 package vistas;
 
 import accesoADatos.ProductoServicioData;
+import entidades.ProductoServicio;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -143,7 +144,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
     private void jTextbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextbuscarKeyReleased
        borrarFilas();
-        for (entidades.ProductoServicio ps : proServ.listarProductoServicio()) {
+        for (ProductoServicio ps : proServ.listarProductoServicio()) {
             if ((ps.getCategoria().startsWith(jTextbuscar.getText())) || (ps.getNombre().startsWith(jTextbuscar.getText()))) {
 
                 modeloTabla.addRow(new Object[]{
@@ -164,19 +165,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
          int fila = jTProductoServicio.getSelectedRow();
 
         if (fila != -1) {   
-            entidades.ProductoServicio pys = new entidades.ProductoServicio();
-            pys.setIdProductoServicio(Integer.parseInt(jTProductoServicio.getValueAt(fila, 0).toString()));
-            pys.setCategoria(jTProductoServicio.getValueAt(fila, 1).toString());
-            pys.setNombre(jTProductoServicio.getValueAt(fila, 2).toString());
-            pys.setDescripcion(jTProductoServicio.getValueAt(fila, 3).toString());
-            pys.setPrecioVenta(Double.parseDouble(jTProductoServicio.getValueAt(fila, 4).toString()));
-            pys.setStock(Integer.parseInt(jTProductoServicio.getValueAt(fila, 5).toString()));
-            
-            Consumos consu = new Consumos(pys);
-            
-//            Consumos.producto = pys;            
+
+            Consumos.idServicios = Integer.parseInt(jTProductoServicio.getValueAt(fila, 0).toString());
+            Consumos.jTextProYServ.setText(jTProductoServicio.getValueAt(fila, 2).toString());
         }
-        
+        Consumos.jTextUnidades.setEditable(true);
         dispose();
         }
     }//GEN-LAST:event_jTProductoServicioMouseClicked
