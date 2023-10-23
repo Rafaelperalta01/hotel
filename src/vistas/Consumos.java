@@ -10,11 +10,12 @@ package vistas;
  * @author Pc
  */
 public class Consumos extends javax.swing.JInternalFrame {
-
+public entidades.ProductoServicio producto;
     /**
      * Creates new form Consumos
      */
-    public Consumos() {
+   public Consumos(entidades.ProductoServicio p) {
+        this.producto = p;
         initComponents();
     }
 
@@ -35,7 +36,7 @@ public class Consumos extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jBproductoYservicio = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -73,8 +74,13 @@ public class Consumos extends javax.swing.JInternalFrame {
 
         jTextField5.setBackground(new java.awt.Color(255, 204, 153));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 153));
-        jButton1.setText("Buscar");
+        jBproductoYservicio.setBackground(new java.awt.Color(255, 204, 153));
+        jBproductoYservicio.setText("Buscar");
+        jBproductoYservicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBproductoYservicioActionPerformed(evt);
+            }
+        });
 
         jTextField6.setBackground(new java.awt.Color(255, 204, 153));
 
@@ -107,7 +113,7 @@ public class Consumos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBproductoYservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -121,7 +127,7 @@ public class Consumos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jBproductoYservicio))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -252,14 +258,21 @@ public class Consumos extends javax.swing.JInternalFrame {
         VistaReserva.jTablareservas.clearSelection();
     }//GEN-LAST:event_jBsalirActionPerformed
 
+    private void jBproductoYservicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBproductoYservicioActionPerformed
+        ProductoServicio_vista ps = new ProductoServicio_vista();
+        Menu.escritorio.add(ps);
+        ps.setVisible(true);
+        ps.moveToFront();
+    }//GEN-LAST:event_jBproductoYservicioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBEliminar1;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBproductoYservicio;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

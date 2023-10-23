@@ -11,6 +11,7 @@ import accesoADatos.ReservaData;
 import accesoADatos.UsuariosData;
 import entidades.Habitacion;
 import entidades.Huesped;
+import entidades.ProductoServicio;
 import entidades.Reserva;
 import entidades.Usuarios;
 import java.text.ParseException;
@@ -29,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class VistaReserva extends javax.swing.JInternalFrame {
 
     Usuarios usuario;
+    ProductoServicio producto;
     ReservaData reserva = new ReservaData();
     HuespedData huesped = new HuespedData();
     HabitacionData habitacion = new HabitacionData();
@@ -51,13 +53,14 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         camposApagados();
         listaRegistros();
 
-        jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+          jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
 
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
 
                 if (jDCfechaEntrada.getDate() == null) {
                     jDCfechaEntrada.setMinSelectableDate(new Date());
                     jDCfechaSalida.setEnabled(false);
+                    
 
                 } else if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
 
@@ -67,10 +70,26 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                     jDCfechaSalida.setEnabled(true);
                     jDCfechaSalida.setDate(null);
                     jDCfechaSalida.setMinSelectableDate(fechanueva);
+                    jTHabitacion.setText("");
+                    jTImporte.setText("");
                 }
             }
         }
         );
+          jDCfechaSalida.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+
+                if (jDCfechaSalida.getDate() == null){
+                    return;
+                } else if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
+
+                    jTHabitacion.setText("");
+                    jTImporte.setText("");
+                }
+            }
+        }
+        );    
     }
 
     /**
@@ -508,7 +527,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         } else {
             int fila = jTablareservas.getSelectedRow();
             if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
-                Consumos consu = new Consumos();
+                Consumos consu = new Consumos(producto);
                 Menu.escritorio.add(consu);
                 consu.moveToFront();
                 consu.setVisible(true);

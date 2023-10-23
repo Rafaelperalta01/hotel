@@ -275,7 +275,7 @@ public class Menu extends javax.swing.JFrame {
         // gestion Productos / servicios
         escritorio.removeAll();
         escritorio.repaint();
-        ProductoServicio gps = new ProductoServicio();
+        ProductoServicio_vista gps = new ProductoServicio_vista();
         escritorio.add(gps);
         gps.setVisible(true);
         gps.moveToFront();
