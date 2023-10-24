@@ -446,32 +446,27 @@ public boolean isCellEditable(int fila,int columna){
     }//GEN-LAST:event_jBLimpiarBusquedaActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-            int filaSeleccionada=jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
-        
-        if(filaSeleccionada!=-1){//nos aseguramos que haya una fila seleccionada
-              String nombre=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 0);
-                String apellido=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 1);
-                  String tipoDocumento=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 2);
-            String numeroDocumento=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 3);
-              String domicilio=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 4);
-                String correo=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 5);
-                 int celular=(Integer)jTTablaHuesped.getValueAt(filaSeleccionada, 6);
-            
-            
-            
-                jTNombre.setText(nombre);
-                jTApellido.setText(apellido);
-                jCTipoDocumento.setSelectedItem(tipoDocumento);
-                
-               jTNumeroDocumento.setText(numeroDocumento);
-               jTDomicilio.setText(domicilio);
-               jTCorreo.setText(correo);
-               jTTelefono.setText(celular+"");
+        int filaSeleccionada = jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
 
-                
-               
-               
-           
+        if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
+            String nombre = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 0);
+            String apellido = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 1);
+            String tipoDocumento = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 2);
+            String numeroDocumento = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 3);
+            String domicilio = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 4);
+            String correo = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 5);
+            int celular = (Integer) jTTablaHuesped.getValueAt(filaSeleccionada, 6);
+
+            jTNombre.setText(nombre);
+            jTApellido.setText(apellido);
+            jCTipoDocumento.setSelectedItem(tipoDocumento);
+
+            jTNumeroDocumento.setText(numeroDocumento);
+            jTDomicilio.setText(domicilio);
+            jTCorreo.setText(correo);
+            jTTelefono.setText(celular + "");
+
+
     }//GEN-LAST:event_jBModificarActionPerformed
     }
 

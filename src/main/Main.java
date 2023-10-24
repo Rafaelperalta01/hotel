@@ -38,13 +38,13 @@ public class Main {
         
         ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
         
-    /*Huesped reserva1 = new Huesped(4,"Roberto","Perez","dni","26974349","Libertador 432","glopez@gmail.com","113445224564",true);
-    HuespedData data = new HuespedData();*/
+   Huesped reserva1 = new Huesped(4,"Mario","Perez","dni","26974349","Libertador 432","glopez@gmail.com",1134424564,true);
+    HuespedData data = new HuespedData();
     
     //data.guardarHuesped(reserva1);
      
     // data.guardarHuesped(reserva1);
-    
+  
     //data.modificarHuesped(reserva1);
     //Huesped encontrado = data.buscarHuespedPorDni("26974349");
 

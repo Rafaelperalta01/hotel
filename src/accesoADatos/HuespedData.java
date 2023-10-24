@@ -237,6 +237,33 @@ public class HuespedData {
 
     }            
       
-     
+      public void modificarHuespedEstadoTrue(Huesped huesped){
+    String sql = " UPDATE huesped SET nombre = ?, apellido= ?, tipoDocumento=?, numeroDocumento=?, domicilio = ?, correo = ?, celular = ? estado=true WHERE idHuesped = ?";
+    PreparedStatement ps = null;
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, huesped.getNombre());
+           ps.setString(2, huesped.getApellido());
+           ps.setString(3, huesped.getTipoDocumento());
+           ps.setString(4, huesped.getNumeroDocumento());
+           ps.setString(5, huesped.getDomicilio());
+           ps.setString(6, huesped.getCorreo());
+           ps.setInt(7, huesped.getCelular());
+           ps.setInt(8, huesped.getIdHuesped());
+        
+        
+        int exito = ps.executeUpdate();
+
+    if (exito == 1) {
+        JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+    } else {
+        JOptionPane.showMessageDialog(null, "El Huesped no existe");
+    }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m.modificar)"+ex.getMessage());    
+    }
+    }
 
 }//------------------fin-------------------
