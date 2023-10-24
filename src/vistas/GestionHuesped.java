@@ -20,6 +20,7 @@ public boolean isCellEditable(int fila,int columna){
         initComponents();
         armarCabecera();
         llenarTabla();
+        camposDesabilitados();
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +45,7 @@ public boolean isCellEditable(int fila,int columna){
         jTTelefono = new javax.swing.JTextField();
         jCTipoDocumento = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
+        jBModificar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTTablaHuesped = new javax.swing.JTable();
@@ -52,7 +54,6 @@ public boolean isCellEditable(int fila,int columna){
         jTbuscarHuesped = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jBEliminar = new javax.swing.JButton();
-        jBModificar = new javax.swing.JButton();
         jBLimpiarBusqueda = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -95,16 +96,17 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
-        jTNumeroDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTNumeroDocumentoKeyReleased(evt);
-            }
-        });
-
         jCTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "PASAPORTE", " " }));
 
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Numero Doc");
+
+        jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,46 +114,46 @@ public boolean isCellEditable(int fila,int columna){
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(245, 245, 245))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTNombre))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(jTCorreo, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTNumeroDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                    .addComponent(jTApellido)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCTipoDocumento, 0, 175, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jTDomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTNombre))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(jTCorreo, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTNumeroDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                .addComponent(jTApellido)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jCTipoDocumento, 0, 175, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(245, 245, 245))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jBNuevo)
                 .addGap(57, 57, 57)
                 .addComponent(jBGuardar)
+                .addGap(28, 28, 28)
+                .addComponent(jBModificar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -197,7 +199,8 @@ public boolean isCellEditable(int fila,int columna){
                 .addGap(111, 111, 111)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
-                    .addComponent(jBGuardar))
+                    .addComponent(jBGuardar)
+                    .addComponent(jBModificar))
                 .addGap(19, 19, 19))
         );
 
@@ -214,6 +217,11 @@ public boolean isCellEditable(int fila,int columna){
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTTablaHuesped.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTTablaHuespedMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTTablaHuesped);
 
         jLabel11.setText("Ingresa un huesped");
@@ -240,13 +248,6 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
-        jBModificar.setText("Modificar");
-        jBModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBModificarActionPerformed(evt);
-            }
-        });
-
         jBLimpiarBusqueda.setText("Limpiar Busqueda");
         jBLimpiarBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,8 +266,6 @@ public boolean isCellEditable(int fila,int columna){
                 .addComponent(jTbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBLimpiarBusqueda)
-                .addGap(90, 90, 90)
-                .addComponent(jBModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBEliminar)
                 .addGap(24, 24, 24))
@@ -292,7 +291,6 @@ public boolean isCellEditable(int fila,int columna){
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBEliminar)
-                    .addComponent(jBModificar)
                     .addComponent(jBLimpiarBusqueda))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,13 +325,12 @@ public boolean isCellEditable(int fila,int columna){
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(89, 89, 89))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 277, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,63 +374,42 @@ public boolean isCellEditable(int fila,int columna){
         huesped=hData.buscarHuespedPorDni(numeroDocumento);
         
         if(huesped!=null){
-            
+            jBGuardar.setEnabled(false);
                JOptionPane.showMessageDialog(null,
-                       "El numero de documento ingresado ya se encuentra en la base de datos, Por favor revise los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+                       "El numero de documento ingresado ya se encuentra en la base de datos,"
+                               + " Por favor revise la informción y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
           
                   jTNombre.setText(huesped.getNombre());
                   jTApellido.setText(huesped.getApellido());
                   jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
                   jTNumeroDocumento.setText(huesped.getNumeroDocumento());
-                    jTDomicilio.setText(huesped.getDomicilio());
-                    jTCorreo.setText(huesped.getCorreo());
-                    jTTelefono.setText(String.valueOf(huesped.getCelular()));
-
-            
-       hData.modificarEstadoHuesped(numeroDocumento);
-       hData.modificarHuesped(huesped);
-            
-            
+                  jTDomicilio.setText(huesped.getDomicilio());
+                  jTCorreo.setText(huesped.getCorreo());
+                  jTTelefono.setText(String.valueOf(huesped.getCelular()));
+                  
+                  
+                  
         }
-        
-        
-        
-        
-        
         
         if (huesped == null) {
             huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular,true);
             hData.guardarHuesped(huesped);
                   
        
-        } else {
-//            
-//               
-//        // Si ya está instanciado, actualiza sus propiedades con los nuevos valores
-//        huesped.setNombre(nombre);
-//        huesped.setApellido(apellido);
-//        huesped.setTipoDocumento(tipoDocumento);
-//        huesped.setNumeroDocumento(numeroDocumento);
-//        huesped.setDomicilio(domicilio);
-//        huesped.setCorreo(correo);
-//        huesped.setCelular(celular);
-//        hData.modificarHuesped(huesped);
-    }
+        } 
                 }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
            
-            
-        
                 }
             limpiarTabla();
              llenarTabla();
         
-    
-
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+       habilitarCampos();
        limpiarCampos();
+       jBGuardar.setEnabled(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -453,6 +429,7 @@ public boolean isCellEditable(int fila,int columna){
 
             limpiarTabla();
             llenarTabla();
+            limpiarCampos();
            
         } else {
             JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
@@ -478,7 +455,10 @@ public boolean isCellEditable(int fila,int columna){
    llenarTabla();
     }//GEN-LAST:event_jBLimpiarBusquedaActionPerformed
 
-    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+    private void jTTablaHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTablaHuespedMouseClicked
+        
+        habilitarCampos();
+        jBGuardar.setEnabled(false);
         int filaSeleccionada = jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
 
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
@@ -499,30 +479,67 @@ public boolean isCellEditable(int fila,int columna){
             jTTelefono.setText(celular + "");
 
         }
+    }//GEN-LAST:event_jTTablaHuespedMouseClicked
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+  
+        
+         String nombre = jTNombre.getText();
+        String apellido = jTApellido.getText();
+        String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
+        String numeroDocumento = jTNumeroDocumento.getText();
+        String domicilio = jTDomicilio.getText();
+        String correo = jTCorreo.getText();
+         if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty()
+                || domicilio.isEmpty() || correo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
+            return;// sale del metodo sin guardar nada
+        }
+    
+        try {
+            Integer celular = Integer.parseInt(jTTelefono.getText());
+
+            int filaSeleccionada = jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
+
+            if (filaSeleccionada != -1) {
+
+                Huesped huespedmodificado = hData.buscarHuespedPorDni(numeroDocumento);
+                if (huespedmodificado != null) {
+                    huespedmodificado.setNombre(nombre);
+                    huespedmodificado.setApellido(apellido);
+                    huespedmodificado.setTipoDocumento(tipoDocumento);
+                    huespedmodificado.setNumeroDocumento(numeroDocumento);
+                    huespedmodificado.setDomicilio(domicilio);
+                    huespedmodificado.setCorreo(correo);
+                    huespedmodificado.setCelular(celular);
+                    hData.modificarHuesped(huespedmodificado);
+                    limpiarCampos();
+                }
+            } else {
+                huesped.setNombre(nombre);
+                huesped.setApellido(apellido);
+                huesped.setTipoDocumento(tipoDocumento);
+                huesped.setNumeroDocumento(numeroDocumento);
+                huesped.setDomicilio(domicilio);
+                huesped.setCorreo(correo);
+                huesped.setCelular(celular);
+
+                hData.modificarHuesped(huesped);
+
+                hData.modificarEstadoHuesped(numeroDocumento);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
+
+        }
+
+        limpiarTabla();
+        llenarTabla();
+
+
     }//GEN-LAST:event_jBModificarActionPerformed
 
-    private void jTNumeroDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumeroDocumentoKeyReleased
-//         String numeroDocumento = jTNumeroDocumento.getText();
-//        
-//        huesped=hData.buscarHuespedPorDni(numeroDocumento);
-//        
-//        if(huesped!=null){
-//            int respuesta =JOptionPane.showConfirmDialog(null,
-//                "El numero de documento ingresado ya se encuentra en la base de datos, desea revisar los datos? "," Huesped CARGADO",JOptionPane.OK_CANCEL_OPTION);
-//              if (respuesta == JOptionPane.YES_OPTION) {
-//                    // Guardar los datos modificados
-//                    huesped.setNombre(jTNombre.getText());
-//                    huesped.setApellido(jTApellido.getText());
-//                    huesped.setNumeroDocumento(jTNumeroDocumento.getText());
-//                    huesped.setTipoDocumento((String)jCTipoDocumento.getSelectedItem());
-//                    huesped.setDomicilio(jTDomicilio.getText());
-//                    huesped.setCorreo(jTCorreo.getText());
-//                 //   huesped.setCelular(Integer.parseInt(jTTelefono.getText()));
-//                   
-//                }
-//        }   
-    }//GEN-LAST:event_jTNumeroDocumentoKeyReleased
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
@@ -612,6 +629,23 @@ public boolean isCellEditable(int fila,int columna){
         DefaultTableModel modeloTabla = (DefaultTableModel) jTTablaHuesped.getModel();
         modeloTabla.setRowCount(0);
 
+  }
+  private void camposDesabilitados(){
+       jTNombre.setEnabled(false);
+        jTApellido.setEnabled(false);
+        jTNumeroDocumento.setEnabled(false);
+        jTDomicilio.setEnabled(false);
+        jTCorreo.setEnabled(false);
+        jTTelefono.setEnabled(false);
+      
+  }
+  private void habilitarCampos(){
+      jTNombre.setEnabled(true);
+        jTApellido.setEnabled(true);
+        jTNumeroDocumento.setEnabled(true);
+        jTDomicilio.setEnabled(true);
+        jTCorreo.setEnabled(true);
+        jTTelefono.setEnabled(true);
   }
 
 

@@ -70,7 +70,7 @@ public class HuespedData {
     if (exito == 1) {
         JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
     } else {
-        JOptionPane.showMessageDialog(null, "El Huesped no existe");
+        JOptionPane.showMessageDialog(null, "El Huesped no existe????");
     }
 
     } catch (SQLException ex) {
@@ -120,7 +120,7 @@ public class HuespedData {
                huesped.setCorreo(rs.getString("correo"));
                 huesped.setCelular(rs.getInt("celular"));
                }else{
-                JOptionPane.showMessageDialog(null,"No existe el huesped");
+              //  JOptionPane.showMessageDialog(null,"No existe el huesped");
             } 
             
             ps.close();
@@ -287,4 +287,7 @@ public List<Huesped> listarHuespedEstadoTrue(){
 
         return huesped;
 }
+
+
+
 }//------------------fin-------------------
