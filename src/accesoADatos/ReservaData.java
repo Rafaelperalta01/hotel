@@ -99,7 +99,40 @@ public class ReservaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla reserva");
         }
     }
-    
+     public Reserva buscarReservaId(int id){
+        Reserva reserva= null;
+        
+        String sql = "SELECT * FROM reserva WHERE idReserva=?";
+        PreparedStatement ps = null;
+        try {
+            ps= con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+               reserva = new Reserva();
+               reserva.setIdReserva(id);
+               reserva.setIdHabitacion(habitacion.buscarHabitacionId(rs.getInt("idHabitacion")));
+               reserva.setIdHuesped(huesped.buscarHuespedPorId(rs.getInt("idHuesped")));
+               reserva.setIdUsuarios(usuario.obtenerUsuarioId(rs.getInt("idUsuario")));              
+               reserva.setFechaEntrada(rs.getDate("fechaEntrada").toLocalDate());
+               reserva.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());              
+               reserva.setImporteTotal(rs.getDouble("ImporteTotal"));
+               reserva.setEstado(rs.getBoolean("estado"));
+               
+               }else{
+                JOptionPane.showMessageDialog(null,"No existe la Reserva");
+            } 
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Reserva"+ex.getMessage());
+        }
+        return reserva;
+     }
+     
     public void eliminarReserva(int idReserva){
         PreparedStatement ps = null;
         String sql = "DELETE FROM reserva WHERE idReserva = ?";

@@ -11,6 +11,7 @@ import accesoADatos.ReservaData;
 import accesoADatos.UsuariosData;
 import entidades.Habitacion;
 import entidades.Huesped;
+import entidades.ProductoServicio;
 import entidades.Reserva;
 import entidades.Usuarios;
 import java.text.ParseException;
@@ -51,13 +52,14 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         camposApagados();
         listaRegistros();
 
-        jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+          jDCfechaEntrada.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
 
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
 
                 if (jDCfechaEntrada.getDate() == null) {
                     jDCfechaEntrada.setMinSelectableDate(new Date());
                     jDCfechaSalida.setEnabled(false);
+                    
 
                 } else if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
 
@@ -67,10 +69,26 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                     jDCfechaSalida.setEnabled(true);
                     jDCfechaSalida.setDate(null);
                     jDCfechaSalida.setMinSelectableDate(fechanueva);
+                    jTHabitacion.setText("");
+                    jTImporte.setText("");
                 }
             }
         }
         );
+          jDCfechaSalida.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+
+                if (jDCfechaSalida.getDate() == null){
+                    return;
+                } else if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
+
+                    jTHabitacion.setText("");
+                    jTImporte.setText("");
+                }
+            }
+        }
+        );    
     }
 
     /**
@@ -508,10 +526,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         } else {
             int fila = jTablareservas.getSelectedRow();
             if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
+                Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 15).toString());
                 Consumos consu = new Consumos();
                 Menu.escritorio.add(consu);
                 consu.moveToFront();
-                consu.setVisible(true);
+                consu.setVisible(true);     
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
             }
@@ -591,6 +610,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         modeloTabla.addColumn("Fecha de salida");//12
         modeloTabla.addColumn("Importe total");//13
         modeloTabla.addColumn("Usuario");//14
+        modeloTabla.addColumn("idReserva");//15
         jTablareservas.setModel(modeloTabla);
     }
 
@@ -610,7 +630,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
            r.getFechaEntrada(),
            r.getFechaSalida(),
            r.getImporteTotal(),
-           r.getIdUsuarios().getIdUsuario()
+           r.getIdUsuarios().getIdUsuario(),
+           r.getIdReserva()
         });
     }
 
