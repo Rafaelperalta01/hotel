@@ -191,6 +191,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jBEliminar.setBackground(new java.awt.Color(255, 204, 153));
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jTextConsumoTotal.setBackground(new java.awt.Color(255, 204, 153));
         jTextConsumoTotal.setText("Consumo Total:");
@@ -206,6 +211,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableConsumo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableConsumoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableConsumo);
 
         jTextRegistroTotal.setBackground(new java.awt.Color(255, 204, 153));
@@ -319,7 +329,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jBproductoYservicioActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-      
+    
         if (verificaCamposVacios()) {
             if (verificaStock()) {
                 ProductoServicio produ = p.buscarProductoServicioId(idServicios);
@@ -335,6 +345,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 listaRegistros();
             } else {
                 JOptionPane.showMessageDialog(null, "Las unidades requeridas son mayores que el Stock almacenado");
+                jTextUnidades.setText("");
+                jTextCostoTotal.setText("");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Complete todos los campos Producto y Unidades para poder guardar un consumo");
@@ -342,11 +354,15 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-          limpiaCamposConsumo();
+        limpiaCamposConsumo();
+        jBGuardar.setEnabled(true);
+        jBproductoYservicio.setEnabled(true);
+        jTextUnidades.setEditable(false);
+        jTableConsumo.clearSelection();
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jTextUnidadesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextUnidadesKeyReleased
-            
+
         if ((!jTextProYServ.getText().isEmpty()) && (!jTextUnidades.getText().isEmpty())) {
             try {
                 int n = Integer.parseInt(jTextUnidades.getText().toString());
@@ -364,16 +380,58 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
     private void jTextUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextUnidadesKeyTyped
        
-        char c = evt.getKeyChar();
+       char c = evt.getKeyChar();
        
         if (c < '1' || c > '9'){ 
             jTextUnidades.setToolTipText("Ingresar solo números ");            
             evt.consume(); 
-        }
-        if (jTextUnidades.getText().length() >= 2){
+        }else if(jTextProYServ.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Seleccione primero el producto o servicio ");
+        }else if(jTextUnidades.getText().length() >= 1){
             evt.consume();
-        }
+            JOptionPane.showMessageDialog(null,"No se puede seleccionar mas de 9 unidades ");
+        }   
     }//GEN-LAST:event_jTextUnidadesKeyTyped
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+    
+        if (modeloTabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+
+        } else {
+            int fila = jTableConsumo.getSelectedRow();
+
+            if ((fila != -1) && verificaCamposVacios()) {
+                if (!jBGuardar.isEnabled()) {
+                    JOptionPane.showConfirmDialog(null, "Desea eliminar este consumo de la habitación?", "Eliminar Consumo", JOptionPane.YES_NO_OPTION);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione con doble click el consumo que desea eliminar");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un consumo con doble click ");
+            }
+        }
+        jTableConsumo.clearSelection();
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jTableConsumoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsumoMouseClicked
+           
+        if (evt.getClickCount() == 2){
+            
+         int fila = jTableConsumo.getSelectedRow();
+
+        if (fila != -1) {   
+            jBGuardar.setEnabled(false);
+            jBproductoYservicio.setEnabled(false);
+            jTextProYServ.setText(jTableConsumo.getValueAt(fila,0).toString());
+            jTextUnidades.setEditable(false);
+            jTextUnidades.setText(jTableConsumo.getValueAt(fila,1).toString());
+            jTextCostoTotal.setText(jTableConsumo.getValueAt(fila,2).toString());            
+        }
+        }
+    }//GEN-LAST:event_jTableConsumoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -393,7 +451,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConsumo;
     private javax.swing.JTextField jTextConsumoTotal;
-    private javax.swing.JTextField jTextCostoTotal;
+    public static javax.swing.JTextField jTextCostoTotal;
     private javax.swing.JTextField jTextNumeroHabitacion;
     public static javax.swing.JTextField jTextProYServ;
     private javax.swing.JTextField jTextRegistroTotal;
@@ -415,20 +473,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     public boolean verificaCamposVacios() {
         boolean aux = false;
 
-        if ((!jTextProYServ.getText().isEmpty()) && (!jTextUnidades.getText().isEmpty())){
-            try {
-                int cantUnidades = Integer.parseInt(jTCantPersonas.getText());
-                if (cantUnidades <= 0) {
-                    JOptionPane.showMessageDialog(null, "Las unidades no puede ser menor que uno (1)");
-                    jTextUnidades.setText("");
-                    aux = false;
-                } else {
-                    aux = true;
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Este campo acepta solo números");
-               jTextUnidades.setText("");
-            }
+        if ((!jTextProYServ.getText().isEmpty()) && (!jTextUnidades.getText().isEmpty())) {
+            aux = true;
+        } else {
+            aux = false;
         }
         return aux;
     }
