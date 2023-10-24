@@ -201,7 +201,7 @@ public class HuespedData {
         return huesped;
 }
                
-       public List<Huesped> listarHuespedporDni(String dni) {
+   public List<Huesped> listarHuespedporDni(String dni) {
 
         List<Huesped> huesped = new ArrayList<Huesped>();
         String sql = "SELECT * FROM huesped "
@@ -236,34 +236,55 @@ public class HuespedData {
         return huesped;
 
     }            
-      
-      public void modificarHuespedEstadoTrue(Huesped huesped){
-    String sql = " UPDATE huesped SET nombre = ?, apellido= ?, tipoDocumento=?, numeroDocumento=?, domicilio = ?, correo = ?, celular = ? estado=true WHERE idHuesped = ?";
-    PreparedStatement ps = null;
-
-    try {
-        ps = con.prepareStatement(sql);
-        ps.setString(1, huesped.getNombre());
-           ps.setString(2, huesped.getApellido());
-           ps.setString(3, huesped.getTipoDocumento());
-           ps.setString(4, huesped.getNumeroDocumento());
-           ps.setString(5, huesped.getDomicilio());
-           ps.setString(6, huesped.getCorreo());
-           ps.setInt(7, huesped.getCelular());
-           ps.setInt(8, huesped.getIdHuesped());
-        
-        
-        int exito = ps.executeUpdate();
-
-    if (exito == 1) {
-        JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
-    } else {
-        JOptionPane.showMessageDialog(null, "El Huesped no existe");
+   public void modificarEstadoHuesped(String numeroDocumento){
+        String sql = "UPDATE huesped SET estado = 1 WHERE numeroDocumento = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, numeroDocumento);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null,"Se modifico el huesped.");                           
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla huesped (m.eliminar)"+ex.getMessage());
+        }
     }
+public List<Huesped> listarHuespedEstadoTrue(){
+       String sql="SELECT idHuesped,nombre,apellido,tipoDocumento,numeroDocumento,domicilio, correo,celular,estado FROM huesped  WHERE estado=1";// "SELECT * FROM huesped ";
 
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m.modificar)"+ex.getMessage());    
-    }
-    }
+       ArrayList<Huesped> huesped = new ArrayList<>();
+       
+       
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+               Huesped hues = new Huesped();
+               hues.setIdHuesped(rs.getInt("idHuesped"));
+               hues.setNombre(rs.getString("nombre"));
+               hues.setApellido(rs.getString("apellido"));
+               hues.setTipoDocumento(rs.getString("tipoDocumento"));
+               hues.setNumeroDocumento(rs.getString("numeroDocumento"));
+               hues.setDomicilio(rs.getString("domicilio"));
+               hues.setCorreo(rs.getString("correo"));
+                hues.setCelular(rs.getInt("celular"));
+               hues.setEstado(rs.getBoolean("estado"));
 
+               huesped.add(hues);
+           }
+
+           ps.close();
+
+       } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped (m. listar)" + ex.getMessage());
+       }
+
+        return huesped;
+}
 }//------------------fin-------------------

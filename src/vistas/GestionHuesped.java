@@ -95,6 +95,12 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
+        jTNumeroDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTNumeroDocumentoKeyReleased(evt);
+            }
+        });
+
         jCTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "PASAPORTE", " " }));
 
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
@@ -352,7 +358,7 @@ public boolean isCellEditable(int fila,int columna){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-
+        
         String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
@@ -367,6 +373,33 @@ public boolean isCellEditable(int fila,int columna){
         
         try{
         Integer celular = Integer.parseInt(jTTelefono.getText());
+        
+        huesped=hData.buscarHuespedPorDni(numeroDocumento);
+        
+        if(huesped!=null){
+            
+               JOptionPane.showMessageDialog(null,
+                       "El numero de documento ingresado ya se encuentra en la base de datos, Por favor revise los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+          
+                  jTNombre.setText(huesped.getNombre());
+                  jTApellido.setText(huesped.getApellido());
+                  jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
+                  jTNumeroDocumento.setText(huesped.getNumeroDocumento());
+                    jTDomicilio.setText(huesped.getDomicilio());
+                    jTCorreo.setText(huesped.getCorreo());
+                    jTTelefono.setText(String.valueOf(huesped.getCelular()));
+
+            
+       hData.modificarEstadoHuesped(numeroDocumento);
+       hData.modificarHuesped(huesped);
+            
+            
+        }
+        
+        
+        
+        
+        
         
         if (huesped == null) {
             huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular,true);
@@ -460,15 +493,36 @@ public boolean isCellEditable(int fila,int columna){
             jTNombre.setText(nombre);
             jTApellido.setText(apellido);
             jCTipoDocumento.setSelectedItem(tipoDocumento);
-
             jTNumeroDocumento.setText(numeroDocumento);
             jTDomicilio.setText(domicilio);
             jTCorreo.setText(correo);
             jTTelefono.setText(celular + "");
 
-
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
-    }
+
+    private void jTNumeroDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumeroDocumentoKeyReleased
+//         String numeroDocumento = jTNumeroDocumento.getText();
+//        
+//        huesped=hData.buscarHuespedPorDni(numeroDocumento);
+//        
+//        if(huesped!=null){
+//            int respuesta =JOptionPane.showConfirmDialog(null,
+//                "El numero de documento ingresado ya se encuentra en la base de datos, desea revisar los datos? "," Huesped CARGADO",JOptionPane.OK_CANCEL_OPTION);
+//              if (respuesta == JOptionPane.YES_OPTION) {
+//                    // Guardar los datos modificados
+//                    huesped.setNombre(jTNombre.getText());
+//                    huesped.setApellido(jTApellido.getText());
+//                    huesped.setNumeroDocumento(jTNumeroDocumento.getText());
+//                    huesped.setTipoDocumento((String)jCTipoDocumento.getSelectedItem());
+//                    huesped.setDomicilio(jTDomicilio.getText());
+//                    huesped.setCorreo(jTCorreo.getText());
+//                 //   huesped.setCelular(Integer.parseInt(jTTelefono.getText()));
+//                   
+//                }
+//        }   
+    }//GEN-LAST:event_jTNumeroDocumentoKeyReleased
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
@@ -542,7 +596,7 @@ public boolean isCellEditable(int fila,int columna){
 
 }
     private void llenarTabla(){
-        for(Huesped huesped: hData.listarHuesped()){
+        for(Huesped huesped: hData.listarHuespedEstadoTrue()){
             cargarTabla(huesped);
         }
     }
