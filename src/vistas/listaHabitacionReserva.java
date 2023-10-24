@@ -13,6 +13,8 @@ import entidades.Usuarios;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static vistas.VistaReserva.jDCfechaEntrada;
 import static vistas.VistaReserva.jDCfechaSalida;
@@ -66,6 +68,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jTextField1.setBackground(new java.awt.Color(255, 204, 153));
         jTextField1.setText("Busca por n° de Habitacion");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setBackground(new java.awt.Color(255, 204, 153));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -128,7 +135,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(26, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +166,21 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        
+    try{
+        Integer numhab=Integer.parseInt(jTextField1.getText());
+            
+        for (Habitacion habi: habitacion.buscarHabitacion(numhab)){
+                cargarTabla(habi);    
+        }
+    
+        }catch(NumberFormatException e){    
+        JOptionPane.showMessageDialog(this, "usted debe ingresar un numero válido");
+      
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
