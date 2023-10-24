@@ -169,8 +169,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             Consumos.idServicios = Integer.parseInt(jTProductoServicio.getValueAt(fila, 0).toString());
             Consumos.jTextProYServ.setText(jTProductoServicio.getValueAt(fila, 2).toString());
         }
-        Consumos.jTextUnidades.setEditable(true);
-        dispose();
+            Consumos.jTextUnidades.setEditable(true);
+            Consumos.jTextUnidades.setText("");
+            Consumos.jTextCostoTotal.setText("");
+            dispose();
         }
     }//GEN-LAST:event_jTProductoServicioMouseClicked
 

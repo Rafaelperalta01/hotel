@@ -461,17 +461,18 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarTipoHActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-      if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+     
+        if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "se Habilita para generar un registro");
             
             Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
             Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
-           // Usuarios usuario = user.obtenerUsuarioPorDni(dniUsuario);
+        
             LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate salida = jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             double importe = Double.parseDouble(jTImporte.getText().toString());
             int canPersonas = Integer.parseInt(jTCantPersonas.getText().toString());
-            Reserva res = new Reserva(hab,hues,this.usuario,entrada,salida,importe,canPersonas,true);
+            Reserva res = new Reserva(hab,hues,usuario,entrada,salida,importe,canPersonas,true);
             reserva.crearReserva(res);
             limpiaCampos();        
             modeloTabla.setRowCount(0);
