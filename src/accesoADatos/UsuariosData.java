@@ -109,7 +109,7 @@ public class UsuariosData {
 
             if (rs.next()) {
                 usuario.setIdUsuario(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Reserva guardada");
+                JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
             }
             ps.close();
 
@@ -212,6 +212,7 @@ public class UsuariosData {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setDni(rs.getInt("dni"));
+                user.setSexo(rs.getString("Sexo"));
                 user.setDireccion(rs.getString("direccion"));
                 user.setCargo(rs.getString("cargo"));
                 user.setEstado(rs.getBoolean("estado"));
@@ -244,6 +245,7 @@ public class UsuariosData {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setDni(rs.getInt("dni"));
+                user.setSexo(rs.getString("Sexo"));
                 user.setDireccion(rs.getString("direccion"));
                 user.setCargo(rs.getString("cargo"));
                 user.setEstado(rs.getBoolean("estado"));
