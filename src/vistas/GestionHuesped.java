@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class GestionHuespedII extends javax.swing.JInternalFrame {
+public class GestionHuesped extends javax.swing.JInternalFrame {
    private HuespedData hData=new HuespedData();
    private Huesped huesped=null;
      private DefaultTableModel modelo = new DefaultTableModel(){
@@ -16,7 +16,7 @@ public boolean isCellEditable(int fila,int columna){
         return false;
     }
 };
-    public GestionHuespedII() {
+    public GestionHuesped() {
         initComponents();
         armarCabecera();
         llenarTabla();
@@ -449,18 +449,25 @@ public boolean isCellEditable(int fila,int columna){
             int filaSeleccionada=jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
         
         if(filaSeleccionada!=-1){//nos aseguramos que haya una fila seleccionada
+              String nombre=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 0);
+                String apellido=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 1);
+                  String tipoDocumento=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 2);
             String numeroDocumento=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 3);
-           huesped= hData.buscarHuespedPorDni(numeroDocumento);
+              String domicilio=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 4);
+                String correo=(String)jTTablaHuesped.getValueAt(filaSeleccionada, 5);
+                 int celular=(Integer)jTTablaHuesped.getValueAt(filaSeleccionada, 6);
             
+            
+            
+                jTNombre.setText(nombre);
+                jTApellido.setText(apellido);
+                jCTipoDocumento.setSelectedItem(tipoDocumento);
+                
+               jTNumeroDocumento.setText(numeroDocumento);
+               jTDomicilio.setText(domicilio);
+               jTCorreo.setText(correo);
+               jTTelefono.setText(celular+"");
 
-              huesped.setNombre(jTNombre.getText());
-              huesped.setApellido(jTApellido.getText());
-               huesped.setTipoDocumento(jCTipoDocumento.getSelectedItem().toString());
-               huesped.setDomicilio(jTDomicilio.getText());
-               huesped.setCorreo(jTCorreo.getText());
-               huesped.setCelular(Integer.parseInt(jTTelefono.getText()));
-               
-               
                 
                
                
