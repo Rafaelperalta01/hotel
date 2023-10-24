@@ -29,7 +29,7 @@ public class UsuariosData {
 
         Usuarios usuario = null;
         PreparedStatement ps = null;
-        String sql = "SELECT idUsuario, nombre, apellido, dni, sexo, direccion, cargo, estado FROM usuario WHERE dni=?";
+        String sql = "SELECT idUsuario, nombre, apellido, dni, sexo, direccion, cargo, estado, contraseña FROM usuario WHERE dni=?";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
@@ -46,6 +46,7 @@ public class UsuariosData {
                 usuario.setDireccion(rs.getString("direccion"));
                 usuario.setCargo(rs.getString("cargo"));
                 usuario.setEstado(rs.getBoolean("estado"));
+                usuario.setContraseña(rs.getString("contraseña"));
             }
 
             ps.close();
@@ -178,6 +179,7 @@ public class UsuariosData {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellido(rs.getString("apellido"));
                 user.setDni(rs.getInt("dni"));
+                user.setSexo(rs.getString("Sexo"));
                 user.setDireccion(rs.getString("direccion"));
                 user.setCargo(rs.getString("cargo"));
                 user.setEstado(rs.getBoolean("estado"));
