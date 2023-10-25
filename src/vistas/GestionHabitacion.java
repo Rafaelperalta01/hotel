@@ -9,12 +9,12 @@ package vistas;
  *
  * @author Pc
  */
-public class RegistroHabitacion extends javax.swing.JInternalFrame {
+public class GestionHabitacion extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Habitacion
      */
-    public RegistroHabitacion() {
+    public GestionHabitacion() {
         initComponents();
     }
 

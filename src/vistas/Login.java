@@ -47,7 +47,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -115,7 +115,8 @@ public class Login extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 450, 430));
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(340, 10, 450, 430);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
 
@@ -138,8 +139,10 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(319, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 470));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 480, 470));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 420, 470);
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(410, 0, 480, 470);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

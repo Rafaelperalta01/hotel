@@ -285,7 +285,7 @@ public class Menu extends javax.swing.JFrame {
         // Gestion Habitacion
         escritorio.removeAll();
         escritorio.repaint();
-        RegistroHabitacion gHab = new RegistroHabitacion();
+        GestionHabitacion gHab = new GestionHabitacion();
         escritorio.add(gHab);
         gHab.setVisible(true);
         gHab.moveToFront();
