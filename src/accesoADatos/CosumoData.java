@@ -60,34 +60,31 @@ public class CosumoData {
         
     }
    
-   public void modificarUnidadesCosumidas(Consumo consumo){// solo puedo modificar las unidades 
-    String sql = " UPDATE consumo SET unidades=? WHERE idConsumo = ?";
-    
-    
-  
-    PreparedStatement ps = null;
+   public void modificarUnidadesCosumidas(Consumo consumo) {// solo puedo modificar las unidades 
+        String sql = " UPDATE consumo SET unidades=?,costoTotal=? WHERE idConsumo = ?";
+        PreparedStatement ps = null;
 
-    try {
-        ps = con.prepareStatement(sql);
+        try {
+            ps = con.prepareStatement(sql);
             ps.setInt(1, consumo.getUnidades());
-            ps.setInt(2, consumo.getIdConsumo());
-        
-        
-        int exito = ps.executeUpdate();
+            ps.setDouble(2, consumo.getCostoTotal());
+            ps.setInt(3, consumo.getIdConsumo());
 
-    if (exito == 1) {
-        JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
-    } else {
-        JOptionPane.showMessageDialog(null, "Dicho consumo no se encuentra registrado");
-    }
+            int exito = ps.executeUpdate();
 
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Consumo"+ex.getMessage());    
-    }
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Dicho consumo no se encuentra registrado");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Consumo" + ex.getMessage());
+        }
     }
    public void eliminarConsumo(int idConsumo)
    {
-        String sql = "UPDATE huesped SET estado = 0 WHERE idConsumo = ?";
+         String sql = "UPDATE `consumo` SET estado = 0 WHERE idConsumo = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -104,7 +101,24 @@ public class CosumoData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Consumo"+ex.getMessage());
         }
     }
-   
+    public void eliminarConsumoDeLaBase(int idConsumo) {
+        String sql = "DELETE FROM `consumo` WHERE idConsumo = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idConsumo);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null,"Se eliminó el consumo.");                           
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Consumo"+ex.getMessage());
+        }
+    }
    public Consumo buscarConsumoPorId(int idConsumo){
     
    Consumo consumo= null;
