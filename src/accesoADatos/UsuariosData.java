@@ -119,7 +119,7 @@ public class UsuariosData {
     }
 
     public void modificarUsuario(Usuarios user) {
-        String sql = " UPDATE usuario SET nombre = ?, apellido= ?, dni= ?, direccion = ?, cargo = ?, estado = ?, contraseña = ? WHERE dni = ?";
+        String sql = " UPDATE usuario SET nombre = ?, apellido= ?, dni= ?, sexo = ?, direccion = ?, cargo = ?, estado = ?, contraseña = ? WHERE dni = ?";
         PreparedStatement ps = null;
 
         try {
@@ -127,11 +127,12 @@ public class UsuariosData {
             ps.setString(1, user.getNombre());
             ps.setString(2, user.getApellido());
             ps.setInt(3, user.getDni());
-            ps.setString(4, user.getDireccion());
-            ps.setString(5, user.getCargo());
-            ps.setBoolean(6, user.isEstado());
-            ps.setString(7, user.getContraseña());
-            ps.setInt(8, user.getDni());
+            ps.setString(4, user.getSexo());
+            ps.setString(5, user.getDireccion());
+            ps.setString(6, user.getCargo());
+            ps.setBoolean(7, user.isEstado());
+            ps.setString(8, user.getContraseña());
+            ps.setInt(9, user.getDni());
 
             int exito = ps.executeUpdate();
             if (exito > 0) {
@@ -163,9 +164,28 @@ public class UsuariosData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla usuario");
         }
     }
+    
+    public void modificarEstadoUsuario(int dni){
+        String sql = "UPDATE usuario SET estado = 1 WHERE dni = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null,"Se modifico el huesped.");                           
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla usuario (m.eliminar)");
+        }
+    }
 
     public List<Usuarios> listarUsuarios() {
-        String sql = "SELECT * FROM usuario";
+        String sql = "SELECT * FROM usuario WHERE estado = 1";
 
         ArrayList<Usuarios> users = new ArrayList<>();
 
