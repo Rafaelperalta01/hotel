@@ -343,6 +343,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         jBpago.setBackground(new java.awt.Color(255, 204, 153));
         jBpago.setText("Realizar Pago");
+        jBpago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBpagoActionPerformed(evt);
+            }
+        });
 
         jTTotalRegistros.setBackground(new java.awt.Color(255, 204, 153));
         jTTotalRegistros.setText("Total de registros:");
@@ -537,6 +542,24 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jBConsumosActionPerformed
+
+    private void jBpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBpagoActionPerformed
+       if (modeloTabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+
+        } else {
+            int fila = jTablareservas.getSelectedRow();
+            if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
+             //   Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 15).toString());
+                Pagos pago = new Pagos();
+                Menu.escritorio.add(pago);
+                pago.moveToFront();
+                pago.setVisible(true);     
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
+            }
+        }
+    }//GEN-LAST:event_jBpagoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
