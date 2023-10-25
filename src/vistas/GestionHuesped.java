@@ -20,7 +20,11 @@ public boolean isCellEditable(int fila,int columna){
         initComponents();
         armarCabecera();
         llenarTabla();
-        camposDesabilitados();
+        camposDeshabilitados();
+        jBModificar.setEnabled(false);
+        jBGuardar.setEnabled(false);
+        jBEliminar.setEnabled(false);
+      //  listaRegistros();
     }
 
     @SuppressWarnings("unchecked")
@@ -52,9 +56,9 @@ public boolean isCellEditable(int fila,int columna){
         jLabel11 = new javax.swing.JLabel();
         jBSalir = new javax.swing.JButton();
         jTbuscarHuesped = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         jBEliminar = new javax.swing.JButton();
         jBLimpiarBusqueda = new javax.swing.JButton();
+        jLTotalRegistros = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -93,6 +97,18 @@ public boolean isCellEditable(int fila,int columna){
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
+            }
+        });
+
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
+
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
             }
         });
 
@@ -224,7 +240,7 @@ public boolean isCellEditable(int fila,int columna){
         });
         jScrollPane1.setViewportView(jTTablaHuesped);
 
-        jLabel11.setText("Ingresa un huesped");
+        jLabel11.setText("Busqueda por Documento");
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -238,8 +254,6 @@ public boolean isCellEditable(int fila,int columna){
                 jTbuscarHuespedKeyReleased(evt);
             }
         });
-
-        jLabel14.setText("Total Registros: ");
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -255,6 +269,8 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
+        jLTotalRegistros.setText("Total de Registros: ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -264,9 +280,9 @@ public boolean isCellEditable(int fila,int columna){
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jTbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jBLimpiarBusqueda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBEliminar)
                 .addGap(24, 24, 24))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -277,11 +293,11 @@ public boolean isCellEditable(int fila,int columna){
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
+                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jBSalir)
-                        .addGap(49, 49, 49))))
+                        .addComponent(jLTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,9 +311,9 @@ public boolean isCellEditable(int fila,int columna){
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
+                .addComponent(jLTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -330,7 +346,7 @@ public boolean isCellEditable(int fila,int columna){
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 277, Short.MAX_VALUE))
+                .addGap(0, 249, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,8 +363,10 @@ public boolean isCellEditable(int fila,int columna){
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -377,7 +395,7 @@ public boolean isCellEditable(int fila,int columna){
             jBGuardar.setEnabled(false);
                JOptionPane.showMessageDialog(null,
                        "El numero de documento ingresado ya se encuentra en la base de datos,"
-                               + " Por favor revise la informción y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+                               + " Por favor revise la información y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
           
                   jTNombre.setText(huesped.getNombre());
                   jTApellido.setText(huesped.getApellido());
@@ -386,23 +404,25 @@ public boolean isCellEditable(int fila,int columna){
                   jTDomicilio.setText(huesped.getDomicilio());
                   jTCorreo.setText(huesped.getCorreo());
                   jTTelefono.setText(String.valueOf(huesped.getCelular()));
-                  
-                  
-                  
+                  jBModificar.setEnabled(true);
         }
         
         if (huesped == null) {
             huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular,true);
             hData.guardarHuesped(huesped);
-                  
+            
+              limpiarCampos();
+            camposDeshabilitados();;      
        
         } 
                 }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
            
                 }
+           
             limpiarTabla();
              llenarTabla();
+             jBGuardar.setEnabled(false);
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -410,6 +430,7 @@ public boolean isCellEditable(int fila,int columna){
        habilitarCampos();
        limpiarCampos();
        jBGuardar.setEnabled(true);
+       jBModificar.setEnabled(false);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -426,10 +447,12 @@ public boolean isCellEditable(int fila,int columna){
             String nDoc = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 3);
 
             hData.eliminarHuesped(nDoc);
-
+           jBModificar.setEnabled(false);
             limpiarTabla();
             llenarTabla();
             limpiarCampos();
+            camposDeshabilitados();
+           // listaRegistros();
            
         } else {
             JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
@@ -442,7 +465,7 @@ public boolean isCellEditable(int fila,int columna){
         Preguntar a un mentor si se puede mejorar de laguna otra forma*/
         borrarFilas();
         String numeroDocumento = jTbuscarHuesped.getText();
-        for (Huesped hue : hData.listarHuespedporDni(numeroDocumento) ){
+        for (Huesped hue : hData.listarHuespedporDniHuespedEstadoTrue(numeroDocumento)){
           
             if(hue.getNumeroDocumento().startsWith(jTbuscarHuesped.getText()))
         cargarTabla(hue);
@@ -458,7 +481,10 @@ public boolean isCellEditable(int fila,int columna){
     private void jTTablaHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTablaHuespedMouseClicked
         
         habilitarCampos();
+        jBEliminar.setEnabled(true);
+        jBModificar.setEnabled(true);
         jBGuardar.setEnabled(false);
+        
         int filaSeleccionada = jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
 
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
@@ -479,6 +505,7 @@ public boolean isCellEditable(int fila,int columna){
             jTTelefono.setText(celular + "");
 
         }
+     //   listaRegistros();
     }//GEN-LAST:event_jTTablaHuespedMouseClicked
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
@@ -513,7 +540,7 @@ public boolean isCellEditable(int fila,int columna){
                     huespedmodificado.setCorreo(correo);
                     huespedmodificado.setCelular(celular);
                     hData.modificarHuesped(huespedmodificado);
-                    limpiarCampos();
+                  
                 }
             } else {
                 huesped.setNombre(nombre);
@@ -527,18 +554,37 @@ public boolean isCellEditable(int fila,int columna){
                 hData.modificarHuesped(huesped);
 
                 hData.modificarEstadoHuesped(numeroDocumento);
+                 jBModificar.setEnabled(true);
             }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
 
         }
-
+          jBModificar.setEnabled(false);
+       limpiarCampos();
         limpiarTabla();
         llenarTabla();
 
 
     }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+       char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+     
+    }
+    }//GEN-LAST:event_jTNombreKeyTyped
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_jTApellidoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -549,11 +595,11 @@ public boolean isCellEditable(int fila,int columna){
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCTipoDocumento;
+    private javax.swing.JLabel jLTotalRegistros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -630,7 +676,7 @@ public boolean isCellEditable(int fila,int columna){
         modeloTabla.setRowCount(0);
 
   }
-  private void camposDesabilitados(){
+  private void camposDeshabilitados(){
        jTNombre.setEnabled(false);
         jTApellido.setEnabled(false);
         jTNumeroDocumento.setEnabled(false);
@@ -647,6 +693,18 @@ public boolean isCellEditable(int fila,int columna){
         jTCorreo.setEnabled(true);
         jTTelefono.setEnabled(true);
   }
-
-
+//   public void listaRegistros() {
+//      int registro = 0;
+//        for(Huesped res:hData.listarHuespedEstadoTrue()){
+//            cargarTabla(res);
+//            registro++;
+//            
+//            limpiarTabla();
+//            llenarTabla();
+//        }
+//        jLTotalRegistros.setText("Total de registros: "+registro);
+//        
+//
+//
+//}
 }
