@@ -466,12 +466,12 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             
             Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
             Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
-           // Usuarios usuario = user.obtenerUsuarioPorDni(dniUsuario);
+
             LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate salida = jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             double importe = Double.parseDouble(jTImporte.getText().toString());
             int canPersonas = Integer.parseInt(jTCantPersonas.getText().toString());
-            Reserva res = new Reserva(hab,hues,this.usuario,entrada,salida,importe,canPersonas,true);
+            Reserva res = new Reserva(hab,hues,usuario,entrada,salida,importe,canPersonas,true);
             reserva.crearReserva(res);
             limpiaCampos();        
             modeloTabla.setRowCount(0);
