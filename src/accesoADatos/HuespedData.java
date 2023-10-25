@@ -230,7 +230,7 @@ public class HuespedData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener incripciones" + ex.getMessage());
         }
 
         return huesped;
