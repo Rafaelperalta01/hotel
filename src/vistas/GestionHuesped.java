@@ -401,6 +401,7 @@ public boolean isCellEditable(int fila,int columna){
                   jTApellido.setText(huesped.getApellido());
                   jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
                   jTNumeroDocumento.setText(huesped.getNumeroDocumento());
+                    jTNumeroDocumento.setEditable(false);
                   jTDomicilio.setText(huesped.getDomicilio());
                   jTCorreo.setText(huesped.getCorreo());
                   jTTelefono.setText(String.valueOf(huesped.getCelular()));
@@ -412,7 +413,8 @@ public boolean isCellEditable(int fila,int columna){
             hData.guardarHuesped(huesped);
             
               limpiarCampos();
-            camposDeshabilitados();;      
+            camposDeshabilitados();;    
+            jBGuardar.setEnabled(true);
        
         } 
                 }catch(NumberFormatException e){
@@ -422,7 +424,7 @@ public boolean isCellEditable(int fila,int columna){
            
             limpiarTabla();
              llenarTabla();
-             jBGuardar.setEnabled(false);
+             
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -431,6 +433,7 @@ public boolean isCellEditable(int fila,int columna){
        limpiarCampos();
        jBGuardar.setEnabled(true);
        jBModificar.setEnabled(false);
+         jTNumeroDocumento.setEditable(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -500,6 +503,7 @@ public boolean isCellEditable(int fila,int columna){
             jTApellido.setText(apellido);
             jCTipoDocumento.setSelectedItem(tipoDocumento);
             jTNumeroDocumento.setText(numeroDocumento);
+              jTNumeroDocumento.setEditable(false);
             jTDomicilio.setText(domicilio);
             jTCorreo.setText(correo);
             jTTelefono.setText(celular + "");
@@ -510,7 +514,7 @@ public boolean isCellEditable(int fila,int columna){
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
   
-        
+          jTNumeroDocumento.setEditable(false);
          String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
@@ -536,6 +540,7 @@ public boolean isCellEditable(int fila,int columna){
                     huespedmodificado.setApellido(apellido);
                     huespedmodificado.setTipoDocumento(tipoDocumento);
                     huespedmodificado.setNumeroDocumento(numeroDocumento);
+              
                     huespedmodificado.setDomicilio(domicilio);
                     huespedmodificado.setCorreo(correo);
                     huespedmodificado.setCelular(celular);
@@ -543,10 +548,12 @@ public boolean isCellEditable(int fila,int columna){
                   
                 }
             } else {
+
                 huesped.setNombre(nombre);
                 huesped.setApellido(apellido);
                 huesped.setTipoDocumento(tipoDocumento);
                 huesped.setNumeroDocumento(numeroDocumento);
+
                 huesped.setDomicilio(domicilio);
                 huesped.setCorreo(correo);
                 huesped.setCelular(celular);
@@ -554,7 +561,7 @@ public boolean isCellEditable(int fila,int columna){
                 hData.modificarHuesped(huesped);
 
                 hData.modificarEstadoHuesped(numeroDocumento);
-                 jBModificar.setEnabled(true);
+                jBModificar.setEnabled(true);
             }
 
         } catch (NumberFormatException e) {
