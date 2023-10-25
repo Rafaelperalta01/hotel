@@ -67,7 +67,8 @@ public class ProductoServicioData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificación exitosa");
+                //JOptionPane.showMessageDialog(null, "Modificación exitosa");
+                System.out.println("Modificacion Exitosa");
             } else {
                 JOptionPane.showMessageDialog(null, "El producto o servicio no encontrado ");
             }
