@@ -41,7 +41,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jTextBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHabitacion = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        jTextRegistros = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(750, 500));
@@ -56,6 +56,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextBuscarFocusLost(evt);
+            }
+        });
+        jTextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextBuscarKeyReleased(evt);
             }
         });
 
@@ -78,8 +83,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTableHabitacion);
 
-        jTextField2.setBackground(new java.awt.Color(255, 204, 153));
-        jTextField2.setText("Total de registros:");
+        jTextRegistros.setBackground(new java.awt.Color(255, 204, 153));
+        jTextRegistros.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,7 +92,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +112,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
 
@@ -125,7 +130,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,6 +172,25 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
        jTextBuscar.setText("Buscar por Nª de habitación");  
     }//GEN-LAST:event_jTextBuscarFocusLost
 
+    private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
+        borrarFilas();
+        for (Habitacion hab : habitacion.listarHabitacion()) {
+            if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
+
+                modeloTabla.addRow(new Object[]{
+                    hab.getNumHabitacion(),
+                    hab.getPiso(),
+                    hab.isEstado(),
+                    hab.getIdTipoHabitacion().getCategoria(),
+                    hab.getIdTipoHabitacion().getCantPersonas(),
+                    hab.getIdTipoHabitacion().getCantCamas(),
+                    hab.getIdTipoHabitacion().getTipoCama(),
+                    hab.getIdTipoHabitacion().getPrecio(),
+                });
+            }
+        }
+    }//GEN-LAST:event_jTextBuscarKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -174,7 +198,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableHabitacion;
     private javax.swing.JTextField jTextBuscar;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextRegistros;
     // End of variables declaration//GEN-END:variables
  private void armarCabecera() {
         modeloTabla.addColumn("NºHabitación ");
@@ -213,4 +237,14 @@ private void cargarTabla(Habitacion hab) {
             cargarTabla(hab);
         }
     }
+       public void listaRegistros() {
+        int registro = 0;
+        for (entidades.Habitacion x : habitacion.listarHabitacion()) {
+            cargarTabla(x);
+            registro++;
+        }
+        jTextRegistros.setText("Total de registros: " + registro);
+
+    }
+    
 }

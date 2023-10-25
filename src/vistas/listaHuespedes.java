@@ -39,10 +39,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTHuesped = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jBsalir = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
+        jTextBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -54,7 +54,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Huespedes"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTHuesped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,12 +65,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTHuesped.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTHuespedMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTHuesped);
 
         jLabel11.setText("Ingresa un huesped");
 
@@ -78,6 +78,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
+            }
+        });
+
+        jTextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextBuscarKeyReleased(evt);
             }
         });
 
@@ -91,7 +97,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBsalir)
                 .addGap(39, 39, 39))
@@ -109,7 +115,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
@@ -125,7 +131,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(12, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,18 +150,37 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHuespedMouseClicked
         if (evt.getClickCount() == 2){
             
-         int fila = jTable1.getSelectedRow();
+         int fila = jTHuesped.getSelectedRow();
 
         if (fila != -1) {                      
-            VistaReserva.jTHusped.setText(jTable1.getValueAt(fila,0).toString());
-            VistaReserva.numDniHuesped = jTable1.getValueAt(fila,3).toString();
+            VistaReserva.jTHusped.setText(jTHuesped.getValueAt(fila,0).toString());
+            VistaReserva.numDniHuesped = jTHuesped.getValueAt(fila,3).toString();
         }
         dispose();
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTHuespedMouseClicked
+
+    private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
+        borrarFilas();
+        for (Huesped hu : huesped.listarHuesped()) {
+            if ((hu.getApellido().startsWith(jTextBuscar.getText())) || (hu.getNombre().startsWith(jTextBuscar.getText()))) {
+
+                modeloTabla.addRow(new Object[]{
+                    hu.getNombre(),
+                    hu.getApellido(),
+                    hu.getTipoDocumento(),
+                    hu.getNumeroDocumento(),
+                    hu.getDomicilio(),
+                    hu.getCorreo(),
+                    hu.getCelular(),
+                    hu.isEstado(),
+                });
+            }
+        }
+    }//GEN-LAST:event_jTextBuscarKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -164,8 +189,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField8;
+    public static javax.swing.JTable jTHuesped;
+    private javax.swing.JTextField jTextBuscar;
     // End of variables declaration//GEN-END:variables
  
     private void armarCabecera() {
@@ -177,7 +202,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         modeloTabla.addColumn("Email");
         modeloTabla.addColumn("Celular");
         modeloTabla.addColumn("Estado"); 
-        jTable1.setModel(modeloTabla);
+        jTHuesped.setModel(modeloTabla);
     }
 
     private void cargarTabla(Huesped h) {
@@ -201,4 +226,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         }
 
     }
+     private void borrarFilas() {
+
+        int filas = jTHuesped.getRowCount() - 1;
+        for (; filas >= 0; filas--) {
+            modeloTabla.removeRow(filas);
+        }
+     }
 }
