@@ -22,8 +22,8 @@ public boolean isCellEditable(int fila,int columna){
 };
     public GestionHabitacion() {
         initComponents();
-           armarCabecera();
-        llenarTabla();
+         //  armarCabecera();
+      //  llenarTabla();
     }
         
 
@@ -292,77 +292,77 @@ public boolean isCellEditable(int fila,int columna){
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
- private void limpiarCampos() {
-        jTNombre.setText("");
-        jTApellido.setText("");
-        jTNumeroDocumento.setText("");
-        jTDomicilio.setText("");
-        jTCorreo.setText("");
-        jTTelefono.setText("");
-
-
-}
-    private void armarCabecera(){
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Tipo de Documento");
-        modelo.addColumn("N° de Documento");
-        modelo.addColumn("Domicilio");
-        modelo.addColumn("Correo");
-        modelo.addColumn("Celular");
-       // modelo.addColumn("Estado");
-        jTTablaHuesped.setModel(modelo);
-    }
-    
-    private void cargarTabla(Huesped hues){
-       modelo.addRow(new Object[]{
-            hues.getNombre(),
-            hues.getApellido(),
-            hues.getTipoDocumento(),
-            hues.getNumeroDocumento(),
-            hues.getDomicilio(),
-            hues.getCorreo(),
-            hues.getCelular()
-          
-          
-        });
-       
-       
-
-}
-    private void llenarTabla(){
-        for(Huesped huesped: hData.listarHuespedEstadoTrue()){
-            cargarTabla(huesped);
-        }
-    }
-    
-        private void borrarFilas(){
-            int f=jTTablaHuesped.getRowCount()-1;
-            for(;f>=0;f--){
-                modelo.removeRow(f);
-            }
-    
-      }
-  private void limpiarTabla() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) jTTablaHuesped.getModel();
-        modeloTabla.setRowCount(0);
-
-  }
-  private void camposDeshabilitados(){
-       jTNombre.setEnabled(false);
-        jTApellido.setEnabled(false);
-        jTNumeroDocumento.setEnabled(false);
-        jTDomicilio.setEnabled(false);
-        jTCorreo.setEnabled(false);
-        jTTelefono.setEnabled(false);
-      
-  }
-  private void habilitarCampos(){
-      jTNombre.setEnabled(true);
-        jTApellido.setEnabled(true);
-        jTNumeroDocumento.setEnabled(true);
-        jTDomicilio.setEnabled(true);
-        jTCorreo.setEnabled(true);
-        jTTelefono.setEnabled(true);
-  }
+// private void limpiarCampos() {
+//        jTNombre.setText("");
+//        jTApellido.setText("");
+//        jTNumeroDocumento.setText("");
+//        jTDomicilio.setText("");
+//        jTCorreo.setText("");
+//        jTTelefono.setText("");
+//
+//
+//}
+//    private void armarCabecera(){
+//        modelo.addColumn("Nombre");
+//        modelo.addColumn("Apellido");
+//        modelo.addColumn("Tipo de Documento");
+//        modelo.addColumn("N° de Documento");
+//        modelo.addColumn("Domicilio");
+//        modelo.addColumn("Correo");
+//        modelo.addColumn("Celular");
+//       // modelo.addColumn("Estado");
+//        jTTablaHuesped.setModel(modelo);
+//    }
+//    
+//    private void cargarTabla(Huesped hues){
+//       modelo.addRow(new Object[]{
+//            hues.getNombre(),
+//            hues.getApellido(),
+//            hues.getTipoDocumento(),
+//            hues.getNumeroDocumento(),
+//            hues.getDomicilio(),
+//            hues.getCorreo(),
+//            hues.getCelular()
+//          
+//          
+//        });
+//       
+//       
+//
+//}
+//    private void llenarTabla(){
+//        for(Huesped huesped: hData.listarHuespedEstadoTrue()){
+//            cargarTabla(huesped);
+//        }
+//    }
+//    
+//        private void borrarFilas(){
+//            int f=jTTablaHuesped.getRowCount()-1;
+//            for(;f>=0;f--){
+//                modelo.removeRow(f);
+//            }
+//    
+//      }
+//  private void limpiarTabla() {
+//        DefaultTableModel modeloTabla = (DefaultTableModel) jTTablaHuesped.getModel();
+//        modeloTabla.setRowCount(0);
+//
+//  }
+//  private void camposDeshabilitados(){
+//       jTNombre.setEnabled(false);
+//        jTApellido.setEnabled(false);
+//        jTNumeroDocumento.setEnabled(false);
+//        jTDomicilio.setEnabled(false);
+//        jTCorreo.setEnabled(false);
+//        jTTelefono.setEnabled(false);
+//      
+//  }
+//  private void habilitarCampos(){
+//      jTNombre.setEnabled(true);
+//        jTApellido.setEnabled(true);
+//        jTNumeroDocumento.setEnabled(true);
+//        jTDomicilio.setEnabled(true);
+//        jTCorreo.setEnabled(true);
+//        jTTelefono.setEnabled(true);
+//  }
 }

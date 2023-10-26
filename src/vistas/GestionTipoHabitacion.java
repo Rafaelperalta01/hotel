@@ -98,11 +98,6 @@ public boolean isCellEditable(int fila,int columna){
         jLabel6.setText("Tipo de cama:");
 
         jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estandar Individual", "Estandar Doble", "Estandar Triple", "Premium Individual", "Premium Doble", "Premium Triple", "Suite Lujo" }));
-        jCCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCCategoriaActionPerformed(evt);
-            }
-        });
 
         jTCantPersonas.setBackground(new java.awt.Color(255, 204, 153));
 
@@ -324,7 +319,7 @@ public boolean isCellEditable(int fila,int columna){
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
-        jTTipoHabitacion.clearSelection();
+        
         
          try{ 
         String categoria = (String) jCCategoria.getSelectedItem();
@@ -343,38 +338,24 @@ public boolean isCellEditable(int fila,int columna){
        
          
             int filaSeleccionada = jTTipoHabitacion.getSelectedRow();// traigo la fila seleccionada
-
+          
             if (filaSeleccionada != -1) {
-
-                Huesped huespedmodificado = tipoData.buscarTipoHabPorId(0));
-                if (huespedmodificado != null) {
-                    huespedmodificado.setNombre(nombre);
-                    huespedmodificado.setApellido(apellido);
-                    huespedmodificado.setTipoDocumento(tipoDocumento);
-                    huespedmodificado.setNumeroDocumento(numeroDocumento);
+                      Integer id=(Integer)jTTipoHabitacion.getValueAt(filaSeleccionada, 0);
+                TipoHabitacion tipoHabModificado = tipoData.buscarTipoHabPorId(id);
+                if (tipoHabModificado != null) {
+                   tipoHabModificado.setCategoria(categoria);
+                    tipoHabModificado.setCantPersonas(cantidadPersonas);
+                    tipoHabModificado.setCantCamas(cantidadCamas);
+                    tipoHabModificado.setTipoCama(tipoCama);
               
-                    huespedmodificado.setDomicilio(domicilio);
-                    huespedmodificado.setCorreo(correo);
-                    huespedmodificado.setCelular(celular);
-                    hData.modificarHuesped(huespedmodificado);
+                   tipoHabModificado.setPrecio(precio);
+                   
+                    tipoData.modificarTipoDeHabitacion(tipoHabModificado);
                   
                 }
-            } else {
-
-                huesped.setNombre(nombre);
-                huesped.setApellido(apellido);
-                huesped.setTipoDocumento(tipoDocumento);
-                huesped.setNumeroDocumento(numeroDocumento);
-
-                huesped.setDomicilio(domicilio);
-                huesped.setCorreo(correo);
-                huesped.setCelular(celular);
-
-                hData.modificarHuesped(huesped);
-
-                hData.modificarEstadoHuesped(numeroDocumento);
-                jBEditar.setEnabled(true);
-            }
+            }  else {
+    JOptionPane.showMessageDialog(this, "Debes seleccionar una fila antes de editar.");
+}
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros ");
@@ -385,7 +366,7 @@ public boolean isCellEditable(int fila,int columna){
         limpiarTabla();
         llenarTabla();
 
-
+        jTTipoHabitacion.clearSelection();
           
     }//GEN-LAST:event_jBEditarActionPerformed
 
@@ -426,16 +407,31 @@ public boolean isCellEditable(int fila,int columna){
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
+          int respuesta = JOptionPane.showConfirmDialog(null,
+                "Desea eliminar el tipo de Habitación", "Eliminar tipo de Habitación", JOptionPane.OK_OPTION);
+        int filaSeleccionada = jTTipoHabitacion.getSelectedRow();
+
+        if (respuesta == 0 && filaSeleccionada != -1) {
+
+           int id= (Integer) jTTipoHabitacion.getValueAt(filaSeleccionada, 0);
+
+            tipoData.eliminarTipoHabitacion(id);
+           jBEditar.setEnabled(false);
+            limpiarTabla();
+            llenarTabla();
+            limpiarCampos();
+            camposDeshabilitados();
+           // listaRegistros();
+           
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
+        }
+                
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBBuscarTipoH4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarTipoH4ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBBuscarTipoH4ActionPerformed
-
-    private void jCCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCCategoriaActionPerformed
 
     private void jTTipoHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTipoHabitacionMouseClicked
           habilitarCampos();
@@ -448,11 +444,11 @@ public boolean isCellEditable(int fila,int columna){
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
             
             
-            String categoria=(String)jTTipoHabitacion.getValueAt(filaSeleccionada, 0);
-              Integer cantPersonas=(Integer)jTTipoHabitacion.getValueAt(filaSeleccionada, 1);
-             Integer cantCamas=(Integer)jTTipoHabitacion.getValueAt(filaSeleccionada, 2);
-             String tipoCama=(String)jTTipoHabitacion.getValueAt(filaSeleccionada, 3);
-             double precio=(Double)jTTipoHabitacion.getValueAt(filaSeleccionada, 4);
+            String categoria=(String)jTTipoHabitacion.getValueAt(filaSeleccionada, 1);
+              Integer cantPersonas=(Integer)jTTipoHabitacion.getValueAt(filaSeleccionada, 2);
+             Integer cantCamas=(Integer)jTTipoHabitacion.getValueAt(filaSeleccionada, 3);
+             String tipoCama=(String)jTTipoHabitacion.getValueAt(filaSeleccionada, 4);
+             double precio=(Double)jTTipoHabitacion.getValueAt(filaSeleccionada, 5);
             
            
            
@@ -502,6 +498,7 @@ public boolean isCellEditable(int fila,int columna){
 
 }
     private void armarCabecera(){
+        modelo.addColumn("Id");
         modelo.addColumn("Categoria");
         modelo.addColumn("Cantidad de Personas");
         modelo.addColumn("Cantidad de camas");
@@ -513,6 +510,7 @@ public boolean isCellEditable(int fila,int columna){
     
     private void cargarTabla(TipoHabitacion thab){
        modelo.addRow(new Object[]{
+           thab.getIdTipoHabitacion(),
            thab.getCategoria(),
            thab.getCantPersonas(),
            thab.getCantCamas(),
