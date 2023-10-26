@@ -549,14 +549,14 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         } else {
             int fila = jTablareservas.getSelectedRow();
-            if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
-             //   Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 15).toString());
-                Pagos pago = new Pagos();
+            if (fila != -1){
+                PagosView.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 15).toString());
+                PagosView pago = new PagosView();
                 Menu.escritorio.add(pago);
                 pago.moveToFront();
                 pago.setVisible(true);     
             } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para realizar el pago");
             }
         }
     }//GEN-LAST:event_jBpagoActionPerformed

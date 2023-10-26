@@ -43,6 +43,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jTnroRegistro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
         jTextbuscar.setBackground(new java.awt.Color(255, 204, 153));
@@ -203,7 +205,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jTProductoServicio.setModel(modeloTabla);
     }
 
-    private void cargarTabla(entidades.ProductoServicio ps) {
+    private void cargarTabla(ProductoServicio ps) {
         modeloTabla.addRow(new Object[]{
             ps.getIdProductoServicio(),
             ps.getCategoria(),
@@ -216,7 +218,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
     public void listaRegistros() {
         int registro = 0;
-        for (entidades.ProductoServicio x : proServ.listarProductoServicio()) {
+        for (ProductoServicio x : proServ.listarProductoServicio()) {
             cargarTabla(x);
             registro++;
         }
