@@ -2,6 +2,7 @@
 package entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class Pagos {
@@ -10,13 +11,13 @@ public class Pagos {
     private Reserva idReserva;
     private double importeTotal;
     private String tipoComprobante;
-    private Date fechaEmision;
+    private LocalDate fechaEmision;
     private String medioPago;
 
     public Pagos() {
     }
 
-    public Pagos(Reserva idReserva, double importeTotal, String tipoComprobante, Date fechaEmision, String medioPago) {
+    public Pagos(Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago) {
         this.idReserva = idReserva;
         this.importeTotal = importeTotal;
         this.tipoComprobante = tipoComprobante;
@@ -24,7 +25,7 @@ public class Pagos {
         this.medioPago = medioPago;
     }
 
-    public Pagos(int idPagos, Reserva idReserva, double importeTotal, String tipoComprobante, Date fechaEmision, String medioPago) {
+    public Pagos(int idPagos, Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago) {
         this.idPagos = idPagos;
         this.idReserva = idReserva;
         this.importeTotal = importeTotal;
@@ -65,11 +66,11 @@ public class Pagos {
         this.tipoComprobante = tipoComprobante;
     }
 
-    public Date getFechaEmision() {
+    public LocalDate getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(Date fechaEmision) {
+    public void setFechaEmision(LocalDate fechaEmision) {
         this.fechaEmision = fechaEmision;
     }
 
