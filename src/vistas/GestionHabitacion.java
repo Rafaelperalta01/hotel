@@ -355,6 +355,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
 
   String categoria = (String) jTTablaHabitacion.getValueAt(filaSeleccionada, 0);
              Integer numHab = (Integer) jTTablaHabitacion.getValueAt(filaSeleccionada, 1);
+                jTNumHab.setEnabled(false);
             Integer piso = (Integer) jTTablaHabitacion.getValueAt(filaSeleccionada, 2);
             Boolean estado = (Boolean) jTTablaHabitacion.getValueAt(filaSeleccionada, 3);
 
@@ -379,7 +380,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
                  
         TipoHabitacion thab = (  TipoHabitacion) jCtipoHab.getSelectedItem();
         Integer numeroHabitacion = Integer.parseInt( jTNumHab.getText());
-        jTNumHab.setEnabled(false);
+     
         Integer piso =  Integer.parseInt(jTPiso.getText());
        boolean estado = false; // Inicializa como false por defecto
 
@@ -394,6 +395,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
                 Habitacion habEncontrada = habData.buscarHabitacion(numh);
                 if (habEncontrada != null) {
                    habEncontrada.setIdTipoHabitacion(thab);
+                     
                     habEncontrada.setNumHabitacion(numeroHabitacion);
                     habEncontrada.setPiso(piso);
                     habEncontrada.isEstado();
