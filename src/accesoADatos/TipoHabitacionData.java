@@ -231,8 +231,67 @@ public class TipoHabitacionData {
 
   
     
+     public List<TipoHabitacion> listarCategoria(){
+       String sql="SELECT categoria FROM tipohabitacion WHERE estado=1";
+
+       ArrayList<TipoHabitacion> thabitacion = new ArrayList<>();
+       
+       
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+              TipoHabitacion tipoHab=new TipoHabitacion();
+         
+                tipoHab.setCategoria(rs.getString("categoria"));
+              
+            
+               
+             thabitacion.add(tipoHab);
+                }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla tipo de habitacion"+ex.getMessage());
+        }
+        
+        return thabitacion;
+}
+               
     
+   
     
+    public List<TipoHabitacion> listarid(){
+       String sql="SELECT idTipoHabitacion,categoria FROM tipohabitacion WHERE estado=1";
+
+       ArrayList<TipoHabitacion> thabitacion = new ArrayList<>();
+       
+       
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+              TipoHabitacion tipoHab=new TipoHabitacion();
+                  tipoHab.setIdTipoHabitacion(rs.getInt("idTipoHabitacion"));
+                tipoHab.setCategoria(rs.getString("categoria"));
+              
+            
+               
+             thabitacion.add(tipoHab);
+                }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla tipo de habitacion"+ex.getMessage());
+        }
+        
+        return thabitacion;
+}
+               
     
     
             

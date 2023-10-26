@@ -69,39 +69,18 @@ public class HabitacionData {
         }
     }
     
-//     public void Baja_Habitacion(int numH) {
-//        // este método solo modifica el estado si la habitación está ocupada(1), libre(0)
-//
-//        String sql = "UPDATE habitacion SET estado = 0 WHERE numHabitacion = ? ";
-//        PreparedStatement ps = null;
-//        try {
-//            ps = con.prepareStatement(sql);
-//            ps.setInt(1, numH);
-//
-//            int fila = ps.executeUpdate();
-//
-//            if (fila == 1) {
-//                JOptionPane.showMessageDialog(null, "La habitación está vacía.");
-//            }
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
-//        }
-//    }
-//    
     public void modificarHabitacion(Habitacion hab) {
-        
-        String sql = "UPDATE habitacion SET idTipoHabitacion = ?, numHabitacion = ?, piso = ? WHERE idHabitacion = ?";
+        String sql = "UPDATE habitacion SET idTipoHabitacion = ?, piso = ?, estado = ? WHERE numHabitacion = ?";
+  
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, hab.getIdTipoHabitacion().getIdTipoHabitacion());
-            ps.setInt(2, hab.getNumHabitacion());
-            ps.setInt(3, hab.getPiso());
-            ps.setInt(4, hab.getIdHabitacion());
-            
+            ps.setInt(2, hab.getPiso());
+            ps.setBoolean(3, hab.isEstado());
+            ps.setInt(4, hab.getNumHabitacion());
+
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -377,4 +356,89 @@ public class HabitacionData {
    
          return hab;  
    }    
+  public ArrayList<Habitacion> listarestado() {
+        // lista todas las habitaciones de la base de datos segun si estan disponibles 
+
+        ArrayList<Habitacion> hab = new ArrayList<>();
+        String sql = "SELECT estado FROM habitacion";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+         
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Habitacion h = new Habitacion();
+                h.setIdHabitacion(rs.getInt("idHabitacion"));          
+                h.setIdTipoHabitacion(tipo.buscarTipoHabPorId(rs.getInt("idTipoHabitacion")));  
+                h.setNumHabitacion(rs.getInt("numHabitacion"));
+                h.setPiso(rs.getInt("piso"));
+                h.setEstado(rs.getBoolean("estado"));
+
+                hab.add(h);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion " + ex.getMessage());
+        }
+
+        return hab;
+    }
+  
+    public ArrayList<Habitacion> listarHabitacion_X_nro(int nro) {
+      
+
+        ArrayList<Habitacion> hab = new ArrayList<>();
+        String sql = "SELECT * FROM habitacion WHERE numHabitacion = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, nro);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Habitacion h = new Habitacion();
+                h.setIdHabitacion(rs.getInt("idHabitacion"));          
+                h.setIdTipoHabitacion(tipo.buscarTipoHabPorId(rs.getInt("idTipoHabitacion")));  
+                h.setNumHabitacion(rs.getInt("numHabitacion"));
+                h.setPiso(rs.getInt("piso"));
+                h.setEstado(rs.getBoolean("estado"));
+
+                hab.add(h);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion " + ex.getMessage());
+        }
+
+        return hab;
+    }
+      
+   // public void eliminarHabitacion (int numHab){
+//          String sql = "DELETE FROM habitacion WHERE numHabitacion = ?";
+//      PreparedStatement ps = null;
+//      
+//        try {
+//            ps = con.prepareStatement(sql);
+//            ps.setInt(1, numHab);
+//            
+//            int fila = ps.executeUpdate();
+//            
+//            if(fila == 1){
+//                JOptionPane.showMessageDialog(null,"Se eliminó la habitacion");                           
+//            }
+//            ps.close();
+//            
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Habitacion " +ex.getMessage());
+//        }
+//   }
+//    
 }//------------------fin-------------------

@@ -419,6 +419,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTbuscarHuesped">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTbuscarHuespedActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTbuscarHuespedKeyReleased"/>
           </Events>
         </Component>

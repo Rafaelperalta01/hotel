@@ -78,7 +78,7 @@ public class Habitacion {
     @Override
     public String toString() {
         return "Habitacion{" + "idHabitacion=" + idHabitacion + ", "
-                + "idTipoHabitacion=" + idTipoHabitacion + ", numHabitacion=" + numHabitacion
+                + "idTipoHabitacion=" + idTipoHabitacion.getCategoria() + ", numHabitacion=" + numHabitacion
                 + ", piso=" + piso +", estado=" + estado + '}';
     }
     

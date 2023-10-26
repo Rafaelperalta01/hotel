@@ -25,7 +25,7 @@ public boolean isCellEditable(int fila,int columna){
          camposDeshabilitados();
         jBEditar.setEnabled(false);
         jBGuardar.setEnabled(false);
-        jBEliminar.setEnabled(false);
+
     }
 
     /**
@@ -163,7 +163,7 @@ public boolean isCellEditable(int fila,int columna){
                 .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(jPtipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPtipoHabLayout.createSequentialGroup()
                     .addGap(154, 154, 154)
@@ -406,36 +406,13 @@ public boolean isCellEditable(int fila,int columna){
                          
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-          int respuesta = JOptionPane.showConfirmDialog(null,
-                "Desea eliminar el tipo de Habitación", "Eliminar tipo de Habitación", JOptionPane.OK_OPTION);
-        int filaSeleccionada = jTTipoHabitacion.getSelectedRow();
-
-        if (respuesta == 0 && filaSeleccionada != -1) {
-
-           int id= (Integer) jTTipoHabitacion.getValueAt(filaSeleccionada, 0);
-
-            tipoData.eliminarTipoHabitacion(id);
-           jBEditar.setEnabled(false);
-            limpiarTabla();
-            llenarTabla();
-            limpiarCampos();
-            camposDeshabilitados();
-           // listaRegistros();
-           
-        } else {
-            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
-        }
-                
-    }//GEN-LAST:event_jBEliminarActionPerformed
-
     private void jBBuscarTipoH4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarTipoH4ActionPerformed
         dispose();
     }//GEN-LAST:event_jBBuscarTipoH4ActionPerformed
 
     private void jTTipoHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTipoHabitacionMouseClicked
           habilitarCampos();
-        jBEliminar.setEnabled(true);
+
         jBEditar.setEnabled(true);
         jBGuardar.setEnabled(false);
         
@@ -462,6 +439,29 @@ public boolean isCellEditable(int fila,int columna){
         }
                     
     }//GEN-LAST:event_jTTipoHabitacionMouseClicked
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null,
+            "Desea eliminar el tipo de Habitación", "Eliminar tipo de Habitación", JOptionPane.OK_OPTION);
+        int filaSeleccionada = jTTipoHabitacion.getSelectedRow();
+
+        if (respuesta == 0 && filaSeleccionada != -1) {
+
+            int id= (Integer) jTTipoHabitacion.getValueAt(filaSeleccionada, 0);
+
+            tipoData.eliminarTipoHabitacion(id);
+            jBEditar.setEnabled(false);
+            limpiarTabla();
+            llenarTabla();
+            limpiarCampos();
+            camposDeshabilitados();
+            // listaRegistros();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar");
+        }
+
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

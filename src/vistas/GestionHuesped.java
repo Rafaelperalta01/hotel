@@ -24,6 +24,7 @@ public boolean isCellEditable(int fila,int columna){
         jBModificar.setEnabled(false);
         jBGuardar.setEnabled(false);
         jBEliminar.setEnabled(false);
+    
       //  listaRegistros();
     }
 
@@ -247,6 +248,11 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
+        jTbuscarHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTbuscarHuespedActionPerformed(evt);
+            }
+        });
         jTbuscarHuesped.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTbuscarHuespedKeyReleased(evt);
@@ -577,6 +583,10 @@ public boolean isCellEditable(int fila,int columna){
         evt.consume();
         }
     }//GEN-LAST:event_jTApellidoKeyTyped
+
+    private void jTbuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbuscarHuespedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTbuscarHuespedActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
