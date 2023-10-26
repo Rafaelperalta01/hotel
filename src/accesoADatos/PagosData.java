@@ -150,7 +150,7 @@ public class PagosData {
            while (rs.next()) {
                Pagos pagos = new Pagos();
                pagos.setIdPagos(rs.getInt("idPagos"));
-               pagos.setIdReserva((Reserva)rs.getObject("idReserva"));
+               pagos.setIdReserva(rdata.buscarReservaId(rs.getInt("idReserva")));
                pagos.setImporteTotal(rs.getDouble("importeTotal"));
                pagos.setTipoComprobante(rs.getString("tipoComprobante"));
                pagos.setFechaEmision(rs.getDate("fechaEmision").toLocalDate());

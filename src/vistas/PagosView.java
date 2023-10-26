@@ -7,15 +7,19 @@ package vistas;
 
 import accesoADatos.CosumoData;
 import accesoADatos.PagosData;
+import accesoADatos.ProductoServicioData;
 import accesoADatos.ReservaData;
 import entidades.Consumo;
 import entidades.Pagos;
+import entidades.ProductoServicio;
 import entidades.Reserva;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static vistas.Consumos.idServicios;
+import static vistas.Consumos.jTextUnidades;
 
 /**
  *
@@ -24,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class PagosView extends javax.swing.JInternalFrame {
 
     LocalDate fechaActual = LocalDate.now();
+    public ProductoServicioData p = new ProductoServicioData();
     public ReservaData res = new ReservaData();
     public Reserva reserva = res.buscarReservaId(idReserva);
     public CosumoData c = new CosumoData();
@@ -46,8 +51,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         inicio();
         armarCabeceraListaConsumo();
         armarCabeceraListaPagos();
-        listaConsumo();
-        listaPago();
+        listaConsumo();       
         CB_MedioDePago();
         CB_Comprobantes();
      
@@ -73,6 +77,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jDCFechaEmision = new com.toedter.calendar.JDateChooser();
+        jBRegistrarPago = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -81,9 +86,9 @@ public class PagosView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaConsumo = new javax.swing.JTable();
         jBeditar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaPagos = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -135,6 +140,14 @@ public class PagosView extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 346, -1, 20));
         jPanel1.add(jDCFechaEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 190, -1));
 
+        jBRegistrarPago.setText("Registrar Pago");
+        jBRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegistrarPagoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("PAGOS");
@@ -171,21 +184,26 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 153));
+        jButton2.setText("Detalle de consumos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jBeditar)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelConsumoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(164, 164, 164))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +213,9 @@ public class PagosView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelConsumoTotal)
-                    .addComponent(jBeditar))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBeditar)
+                        .addComponent(jButton2)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -203,9 +223,6 @@ public class PagosView extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 204, 153));
         jButton1.setText("Imprimir comprobante");
-
-        jButton2.setBackground(new java.awt.Color(255, 204, 153));
-        jButton2.setText("Detalle de consumos");
 
         jTablaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,18 +253,15 @@ public class PagosView extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addGap(67, 67, 67)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBsalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(197, 197, 197)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBsalir))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -255,7 +269,6 @@ public class PagosView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jBsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -316,32 +329,90 @@ public class PagosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
-       if (modeloTablaConsumo.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
 
+        String cantidad = null;
+
+        if (modeloTablaConsumo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
         } else {
             int fila = jTablaConsumo.getSelectedRow();
+
             if (fila != -1) {
-                Consumos.idReserva = idReserva;
-                Consumos consu = new Consumos();
-                Menu.escritorio.add(consu);
-                consu.moveToFront();
-                consu.setVisible(true);
 
-                double costo = 0;
-                for (Consumo co : c.listarProductoServicioPorIdRegistro(idReserva)) {
-                    costo += co.getCostoTotal();
+                if (0 == JOptionPane.showConfirmDialog(null, "Desea editar las unidades ?", "Modificar Consumo", JOptionPane.YES_NO_OPTION)) {
+                    cantidad = JOptionPane.showInputDialog(null, "Ingrese la cantidad de unidades", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                    int cantUni = Integer.parseInt(jTablaConsumo.getValueAt(fila, 2).toString());
+
+                    if ((cantidad != null) && esNumeroValido(cantidad) && !cantidad.equals(String.valueOf(cantUni))) {
+
+                        ProductoServicio pys = p.buscarProductoServicio(jTablaConsumo.getValueAt(fila, 1).toString());
+                        pys.setStock(pys.getStock() + Integer.parseInt(jTablaConsumo.getValueAt(fila, 2).toString()));
+                        p.modificarProductoServicio(pys);
+
+                        if (Integer.parseInt(cantidad) <= pys.getStock()) {
+
+                            pys.setStock(pys.getStock() - Integer.parseInt(cantidad));
+                            p.modificarProductoServicio(pys);
+
+                            int cant = Integer.parseInt(cantidad);
+                            double precio = pys.getPrecioVenta();
+                            Consumo com = c.buscarConsumoPorId(Integer.parseInt(jTablaConsumo.getValueAt(fila, 0).toString()));
+                            com.setUnidades(cant);
+                            com.setCostoTotal(cant * precio);
+                            c.modificarUnidadesCosumidas(com);
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No hay stock");
+                            pys.setStock(pys.getStock() - Integer.parseInt(jTablaConsumo.getValueAt(fila, 2).toString()));
+                            p.modificarProductoServicio(pys);
+                            jTextUnidades.setText(jTablaConsumo.getValueAt(fila, 2).toString());
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El ingreso no es valido, no hubo modificaciones");
+                    }
                 }
-                jTextImporteTotal.setText(String.valueOf(costo + Double.parseDouble(jTextImporteAlojamiento.getText())));
-
             } else {
-                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
+                JOptionPane.showMessageDialog(null, "Seleccione un consumo con un click ");
             }
         }
+      
+        modeloTablaConsumo.setRowCount(0);
+        listaConsumo();
+        jTablaConsumo.clearSelection();
     }//GEN-LAST:event_jBeditarActionPerformed
+
+    private void jBRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarPagoActionPerformed
+        
+        // si comprobante y medios de pagos tienen datos validos
+        //cargar la tabla con los datos 
+        //cargar a la base de datos el pago
+        //eliminar del registro
+        if ((!jCbComprobante.getSelectedItem().toString().equals("  -- Seleccionar Item -- "))&&
+            (!jCbMedioDePago.getSelectedItem().toString().equals("  -- Seleccionar Item -- "))){
+
+        double impTot=Double.parseDouble(jTextImporteTotal.getText().toString());
+            String tcomprobante = jCbComprobante.getSelectedItem().toString();
+            String mp = jCbMedioDePago.getSelectedItem().toString();
+
+            Pagos pag = new Pagos(reserva, impTot, tcomprobante, fechaActual, mp);
+            pagos.guardarpagos(pag);
+            modeloTablaPagos.addRow(new Object[]{
+                pag.getIdPagos(),
+                pag.getIdReserva().getIdReserva(),
+                pag.getImporteTotal(),
+                pag.getFechaEmision(),
+                pag.getTipoComprobante(),
+                pag.getMedioPago()
+            });
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Elija Comprobante y Método de pago");
+        }
+    }//GEN-LAST:event_jBRegistrarPagoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBRegistrarPago;
     private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
@@ -438,18 +509,19 @@ public class PagosView extends javax.swing.JInternalFrame {
     }
 
     private void armarCabeceraListaConsumo() {
-        modeloTablaConsumo.addColumn("Producto o Servicio");//0
-        modeloTablaConsumo.addColumn("Cantidad");//1
-        modeloTablaConsumo.addColumn("Precio");//2
+        modeloTablaConsumo.addColumn("Id");//0
+        modeloTablaConsumo.addColumn("Producto o Servicio");//1
+        modeloTablaConsumo.addColumn("Cantidad");//2
+        modeloTablaConsumo.addColumn("Precio");//3
         jTablaConsumo.setModel(modeloTablaConsumo);
     }
 
     private void cargarTabla(Consumo c) {
         modeloTablaConsumo.addRow(new Object[]{
+            c.getIdConsumo(),
             c.getIdProductoServicio().getNombre(),
             c.getUnidades(),
-            c.getCostoTotal()
-        });
+            c.getCostoTotal(),});
     }
 
     public void listaConsumo() {
@@ -491,5 +563,16 @@ public class PagosView extends javax.swing.JInternalFrame {
             cargarTablaPagos(x);
         }
     }
-
+ public boolean esNumeroValido(String cadena) {
+        try {
+            int numero = Integer.parseInt(cadena);
+            // Verifica si es un número entero mayor que cero y menor que 9
+            return numero > 0 && numero <= 9;
+        } catch (NumberFormatException e) {
+            // Si se lanza una excepción, la cadena no es un número válido
+            return false;
+        }catch (NullPointerException e){
+            return false;
+        }
+}
 }
