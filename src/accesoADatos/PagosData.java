@@ -5,10 +5,12 @@ package accesoADatos;
 import entidades.Pagos;
 import entidades.Reserva;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -37,7 +39,7 @@ public class PagosData {
            ps.setInt(1, pago.getIdReserva().getIdReserva());
            ps.setDouble(2, pago.getImporteTotal());
            ps.setString(3, pago.getTipoComprobante());
-           ps.setDate(4, pago.getFechaEmision());
+           ps.setDate(4, Date.valueOf(pago.getFechaEmision()));
            ps.setString(5, pago.getMedioPago());
           
            
@@ -86,7 +88,7 @@ public class PagosData {
             ps.setInt(1, pago.getIdReserva().getIdReserva());
             ps.setDouble(2, pago.getImporteTotal());
             ps.setString(3, pago.getTipoComprobante());
-            ps.setDate(4, pago.getFechaEmision());
+            ps.setDate(4, Date.valueOf(pago.getFechaEmision()));
             ps.setString(5, pago.getMedioPago());
             ps.setInt(6, pago.getIdPagos());
 
@@ -120,7 +122,7 @@ public class PagosData {
                pagos.setIdReserva((Reserva)rs.getObject("idReserva"));
                pagos.setImporteTotal(rs.getDouble("importeTotal"));
                pagos.setTipoComprobante(rs.getString("tipoComprobante"));
-               pagos.setFechaEmision(rs.getDate("fechaEmision"));
+               pagos.setFechaEmision(rs.getDate("fechaEmision").toLocalDate());
                pagos.setMedioPago(rs.getString("medioPago"));
                
                }else{
@@ -151,7 +153,7 @@ public class PagosData {
                pagos.setIdReserva((Reserva)rs.getObject("idReserva"));
                pagos.setImporteTotal(rs.getDouble("importeTotal"));
                pagos.setTipoComprobante(rs.getString("tipoComprobante"));
-               pagos.setFechaEmision(rs.getDate("fechaEmision"));
+               pagos.setFechaEmision(rs.getDate("fechaEmision").toLocalDate());
                pagos.setMedioPago(rs.getString("medioPago"));
                
                    
