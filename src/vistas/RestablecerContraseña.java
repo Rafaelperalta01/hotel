@@ -156,6 +156,12 @@ public class RestablecerContraseña extends javax.swing.JFrame {
         // TODO add your handling code here:
         UsuariosData us = new UsuariosData();
         boolean existe = us.RecuperarCuenta(tfEmail.getText());
+        
+        if(tfEmail.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debes ingresar un email");
+            return;
+        }
+        
         if(existe){
             JOptionPane.showMessageDialog(null, "Modifica y guarda tu contraseña");
             activarCampos(true);
@@ -170,6 +176,10 @@ public class RestablecerContraseña extends javax.swing.JFrame {
     private void btnGuardarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarContraseñaActionPerformed
         UsuariosData us = new UsuariosData();
         String email = tfEmail.getText();
+        if(jpConstraseñaNueva.getText().equals("") || jpConfirmar.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debes ingresar una contraseña");
+            return;
+        }
         if(jpConstraseñaNueva.getText().equals(jpConfirmar.getText())){
             us.ModificarContraseña(jpConfirmar.getText(), email);
             this.dispose();
@@ -181,6 +191,10 @@ public class RestablecerContraseña extends javax.swing.JFrame {
     //buscar correo con enter
     private void tfEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEmailKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if(tfEmail.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debes ingresar un email");
+            return;
+        }
             btnEnviar.doClick(); 
         }
     }//GEN-LAST:event_tfEmailKeyPressed
