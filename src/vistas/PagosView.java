@@ -13,6 +13,8 @@ import entidades.Consumo;
 import entidades.Pagos;
 import entidades.ProductoServicio;
 import entidades.Reserva;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -86,9 +88,9 @@ public class PagosView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaConsumo = new javax.swing.JTable();
         jBeditar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBImprimirDetalleDeConsumos = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jBimprimirComprobante = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaPagos = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -184,8 +186,13 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 153));
-        jButton2.setText("Detalle de consumos");
+        jBImprimirDetalleDeConsumos.setBackground(new java.awt.Color(255, 204, 153));
+        jBImprimirDetalleDeConsumos.setText("Detalle de consumos");
+        jBImprimirDetalleDeConsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBImprimirDetalleDeConsumosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,7 +207,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jBeditar)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton2)
+                        .addComponent(jBImprimirDetalleDeConsumos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelConsumoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(164, 164, 164))
@@ -215,14 +222,19 @@ public class PagosView extends javax.swing.JInternalFrame {
                     .addComponent(jLabelConsumoTotal)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBeditar)
-                        .addComponent(jButton2)))
+                        .addComponent(jBImprimirDetalleDeConsumos)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 153));
-        jButton1.setText("Imprimir comprobante");
+        jBimprimirComprobante.setBackground(new java.awt.Color(255, 204, 153));
+        jBimprimirComprobante.setText("Imprimir comprobante");
+        jBimprimirComprobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBimprimirComprobanteActionPerformed(evt);
+            }
+        });
 
         jTablaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,7 +268,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBimprimirComprobante)
                         .addGap(197, 197, 197)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,7 +280,7 @@ public class PagosView extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBimprimirComprobante)
                     .addComponent(jButton3)
                     .addComponent(jBsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -410,13 +422,38 @@ public class PagosView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBRegistrarPagoActionPerformed
 
+    private void jBImprimirDetalleDeConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirDetalleDeConsumosActionPerformed
+
+        PrinterJob job = PrinterJob.getPrinterJob();
+
+        if (job.printDialog()) {
+            try {
+                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
+            } catch (PrinterException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jBImprimirDetalleDeConsumosActionPerformed
+
+    private void jBimprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBimprimirComprobanteActionPerformed
+        PrinterJob job = PrinterJob.getPrinterJob();
+
+        if (job.printDialog()) {
+            try {
+                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
+            } catch (PrinterException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jBimprimirComprobanteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBImprimirDetalleDeConsumos;
     private javax.swing.JButton jBRegistrarPago;
     private javax.swing.JButton jBeditar;
+    private javax.swing.JButton jBimprimirComprobante;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCbComprobante;
     private javax.swing.JComboBox<String> jCbMedioDePago;
