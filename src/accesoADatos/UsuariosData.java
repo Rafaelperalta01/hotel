@@ -218,7 +218,7 @@ public class UsuariosData {
     }
     
     public List<Usuarios> ListarAdninistradores(){
-        String sql = "SELECT * FROM usuario WHERE cargo = 'admin'";
+        String sql = "SELECT * FROM usuario WHERE cargo = 'admin' and estado = 1";
 
         ArrayList<Usuarios> users = new ArrayList<>();
 
@@ -251,7 +251,7 @@ public class UsuariosData {
     }
     
     public List<Usuarios> ListarRecepcionistas(){
-        String sql = "SELECT * FROM usuario WHERE cargo = 'recepcionista'";
+        String sql = "SELECT * FROM usuario WHERE cargo = 'recepcionista' and estado = 1";
 
         ArrayList<Usuarios> users = new ArrayList<>();
 
