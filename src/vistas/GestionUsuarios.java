@@ -17,7 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class GestionUsuarios extends javax.swing.JInternalFrame {
-    private boolean operacion; 
+
+    private UsuariosData userD = new UsuariosData();
+    private Usuarios user = null;
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -42,14 +44,13 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        tfBuscarDni = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         tfApellido = new javax.swing.JTextField();
@@ -61,22 +62,27 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         btnCrear = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         tfContraseña = new javax.swing.JTextField();
-        rbEstado = new javax.swing.JCheckBox();
-        jLabel10 = new javax.swing.JLabel();
         btnRefresh = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        tfFiltrarDni = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
         btnRecepcionistas = new javax.swing.JButton();
         btnAdministradores = new javax.swing.JButton();
         btnDefault = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setMaximumSize(new java.awt.Dimension(2117483647, 2147483647));
 
@@ -102,29 +108,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Direccion");
 
-        tfBuscarDni.setForeground(new java.awt.Color(153, 153, 153));
-        tfBuscarDni.setText("Buscar por dni");
-        tfBuscarDni.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfBuscarDniFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfBuscarDniFocusLost(evt);
-            }
-        });
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Cargo");
 
-        btnModificar.setText("Modificar");
+        btnModificar.setText("Nuevo");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -142,10 +130,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña");
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Estado");
-
         btnRefresh.setText("<=");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,53 +143,37 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(rbEstado)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(tfNombre)
-                            .addComponent(tfApellido)
-                            .addComponent(tfDni)
-                            .addComponent(tfSexo)
-                            .addComponent(tfDireccion)
-                            .addComponent(tfCargo)
-                            .addComponent(tfContraseña)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(tfBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(tfNombre)
+                    .addComponent(tfApellido)
+                    .addComponent(tfDni)
+                    .addComponent(tfSexo)
+                    .addComponent(tfDireccion)
+                    .addComponent(tfCargo)
+                    .addComponent(tfContraseña))
                 .addGap(76, 76, 76))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(btnModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
                 .addComponent(btnCrear)
                 .addGap(90, 90, 90))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnRefresh))
-                .addGap(28, 28, 28)
+                .addGap(94, 94, 94)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,14 +201,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(rbEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
-                    .addComponent(btnCrear))
+                    .addComponent(btnCrear)
+                    .addComponent(btnRefresh))
                 .addGap(30, 30, 30))
         );
 
@@ -255,6 +220,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         btnEliminar.setText("Eliminar");
@@ -263,24 +233,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-
-        tfFiltrarDni.setText("Filtrar por dni");
-        tfFiltrarDni.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfFiltrarDniFocusGained(evt);
-            }
-        });
-        tfFiltrarDni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tfFiltrarDniKeyPressed(evt);
-            }
-        });
-
-        jButton5.setText("Buscar");
-
-        jTextField9.setText("Filtrar por nombre");
-
-        jButton6.setText("Buscar");
 
         btnRecepcionistas.setText("Seleccionar los recepcionistas");
         btnRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
@@ -307,52 +259,36 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnRecepcionistas)
+                .addGap(29, 29, 29)
+                .addComponent(btnDefault)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnAdministradores)
+                .addGap(17, 17, 17))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnRecepcionistas)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnDefault)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdministradores))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tfFiltrarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5)
-                        .addGap(57, 57, 57)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)))
-                .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
-                .addGap(236, 236, 236))
+                .addGap(247, 247, 247))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfFiltrarDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRecepcionistas)
-                    .addComponent(btnAdministradores)
-                    .addComponent(btnDefault))
-                .addGap(38, 38, 38)
+                    .addComponent(btnDefault)
+                    .addComponent(btnAdministradores))
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(67, 67, 67)
                 .addComponent(btnEliminar)
-                .addGap(47, 47, 47))
+                .addGap(68, 68, 68))
         );
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -397,73 +333,150 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        try {
-            if ("".equals(tfBuscarDni.getText())) { //si el campo codigo es vacio envio mensaje
-                JOptionPane.showMessageDialog(null, "Debe ingresar un dni");
-                return; //return para terminar la funcion y no arroje mas mensajes
-            }
-            
-            UsuariosData userD = new UsuariosData();
-            Usuarios user = userD.obtenerUsuarioPorDni(Integer.parseInt(tfBuscarDni.getText()));
-            tfNombre.setText(user.getNombre());
-            tfApellido.setText(user.getApellido());
-            tfDni.setText(Integer.toString(user.getDni()));
-            tfSexo.setText(user.getSexo());
-            tfDireccion.setText(user.getDireccion());
-            tfCargo.setText(user.getCargo());
-            tfContraseña.setText(user.getContraseña());
-            if(user.isEstado()){
-                rbEstado.setSelected(true);
-            }
-            JOptionPane.showMessageDialog(null, "Si vas a modificar datos, hazlos y presiona modificar.");
-            btnCrear.setEnabled(false);
-            
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Solo puedes ingresar enteros");
-            tfBuscarDni.setText("");
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
         
-        UsuariosData userD = new UsuariosData();
-        Usuarios user = new Usuarios();
-
-        user.setNombre(tfNombre.getText());
-        user.setApellido(tfApellido.getText());
-        user.setDni(Integer.parseInt(tfDni.getText()));
-        user.setSexo(tfSexo.getText());
-        user.setDireccion(tfDireccion.getText());
-        user.setCargo(tfCargo.getText());
-        user.setEstado(rbEstado.isSelected());
-        user.setContraseña(tfContraseña.getText());
+        String nombre = tfNombre.getText();
+        String ape = tfApellido.getText();
+        int dni = Integer.parseInt(tfDni.getText());
+        String sexo = tfSexo.getText();
+        String dir = tfDireccion.getText();
+        String cargo = tfCargo.getText();
+        String contra = tfContraseña.getText();
         
+        if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
+                || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
+                || tfContraseña.getText().isEmpty()) {
 
-        userD.modificarUsuario(user);
+            JOptionPane.showMessageDialog(null, "Hay campos vacios");
+            limpiarCampos();
+            return;
+        }
+
+        try {
+            int filaSeleccionada = jTable1.getSelectedRow();// traigo la fila seleccionada
+
+            if (filaSeleccionada != -1) {
+
+                Usuarios usuariomodificado = userD.obtenerUsuarioPorDni(dni);
+                if (usuariomodificado != null) {
+                    usuariomodificado.setNombre(nombre);
+                    usuariomodificado.setApellido(ape);
+                    usuariomodificado.setDni(dni);
+                    usuariomodificado.setSexo(sexo);
+                    usuariomodificado.setDireccion(dir);
+                    usuariomodificado.setCargo(cargo);
+                    usuariomodificado.setContraseña(contra);
+                    userD.modificarUsuario(usuariomodificado);
+                    limpiarCampos();
+                }
+            } else {
+                user.setNombre(nombre);
+                user.setApellido(ape);
+                user.setDni(dni);
+                user.setSexo(sexo);
+                user.setDireccion(dir);
+                user.setCargo(cargo);
+                user.setContraseña(contra);
+                
+                userD.modificarEstadoUsuario(dni);
+
+                 //userD.modificarEstadoHuesped(dni);
+                 btnModificar.setEnabled(true);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
+
+        }
         limpiarCampos();
-        tfBuscarDni.setText("");
-
+        limpiarTabla();
+        llenarTabla();
+    
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
+
+        String nombre = tfNombre.getText();
+        String ape = tfApellido.getText();
+        int dni = Integer.parseInt(tfDni.getText());
+        String sexo = tfSexo.getText();
+        String dir = tfDireccion.getText();
+        String cargo = tfCargo.getText();
+        String contra = tfContraseña.getText();
+        
+        if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
+                || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
+                || tfContraseña.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Hay campos vacios");
+            limpiarCampos();
+            return;
+        }
+
+        try {
+
+            user = userD.obtenerUsuarioPorDni(dni);
+
+            if (user != null) {
+                btnCrear.setEnabled(false);
+                JOptionPane.showMessageDialog(null,
+                        "El numero de documento ingresado ya se encuentra en la base de datos,"
+                        + " Por favor revise la información y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+
+                tfNombre.setText(user.getNombre());
+                tfApellido.setText(user.getApellido());
+                tfDni.setText(Integer.toString(user.getDni()));
+                tfSexo.setText(user.getSexo());
+                tfDireccion.setText(user.getDireccion());
+                tfCargo.setText(user.getCargo());
+                tfContraseña.setText(user.getContraseña());
+            }
+
+            if (user == null) {
+                user = new Usuarios(nombre, ape, dni, sexo, dir, cargo, true, contra);
+                userD.crearUsuario(user);
+
+                limpiarCampos();
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
+        }
+
+        /*huesped = hData.buscarHuespedPorDni(numeroDocumento);
+
+        if (huesped != null) {
+            jBGuardar.setEnabled(false);
+            JOptionPane.showMessageDialog(null,
+                    "El numero de documento ingresado ya se encuentra en la base de datos,"
+                    + " Por favor revise la información y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+
+            jTNombre.setText(huesped.getNombre());
+            jTApellido.setText(huesped.getApellido());
+            jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
+            jTNumeroDocumento.setText(huesped.getNumeroDocumento());
+            jTDomicilio.setText(huesped.getDomicilio());
+            jTCorreo.setText(huesped.getCorreo());
+            jTTelefono.setText(String.valueOf(huesped.getCelular()));
+            jBModificar.setEnabled(true);
+        }
+
         JOptionPane.showMessageDialog(null, "Llena los campos y crea");
+        rbEstado.setSelected(true);
         tfBuscarDni.setEnabled(false);
         btnBuscar.setEnabled(false);
         btnModificar.setEnabled(false);
-        try{
-            if(tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty() ||
-               tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty() || 
-               tfContraseña.getText().isEmpty() || rbEstado.isSelected()==false){
-                
+        try {
+            if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
+                    || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
+                    || tfContraseña.getText().isEmpty()) {
+
                 JOptionPane.showMessageDialog(null, "Hay campos vacios");
                 limpiarCampos();
                 return;
             }
-            
+
             String nombre = tfNombre.getText();
             String ape = tfApellido.getText();
             int dni = Integer.parseInt(tfDni.getText());
@@ -472,7 +485,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             String cargo = tfCargo.getText();
             String contra = tfContraseña.getText();
             boolean est = rbEstado.isSelected();
-            
+
             UsuariosData userD = new UsuariosData();
             Usuarios user = new Usuarios();
             user.setNombre(nombre);
@@ -483,111 +496,112 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             user.setCargo(cargo);
             user.setContraseña(contra);
             user.setEstado(est);
-            
+
             userD.crearUsuario(user);
             limpiarCampos();
             tfBuscarDni.setEnabled(true);
             btnBuscar.setEnabled(true);
             btnModificar.setEnabled(true);
-        }catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Ingresa valores válidos");
             limpiarCampos();
-        }
+        }*/
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void tfBuscarDniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarDniFocusGained
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_tfBuscarDniFocusGained
-    private void tfBuscarDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarDniFocusLost
-        
-    }//GEN-LAST:event_tfBuscarDniFocusLost
-
-    private void tfFiltrarDniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFiltrarDniFocusGained
-        tfFiltrarDni.setText("");
-    }//GEN-LAST:event_tfFiltrarDniFocusGained
-
     private void btnRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistasActionPerformed
-        
+
         limpiarTabla(); // limpio la tabla para que no se agreguen abajo de la default
         UsuariosData ud = new UsuariosData();
         for (Usuarios user : ud.ListarRecepcionistas()) { //cargo con el metodo
             cargarTabla(user);
         }
-        
+
     }//GEN-LAST:event_btnRecepcionistasActionPerformed
 
     private void btnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradoresActionPerformed
-        
+
         limpiarTabla(); // limpio la tabla para que no se agreguen abajo de la default
         UsuariosData ud = new UsuariosData();
         for (Usuarios user : ud.ListarAdninistradores()) { //cargo con el metodo
             cargarTabla(user);
         }
-        
+
     }//GEN-LAST:event_btnAdministradoresActionPerformed
 
     private void btnDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefaultActionPerformed
-        
+
         limpiarTabla();
         llenarTabla();
-        
+
     }//GEN-LAST:event_btnDefaultActionPerformed
 
-    private void tfFiltrarDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfFiltrarDniKeyPressed
-        
-        
-        
-    }//GEN-LAST:event_tfFiltrarDniKeyPressed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-    
+
         UsuariosData userD = new UsuariosData();
         int respuesta = JOptionPane.showConfirmDialog(null,
                 "Desea eliminar este usuario", "Eliminar Usuario", JOptionPane.OK_OPTION);
         int filaSeleccionada = jTable1.getSelectedRow();
 
-        if (respuesta != 0 && filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
-        } else {
-            int dni =  Integer.parseInt(jTable1.getValueAt(filaSeleccionada, 3).toString());
-
+        if (respuesta == 0 && filaSeleccionada != -1) {
+            int dni = Integer.parseInt(jTable1.getValueAt(filaSeleccionada, 2).toString());
             userD.eliminarUsuarioPorDni(dni);
+            limpiarCampos();
             limpiarTabla();
             llenarTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar");
         }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
         btnModificar.setEnabled(true);
         btnCrear.setEnabled(true);
-        btnBuscar.setEnabled(true);
-        tfBuscarDni.setText("");
         limpiarCampos();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void limpiarTabla(){
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+        activarCampos(true);
+        int filaSeleccionada = jTable1.getSelectedRow();// traigo la fila seleccionada
+
+        if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
+            String nombre = (String) jTable1.getValueAt(filaSeleccionada, 0);
+            String apellido = (String) jTable1.getValueAt(filaSeleccionada, 1);
+            int dni = (Integer) jTable1.getValueAt(filaSeleccionada, 2);
+            String sexo = (String) jTable1.getValueAt(filaSeleccionada, 3);
+            String domicilio = (String) jTable1.getValueAt(filaSeleccionada, 4);
+            String cargo = (String) jTable1.getValueAt(filaSeleccionada, 5);
+            String contra = jTable1.getValueAt(filaSeleccionada, 7).toString();
+
+            tfNombre.setText(nombre);
+            tfApellido.setText(apellido);
+            tfDni.setText(Integer.toString(dni));
+            tfSexo.setText(sexo);
+            tfDireccion.setText(domicilio);
+            tfCargo.setText(cargo);
+            tfContraseña.setText(contra);
+
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void limpiarTabla() {
         for (int i = 0; i < jTable1.getRowCount(); i++) {
-        modelo.removeRow(i);
-        i-=1;
+            modelo.removeRow(i);
+            i -= 1;
+        }
     }
-}
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministradores;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnDefault;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRecepcionistas;
     private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -598,17 +612,14 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JCheckBox rbEstado;
     private javax.swing.JTextField tfApellido;
-    private javax.swing.JTextField tfBuscarDni;
     private javax.swing.JTextField tfCargo;
     private javax.swing.JTextField tfContraseña;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfDni;
-    private javax.swing.JTextField tfFiltrarDni;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfSexo;
     // End of variables declaration//GEN-END:variables
@@ -638,12 +649,10 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfSexo.setText("");
         tfDireccion.setText("");
         tfCargo.setText("");
-        tfContraseña.setText("");
-        rbEstado.setSelected(false);
+        tfContraseña.setText("");;
     }
 
     private void armarCabecera() {
-        modelo.addColumn("idUsuario");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("DNI");
@@ -657,7 +666,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
 
     private void cargarTabla(Usuarios users) {
         modelo.addRow(new Object[]{
-            users.getIdUsuario(),
             users.getNombre(),
             users.getApellido(),
             users.getDni(),
