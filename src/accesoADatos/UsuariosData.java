@@ -282,5 +282,50 @@ public class UsuariosData {
 
         return users;
     }
+    
+    public boolean RecuperarCuenta(String email){
+        String sql = "SELECT email FROM usuario WHERE email = ? ";
+        boolean msj = false;
+        PreparedStatement ps = null;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                msj = true; //si existe el email manda un true
+            }else {
+                msj = false; //si no existe el email manda un false
+            }
+
+            ps.close();
+            
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla usuario (recuperar cuenta)");
+        }
+        return msj;
+    }
+    
+    public void ModificarContraseña(String contraseñaNueva, String email){
+        String sql = "UPDATE usuario SET contraseña = ? WHERE email = ?";
+        
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, contraseñaNueva);
+            ps.setString(2, email);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null,"La contraseña se modifico exitosamente. Inicia sesión");                           
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla usuario (m.modContra)");
+        }
+    }
 
 }
