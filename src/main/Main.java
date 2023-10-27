@@ -26,7 +26,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import vistas.Pagos;
+import vistas.PagosView;
 
 /**
  *

@@ -326,7 +326,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBproductoYservicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBproductoYservicioActionPerformed
-        ProductoServicio_vista ps = new ProductoServicio_vista();
+        ListaProductoServicio ps = new ListaProductoServicio();
         Menu.escritorio.add(ps);
         ps.setVisible(true);
         ps.moveToFront();

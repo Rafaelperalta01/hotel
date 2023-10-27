@@ -151,7 +151,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             int fila = jTable1.getSelectedRow();
 
             if (fila != -1) {
-                VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila, 0).toString());;
+                VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila, 0).toString());
                 //calcula los dias y los multiplica por el precio de la habitacion
                 double n = (Double.parseDouble(jTable1.getValueAt(fila, 7).toString()) * ChronoUnit.DAYS.between(fecha1, fecha2));
                 VistaReserva.jTImporte.setText(n + "");
@@ -204,4 +204,3 @@ private void cargarTabla(Habitacion hab) {
         }
     }
 }
-/////////////////

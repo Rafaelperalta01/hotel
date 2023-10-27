@@ -23,7 +23,7 @@ public class ProductoServicioData {
       
     public void guardarProductoServicio(ProductoServicio prodServ) {
 
-        String sql = "INSERT INTO productoservicio (categoria, nombre, descripcion, precioventa,stock) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO productoservicio (categoria, nombre, descripcion, precioventa,stock,estado) VALUES (?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -32,6 +32,7 @@ public class ProductoServicioData {
             ps.setString(3, prodServ.getDescripcion());
             ps.setDouble(4, prodServ.getPrecioVenta());
             ps.setInt(5, prodServ.getStock());
+            ps.setBoolean(6, prodServ.isEstado());
 
             ps.executeUpdate();
 
@@ -51,7 +52,7 @@ public class ProductoServicioData {
 
     public void modificarProductoServicio(ProductoServicio prodServ) {
 
-        String sql = "UPDATE productoservicio SET categoria=?,nombre=?,descripcion=?,precioVenta=?,stock=? WHERE idProductoServicio = ?";
+        String sql = "UPDATE productoservicio SET categoria=?,nombre=?,descripcion=?,precioVenta=?,stock=?,estado=? WHERE idProductoServicio = ?";
         PreparedStatement ps = null;
 
         try {
@@ -62,7 +63,8 @@ public class ProductoServicioData {
             ps.setString(3, prodServ.getDescripcion());
             ps.setDouble(4, prodServ.getPrecioVenta());
             ps.setInt(5, prodServ.getStock());
-            ps.setInt(6, prodServ.getIdProductoServicio());
+             ps.setBoolean(6, prodServ.isEstado());
+            ps.setInt(7, prodServ.getIdProductoServicio());
 
             int exito = ps.executeUpdate();
 
@@ -79,9 +81,10 @@ public class ProductoServicioData {
     }
     
     public void eliminarProductoServicio (int id){
-          String sql = "DELETE FROM productoservicio WHERE idProductoServicio = ?";
-      PreparedStatement ps = null;
-      
+  
+        
+           String sql = "UPDATE productoservicio SET estado = 0 WHERE idProductoServicio = ?";
+        PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -89,20 +92,22 @@ public class ProductoServicioData {
             int fila = ps.executeUpdate();
             
             if(fila == 1){
-                JOptionPane.showMessageDialog(null,"Se eliminó el producto/servicio");                           
+                JOptionPane.showMessageDialog(null,"Se eliminó el tipo el Producto/Servicio");                           
             }
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Producto/Servicio " +ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Producto/Servicio"+ex.getMessage());
         }
-   }
+    }
+        
+        
   
     public ProductoServicio buscarProductoServicio(String nombre) {//BUSQUEDA POR NOMBRE
 
         ProductoServicio prodServ = null;
 
-        String sql = "SELECT * FROM productoservicio WHERE nombre = ?";
+        String sql = "SELECT * FROM productoservicio WHERE nombre = ? And estado=1";
         PreparedStatement ps = null;
 
         try {
@@ -119,6 +124,7 @@ public class ProductoServicioData {
                 prodServ.setDescripcion(rs.getString("descripcion"));
                 prodServ.setPrecioVenta(rs.getDouble("precioVenta"));
                 prodServ.setStock(rs.getInt("stock"));
+                prodServ.setEstado(rs.getBoolean("estado"));
 
             } else {
                 JOptionPane.showMessageDialog(null, "El producto/servicio no existe");
@@ -152,6 +158,7 @@ public class ProductoServicioData {
                 prodServ.setDescripcion(rs.getString("descripcion"));
                 prodServ.setPrecioVenta(rs.getDouble("precioVenta"));
                 prodServ.setStock(rs.getInt("stock"));
+                prodServ.setEstado(rs.getBoolean("estado"));
 
             } else {
                 JOptionPane.showMessageDialog(null, "El producto/servicio no existe");
@@ -169,7 +176,7 @@ public class ProductoServicioData {
         
         ArrayList<ProductoServicio> prodServ = new ArrayList<>();
       
-        String sql = "SELECT * FROM productoservicio";
+        String sql = "SELECT * FROM productoservicio WHERE ESTADO=1";
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -185,6 +192,7 @@ public class ProductoServicioData {
                 pserv.setDescripcion(rs.getString("descripcion"));
                 pserv.setPrecioVenta(rs.getDouble("precioVenta"));
                 pserv.setStock(rs.getInt("stock"));
+                pserv.setEstado(rs.getBoolean("estado"));
                
                 prodServ.add(pserv);
                 
@@ -224,6 +232,7 @@ public class ProductoServicioData {
                 prodserv.setDescripcion(rs.getString("descripcion"));
                 prodserv.setPrecioVenta(rs.getDouble("precioVenta"));
                 prodserv.setStock(rs.getInt("stock"));
+                prodserv.setEstado(rs.getBoolean("estado"));
                
                 pserv.add(prodserv);
            
@@ -237,7 +246,37 @@ public class ProductoServicioData {
         return pserv;
     }
     
-    
-    
+    public List<ProductoServicio> listarPorNombre(String nombre) {
+
+        List<ProductoServicio> productoServicios= new ArrayList<ProductoServicio>();
+        String sql = "SELECT * FROM productoservicio "
+                + " WHERE nombre =? AND estado=1";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                 ProductoServicio prodserv = new ProductoServicio();
+                prodserv.setIdProductoServicio(rs.getInt("idProductoServicio"));
+                prodserv.setCategoria(rs.getString("categoria"));
+                prodserv.setNombre(rs.getString("nombre"));
+                prodserv.setDescripcion(rs.getString("descripcion"));
+                prodserv.setPrecioVenta(rs.getDouble("precioVenta"));
+                prodserv.setStock(rs.getInt("stock"));
+                prodserv.setEstado(rs.getBoolean("estado"));
+
+               productoServicios.add(prodserv);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener incripciones" + ex.getMessage());
+        }
+
+        return productoServicios;
+
+    }            
     
 }//------------------fin-------------------
