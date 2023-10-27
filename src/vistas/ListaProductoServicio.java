@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Pc
  */
-public class ProductoServicio_vista extends javax.swing.JInternalFrame {
+public class ListaProductoServicio extends javax.swing.JInternalFrame {
 public ProductoServicioData proServ = new ProductoServicioData();
 private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
@@ -23,7 +23,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     /**
      * Creates new form ProductoServicio
      */
-    public ProductoServicio_vista() {
+    public ListaProductoServicio() {
         initComponents();
          armarCabecera();
         listaRegistros();
