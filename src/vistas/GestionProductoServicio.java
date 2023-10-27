@@ -48,7 +48,6 @@ public boolean isCellEditable(int fila,int columna){
         jLabel3 = new javax.swing.JLabel();
         jTNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTDescripcion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTprecio = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -56,6 +55,10 @@ public boolean isCellEditable(int fila,int columna){
         jBNuevo = new javax.swing.JButton();
         jBguardar = new javax.swing.JButton();
         jBmodificar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTcodigoId = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTDescripcion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jTbuscar = new javax.swing.JTextField();
         jBLimpiarBusqueda = new javax.swing.JButton();
@@ -70,6 +73,12 @@ public boolean isCellEditable(int fila,int columna){
         jLabel2.setText("Categoria");
 
         jLabel3.setText("Nombre");
+
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Descripcion");
 
@@ -98,67 +107,95 @@ public boolean isCellEditable(int fila,int columna){
             }
         });
 
+        jLabel7.setText("Codigo:");
+
+        jTDescripcion.setColumns(20);
+        jTDescripcion.setRows(5);
+        jTDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTDescripcionKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTDescripcion);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jBNuevo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBguardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBmodificar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTstock)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jTprecio))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTNombre)
-                            .addComponent(jTDescripcion)
-                            .addComponent(jTprecio)
-                            .addComponent(jTstock, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jBNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBguardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBmodificar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(33, 33, 33))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(82, 82, 82)
+                                .addComponent(jTcodigoId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 79, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(54, 54, 54))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTNombre))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jTcodigoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(67, 67, 67)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBguardar)
@@ -211,6 +248,11 @@ public boolean isCellEditable(int fila,int columna){
         });
 
         jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -224,13 +266,13 @@ public boolean isCellEditable(int fila,int columna){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBeliminar)
                 .addGap(80, 80, 80))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBsalir)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBsalir)))
                 .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
@@ -243,7 +285,7 @@ public boolean isCellEditable(int fila,int columna){
                     .addComponent(jBeliminar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBsalir)
                 .addGap(26, 26, 26))
         );
@@ -256,15 +298,15 @@ public boolean isCellEditable(int fila,int columna){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,12 +333,14 @@ public boolean isCellEditable(int fila,int columna){
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         habilitarCampos();
        limpiarCampos();
+       jTcodigoId.setEnabled(false);
        jBguardar.setEnabled(true);
        jBmodificar.setEnabled(false);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
          try{ 
+               jTcodigoId.setEnabled(false);
         String categoria = (String) jCCategoria.getSelectedItem();
          String nombre = (String) jTNombre.getText();
            String descripcion = (String) jTDescripcion.getText();
@@ -336,21 +380,22 @@ public boolean isCellEditable(int fila,int columna){
 
         jBmodificar.setEnabled(true);
         jBguardar.setEnabled(false);
-        
+          jTcodigoId.setEnabled(false);
+          jBeliminar.setEnabled(true);
         int filaSeleccionada = Tablaprodserv.getSelectedRow();// traigo la fila seleccionada
 
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
+         //   Integer codigo = Integer.parseInt((String) Tablaprodserv.getValueAt(filaSeleccionada, 0));
+           Integer codigo=(Integer)Tablaprodserv.getValueAt(filaSeleccionada, 0);
+            String categoria=(String)Tablaprodserv.getValueAt(filaSeleccionada, 1);
+              String nombre=(String)Tablaprodserv.getValueAt(filaSeleccionada, 2);
+               String descripcion=(String)Tablaprodserv.getValueAt(filaSeleccionada, 3);
+               double precio=(Double)Tablaprodserv.getValueAt(filaSeleccionada, 4);
+              Integer stock=(Integer)Tablaprodserv.getValueAt(filaSeleccionada, 5);
             
             
-            String categoria=(String)Tablaprodserv.getValueAt(filaSeleccionada, 0);
-              String nombre=(String)Tablaprodserv.getValueAt(filaSeleccionada, 1);
-               String descripcion=(String)Tablaprodserv.getValueAt(filaSeleccionada, 2);
-               double precio=(Double)Tablaprodserv.getValueAt(filaSeleccionada, 3);
-              Integer stock=(Integer)Tablaprodserv.getValueAt(filaSeleccionada, 4);
-            
-            
-           
-           
+           jTcodigoId.setText(codigo+"");
+          
             jCCategoria.setSelectedItem(categoria);
             jTNombre.setText(nombre);
             jTDescripcion.setText(descripcion);
@@ -363,6 +408,7 @@ public boolean isCellEditable(int fila,int columna){
 
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
        try{ 
+             jTcodigoId.setEnabled(false);
         String categoria = (String) jCCategoria.getSelectedItem();
           String nombre = (String) jTNombre.getText();
       
@@ -419,13 +465,51 @@ public boolean isCellEditable(int fila,int columna){
 
     private void jTbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbuscarKeyReleased
         borrarFilas();
-        String nombre = jTbuscar.getText();
+        String nombre = jTbuscar.getText();//IgnoreCase
         for (ProductoServicio ps : psData.listarPorNombre(nombre)){
           
             if(ps.getNombre().startsWith(jTbuscar.getText()))
         cargarTabla(ps);
         }
     }//GEN-LAST:event_jTbuscarKeyReleased
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+          int respuesta = JOptionPane.showConfirmDialog(null,
+                "Desea eliminar este Producto/Serivio", "Eliminar Producto/Serivio", JOptionPane.OK_OPTION);
+        int filaSeleccionada = Tablaprodserv.getSelectedRow();
+
+        if (respuesta == 0 && filaSeleccionada != -1) {
+
+            Integer codigo = (Integer) Tablaprodserv.getValueAt(filaSeleccionada, 0);
+
+            psData.eliminarProductoServicio(codigo);
+           jBmodificar.setEnabled(false);
+            limpiarTabla();
+            llenarTabla();
+            limpiarCampos();
+            camposDeshabilitados();
+           // listaRegistros();
+           
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
+        }
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+         char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_jTNombreKeyTyped
+
+    private void jTDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDescripcionKeyTyped
+       char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_jTDescripcionKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -443,12 +527,15 @@ public boolean isCellEditable(int fila,int columna){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTDescripcion;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTDescripcion;
     private javax.swing.JTextField jTNombre;
     private javax.swing.JTextField jTbuscar;
+    private javax.swing.JTextField jTcodigoId;
     private javax.swing.JTextField jTprecio;
     private javax.swing.JTextField jTstock;
     // End of variables declaration//GEN-END:variables
@@ -461,6 +548,7 @@ public boolean isCellEditable(int fila,int columna){
 
 }
     private void armarCabecera(){
+        modelo.addColumn("codigo");
         modelo.addColumn("Categoria");
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
@@ -472,6 +560,8 @@ public boolean isCellEditable(int fila,int columna){
     
     private void cargarTabla(ProductoServicio prodServ){
        modelo.addRow(new Object[]{
+           
+           prodServ.getIdProductoServicio(),
            prodServ.getCategoria(),
            prodServ.getNombre(),
             prodServ.getDescripcion(),
@@ -504,6 +594,7 @@ public boolean isCellEditable(int fila,int columna){
 
   }
   private void camposDeshabilitados(){
+      jTcodigoId.setEnabled(false);
        jCCategoria.setEnabled(false);
       jTNombre.setEnabled(false);
         jTDescripcion.setEnabled(false);
@@ -511,6 +602,7 @@ public boolean isCellEditable(int fila,int columna){
         jTstock.setEnabled(false);
   }
   private void habilitarCampos(){
+       jTcodigoId.setEnabled(true);
       jCCategoria.setEnabled(true);
       jTNombre.setEnabled(true);
         jTDescripcion.setEnabled(true);

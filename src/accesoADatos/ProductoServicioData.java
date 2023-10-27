@@ -107,7 +107,7 @@ public class ProductoServicioData {
 
         ProductoServicio prodServ = null;
 
-        String sql = "SELECT * FROM productoservicio WHERE nombre = ?";
+        String sql = "SELECT * FROM productoservicio WHERE nombre = ? And estado=1";
         PreparedStatement ps = null;
 
         try {
@@ -176,7 +176,7 @@ public class ProductoServicioData {
         
         ArrayList<ProductoServicio> prodServ = new ArrayList<>();
       
-        String sql = "SELECT * FROM productoservicio";
+        String sql = "SELECT * FROM productoservicio WHERE ESTADO=1";
         PreparedStatement ps = null;
         ResultSet rs = null;
 
