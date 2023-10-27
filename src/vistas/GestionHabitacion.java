@@ -398,7 +398,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
                      
                     habEncontrada.setNumHabitacion(numeroHabitacion);
                     habEncontrada.setPiso(piso);
-                    habEncontrada.isEstado();
+                   habEncontrada.setEstado(estado);
               
                    
                     habData.modificarHabitacion(habEncontrada);
