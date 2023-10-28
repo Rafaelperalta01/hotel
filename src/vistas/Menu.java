@@ -214,10 +214,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(gestionReserva);
         gestionReserva.setVisible(true);
         gestionReserva.moveToFront();
+        
     }//GEN-LAST:event_jMGestionReservaActionPerformed
 
     private void jMListaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListaReservaActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaReservas listareserva= new ListaReservas();
+        escritorio.add(listareserva);
+        listareserva.setVisible(true);
+        listareserva.moveToFront();
     }//GEN-LAST:event_jMListaReservaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
