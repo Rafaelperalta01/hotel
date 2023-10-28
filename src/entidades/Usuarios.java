@@ -20,8 +20,9 @@ public class Usuarios {
     private String cargo;
     private boolean estado;
     private String contraseña;
+    private String email;
 
-    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado, String contraseña) {
+    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado, String contraseña, String email) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -31,9 +32,10 @@ public class Usuarios {
         this.cargo = cargo;
         this.estado = estado;
         this.contraseña = contraseña;
+        this.email = email;
     }
 
-    public Usuarios(String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado,String contraseña) {
+    public Usuarios(String nombre, String apellido, int dni, String sexo, String direccion, String cargo, boolean estado,String contraseña, String email) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -42,6 +44,7 @@ public class Usuarios {
         this.cargo = cargo;
         this.estado = estado;
         this.contraseña = contraseña;
+        this.email = email;
     }
 
     public Usuarios() {}
@@ -117,7 +120,14 @@ public class Usuarios {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
     
     @Override
