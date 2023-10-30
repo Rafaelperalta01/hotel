@@ -119,6 +119,30 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Cargo");
 
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNombreKeyTyped(evt);
+            }
+        });
+
+        tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfApellidoKeyTyped(evt);
+            }
+        });
+
+        tfSexo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfSexoKeyTyped(evt);
+            }
+        });
+
+        tfCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfCargoKeyTyped(evt);
+            }
+        });
+
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escritura.png"))); // NOI18N
         btnModificar.setText("Guardar");
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -375,7 +399,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
+   try{         
         String nombre = tfNombre.getText();
         String ape = tfApellido.getText();
         int dni = Integer.parseInt(tfDni.getText());
@@ -394,7 +418,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             return;
         }
 
-        try {
+     
             int filaSeleccionada = jTable1.getSelectedRow();// traigo la fila seleccionada
 
             if (filaSeleccionada != -1) {
@@ -586,6 +610,38 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
        btnCrear.setEnabled(true);
        btnModificar.setEnabled(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void tfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyTyped
+         char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfNombreKeyTyped
+
+    private void tfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfApellidoKeyTyped
+
+    private void tfSexoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSexoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfSexoKeyTyped
+
+    private void tfCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCargoKeyTyped
+         char c = evt.getKeyChar();
+        
+        if (!(Character.isLetter(c)||c==' ')){
+        evt.consume();
+        }
+    }//GEN-LAST:event_tfCargoKeyTyped
 
     private void activarCampos(boolean a){
         tfNombre.setEnabled(a);
