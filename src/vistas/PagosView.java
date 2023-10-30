@@ -22,6 +22,8 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static vistas.Consumos.jTextUnidades;
+import static vistas.VistaReserva.limpiaCampos;
+import static vistas.VistaReserva.listaRegistros;
 
 /**
  *
@@ -370,7 +372,7 @@ public class PagosView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-     
+   
          if (!jBRegistrarPago.isEnabled()){
               if (JOptionPane.showConfirmDialog(null, "Al salir se borrará la reserva de este usuario "
                + ". Desea continuar ? ", "Salir", JOptionPane.YES_NO_OPTION)== 0) {
@@ -387,22 +389,22 @@ public class PagosView extends javax.swing.JInternalFrame {
                 }
                 
                 // tiene que devolver el valor de la habitacion a habitacion libre
-                Habitacion hab = habitacion.buscarHabitacionId(reserva.getIdHabitacion().getNumHabitacion());
-                hab.setEstado(true);
+                
+                Habitacion hab = habitacion.buscarHabitacionId(reserva.getIdHabitacion().getIdHabitacion());               
+                hab.setEstado(true);            
                 habitacion.modificarHabitacion(hab);
-            
-                res.cancelarReserva(idReserva);
-                
+              
+                res.cancelarReserva(idReserva);          
+               
                 JOptionPane.showMessageDialog(null, "Finalizo su reserva");  
-                VistaReserva.limpiaCampos();
-                VistaReserva.listaRegistros();
-                 dispose();
-            }
-                
+                limpiaCampos();
+                listaRegistros();
+                dispose();
+            }                
         } else {
 
             VistaReserva.jBGuardar.setEnabled(true);
-            VistaReserva.limpiaCampos();
+            limpiaCampos();
             VistaReserva.jTablareservas.clearSelection();
             dispose();
         }

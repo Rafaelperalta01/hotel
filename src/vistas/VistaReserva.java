@@ -36,7 +36,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     HabitacionData habitacion = new HabitacionData();
     UsuariosData user = new UsuariosData();
     public static String numDniHuesped = "";
-    private DefaultTableModel modeloTabla = new DefaultTableModel() {
+    public DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
@@ -767,7 +767,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jTablareservas.setModel(modeloTabla);
     }
 
-    public void cargarTabla(Reserva r) {
+    public static void cargarTabla(Reserva r) {
+    DefaultTableModel modeloTabla = (DefaultTableModel) jTablareservas.getModel();    
            modeloTabla.addRow(new Object[]{
             r.getIdReserva(),
             r.getIdHuesped().getNombre(),
@@ -785,9 +786,9 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         });
     }
 
-    public void listaRegistros() {
-
-        modeloTabla.setRowCount(0);
+    public static void listaRegistros() {
+     DefaultTableModel modeloTabla = (DefaultTableModel) jTablareservas.getModel();
+        limpia();
         int registro = 0;
 
         for (Reserva res : reserva.listarReserva()) {
@@ -825,4 +826,19 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         }
     }
      
+    public static void limpia() {
+    DefaultTableModel modeloTabla = (DefaultTableModel) jTablareservas.getModel();
+    int fila = modeloTabla.getRowCount();
+    
+    for (int i = fila - 1; i >= 0; i--) {
+        modeloTabla.removeRow(i);
+    }
+    
+    // Notificar a la vista que se han realizado cambios en el modelo de la tabla
+    modeloTabla.fireTableDataChanged();
+}
+
+    
+    
+    
 }// fin class
