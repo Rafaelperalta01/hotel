@@ -70,23 +70,24 @@ public class HabitacionData {
     }
     
     public void modificarHabitacion(Habitacion hab) {
-        String sql = "UPDATE habitacion SET idTipoHabitacion = ?, piso = ?, estado = ? WHERE numHabitacion = ?";
+        String sql = "UPDATE habitacion SET idTipoHabitacion = ?,numHabitacion=?, piso = ?, estado = ? WHERE idHabitacion = ?";
   
         PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, hab.getIdTipoHabitacion().getIdTipoHabitacion());
-            ps.setInt(2, hab.getPiso());
-            ps.setBoolean(3, hab.isEstado());
-            ps.setInt(4, hab.getNumHabitacion());
+            ps.setInt(2, hab.getNumHabitacion());
+            ps.setInt(3, hab.getPiso());
+            ps.setBoolean(4, hab.isEstado());
+            ps.setInt(5, hab.getIdHabitacion());
 
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Se modificó la habitación exitosamente.");
             } else {
-                JOptionPane.showMessageDialog(null, "La habitación no existe");
+              //  JOptionPane.showMessageDialog(null, "La habitación no existe!!!");
             }
             ps.close();
             
@@ -142,7 +143,7 @@ public class HabitacionData {
                 hab.setPiso(rs.getInt("piso"));
                 hab.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No habitación no existe");
+                JOptionPane.showMessageDialog(null, "No habitación no existe !!!");
             }
             ps.close();
             
@@ -173,7 +174,7 @@ public class HabitacionData {
                 hab.setPiso(rs.getInt("piso"));
                 hab.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No habitación no existe");
+                JOptionPane.showMessageDialog(null, "No habitación no existe ");
             }
             ps.close();
             

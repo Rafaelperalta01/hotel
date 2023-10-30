@@ -204,6 +204,11 @@ public boolean isCellEditable(int fila,int columna){
         );
 
         jTbuscar.setText("Buscar por nombre");
+        jTbuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTbuscarFocusGained(evt);
+            }
+        });
         jTbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTbuscarActionPerformed(evt);
@@ -466,10 +471,26 @@ public boolean isCellEditable(int fila,int columna){
     private void jTbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbuscarKeyReleased
         borrarFilas();
         String nombre = jTbuscar.getText();//IgnoreCase
-        for (ProductoServicio ps : psData.listarPorNombre(nombre)){
+        for (ProductoServicio ps : psData.listarProductoServicio()){
+             jTbuscar.getText().toLowerCase();
+
+            if(ps.getNombre().toLowerCase().startsWith(jTbuscar.getText())){
+              
+    //    cargarTabla(ps);
+               modelo.addRow(new Object[]{
+           
+           ps.getIdProductoServicio(),
+           ps.getCategoria(),
+           ps.getNombre(),
+            ps.getDescripcion(),
+           ps.getPrecioVenta(),
+           ps.getStock(),
+           
           
-            if(ps.getNombre().startsWith(jTbuscar.getText()))
-        cargarTabla(ps);
+          
+        });
+            }
+              
         }
     }//GEN-LAST:event_jTbuscarKeyReleased
 
@@ -510,6 +531,10 @@ public boolean isCellEditable(int fila,int columna){
         evt.consume();
         }
     }//GEN-LAST:event_jTDescripcionKeyTyped
+
+    private void jTbuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTbuscarFocusGained
+           jTbuscar.setText("");
+    }//GEN-LAST:event_jTbuscarFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

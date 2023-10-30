@@ -1,4 +1,3 @@
-
 package vistas;
 
 import accesoADatos.HuespedData;
@@ -6,16 +5,17 @@ import entidades.Huesped;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class GestionHuesped extends javax.swing.JInternalFrame {
-   private HuespedData hData=new HuespedData();
-   private Huesped huesped=null;
-     private DefaultTableModel modelo = new DefaultTableModel(){
-@Override
-public boolean isCellEditable(int fila,int columna){
-        return false;
-    }
-};
+
+    private HuespedData hData = new HuespedData();
+    private Huesped huesped = null;
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
     public GestionHuesped() {
         initComponents();
         armarCabecera();
@@ -24,8 +24,8 @@ public boolean isCellEditable(int fila,int columna){
         jBModificar.setEnabled(false);
         jBGuardar.setEnabled(false);
         jBEliminar.setEnabled(false);
-    
-      //  listaRegistros();
+
+        //  listaRegistros();
     }
 
     @SuppressWarnings("unchecked")
@@ -368,65 +368,65 @@ public boolean isCellEditable(int fila,int columna){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        
+
         String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
         String numeroDocumento = jTNumeroDocumento.getText();
         String domicilio = jTDomicilio.getText();
         String correo = jTCorreo.getText();
-         if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty()
+        if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty()
                 || domicilio.isEmpty() || correo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
             return;// sale del metodo sin guardar nada
         }
-        
-        try{
-        Integer celular = Integer.parseInt(jTTelefono.getText());
-        
-        huesped=hData.buscarHuespedPorDni(numeroDocumento);
-        
-        if(huesped!=null){
-            jBGuardar.setEnabled(false);
-               JOptionPane.showMessageDialog(null,
-                       "El numero de documento ingresado ya se encuentra en la base de datos,"
-                               + " Por favor revise la información y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
-          
-                  jTNombre.setText(huesped.getNombre());
-                  jTApellido.setText(huesped.getApellido());
-                  jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
-                  jTNumeroDocumento.setText(huesped.getNumeroDocumento());
-                  jTNumeroDocumento.setEnabled(false);
-                  jTDomicilio.setText(huesped.getDomicilio());
-                  jTCorreo.setText(huesped.getCorreo());
-                  jTTelefono.setText(String.valueOf(huesped.getCelular()));
-                  jBModificar.setEnabled(true);
-        }
-        
-        if (huesped == null) {
-            huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular,true);
-            hData.guardarHuesped(huesped);
-            
-              limpiarCampos();
-            camposDeshabilitados();;      
-       
-        } 
-                }catch(NumberFormatException e){
+
+        try {
+            Integer celular = Integer.parseInt(jTTelefono.getText());
+
+            huesped = hData.buscarHuespedPorDni(numeroDocumento);
+
+            if (huesped != null) {
+                jBGuardar.setEnabled(false);
+                JOptionPane.showMessageDialog(null,
+                        "El numero de documento ingresado ya se encuentra en la base de datos,"
+                        + " Por favor revise la información y presione modificar para reestablecer los datos ", "Dni encontrado", JOptionPane.INFORMATION_MESSAGE);
+
+                jTNombre.setText(huesped.getNombre());
+                jTApellido.setText(huesped.getApellido());
+                jCTipoDocumento.setSelectedItem(huesped.getTipoDocumento());
+                jTNumeroDocumento.setText(huesped.getNumeroDocumento());
+                jTNumeroDocumento.setEnabled(false);
+                jTDomicilio.setText(huesped.getDomicilio());
+                jTCorreo.setText(huesped.getCorreo());
+                jTTelefono.setText(String.valueOf(huesped.getCelular()));
+                jBModificar.setEnabled(true);
+            }
+
+            if (huesped == null) {
+                huesped = new Huesped(nombre, apellido, tipoDocumento, numeroDocumento, domicilio, correo, celular, true);
+                hData.guardarHuesped(huesped);
+
+                limpiarCampos();
+                camposDeshabilitados();;
+
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
-           
-                }
-           
-            limpiarTabla();
-             llenarTabla();
-             jBGuardar.setEnabled(false);
-        
+
+        }
+
+        limpiarTabla();
+        llenarTabla();
+        jBGuardar.setEnabled(false);
+
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-       habilitarCampos();
-       limpiarCampos();
-       jBGuardar.setEnabled(true);
-       jBModificar.setEnabled(false);
+        habilitarCampos();
+        limpiarCampos();
+        jBGuardar.setEnabled(true);
+        jBModificar.setEnabled(false);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -443,44 +443,42 @@ public boolean isCellEditable(int fila,int columna){
             String nDoc = (String) jTTablaHuesped.getValueAt(filaSeleccionada, 3);
 
             hData.eliminarHuesped(nDoc);
-           jBModificar.setEnabled(false);
+            jBModificar.setEnabled(false);
             limpiarTabla();
             llenarTabla();
             limpiarCampos();
             camposDeshabilitados();
-           // listaRegistros();
-           
+            // listaRegistros();
+
         } else {
-            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar"); 
+            JOptionPane.showMessageDialog(null, "Debes Seleccionar el huesped para eliminar");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jTbuscarHuespedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTbuscarHuespedKeyReleased
-     /*el huesped va a aparecer al completar el dni , ya que para usar el metodo buscar necesito 
-        pasar el numero completo... y por esto no se va a ir filtrando numero por numero....
-        Preguntar a un mentor si se puede mejorar de laguna otra forma*/
         borrarFilas();
-        String numeroDocumento = jTbuscarHuesped.getText();
-        for (Huesped hue : hData.listarHuespedporDniHuespedEstadoTrue(numeroDocumento)){
-          
-            if(hue.getNumeroDocumento().startsWith(jTbuscarHuesped.getText()))
-        cargarTabla(hue);
+
+        for (Huesped hue : hData.listarHuesped()) {
+
+            if (hue.getNumeroDocumento().startsWith(jTbuscarHuesped.getText())) {
+                cargarTabla(hue);
+            }
         }
     }//GEN-LAST:event_jTbuscarHuespedKeyReleased
 
     private void jBLimpiarBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarBusquedaActionPerformed
-    jTbuscarHuesped.setText("");
-   limpiarTabla();
-   llenarTabla();
+        jTbuscarHuesped.setText("");
+        limpiarTabla();
+        llenarTabla();
     }//GEN-LAST:event_jBLimpiarBusquedaActionPerformed
 
     private void jTTablaHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTablaHuespedMouseClicked
-        
+
         habilitarCampos();
         jBEliminar.setEnabled(true);
         jBModificar.setEnabled(true);
         jBGuardar.setEnabled(false);
-        
+
         int filaSeleccionada = jTTablaHuesped.getSelectedRow();// traigo la fila seleccionada
 
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
@@ -500,26 +498,25 @@ public boolean isCellEditable(int fila,int columna){
             jTDomicilio.setText(domicilio);
             jTCorreo.setText(correo);
             jTTelefono.setText(celular + "");
-            
+
         }
-     //   listaRegistros();
+        //   listaRegistros();
     }//GEN-LAST:event_jTTablaHuespedMouseClicked
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-  
-        
-         String nombre = jTNombre.getText();
+
+        String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String tipoDocumento = (String) jCTipoDocumento.getSelectedItem();
         String numeroDocumento = jTNumeroDocumento.getText();
         String domicilio = jTDomicilio.getText();
         String correo = jTCorreo.getText();
-         if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty()
+        if (nombre.isEmpty() || apellido.isEmpty() || tipoDocumento.isEmpty() || numeroDocumento.isEmpty()
                 || domicilio.isEmpty() || correo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
             return;// sale del metodo sin guardar nada
         }
-    
+
         try {
             Integer celular = Integer.parseInt(jTTelefono.getText());
 
@@ -533,12 +530,12 @@ public boolean isCellEditable(int fila,int columna){
                     huespedmodificado.setApellido(apellido);
                     huespedmodificado.setTipoDocumento(tipoDocumento);
                     huespedmodificado.setNumeroDocumento(numeroDocumento);
-                 
+
                     huespedmodificado.setDomicilio(domicilio);
                     huespedmodificado.setCorreo(correo);
                     huespedmodificado.setCelular(celular);
                     hData.modificarHuesped(huespedmodificado);
-                  
+
                 }
             } else {
                 huesped.setNombre(nombre);
@@ -552,15 +549,15 @@ public boolean isCellEditable(int fila,int columna){
                 hData.modificarHuesped(huesped);
 
                 hData.modificarEstadoHuesped(numeroDocumento);
-                 jBModificar.setEnabled(true);
+                jBModificar.setEnabled(true);
             }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros para guardar su contacto");
 
         }
-          jBModificar.setEnabled(false);
-       limpiarCampos();
+        jBModificar.setEnabled(false);
+        limpiarCampos();
         limpiarTabla();
         llenarTabla();
 
@@ -568,19 +565,19 @@ public boolean isCellEditable(int fila,int columna){
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
-       char c = evt.getKeyChar();
-        
-        if (!(Character.isLetter(c)||c==' ')){
-        evt.consume();
-     
-    }
+        char c = evt.getKeyChar();
+
+        if (!(Character.isLetter(c) || c == ' ')) {
+            evt.consume();
+
+        }
     }//GEN-LAST:event_jTNombreKeyTyped
 
     private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
         char c = evt.getKeyChar();
-        
-        if (!(Character.isLetter(c)||c==' ')){
-        evt.consume();
+
+        if (!(Character.isLetter(c) || c == ' ')) {
+            evt.consume();
         }
     }//GEN-LAST:event_jTApellidoKeyTyped
 
@@ -629,9 +626,9 @@ public boolean isCellEditable(int fila,int columna){
         jTCorreo.setText("");
         jTTelefono.setText("");
 
+    }
 
-}
-    private void armarCabecera(){
+    private void armarCabecera() {
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Tipo de Documento");
@@ -639,12 +636,12 @@ public boolean isCellEditable(int fila,int columna){
         modelo.addColumn("Domicilio");
         modelo.addColumn("Correo");
         modelo.addColumn("Celular");
-       // modelo.addColumn("Estado");
+        // modelo.addColumn("Estado");
         jTTablaHuesped.setModel(modelo);
     }
-    
-    private void cargarTabla(Huesped hues){
-       modelo.addRow(new Object[]{
+
+    private void cargarTabla(Huesped hues) {
+        modelo.addRow(new Object[]{
             hues.getNombre(),
             hues.getApellido(),
             hues.getTipoDocumento(),
@@ -652,60 +649,49 @@ public boolean isCellEditable(int fila,int columna){
             hues.getDomicilio(),
             hues.getCorreo(),
             hues.getCelular()
-          
-          
-        });
-       
-       
 
-}
-    private void llenarTabla(){
-        for(Huesped huesped: hData.listarHuespedEstadoTrue()){
+        });
+
+    }
+
+    private void llenarTabla() {
+        for (Huesped huesped : hData.listarHuespedEstadoTrue()) {
             cargarTabla(huesped);
         }
     }
-    
-        private void borrarFilas(){
-            int f=jTTablaHuesped.getRowCount()-1;
-            for(;f>=0;f--){
-                modelo.removeRow(f);
-            }
-    
-      }
-  private void limpiarTabla() {
+
+    private void borrarFilas() {
+        int f = jTTablaHuesped.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+
+    }
+
+    private void limpiarTabla() {
         DefaultTableModel modeloTabla = (DefaultTableModel) jTTablaHuesped.getModel();
         modeloTabla.setRowCount(0);
 
-  }
-  private void camposDeshabilitados(){
-       jTNombre.setEnabled(false);
+    }
+
+    private void camposDeshabilitados() {
+        jTNombre.setEnabled(false);
         jTApellido.setEnabled(false);
         jTNumeroDocumento.setEnabled(false);
         jTDomicilio.setEnabled(false);
         jTCorreo.setEnabled(false);
         jTTelefono.setEnabled(false);
-      
-  }
-  private void habilitarCampos(){
-      jTNombre.setEnabled(true);
+
+    }
+
+    private void habilitarCampos() {
+        jTNombre.setEnabled(true);
         jTApellido.setEnabled(true);
         jTNumeroDocumento.setEnabled(true);
         jTDomicilio.setEnabled(true);
         jTCorreo.setEnabled(true);
         jTTelefono.setEnabled(true);
-  }
-//   public void listaRegistros() {
-//      int registro = 0;
-//        for(Huesped res:hData.listarHuespedEstadoTrue()){
-//            cargarTabla(res);
-//            registro++;
-//            
-//            limpiarTabla();
-//            llenarTabla();
-//        }
-//        jLTotalRegistros.setText("Total de registros: "+registro);
-//        
+    }
 //
-//
-//}
+
 }
