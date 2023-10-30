@@ -21,7 +21,7 @@ public class HabitacionData {
     public HabitacionData() {
         con=Conexion.getConexion();
     }
-    public void guardarHabitacion(Habitacion hab) {
+     public void guardarHabitacion(Habitacion hab) {
 
         String sql = "INSERT INTO habitacion (idTipoHabitacion, numHabitacion, piso, estado) VALUES (?,?,?,?)";
         PreparedStatement ps = null;
@@ -137,13 +137,13 @@ public class HabitacionData {
 
             if (rs.next()) {
                 hab = new Habitacion();
-                hab.setIdHabitacion(id);
+                hab.setIdHabitacion(rs.getInt("idHabitacion"));
                 hab.setIdTipoHabitacion(tipo.buscarTipoHabPorId(rs.getInt("idTipoHabitacion")));             
                 hab.setNumHabitacion(rs.getInt("numHabitacion"));
                 hab.setPiso(rs.getInt("piso"));
                 hab.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No habitación no existe !!!");
+                JOptionPane.showMessageDialog(null, "La habitación no existe !!!");
             }
             ps.close();
             
@@ -313,18 +313,17 @@ public class HabitacionData {
         return hab;
     }
   public ArrayList<Habitacion> listarReserva_X_fechasYcantDePersonas(LocalDate fechaE,LocalDate fechaS,int cantP){
-   
-       ArrayList<Habitacion> hab = new ArrayList<>();
+        ArrayList<Habitacion> hab = new ArrayList<>();
        String sql = "SELECT h.* "
                + "FROM habitacion h "
                + "JOIN tipohabitacion t ON h.idTipoHabitacion = t.idTipoHabitacion "
                + "WHERE h.idHabitacion NOT IN("
                + "		SELECT DISTINCT r.idHabitacion "
                + "		FROM reserva r "
-               + "		WHERE (? BETWEEN r.fechaEntrada and r.fechaSalida "
+               + "		WHERE  r.estado= true AND (? BETWEEN r.fechaEntrada and r.fechaSalida "
                + "			OR ? BETWEEN r.fechaEntrada and r.fechaSalida "
                + "			OR (? < r.fechaEntrada AND ? > r.fechaSalida)) "
-               + "    		) AND t.cantPersonas =? AND h.estado =true";
+               + "    		) AND t.cantPersonas =?"; //AND h.estado =true";
        PreparedStatement ps = null;
         ResultSet rs = null;
 
