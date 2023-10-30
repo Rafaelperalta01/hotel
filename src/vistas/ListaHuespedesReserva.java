@@ -8,7 +8,7 @@ package vistas;
 import accesoADatos.HuespedData;
 import entidades.Huesped;
 import javax.swing.table.DefaultTableModel;
-import static vistas.listaHuespedes.jTHuesped;
+
 
 /**
  *
@@ -142,11 +142,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void jTHuespedResMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHuespedResMouseClicked
          if (evt.getClickCount() == 2){
             
-          int fila = jTHuesped.getSelectedRow();
+          int fila = jTHuespedRes.getSelectedRow();
 
           if (fila != -1) {                      
-            VistaReserva.jTHusped.setText(jTHuesped.getValueAt(fila,0).toString());
-            VistaReserva.numDniHuesped = jTHuesped.getValueAt(fila,3).toString();
+            VistaReserva.jTHusped.setText(jTHuespedRes.getValueAt(fila,0).toString());
+            VistaReserva.numDniHuesped = jTHuespedRes.getValueAt(fila,3).toString();
             
     }//GEN-LAST:event_jTHuespedResMouseClicked
         dispose();
