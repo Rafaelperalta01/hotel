@@ -74,8 +74,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        btnRecepcionistas = new javax.swing.JButton();
-        btnAdministradores = new javax.swing.JButton();
         btnDefault = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -297,22 +295,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnRecepcionistas.setText("Seleccionar los recepcionistas");
-        btnRecepcionistas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecepcionistasActionPerformed(evt);
-            }
-        });
-
-        btnAdministradores.setText("Seleccionar los administradores");
-        btnAdministradores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAdministradores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministradoresActionPerformed(evt);
-            }
-        });
-
         btnDefault.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/actualizar.png"))); // NOI18N
         btnDefault.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDefault.addActionListener(new java.awt.event.ActionListener() {
@@ -333,24 +315,18 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btnRecepcionistas)
-                        .addGap(29, 29, 29)
+                        .addGap(261, 261, 261)
                         .addComponent(btnDefault)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(btnAdministradores)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRecepcionistas)
-                    .addComponent(btnDefault)
-                    .addComponent(btnAdministradores))
+                .addComponent(btnDefault)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
@@ -519,30 +495,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void btnRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecepcionistasActionPerformed
-
-        limpiarTabla(); // limpio la tabla para que no se agreguen abajo de la default
-        UsuariosData ud = new UsuariosData();
-        for (Usuarios user : ud.ListarRecepcionistas()) { //cargo con el metodo
-            cargarTabla(user);
-        }
-
-    }//GEN-LAST:event_btnRecepcionistasActionPerformed
-
-    private void btnAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradoresActionPerformed
-
-        limpiarTabla(); // limpio la tabla para que no se agreguen abajo de la default
-        UsuariosData ud = new UsuariosData();
-        for (Usuarios user : ud.ListarAdninistradores()) { //cargo con el metodo
-            cargarTabla(user);
-        }
-
-    }//GEN-LAST:event_btnAdministradoresActionPerformed
-
     private void btnDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefaultActionPerformed
-
+        limpiarCampos();
         limpiarTabla();
         llenarTabla();
+         btnNuevo.setEnabled(true);
 
     }//GEN-LAST:event_btnDefaultActionPerformed
 
@@ -662,13 +619,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdministradores;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnDefault;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnRecepcionistas;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
