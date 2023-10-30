@@ -91,7 +91,7 @@ public class ReservaData {
             
             if(rs.next()){
                 reserva.setIdReserva(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Reserva guardada");
+                //JOptionPane.showMessageDialog(null, "Reserva guardada");
             }
             ps.close();
             
@@ -117,7 +117,8 @@ public class ReservaData {
                reserva.setIdHuesped(huesped.buscarHuespedPorId(rs.getInt("idHuesped")));
                reserva.setIdUsuarios(usuario.obtenerUsuarioId(rs.getInt("idUsuario")));              
                reserva.setFechaEntrada(rs.getDate("fechaEntrada").toLocalDate());
-               reserva.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());              
+               reserva.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());   
+               reserva.setCheckIn(rs.getDate("checkIn") != null ? rs.getDate("checkIn").toLocalDate() : null);
                reserva.setImporteTotal(rs.getDouble("ImporteTotal"));
                reserva.setEstado(rs.getBoolean("estado"));
                
@@ -169,7 +170,7 @@ public class ReservaData {
              
              int fila = ps.executeUpdate();
              if (fila >0){
-             JOptionPane.showMessageDialog(null, "Reserva Cancelada");            
+             //JOptionPane.showMessageDialog(null, "Reserva Cancelada");            
              }
              ps.close();
          } catch (SQLException ex) {
@@ -181,7 +182,9 @@ public class ReservaData {
    public ArrayList<Reserva> listarReserva(){
    
        ArrayList<Reserva> reserva = new ArrayList<>();
-       String sql = "SELECT * FROM reserva WHERE estado = true";
+       String sql = "SELECT * FROM reserva WHERE estado = true AND checkIn IS NOT NULL " +
+               "UNION " +
+               "SELECT * FROM reserva WHERE estado = true AND checkIn IS NULL";
        PreparedStatement ps = null;
        ResultSet rs =null;
        
@@ -197,6 +200,7 @@ public class ReservaData {
                  res.setIdUsuarios(usuario.obtenerUsuarioId(rs.getInt("idUsuario")));
                  res.setFechaEntrada(rs.getDate("fechaEntrada").toLocalDate());
                  res.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());
+                 res.setCheckIn(rs.getDate("checkIn") != null ? rs.getDate("checkIn").toLocalDate() : null);
                  res.setImporteTotal(rs.getDouble("ImporteTotal"));
                  res.setCantPersonas(rs.getInt("cantPersonas"));
                  
@@ -209,5 +213,44 @@ public class ReservaData {
    
          return reserva;  
    }
+   
+    public void modificarCheckInReserva(int reserva,LocalDate check) {
+
+        String sql = "UPDATE reserva SET checkIn =? WHERE idReserva =?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(check));
+            ps.setInt(2, reserva);
+
+            int fila = ps.executeUpdate();
+            if (fila > 0) {
+                JOptionPane.showMessageDialog(null, "check-in realizado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede conectar a la tabla reserva" + ex.getMessage());
+        }
+     }
     
+     public void modificarCheckOutReserva(int reserva,LocalDate check) {
+
+        String sql = "UPDATE reserva SET checkOut =? WHERE idReserva =?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(check));
+            ps.setInt(2, reserva);
+
+            int fila = ps.executeUpdate();
+            if (fila > 0) {
+                //JOptionPane.showMessageDialog(null, "check-Out realizado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede conectar a la tabla reserva" + ex.getMessage());
+        }   
+     }
 }//------------------fin-------------------

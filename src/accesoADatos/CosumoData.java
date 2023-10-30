@@ -27,7 +27,7 @@ public class CosumoData {
            con = Conexion.getConexion();
            
     } 
-   public void guardarConsumo(Consumo consumo){
+  public void guardarConsumo(Consumo consumo){
        String sql= " INSERT INTO consumo (idReserva,idProductoServicio,unidades,costoTotal,estado)"
                + "VALUES (?,?,?,?,?)";
        
@@ -61,7 +61,7 @@ public class CosumoData {
     }
    
   public void modificarUnidadesCosumidas(Consumo consumo) {// solo puedo modificar las unidades 
-        String sql = " UPDATE consumo SET unidades=?,costoTotal=? WHERE idConsumo = ?";
+        String sql = " UPDATE consumo SET unidades=?,costoTotal=? WHERE idConsumo =?";
         PreparedStatement ps = null;
 
         try {
@@ -73,9 +73,11 @@ public class CosumoData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+               // JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+                System.out.println("Modificado Exitosamente");
             } else {
-                JOptionPane.showMessageDialog(null, "Dicho consumo no se encuentra registrado");
+               // JOptionPane.showMessageDialog(null, "Dicho consumo no se encuentra registrado");
+                System.out.println("Dicho consumo no se encuentra registrado");
             }
 
         } catch (SQLException ex) {
@@ -93,7 +95,7 @@ public class CosumoData {
             int fila = ps.executeUpdate();
             
             if(fila == 1){
-                JOptionPane.showMessageDialog(null,"Se eliminó el consumo.");                           
+               // JOptionPane.showMessageDialog(null,"Se eliminó el consumo.");                           
             }
             ps.close();
             
@@ -111,7 +113,8 @@ public class CosumoData {
             int fila = ps.executeUpdate();
             
             if(fila == 1){
-                JOptionPane.showMessageDialog(null,"Se eliminó el consumo.");                           
+               // JOptionPane.showMessageDialog(null,"Se eliminó el consumo.");   
+               
             }
             ps.close();
             
@@ -132,11 +135,11 @@ public class CosumoData {
             ps.setInt(1, idConsumo);
             
             ResultSet rs = ps.executeQuery();
-       //      reserva.setIdHabitacion((Habitacion)rs.getObject("idTipoHabitacion"));
+
             if(rs.next()){
               consumo = new Consumo();
               consumo.setIdCosumo(idConsumo);
-              consumo.setIdReserva(reserva.buscarReservaPorHuesped(rs.getInt("idReserva")));
+              consumo.setIdReserva(reserva.buscarReservaId(rs.getInt("idReserva")));
               consumo.setIdProductoServicio(prod.buscarProductoServicioId(rs.getInt("idProductoServicio")));
               consumo.setUnidades(rs.getInt("unidades"));
               consumo.setCostoTotal(rs.getDouble("costoTotal"));
@@ -257,6 +260,7 @@ public class CosumoData {
            
       
                    
+           
            
       
      

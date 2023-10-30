@@ -13,25 +13,31 @@ public class Pagos {
     private String tipoComprobante;
     private LocalDate fechaEmision;
     private String medioPago;
+    private String formaDePago;
+    private boolean estado;
 
     public Pagos() {
     }
 
-    public Pagos(Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago) {
+    public Pagos(Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago, String formaDePago, boolean estado) {
         this.idReserva = idReserva;
         this.importeTotal = importeTotal;
         this.tipoComprobante = tipoComprobante;
         this.fechaEmision = fechaEmision;
         this.medioPago = medioPago;
+        this.formaDePago = formaDePago;
+        this.estado = estado;
     }
 
-    public Pagos(int idPagos, Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago) {
+    public Pagos(int idPagos, Reserva idReserva, double importeTotal, String tipoComprobante, LocalDate fechaEmision, String medioPago, String formaDePago, boolean estado) {
         this.idPagos = idPagos;
         this.idReserva = idReserva;
         this.importeTotal = importeTotal;
         this.tipoComprobante = tipoComprobante;
         this.fechaEmision = fechaEmision;
         this.medioPago = medioPago;
+        this.formaDePago = formaDePago;
+        this.estado = estado;
     }
 
     public int getIdPagos() {
@@ -82,14 +88,27 @@ public class Pagos {
         this.medioPago = medioPago;
     }
 
-    @Override
-    public String toString() {
-        return "Pagos{" + "idPagos=" + idPagos + ", idReserva=" + idReserva + ", importeTotal=" + importeTotal + ", tipoComprobante=" + tipoComprobante + ", fechaEmision=" + fechaEmision + ", medioPago=" + medioPago + '}';
+    public String getFormaDePago() {
+        return formaDePago;
+    }
+
+    public void setFormaDePago(String formaDePago) {
+        this.formaDePago = formaDePago;
     }
     
+    public boolean getEstado(){
+        return estado;
+    }
     
-    
-    
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Pagos{" + "idPagos=" + idPagos + ", idReserva=" + idReserva + ", importeTotal=" + importeTotal + ", tipoComprobante=" + tipoComprobante + ", fechaEmision=" + fechaEmision + ", medioPago=" + medioPago + ", formaDePago=" + formaDePago + ", estado=" + estado + '}';
+    }
+
     
     
 }

@@ -19,6 +19,8 @@ public class Reserva {
     private Usuarios idUsuarios;
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private double importeTotal;
     private int cantPersonas;
     private boolean estado;
@@ -30,6 +32,8 @@ public class Reserva {
         this.idUsuarios= idUsuarios;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
         this.importeTotal = importeTotal;
         this.cantPersonas = cantPersonas;
         this.estado = estado;
@@ -79,7 +83,6 @@ public class Reserva {
     public void setIdUsuarios(Usuarios idUsuarios) {
         this.idUsuarios = idUsuarios;
     }
-    
 
     public LocalDate getFechaEntrada() {
         return fechaEntrada;
@@ -95,6 +98,22 @@ public class Reserva {
 
     public void setFechaSalida(LocalDate fechaSalida) {
         this.fechaSalida = fechaSalida;
+    }
+
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
     }
 
     public double getImporteTotal() {
@@ -120,14 +139,21 @@ public class Reserva {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
+    public void realizarCheckIn() {
+        this.checkIn = LocalDate.now();
+    }
+
+    public void realizarCheckOut() {
+        this.checkOut = LocalDate.now();
+    }
 
     @Override
     public String toString() {
-        return "Reserva{" + "idReserva=" + idReserva + ", idHabitacion=" + idHabitacion + ", idHuesped=" + idHuesped + ", idUsuarios=" + idUsuarios + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", importeTotal=" + importeTotal + ", cantPersonas=" + cantPersonas + ", estado=" + estado + '}';
+        return "Reserva{" + "idReserva=" + idReserva + ", idHabitacion=" + idHabitacion + ", idHuesped=" + idHuesped + ", idUsuarios=" + idUsuarios + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", importeTotal=" + importeTotal + ", cantPersonas=" + cantPersonas + ", estado=" + estado + '}';
     }
 
- 
-    
+   
     
     
     
