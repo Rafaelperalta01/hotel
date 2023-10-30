@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class UsuariosData {
@@ -91,8 +93,8 @@ public class UsuariosData {
     public void crearUsuario(Usuarios usuario) {
 
         PreparedStatement ps = null;
-        String sql = "INSERT INTO usuario(nombre, apellido, dni, sexo, direccion, cargo, estado, contraseña) "
-                + "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario(nombre, apellido, dni, sexo, direccion, cargo, estado, contraseña, email) "
+                + "VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, usuario.getNombre());
@@ -103,6 +105,7 @@ public class UsuariosData {
             ps.setString(6, usuario.getCargo());
             ps.setBoolean(7, usuario.isEstado());
             ps.setString(8, usuario.getContraseña());
+            ps.setString(9, usuario.getEmail());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -119,7 +122,7 @@ public class UsuariosData {
     }
 
     public void modificarUsuario(Usuarios user) {
-        String sql = " UPDATE usuario SET nombre = ?, apellido= ?, dni= ?, sexo = ?, direccion = ?, cargo = ?, estado = ?, contraseña = ? WHERE dni = ?";
+        String sql = " UPDATE usuario SET nombre = ?, apellido= ?, dni= ?, sexo = ?, direccion = ?, cargo = ?, estado = ?, contraseña = ?, email = ? WHERE dni = ?";
         PreparedStatement ps = null;
 
         try {
@@ -132,7 +135,8 @@ public class UsuariosData {
             ps.setString(6, user.getCargo());
             ps.setBoolean(7, user.isEstado());
             ps.setString(8, user.getContraseña());
-            ps.setInt(9, user.getDni());
+            ps.setString(9, user.getEmail());
+            ps.setInt(10, user.getDni());
 
             int exito = ps.executeUpdate();
             if (exito > 0) {
@@ -175,7 +179,7 @@ public class UsuariosData {
             int fila = ps.executeUpdate();
             
             if(fila == 1){
-                JOptionPane.showMessageDialog(null,"Se modifico el huesped.");                           
+                JOptionPane.showMessageDialog(null,"Se modifico el usuario.");                           
             }
             ps.close();
             
@@ -204,6 +208,7 @@ public class UsuariosData {
                 user.setCargo(rs.getString("cargo"));
                 user.setEstado(rs.getBoolean("estado"));
                 user.setContraseña(rs.getString("contraseña"));
+                user.setEmail(rs.getString("email"));
 
                 users.add(user);
             }
@@ -237,7 +242,7 @@ public class UsuariosData {
                 user.setCargo(rs.getString("cargo"));
                 user.setEstado(rs.getBoolean("estado"));
                 user.setContraseña(rs.getString("contraseña"));
-
+                
                 users.add(user);
             }
 
@@ -281,6 +286,39 @@ public class UsuariosData {
         }
 
         return users;
+    }
+    
+    public Usuarios obtenerContra(String email) {
+
+        Usuarios usuario = null;
+        PreparedStatement ps = null;
+        String sql = "SELECT idUsuario, nombre, apellido, dni, sexo, direccion, cargo, estado, contraseña, email FROM usuario WHERE email=?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                usuario = new Usuarios();
+                usuario.setIdUsuario(rs.getInt("idUsuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setDni(rs.getInt("dni"));
+                usuario.setSexo(rs.getString("sexo"));
+                usuario.setDireccion(rs.getString("direccion"));
+                usuario.setCargo(rs.getString("cargo"));
+                usuario.setEstado(rs.getBoolean("estado"));
+                usuario.setContraseña(rs.getString("contraseña"));
+                usuario.setEmail(rs.getString("email"));
+            }
+
+            ps.close();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla usuario (metodo obtener usuario)");
+        }
+        return usuario;
     }
     
     public boolean RecuperarCuenta(String email){
