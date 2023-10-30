@@ -6,7 +6,6 @@
 package vistas;
 
 import entidades.Usuarios;
-import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -333,7 +332,7 @@ public class Menu extends javax.swing.JFrame {
             Login log = new Login();
             log.setVisible(true);
     }
-        
+  
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**

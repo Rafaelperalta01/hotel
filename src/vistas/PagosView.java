@@ -19,11 +19,8 @@ import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static vistas.Consumos.idServicios;
 import static vistas.Consumos.jTextUnidades;
 
 /**
