@@ -642,9 +642,10 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         } else {
             int fila = jTablareservas.getSelectedRow();
-            LocalDate hoy = LocalDate.now();
-            LocalDate fechaE = (LocalDate) jTablareservas.getValueAt(fila, 5);
-            if ((fila != -1)&&(!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+
+            if ((fila != -1) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+                LocalDate hoy = LocalDate.now();
+                LocalDate fechaE = (LocalDate) jTablareservas.getValueAt(fila, 5);
                 int idreserva = Integer.parseInt(jTablareservas.getValueAt(fila, 0).toString());
                 Reserva r = reserva.buscarReservaId(idreserva);
 
