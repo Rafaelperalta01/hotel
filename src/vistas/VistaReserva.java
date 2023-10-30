@@ -36,8 +36,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     HabitacionData habitacion = new HabitacionData();
     UsuariosData user = new UsuariosData();
     public static String numDniHuesped = "";
-
-    public static DefaultTableModel modeloTabla = new DefaultTableModel() {
+    private DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
@@ -495,28 +494,26 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
      
-        if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+      if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
             
             Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
             Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
             hab.setEstado(false);
-            habitacion.modificarHabitacion(hab);
+            habitacion.modificarHabitacion(hab);// la habitacion esta ocupada
             
             LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate salida = jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//            LocalDate ckIn = null;
-//            LocalDate ckOut= null;
+
             double importe = Double.parseDouble(jTImporte.getText().toString());
             int canPersonas = Integer.parseInt(jTCantPersonas.getText().toString());
             
             Reserva res = new Reserva(hab,hues,usuario,entrada,salida,importe,canPersonas,true);
             reserva.crearReserva(res);
             JOptionPane.showMessageDialog(null, "Se realizó una reserva ");
-             limpiaCampos();        
-             listaRegistros();
-             jBGuardar.setEnabled(true);
-             jTablareservas.clearSelection();
-            
+            limpiaCampos();
+            listaRegistros();
+            jBGuardar.setEnabled(true);
+
         } else {
             JOptionPane.showMessageDialog(null, "Complete todos los campos para poder generar un registro ");
         }
@@ -642,8 +639,10 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         } else {
             int fila = jTablareservas.getSelectedRow();
-
+           
+            
             if ((fila != -1) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+
                 LocalDate hoy = LocalDate.now();
                 LocalDate fechaE = (LocalDate) jTablareservas.getValueAt(fila, 5);
                 int idreserva = Integer.parseInt(jTablareservas.getValueAt(fila, 0).toString());
@@ -659,10 +658,10 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Este registro ya tiene un check-in registrado. No se puede realizar otro check-in en la misma reserva.");
                 }
-                limpiaCampos();
+                limpiaCampos();             
                 listaRegistros();
                 jBGuardar.setEnabled(true);
-                jTablareservas.clearSelection();
+ 
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click ");
             }
@@ -670,7 +669,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBCheckInActionPerformed
 
     private void jBcancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelarReservaActionPerformed
-        if (modeloTabla.getRowCount() == 0) {
+       if (modeloTabla.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "La tabla esta vacía");
 
         } else {
@@ -687,7 +686,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 limpiaCampos();
                 listaRegistros();
                 jBGuardar.setEnabled(true);
-                jTablareservas.clearSelection();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click ");
@@ -728,6 +726,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField jTTotalRegistros;
     public static javax.swing.JTable jTablareservas;
     // End of variables declaration//GEN-END:variables
+  
     public boolean habilitaLista() {
         boolean aux = false;
 
@@ -752,23 +751,23 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }
 
     private void armarCabecera() {
-        modeloTabla.addColumn("idReserva");//10 0
+        modeloTabla.addColumn("idReserva");//0
         modeloTabla.addColumn("Nombre Huesped");//1
         modeloTabla.addColumn("Apellido Huesped");//2
         modeloTabla.addColumn("Tipo de Documento");//3
         modeloTabla.addColumn("Numero de Documento");//4    
-        modeloTabla.addColumn("Fecha entrada");//6 5
-        modeloTabla.addColumn("Fecha de salida");//7 6
-        modeloTabla.addColumn("NºHabitación ");//0 7
-        modeloTabla.addColumn("Cant.Personas");//5 8
-        modeloTabla.addColumn("Importe total");//8 9
-        modeloTabla.addColumn("Usuario");//9 10
+        modeloTabla.addColumn("Fecha entrada");//5
+        modeloTabla.addColumn("Fecha de salida");//6
+        modeloTabla.addColumn("NºHabitación ");//7
+        modeloTabla.addColumn("Cant.Personas");//8
+        modeloTabla.addColumn("Importe total");//9
+        modeloTabla.addColumn("Usuario");//10
         modeloTabla.addColumn("CheckIn");//11
 
         jTablareservas.setModel(modeloTabla);
     }
 
-    public static void cargarTabla(Reserva r) {
+    public void cargarTabla(Reserva r) {
            modeloTabla.addRow(new Object[]{
             r.getIdReserva(),
             r.getIdHuesped().getNombre(),
@@ -786,15 +785,19 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         });
     }
 
-    public static void listaRegistros() {
-      int registro = 0;
-       modeloTabla.setRowCount(0);
-        for(Reserva res:reserva.listarReserva()){
+    public void listaRegistros() {
+
+        modeloTabla.setRowCount(0);
+        int registro = 0;
+
+        for (Reserva res : reserva.listarReserva()) {
             cargarTabla(res);
             registro++;
         }
-        jTTotalRegistros.setText("Total de registros: "+registro);
-        
+        modeloTabla.fireTableDataChanged();
+        jTTotalRegistros.setText("Total de registros: " + registro);
+        jTablareservas.clearSelection();
+        jTablareservas.repaint();
     }
 
     public void camposApagados() {
@@ -821,4 +824,5 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             modeloTabla.removeRow(filas);
         }
     }
+     
 }// fin class
