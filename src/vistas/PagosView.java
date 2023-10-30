@@ -6,13 +6,16 @@
 package vistas;
 
 import accesoADatos.CosumoData;
+import accesoADatos.HabitacionData;
 import accesoADatos.PagosData;
 import accesoADatos.ProductoServicioData;
 import accesoADatos.ReservaData;
 import entidades.Consumo;
+import entidades.Habitacion;
 import entidades.Pagos;
 import entidades.ProductoServicio;
 import entidades.Reserva;
+import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.time.LocalDate;
@@ -29,7 +32,8 @@ import static vistas.Consumos.jTextUnidades;
  */
 public class PagosView extends javax.swing.JInternalFrame {
 
-    LocalDate fechaActual = LocalDate.now();
+    public LocalDate fechaActual = LocalDate.now();
+    public HabitacionData habitacion = new HabitacionData();
     public ProductoServicioData p = new ProductoServicioData();
     public ReservaData res = new ReservaData();
     public Reserva reserva = res.buscarReservaId(idReserva);
@@ -49,13 +53,15 @@ public class PagosView extends javax.swing.JInternalFrame {
     }; 
    
     public PagosView() {
-        initComponents();
-        inicio();
+        initComponents();     
         armarCabeceraListaConsumo();
         armarCabeceraListaPagos();
-        listaConsumo();       
+        listaConsumo();   
+        listaPago();
         CB_MedioDePago();
         CB_Comprobantes();
+        CB_FormaDePago();
+        inicio();
      
     }
 
@@ -65,21 +71,25 @@ public class PagosView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextNombreReserva = new javax.swing.JTextField();
-        jTextNumeroHabitacion = new javax.swing.JTextField();
-        jTextImporteAlojamiento = new javax.swing.JTextField();
-        jTextImporteTotal = new javax.swing.JTextField();
-        jCbComprobante = new javax.swing.JComboBox<>();
-        jCbMedioDePago = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jDCFechaEmision = new com.toedter.calendar.JDateChooser();
         jBRegistrarPago = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextNombreReserva = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextNumeroHabitacion = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextFechaemision = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextImporteAlojamiento = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextAdelanto = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextImporteTotal = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jCbFormaDePago = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jCbMedioDePago = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jCbComprobante1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -93,7 +103,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         jBimprimirComprobante = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaPagos = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        jBEliminarPago = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -103,45 +113,6 @@ public class PagosView extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(361, 308));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Reserva del Sr.");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Habitacion");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Importe alojamiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Comprobante");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 296, -1, 20));
-
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Importe total");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        jPanel1.add(jTextNombreReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 30, 160, -1));
-        jPanel1.add(jTextNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 160, -1));
-        jPanel1.add(jTextImporteAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
-        jPanel1.add(jTextImporteTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 160, -1));
-
-        jCbComprobante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jCbComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, -1));
-
-        jCbMedioDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jCbMedioDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 190, -1));
-
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("Fecha emision");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 14));
-
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("Medio de pago");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 346, -1, 20));
-        jPanel1.add(jDCFechaEmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 190, -1));
-
         jBRegistrarPago.setText("Registrar Pago");
         jBRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +120,65 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jBRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Reserva del Sr.");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jPanel1.add(jTextNombreReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 160, -1));
+
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("Habitacion");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel1.add(jTextNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 160, -1));
+
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Fecha emision");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 14));
+        jPanel1.add(jTextFechaemision, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
+
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Importe alojamiento");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jTextImporteAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 160, -1));
+
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("Adelanto");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jTextAdelanto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextAdelantoFocusGained(evt);
+            }
+        });
+        jPanel1.add(jTextAdelanto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 160, -1));
+
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Importe total");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 20));
+        jPanel1.add(jTextImporteTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 160, -1));
+
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("Forma de Pago");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 100, 20));
+
+        jCbFormaDePago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbFormaDePagoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCbFormaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 190, -1));
+
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Medio de pago");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 20));
+
+        jPanel1.add(jCbMedioDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 190, -1));
+
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Comprobante");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 20));
+
+        jPanel1.add(jCbComprobante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -250,8 +280,13 @@ public class PagosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTablaPagos);
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 153));
-        jButton3.setText("Eliminar");
+        jBEliminarPago.setBackground(new java.awt.Color(255, 204, 153));
+        jBEliminarPago.setText("Eliminar");
+        jBEliminarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarPagoActionPerformed(evt);
+            }
+        });
 
         jBsalir.setBackground(new java.awt.Color(255, 204, 153));
         jBsalir.setText("Salir");
@@ -271,7 +306,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jBimprimirComprobante)
                         .addGap(197, 197, 197)
-                        .addComponent(jButton3)
+                        .addComponent(jBEliminarPago)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBsalir))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,7 +317,7 @@ public class PagosView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBimprimirComprobante)
-                    .addComponent(jButton3)
+                    .addComponent(jBEliminarPago)
                     .addComponent(jBsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,11 +373,47 @@ public class PagosView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-     dispose();
+     
+         if (!jBRegistrarPago.isEnabled()){
+              if (JOptionPane.showConfirmDialog(null, "Al salir se borrará la reserva de este usuario "
+               + ". Desea continuar ? ", "Salir", JOptionPane.YES_NO_OPTION)== 0) {
+              // hacer el checkOut
+              res.modificarCheckOutReserva(idReserva, fechaActual);
+              
+              // eliminar los pagos              
+              for (Pagos x : pagos.listarPagosporIdReserva(idReserva)){
+                    pagos.eliminadoLogicoPago(x.getIdPagos());
+                }
+                // eliminar los consumos
+                for (Consumo x : c.listarProductoServicioPorIdRegistro(idReserva)) {
+                    c.eliminarConsumo(x.getIdConsumo());
+                }
+                
+                // tiene que devolver el valor de la habitacion a habitacion libre
+                Habitacion hab = habitacion.buscarHabitacionId(reserva.getIdHabitacion().getNumHabitacion());
+                hab.setEstado(true);
+                habitacion.modificarHabitacion(hab);
+            
+                res.cancelarReserva(idReserva);
+                
+                JOptionPane.showMessageDialog(null, "Finalizo su reserva");  
+                VistaReserva.limpiaCampos();
+                VistaReserva.listaRegistros();
+                 dispose();
+            }
+                
+        } else {
+
+            VistaReserva.jBGuardar.setEnabled(true);
+            VistaReserva.limpiaCampos();
+            VistaReserva.jTablareservas.clearSelection();
+            dispose();
+        }
+
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
-
+       // editar consumo
         String cantidad = null;
 
         if (modeloTablaConsumo.getRowCount() == 0) {
@@ -373,7 +444,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                             com.setUnidades(cant);
                             com.setCostoTotal(cant * precio);
                             c.modificarUnidadesCosumidas(com);
-
+                            JOptionPane.showMessageDialog(null, "Modificación exitosa");
                         } else {
                             JOptionPane.showMessageDialog(null, "No hay stock");
                             pys.setStock(pys.getStock() - Integer.parseInt(jTablaConsumo.getValueAt(fila, 2).toString()));
@@ -388,39 +459,26 @@ public class PagosView extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Seleccione un consumo con un click ");
             }
         }
-      
+        inicio();
         modeloTablaConsumo.setRowCount(0);
         listaConsumo();
         jTablaConsumo.clearSelection();
-        //comentario
     }//GEN-LAST:event_jBeditarActionPerformed
 
     private void jBRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarPagoActionPerformed
-        
-        // si comprobante y medios de pagos tienen datos validos
-        //cargar la tabla con los datos 
-        //cargar a la base de datos el pago
-        //eliminar del registro
-        if ((!jCbComprobante.getSelectedItem().toString().equals("  -- Seleccionar Item -- "))&&
-            (!jCbMedioDePago.getSelectedItem().toString().equals("  -- Seleccionar Item -- "))){
+       
+        if ((!jCbFormaDePago.getSelectedItem().toString().equals("-- Seleccionar Item --"))
+                && (!jCbMedioDePago.getSelectedItem().toString().equals("-- Seleccionar Item --"))
+             && (!jCbComprobante1.getSelectedItem().toString().equals("-- Seleccionar Item --"))) {
 
-        double impTot=Double.parseDouble(jTextImporteTotal.getText().toString());
-            String tcomprobante = jCbComprobante.getSelectedItem().toString();
-            String mp = jCbMedioDePago.getSelectedItem().toString();
-
-            Pagos pag = new Pagos(reserva, impTot, tcomprobante, fechaActual, mp);
-            pagos.guardarpagos(pag);
-            modeloTablaPagos.addRow(new Object[]{
-                pag.getIdPagos(),
-                pag.getIdReserva().getIdReserva(),
-                pag.getImporteTotal(),
-                pag.getFechaEmision(),
-                pag.getTipoComprobante(),
-                pag.getMedioPago()
-            });
-
+            if (jCbFormaDePago.getSelectedItem().toString().equals(" Pago Final")){
+                pagoFinal();
+          
+            }else{
+                pagoParcial();
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Elija Comprobante y Método de pago");
+            JOptionPane.showMessageDialog(null, "Elija el Medio de pago ,Comprobante y Forma de pago");
         }
     }//GEN-LAST:event_jBRegistrarPagoActionPerformed
 
@@ -449,20 +507,138 @@ public class PagosView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBimprimirComprobanteActionPerformed
 
+    private void jBEliminarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarPagoActionPerformed
+         if (modeloTablaPagos.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+        } else {
+            int fila = jTablaPagos.getSelectedRow();
+    // si el boton de registrar pago esta desactivado, quiere decir que se realizo un pago final
+    // no se puede eliminar pagos parciales hasta que no se elimine el pago final registrado
+            if (fila != -1) {
+                if ((!jBRegistrarPago.isEnabled()) && (jTablaPagos.getValueAt(fila, 2).toString().equals(" Pago Parcial"))) {
+
+                    JOptionPane.showMessageDialog(null, "no se puede eliminar pagos parciales hasta que no se elimine el pago final");
+
+                } else {
+                    if (jTablaPagos.getValueAt(fila, 2).toString().equals(" Pago Final")) {
+
+                        jTextImporteTotal.setText(String.valueOf(reserva.getImporteTotal() + sumaconsumos() - sumaAdelantos()));
+                        jBRegistrarPago.setEnabled(true);
+                        jBeditar.setEnabled(true);
+                    } else {
+    // selecciona el importe del adelanto de la tabla y lo guarda en una variable 
+                        double restaAdelanto = Double.parseDouble(jTablaPagos.getValueAt(fila, 4).toString());
+                        jTextImporteTotal.setText(String.valueOf(reserva.getImporteTotal() + sumaconsumos() - sumaAdelantos() + restaAdelanto));
+                    }
+    // elimina logico de la base de datos 
+                    pagos.eliminadoLogicoPago(Integer.parseInt(jTablaPagos.getValueAt(fila, 0).toString()));
+                    comboBoxAInicial_y_actualizaListaPago();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro para eliminar un pago");
+            }
+        }
+    }//GEN-LAST:event_jBEliminarPagoActionPerformed
+
+    private void jTextAdelantoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextAdelantoFocusGained
+        jTextAdelanto.setText("");
+        jTextAdelanto.setForeground(new Color(69,73,74));
+    }//GEN-LAST:event_jTextAdelantoFocusGained
+
+    private void jCbFormaDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbFormaDePagoActionPerformed
+      String seleccion = (String)jCbFormaDePago.getSelectedItem();
+        
+        if (seleccion.equals(" Pago Parcial")){
+            jCbComprobante1.setSelectedItem(" Recibo de pago ");
+            jCbComprobante1.setEnabled(false);
+            jTextAdelanto.setText(""); 
+            jTextAdelanto.setForeground(new Color(187,187,187));
+            jTextAdelanto.setText("Ingrese adelanto");          
+            jTextAdelanto.setEditable(true);
+        
+        }else{
+         jCbComprobante1.setEnabled(true);
+         jCbComprobante1.setSelectedItem("-- Seleccionar Item --");
+         jTextAdelanto.setText("");
+         jTextAdelanto.setEditable(false);
+        }
+    }//GEN-LAST:event_jCbFormaDePagoActionPerformed
+   
+    public void pagoParcial() {
+        String adelanto = jTextAdelanto.getText().toString();// adelanto
+    // si el adelanto mas la suma de totos los adelantos
+
+        if (esValido(adelanto, reserva.getImporteTotal())) {
+    //si el adelanto es mayor que cero, es un número y si es menor o igual que el
+    // el importe total de la habitacion, sin el consumo, ya que si despues quisiera restarle consumos
+    // podria quedar un número negativo y generaría un error
+    // también evalúa que la suma de todos los adelantos no sea mayor a el importe de la habitación    
+
+            Pagos pag = new Pagos(reserva, Double.parseDouble(adelanto),
+                    jCbComprobante1.getSelectedItem().toString(),
+                    fechaActual,
+                    jCbMedioDePago.getSelectedItem().toString(),
+                    jCbFormaDePago.getSelectedItem().toString(),
+                    true);
+    // guarda un registro de pago como pago parcial adelanto
+            pagos.guardarpagos(pag);
+
+            comboBoxAInicial_y_actualizaListaPago();
+            jTextImporteTotal.setText(String.valueOf(reserva.getImporteTotal() + sumaconsumos() - sumaAdelantos()));
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El adelanto no es valido");
+            jTextAdelanto.setText("");
+            jTextAdelanto.requestFocus();
+        }
+    }
+    
+    public void pagoFinal(){
+    // cuando quiera hacer el pago final tiene que fijarse que el check in sea distinto de null
+    // ya que la persona puede hacer un adelanto sin estar ocupando una habitacion
+    // pero no puede finalizar un pago sin estar hospedada
+
+        if (reserva.getCheckIn() != null) {
+
+            Pagos pag = new Pagos(reserva, Double.parseDouble(jTextImporteTotal.getText().toString()),
+                    jCbComprobante1.getSelectedItem().toString(),
+                    fechaActual,
+                    jCbMedioDePago.getSelectedItem().toString(),
+                    jCbFormaDePago.getSelectedItem().toString(),
+                    true);
+    // antes de guardar hay que hacer el checkout
+    // eliminar la reserva
+
+    // guarda un registro de pago como pago final
+            pagos.guardarpagos(pag);
+            comboBoxAInicial_y_actualizaListaPago();
+            jTextImporteTotal.setText(String.valueOf(reserva.getImporteTotal()
+                    + sumaconsumos() - sumaAdelantos() - Double.parseDouble(jTextImporteTotal.getText().toString())));
+
+            jBRegistrarPago.setEnabled(false);
+            jBeditar.setEnabled(false);
+
+            jTablaPagos.clearSelection();
+        } else {
+            JOptionPane.showMessageDialog(null, "Esta reserva no tiene iniciada el checkIn");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBEliminarPago;
     private javax.swing.JButton jBImprimirDetalleDeConsumos;
     private javax.swing.JButton jBRegistrarPago;
     private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBimprimirComprobante;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jCbComprobante;
+    private javax.swing.JComboBox<String> jCbComprobante1;
+    private javax.swing.JComboBox<String> jCbFormaDePago;
     private javax.swing.JComboBox<String> jCbMedioDePago;
-    private com.toedter.calendar.JDateChooser jDCFechaEmision;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -479,72 +655,68 @@ public class PagosView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTablaConsumo;
     private javax.swing.JTable jTablaPagos;
+    private javax.swing.JTextField jTextAdelanto;
+    private javax.swing.JTextField jTextFechaemision;
     private javax.swing.JTextField jTextImporteAlojamiento;
     private javax.swing.JTextField jTextImporteTotal;
     private javax.swing.JTextField jTextNombreReserva;
     private javax.swing.JTextField jTextNumeroHabitacion;
     // End of variables declaration//GEN-END:variables
+   
+    public void inicio() {
+    // se ponen todos los campon no editables y se le asignan los datos 
+    
+        jTextNombreReserva.setEditable(false);
+        jTextNumeroHabitacion.setEditable(false);
+        jTextFechaemision.setEditable(false);
+        jTextImporteAlojamiento.setEditable(false);
+        jTextImporteTotal.setEditable(false);
+        jTextAdelanto.setEditable(false);       
+        jTextNombreReserva.setText(reserva.getIdHuesped().getApellido() + ", " + reserva.getIdHuesped().getNombre());
+        jTextNumeroHabitacion.setText(String.valueOf(reserva.getIdHabitacion().getNumHabitacion()));
+        jTextFechaemision.setText(fechaActual.toString());
+        jTextImporteAlojamiento.setText(String.valueOf(reserva.getImporteTotal()));
+        // se suma el importe de la reserva de la habitacion mas los consumos que tenga menos los adelantos si tiene
+         jTextImporteTotal.setText(String.valueOf(reserva.getImporteTotal() +sumaconsumos() - sumaAdelantos()));      
+    }
+
+    private void comboBoxAInicial_y_actualizaListaPago() {
+ // poner todos los combo box a situacion inicial y actualiza lista
+  
+        modeloTablaPagos.setRowCount(0);
+        jCbComprobante1.setEnabled(true);
+        jCbComprobante1.setSelectedItem("-- Seleccionar Item --");
+        jCbMedioDePago.setSelectedItem("-- Seleccionar Item --");
+        jCbFormaDePago.setSelectedItem("-- Seleccionar Item --");
+        jTextAdelanto.setText("");
+        listaPago();
+
+    }
+
+    private void CB_FormaDePago() {
+        jCbFormaDePago.removeAllItems();
+        jCbFormaDePago.addItem("-- Seleccionar Item --");
+        jCbFormaDePago.addItem(" Pago Parcial");
+        jCbFormaDePago.addItem(" Pago Final");
+    }
 
     private void CB_MedioDePago() {
-
         jCbMedioDePago.removeAllItems();
-        jCbMedioDePago.addItem("  -- Seleccionar Item -- ");
+        jCbMedioDePago.addItem("-- Seleccionar Item --");
         jCbMedioDePago.addItem(" Efectivo");
         jCbMedioDePago.addItem(" Tarjeta de crédito");
         jCbMedioDePago.addItem(" Tarjeta de débito");
         jCbMedioDePago.addItem(" Transferencia bancaria");
         jCbMedioDePago.addItem(" Cheque");
         jCbMedioDePago.addItem(" Mercado Pago");
-        jCbMedioDePago.addItem(" PayPal");
-        jCbMedioDePago.addItem(" Bitcoin");
-        jCbMedioDePago.addItem(" Apple Pay");
-        jCbMedioDePago.addItem(" Google Wallet");
-        jCbMedioDePago.addItem(" Samsung Pay");
-        jCbMedioDePago.addItem(" Amazon Pay");
-        jCbMedioDePago.addItem(" Pago por QR Code");
-
     }
 
     private void CB_Comprobantes() {
-        jCbComprobante.removeAllItems();
-        jCbComprobante.addItem("  -- Seleccionar Item -- ");
-        jCbComprobante.addItem(" Factuar A");
-        jCbComprobante.addItem(" Factuar B");
-        jCbComprobante.addItem(" Recibo de pago ");
-        jCbComprobante.addItem(" Nota de crédito");
-        jCbComprobante.addItem(" Nota de débito");
-        jCbComprobante.addItem(" Comprobantes de medios de pagos electrónicos");
-        jCbComprobante.addItem(" Factura electrónica (eFactura)");
-
-    }
-
-    public void inicio() {
-
-        jTextNombreReserva.setEditable(false);
-        jTextNumeroHabitacion.setEditable(false);
-        jTextImporteAlojamiento.setEditable(false);
-        jTextImporteTotal.setEditable(false);
-        jDCFechaEmision.setDate(Date.from(fechaActual.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        jDCFechaEmision.setMinSelectableDate(Date.from(fechaActual.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        jDCFechaEmision.setMaxSelectableDate(Date.from(fechaActual.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-
-        jTextNombreReserva.setText(reserva.getIdHuesped().getApellido() + ", " + reserva.getIdHuesped().getNombre());
-        jTextNumeroHabitacion.setText(String.valueOf(reserva.getIdHabitacion().getNumHabitacion()));
-        jTextImporteAlojamiento.setText(String.valueOf(reserva.getImporteTotal()));
-        double costo = 0;
-        for (Consumo co : c.listarProductoServicioPorIdRegistro(idReserva)) {
-            costo += co.getCostoTotal();
-        }
-        jTextImporteTotal.setText(String.valueOf(costo + Double.parseDouble(jTextImporteAlojamiento.getText())));
-
-
-        /* private int idPagos;
-    private Reserva idReserva;
-    private double importeTotal;
-    private String tipoComprobante;
-    private Date fechaEmision;
-    private String medioPago; 
-         */
+        jCbComprobante1.removeAllItems();
+        jCbComprobante1.addItem("-- Seleccionar Item --");
+        jCbComprobante1.addItem(" Factuar A");
+        jCbComprobante1.addItem(" Factuar B");
+        jCbComprobante1.addItem(" Recibo de pago ");
     }
 
     private void armarCabeceraListaConsumo() {
@@ -555,6 +727,17 @@ public class PagosView extends javax.swing.JInternalFrame {
         jTablaConsumo.setModel(modeloTablaConsumo);
     }
 
+    private void armarCabeceraListaPagos() {
+        modeloTablaPagos.addColumn("Id");//0
+        modeloTablaPagos.addColumn("Fecha de emision");//1
+        modeloTablaPagos.addColumn("Forma de Pago");//2
+        modeloTablaPagos.addColumn("Medio de Pago");//3    
+        modeloTablaPagos.addColumn("Importe Total");//4
+        modeloTablaPagos.addColumn("Tipo de Comprobante");//5
+       
+        jTablaPagos.setModel(modeloTablaPagos);
+    }
+
     private void cargarTabla(Consumo c) {
         modeloTablaConsumo.addRow(new Object[]{
             c.getIdConsumo(),
@@ -563,46 +746,56 @@ public class PagosView extends javax.swing.JInternalFrame {
             c.getCostoTotal(),});
     }
 
-    public void listaConsumo() {
+    private void cargarTablaPagos(Pagos p) {
+        modeloTablaPagos.addRow(new Object[]{
+            p.getIdPagos(),
+            p.getFechaEmision(),
+            p.getFormaDePago(),
+            p.getMedioPago(),
+             p.getImporteTotal(),
+            p.getTipoComprobante()
+           
+        });
+    }
 
+    public void listaConsumo() {
         double consumoTotal = 0;
 
         for (Consumo x : c.listarProductoServicioPorIdRegistro(idReserva)) {
             cargarTabla(x);
             consumoTotal += x.getCostoTotal();
-
         }
-
         jLabelConsumoTotal.setText("Consumo Total: " + consumoTotal);
     }
-
-    private void armarCabeceraListaPagos() {
-        modeloTablaPagos.addColumn("Id");//0
-        modeloTablaPagos.addColumn("IdReserva");//1
-        modeloTablaPagos.addColumn("Importe Total");//2
-        modeloTablaPagos.addColumn("Fecha de emision");//3
-        modeloTablaPagos.addColumn("Tipo de Comprobante");//4
-        modeloTablaPagos.addColumn("Medio de Pago");//5
-        jTablaPagos.setModel(modeloTablaPagos);
-    }
-
-    private void cargarTablaPagos(Pagos p) {
-        modeloTablaPagos.addRow(new Object[]{
-            p.getIdPagos(),
-            p.getIdReserva().getIdReserva(),
-            p.getImporteTotal(),
-            p.getFechaEmision(),
-            p.getTipoComprobante(),
-            p.getMedioPago()
-        });
-    }
-
+    
     public void listaPago() {
-        for (Pagos x : pagos.listarPagos()) {
+        for (Pagos x : pagos.listarPagosporIdReserva(idReserva)) {
             cargarTablaPagos(x);
         }
     }
- public boolean esNumeroValido(String cadena) {
+
+    public double sumaconsumos() {
+    // suma todos los consumos asiciados al esa reserva
+        double sumaParcial = 0;
+        for (Consumo x : c.listarProductoServicioPorIdRegistro(idReserva)) {
+            sumaParcial += x.getCostoTotal();
+        }
+        return sumaParcial;
+    }
+
+    public double sumaAdelantos() {
+        // suma todos los adelantos que tenga la reserva     
+        double sumaParcial = 0;
+        for (Pagos x : pagos.listarPagosporIdReserva(idReserva)) {
+            if (x.getFormaDePago().equals(" Pago Parcial")) {
+                sumaParcial += x.getImporteTotal();
+            }
+        }
+        return sumaParcial;
+    }
+
+    public boolean esNumeroValido(String cadena) {
+    // se usa en editar consumos para validar el numero de unidades que desea editar
         try {
             int numero = Integer.parseInt(cadena);
             // Verifica si es un número entero mayor que cero y menor que 9
@@ -610,8 +803,31 @@ public class PagosView extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             // Si se lanza una excepción, la cadena no es un número válido
             return false;
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return false;
         }
-}
+    }
+
+    public boolean esValido(String cadena, double importe) {
+    // se usa para verificar el adelanto, no sea un caracter no sea un numero negativo
+    // y que no sea mayor que el importe total
+        try {
+            
+            double numero = Double.parseDouble(cadena);
+            double numero2 = numero + sumaAdelantos();// suma el adelanto que se quiere hacer mas los que pueda haber hecho
+            // Verifica si es un número entero mayor que cero y menor que el importe total del alojamiento
+           
+            if (numero2 > importe){
+                JOptionPane.showMessageDialog(null,"El adelanto supera el importe de alojamiento");
+            }
+             return numero > 0 && numero <= importe && numero2 <= importe;
+        } catch (NumberFormatException e) {
+            // Si se lanza una excepción, la cadena no es un número válido
+            System.out.println("el ad");
+            return false;
+        } catch (NullPointerException e) {
+            System.out.println("Tiene que ingresar solo numeros");
+            return false;
+        }
+    }
 }
