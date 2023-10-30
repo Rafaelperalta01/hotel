@@ -10,10 +10,6 @@ import javax.swing.table.DefaultTableModel;
 import entidades.Huesped;
 
 
-/**
- *
- * @author fernandoalvarez
- */
 public class listaHuespedes extends javax.swing.JInternalFrame {
 HuespedData huesped = new HuespedData();
 private DefaultTableModel modeloTabla = new DefaultTableModel() {
