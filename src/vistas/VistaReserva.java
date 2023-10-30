@@ -31,13 +31,13 @@ import javax.swing.table.DefaultTableModel;
 public class VistaReserva extends javax.swing.JInternalFrame {
 
     Usuarios usuario;
-    ReservaData reserva = new ReservaData();
+    public static ReservaData reserva = new ReservaData();
     HuespedData huesped = new HuespedData();
     HabitacionData habitacion = new HabitacionData();
     UsuariosData user = new UsuariosData();
     public static String numDniHuesped = "";
 
-    private DefaultTableModel modeloTabla = new DefaultTableModel() {
+    public static DefaultTableModel modeloTabla = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
@@ -125,9 +125,10 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jTablareservas = new javax.swing.JTable();
         jBConsumos = new javax.swing.JButton();
         jBpago = new javax.swing.JButton();
-        jTTotalRegistros = new javax.swing.JTextField();
         jBsalir = new javax.swing.JButton();
+        jBCheckIn = new javax.swing.JButton();
         jBcancelarReserva = new javax.swing.JButton();
+        jTTotalRegistros = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -355,9 +356,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jTTotalRegistros.setBackground(new java.awt.Color(255, 204, 153));
-        jTTotalRegistros.setText("Total de registros:");
-
         jBsalir.setBackground(new java.awt.Color(255, 204, 153));
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
@@ -366,8 +364,24 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        jBCheckIn.setBackground(new java.awt.Color(255, 204, 153));
+        jBCheckIn.setText("CheckIn");
+        jBCheckIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCheckInActionPerformed(evt);
+            }
+        });
+
         jBcancelarReserva.setBackground(new java.awt.Color(255, 204, 153));
         jBcancelarReserva.setText("Cancelar Reserva");
+        jBcancelarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcancelarReservaActionPerformed(evt);
+            }
+        });
+
+        jTTotalRegistros.setBackground(new java.awt.Color(255, 204, 153));
+        jTTotalRegistros.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanelListadoRegistroReservaLayout = new javax.swing.GroupLayout(jPanelListadoRegistroReserva);
         jPanelListadoRegistroReserva.setLayout(jPanelListadoRegistroReservaLayout);
@@ -378,18 +392,20 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 .addComponent(jBConsumos)
                 .addGap(18, 18, 18)
                 .addComponent(jBpago)
-                .addGap(144, 144, 144)
+                .addGap(18, 18, 18)
+                .addComponent(jBCheckIn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListadoRegistroReservaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
                         .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addComponent(jBcancelarReserva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(41, 41, 41)
                         .addComponent(jBsalir)))
                 .addGap(28, 28, 28))
         );
@@ -399,16 +415,22 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
-                    .addComponent(jBcancelarReserva)
-                    .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBcancelarReserva))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBConsumos)
-                    .addComponent(jBpago)
-                    .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
+                .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBConsumos)
+                            .addComponent(jBpago)
+                            .addComponent(jBCheckIn))
+                        .addGap(74, 74, 74))
+                    .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -474,20 +496,26 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
      
         if ((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(null, "se Habilita para generar un registro");
             
             Huesped hues = huesped.buscarHuespedPorDni(numDniHuesped);
             Habitacion hab = habitacion.buscarHabitacion(Integer.parseInt(jTHabitacion.getText()));
-        
+            hab.setEstado(false);
+            habitacion.modificarHabitacion(hab);
+            
             LocalDate entrada = jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate salida = jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            LocalDate ckIn = null;
+//            LocalDate ckOut= null;
             double importe = Double.parseDouble(jTImporte.getText().toString());
             int canPersonas = Integer.parseInt(jTCantPersonas.getText().toString());
+            
             Reserva res = new Reserva(hab,hues,usuario,entrada,salida,importe,canPersonas,true);
             reserva.crearReserva(res);
-            limpiaCampos();        
-            modeloTabla.setRowCount(0);
-            listaRegistros();
+            JOptionPane.showMessageDialog(null, "Se realizó una reserva ");
+             limpiaCampos();        
+             listaRegistros();
+             jBGuardar.setEnabled(true);
+             jTablareservas.clearSelection();
             
         } else {
             JOptionPane.showMessageDialog(null, "Complete todos los campos para poder generar un registro ");
@@ -511,17 +539,17 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             
             if (fila != -1) {
                 try {
-                    String fechaE =jTablareservas.getValueAt(fila, 6).toString();
-                    String fechaS =jTablareservas.getValueAt(fila, 7).toString();
+                    String fechaE =jTablareservas.getValueAt(fila, 5).toString();
+                    String fechaS =jTablareservas.getValueAt(fila, 6).toString();
                     java.util.Date f =forma.parse(fechaE);
                     java.util.Date s = forma.parse(fechaS);
                     jDCfechaEntrada.setDate(f);
                     jDCfechaSalida.setDate(s);
-                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 5).toString());
-                    jTHabitacion.setText(jTablareservas.getValueAt(fila, 0).toString());
+                    jTCantPersonas.setText(jTablareservas.getValueAt(fila, 8).toString());
+                    jTHabitacion.setText(jTablareservas.getValueAt(fila, 7).toString());
                     jTHusped.setText(jTablareservas.getValueAt(fila, 1).toString() + jTablareservas.getValueAt(fila, 2).toString());
-                    jTImporte.setText(jTablareservas.getValueAt(fila, 8).toString());                    
-                    Usuarios us = user.obtenerUsuarioId(Integer.parseInt(jTablareservas.getValueAt(fila, 9).toString()));
+                    jTImporte.setText(jTablareservas.getValueAt(fila, 9).toString());                    
+                    Usuarios us = user.obtenerUsuarioId(Integer.parseInt(jTablareservas.getValueAt(fila, 10).toString()));
                     jTAdmin.setText(us.getNombre()+", "+us.getCargo());
                 } catch (ParseException ex) {
                     JOptionPane.showMessageDialog(null,"Se produjo un error en el ingreso de la fecha"+ex.getMessage());
@@ -538,11 +566,15 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         } else {
             int fila = jTablareservas.getSelectedRow();
             if ((fila != -1)&&((habilitaLista()) && (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty()))) {
-                Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 10).toString());
+                if (jTablareservas.getValueAt(fila,11)!= null){
+                Consumos.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 0).toString());
                 Consumos consu = new Consumos();
                 Menu.escritorio.add(consu);
                 consu.moveToFront();
-                consu.setVisible(true);     
+                consu.setVisible(true);   
+                }else{
+                JOptionPane.showMessageDialog(null, "La persona no se encuentra hospedada ");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para agregarle un consumo ");
             }
@@ -550,21 +582,23 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBConsumosActionPerformed
 
     private void jBpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBpagoActionPerformed
-       if (modeloTabla.getRowCount() == 0) {
+      if (modeloTabla.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "La tabla esta vacía");
 
         } else {
             int fila = jTablareservas.getSelectedRow();
-            if (fila != -1){
-                PagosView.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila, 10).toString());
+           if ((fila != -1)&& (!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+                PagosView.idReserva = Integer.parseInt(jTablareservas.getValueAt(fila,0).toString());
                 PagosView pago = new PagosView();
                 Menu.escritorio.add(pago);
                 pago.moveToFront();
                 pago.setVisible(true);     
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click para realizar el pago");
             }
         }
+         
     }//GEN-LAST:event_jBpagoActionPerformed
 
     private void jTBuscaReservasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTBuscaReservasFocusGained
@@ -572,44 +606,98 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTBuscaReservasFocusGained
 
     private void jTBuscaReservasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTBuscaReservasFocusLost
-        jTBuscaReservas.setText("Busca reserva por Nombre, DNI o Nª habitación ");
+       jTBuscaReservas.setText("Busca reserva por Nombre, DNI o Nªde Reserva ");
     }//GEN-LAST:event_jTBuscaReservasFocusLost
 
     private void jTBuscaReservasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscaReservasKeyReleased
-        borrarFilas();
+     borrarFilas();
         for (Reserva r : reserva.listarReserva()) {
             jTBuscaReservas.getText().toLowerCase();
             if ((r.getIdHuesped().getNombre().toLowerCase().startsWith(jTBuscaReservas.getText()))
                     || (r.getIdHuesped().getNumeroDocumento().startsWith(jTBuscaReservas.getText()))
-                    || (String.valueOf(r.getIdHabitacion().getNumHabitacion()).startsWith(jTBuscaReservas.getText()))) {
+                    || (String.valueOf(r.getIdReserva()).startsWith(jTBuscaReservas.getText()))) {
 
                 modeloTabla.addRow(new Object[]{
-                    r.getIdHabitacion().getNumHabitacion(),
+                    r.getIdReserva(),
                     r.getIdHuesped().getNombre(),
                     r.getIdHuesped().getApellido(),
                     r.getIdHuesped().getTipoDocumento(),
                     r.getIdHuesped().getNumeroDocumento(),
-                    r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
                     r.getFechaEntrada(),
                     r.getFechaSalida(),
+                    r.getIdHabitacion().getNumHabitacion(),
+                    r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
                     r.getImporteTotal(),
                     r.getIdUsuarios().getIdUsuario(),
-                    r.getIdReserva()
+                    r.getCheckIn()
                 });
             }
         }
     }//GEN-LAST:event_jTBuscaReservasKeyReleased
-    private void borrarFilas() {
 
-        int filas = jTablareservas.getRowCount() - 1;
-        for (; filas >= 0; filas--) {
-            modeloTabla.removeRow(filas);
+    private void jBCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCheckInActionPerformed
+
+        if (modeloTabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+
+        } else {
+            int fila = jTablareservas.getSelectedRow();
+            LocalDate hoy = LocalDate.now();
+            LocalDate fechaE = (LocalDate) jTablareservas.getValueAt(fila, 5);
+            if ((fila != -1)&&(!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+                int idreserva = Integer.parseInt(jTablareservas.getValueAt(fila, 0).toString());
+                Reserva r = reserva.buscarReservaId(idreserva);
+
+                if (r.getCheckIn() == null) {
+                    if (hoy.equals(fechaE)) {
+                        r.realizarCheckIn();
+                        reserva.modificarCheckInReserva(idreserva, r.getCheckIn());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El CheckIn debe coincidir con la fecha de inicio de la Reserva ");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Este registro ya tiene un check-in registrado. No se puede realizar otro check-in en la misma reserva.");
+                }
+                limpiaCampos();
+                listaRegistros();
+                jBGuardar.setEnabled(true);
+                jTablareservas.clearSelection();
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click ");
+            }
         }
-    }
+    }//GEN-LAST:event_jBCheckInActionPerformed
 
+    private void jBcancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelarReservaActionPerformed
+        if (modeloTabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+
+        } else {
+            int fila = jTablareservas.getSelectedRow();
+            if ((fila != -1)&&(!jTHabitacion.getText().isEmpty()) && (!jTHusped.getText().isEmpty())) {
+                int idreserva = Integer.parseInt(jTablareservas.getValueAt(fila, 0).toString());
+                Reserva r = reserva.buscarReservaId(idreserva);
+                if (jTablareservas.getValueAt(fila, 11) == null) {
+                    reserva.cancelarReserva(idreserva);
+                    JOptionPane.showMessageDialog(null, "Reserva cancelada");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Este registro ya tiene un check In, no se puede cancelar");
+                }
+                limpiaCampos();
+                listaRegistros();
+                jBGuardar.setEnabled(true);
+                jTablareservas.clearSelection();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con doble click ");
+            }
+        }
+    }//GEN-LAST:event_jBcancelarReservaActionPerformed
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarTipoH;
     private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBCheckIn;
     private javax.swing.JButton jBConsumos;
     public static javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBbuscarHuesped;
@@ -636,10 +724,10 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField jTHabitacion;
     public static javax.swing.JTextField jTHusped;
     public static javax.swing.JTextField jTImporte;
-    private javax.swing.JTextField jTTotalRegistros;
+    public static javax.swing.JTextField jTTotalRegistros;
     public static javax.swing.JTable jTablareservas;
     // End of variables declaration//GEN-END:variables
-  public boolean habilitaLista() {
+    public boolean habilitaLista() {
         boolean aux = false;
 
         if ((jDCfechaEntrada.getDate() != null)
@@ -663,45 +751,49 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     }
 
     private void armarCabecera() {
-        modeloTabla.addColumn("NºHabitación ");//0
+        modeloTabla.addColumn("idReserva");//10 0
         modeloTabla.addColumn("Nombre Huesped");//1
         modeloTabla.addColumn("Apellido Huesped");//2
         modeloTabla.addColumn("Tipo de Documento");//3
         modeloTabla.addColumn("Numero de Documento");//4    
-        modeloTabla.addColumn("Cant.Personas");//5
-        modeloTabla.addColumn("Fecha entrada");//6
-        modeloTabla.addColumn("Fecha de salida");//7
-        modeloTabla.addColumn("Importe total");//8
-        modeloTabla.addColumn("Usuario");//9
-        modeloTabla.addColumn("idReserva");//10
+        modeloTabla.addColumn("Fecha entrada");//6 5
+        modeloTabla.addColumn("Fecha de salida");//7 6
+        modeloTabla.addColumn("NºHabitación ");//0 7
+        modeloTabla.addColumn("Cant.Personas");//5 8
+        modeloTabla.addColumn("Importe total");//8 9
+        modeloTabla.addColumn("Usuario");//9 10
+        modeloTabla.addColumn("CheckIn");//11
+
         jTablareservas.setModel(modeloTabla);
     }
 
-    private void cargarTabla(Reserva r) {
+    public static void cargarTabla(Reserva r) {
            modeloTabla.addRow(new Object[]{
-           r.getIdHabitacion().getNumHabitacion(),
-           r.getIdHuesped().getNombre(),
-           r.getIdHuesped().getApellido(),
-           r.getIdHuesped().getTipoDocumento(),
-           r.getIdHuesped().getNumeroDocumento(),
-           r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
-           r.getFechaEntrada(),
-           r.getFechaSalida(),
-           r.getImporteTotal(),
-           r.getIdUsuarios().getIdUsuario(),
-           r.getIdReserva()
+            r.getIdReserva(),
+            r.getIdHuesped().getNombre(),
+            r.getIdHuesped().getApellido(),
+            r.getIdHuesped().getTipoDocumento(),
+            r.getIdHuesped().getNumeroDocumento(),
+            r.getFechaEntrada(),
+            r.getFechaSalida(),
+            r.getIdHabitacion().getNumHabitacion(),
+            r.getIdHabitacion().getIdTipoHabitacion().getCantPersonas(),
+            r.getImporteTotal(),
+            r.getIdUsuarios().getIdUsuario(),
+            r.getCheckIn()
+
         });
     }
 
-    public void listaRegistros() {
+    public static void listaRegistros() {
       int registro = 0;
+       modeloTabla.setRowCount(0);
         for(Reserva res:reserva.listarReserva()){
             cargarTabla(res);
             registro++;
         }
         jTTotalRegistros.setText("Total de registros: "+registro);
         
-
     }
 
     public void camposApagados() {
@@ -720,5 +812,12 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jTImporte.setText("");
         jTAdmin.setText("");
 
+    }
+     private void borrarFilas() {
+
+        int filas = jTablareservas.getRowCount() - 1;
+        for (; filas >= 0; filas--) {
+            modeloTabla.removeRow(filas);
+        }
     }
 }// fin class
