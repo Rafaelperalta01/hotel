@@ -37,7 +37,7 @@ public class EnvioEmail extends javax.swing.JFrame {
     private Properties mProperties;
     private Session mSesion;
     private MimeMessage mCorreo;
-
+    
     public EnvioEmail() {
         initComponents();
         setLocationRelativeTo(null);
@@ -92,6 +92,7 @@ public class EnvioEmail extends javax.swing.JFrame {
             mTransport.close();
             JOptionPane.showMessageDialog(null, "Se envio un correo con tu contraseña" );
             tfRecibe.setText("");
+            this.dispose();
         } catch (NoSuchProviderException ex) {
             Logger.getLogger(EnvioEmail.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {

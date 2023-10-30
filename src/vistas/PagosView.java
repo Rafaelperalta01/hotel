@@ -229,6 +229,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
 
         jBimprimirComprobante.setBackground(new java.awt.Color(255, 204, 153));
+        jBimprimirComprobante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/print.png"))); // NOI18N
         jBimprimirComprobante.setText("Imprimir comprobante");
         jBimprimirComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +286,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                     .addComponent(jBsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -391,6 +392,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         modeloTablaConsumo.setRowCount(0);
         listaConsumo();
         jTablaConsumo.clearSelection();
+        //comentario
     }//GEN-LAST:event_jBeditarActionPerformed
 
     private void jBRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarPagoActionPerformed
