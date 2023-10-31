@@ -62,7 +62,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -73,11 +72,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(743, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Listado Reservas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 6, -1, 32));
 
         jPanel1.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,11 +205,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
   
 
     private void jTReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTReservasMouseClicked
-        if (evt.getClickCount() == 2){
-
-            int fila = jTReservas.getSelectedRow();
-
-            if (fila != -1) {
+//        if (evt.getClickCount() == 2){
+//
+//            int fila = jTReservas.getSelectedRow();
+//
+//            if (fila != -1) {
 //                    String fechaE =jTReservas.getValueAt(fila, 13).toString();
 //                    String fechaS =jTReservas.getValueAt(fila, 14).toString();
 //                    java.util.Date f =forma.parse(fechaE);
@@ -229,28 +223,28 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 //                    Usuarios us = user.obtenerUsuarioId(Integer.parseInt(jTReservas.getValueAt(fila, 9).toString()));
 //                    jTAdmin.setText(us.getNombre()+", "+us.getCargo());
 
-            int nunres=(Integer)jTReservas.getValueAt(fila,0);
-            int numhab=(Integer)jTReservas.getValueAt(fila,1);
-            int numpiso=(Integer)jTReservas.getValueAt(fila,2);
-            boolean estado=(Boolean)jTReservas.getValueAt(fila,3);
-            String nomhues=(String)jTReservas.getValueAt(fila,4);
-            String apelhues=(String)jTReservas.getValueAt(fila,5);
-            String tipdoc=(String)jTReservas.getValueAt(fila,6);
-            String numdoc=(String)jTReservas.getValueAt(fila,7);
-            String categ=(String)jTReservas.getValueAt(fila,8);
-            int cantpers=(Integer)jTReservas.getValueAt(fila,9);
-            int cantcamas=(Integer)jTReservas.getValueAt(fila,10);
-            String tipocama=(String)jTReservas.getValueAt(fila,11);
-            double precio=(Double)jTReservas.getValueAt(fila,12);
-            LocalDate FE=(LocalDate)jTReservas.getValueAt(fila,13);
-            LocalDate FS=(LocalDate)jTReservas.getValueAt(fila,14);
-            double imptot=(Double)jTReservas.getValueAt(fila,15);
-            int iDusu=(Integer)jTReservas.getValueAt(fila,16);
+//            int nunres=(Integer)jTReservas.getValueAt(fila,0);
+//            int numhab=(Integer)jTReservas.getValueAt(fila,1);
+//            int numpiso=(Integer)jTReservas.getValueAt(fila,2);
+//            boolean estado=(Boolean)jTReservas.getValueAt(fila,3);
+//            String nomhues=(String)jTReservas.getValueAt(fila,4);
+//            String apelhues=(String)jTReservas.getValueAt(fila,5);
+//            String tipdoc=(String)jTReservas.getValueAt(fila,6);
+//            String numdoc=(String)jTReservas.getValueAt(fila,7);
+//            String categ=(String)jTReservas.getValueAt(fila,8);
+//            int cantpers=(Integer)jTReservas.getValueAt(fila,9);
+//            int cantcamas=(Integer)jTReservas.getValueAt(fila,10);
+//            String tipocama=(String)jTReservas.getValueAt(fila,11);
+//            double precio=(Double)jTReservas.getValueAt(fila,12);
+//            LocalDate FE=(LocalDate)jTReservas.getValueAt(fila,13);
+//            LocalDate FS=(LocalDate)jTReservas.getValueAt(fila,14);
+//            double imptot=(Double)jTReservas.getValueAt(fila,15);
+//            int iDusu=(Integer)jTReservas.getValueAt(fila,16);
 
             
-            }
-            dispose();
-                    }
+//            }
+//            dispose();
+//                    }
     }//GEN-LAST:event_jTReservasMouseClicked
 
     private void jTnroRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnroRegistroActionPerformed
@@ -259,7 +253,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

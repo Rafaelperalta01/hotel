@@ -49,7 +49,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jPanel2.setBackground(new java.awt.Color(151, 60, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Huespedes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 16), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(741, 529));
 
@@ -75,10 +74,18 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Busqueda por Documeto");
+        jLabel11.setText("Busqueda por Documento");
 
         jTBuscar.setBackground(new java.awt.Color(151, 60, 0));
-        jTBuscar.setForeground(new java.awt.Color(151, 60, 0));
+        jTBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jTBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTBuscarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTBuscarFocusLost(evt);
+            }
+        });
         jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTBuscarKeyReleased(evt);
@@ -117,25 +124,25 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTHuespedResMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHuespedResMouseClicked
-         if (evt.getClickCount() == 2){
-            
-          int fila = jTHuespedRes.getSelectedRow();
-
-          if (fila != -1) {                      
+//         if (evt.getClickCount() == 2){
+//            
+//          int fila = jTHuespedRes.getSelectedRow();
+//
+//          if (fila != -1) {                      
 //            VistaReserva.jTHusped.setText(jTHuespedRes.getValueAt(fila,0).toString());
 //            VistaReserva.numDniHuesped = jTHuespedRes.getValueAt(fila,3).toString();
-           String nom=(String)jTHuespedRes.getValueAt(fila,0);
-           String ape=(String)jTHuespedRes.getValueAt(fila,1);
-           String tipodoc=(String)jTHuespedRes.getValueAt(fila,2);
-           String numdoc=(String)jTHuespedRes.getValueAt(fila,3);
-           String domi=(String)jTHuespedRes.getValueAt(fila,4);
-           String email=(String)jTHuespedRes.getValueAt(fila,5);
-           int celu=(Integer)jTHuespedRes.getValueAt(fila,6);
-           boolean estado=(Boolean)jTHuespedRes.getValueAt(fila,7);
-           
-           
-         dispose();
-        }}  
+//           String nom=(String)jTHuespedRes.getValueAt(fila,0);
+//           String ape=(String)jTHuespedRes.getValueAt(fila,1);
+//           String tipodoc=(String)jTHuespedRes.getValueAt(fila,2);
+//           String numdoc=(String)jTHuespedRes.getValueAt(fila,3);
+//           String domi=(String)jTHuespedRes.getValueAt(fila,4);
+//           String email=(String)jTHuespedRes.getValueAt(fila,5);
+//           int celu=(Integer)jTHuespedRes.getValueAt(fila,6);
+//           boolean estado=(Boolean)jTHuespedRes.getValueAt(fila,7);
+//           
+//           
+//         dispose();
+//        }}  
     }//GEN-LAST:event_jTHuespedResMouseClicked
 
     private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
@@ -155,7 +162,16 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         }
         }
     }//GEN-LAST:event_jTBuscarKeyReleased
-                
+
+    private void jTBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTBuscarFocusGained
+        jTBuscar.setText("");
+    }//GEN-LAST:event_jTBuscarFocusGained
+
+    private void jTBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTBuscarFocusLost
+        jTBuscar.setText("Ingresar número");
+    }//GEN-LAST:event_jTBuscarFocusLost
+               
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel11;
     private javax.swing.JPanel jPanel2;
