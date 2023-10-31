@@ -65,6 +65,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 jTextBuscarActionPerformed(evt);
             }
         });
+        jTextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextBuscarKeyReleased(evt);
+            }
+        });
 
         jTableHabitacion.setBackground(new java.awt.Color(151, 60, 0));
         jTableHabitacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,7 +105,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addComponent(jLabel1)
                     .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,8 +115,8 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(18, 18, 18)
                 .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,22 +163,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jTextBuscarKeyReleased
 
     private void jTableHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHabitacionMouseClicked
-        if (evt.getClickCount() == 2) {
-
-            int fila = jTableHabitacion.getSelectedRow();
-
-            if (fila != -1) {
-            int nunhab=(Integer)jTableHabitacion.getValueAt(fila,0);
-            int piso=(Integer)jTableHabitacion.getValueAt(fila,1);
-            boolean estado=(Boolean)jTableHabitacion.getValueAt(fila,2);
-            String categoria=(String)jTableHabitacion.getValueAt(fila, 3);
-            int cantpers=(Integer)jTableHabitacion.getValueAt(fila,4);
-            int cantcamas=(Integer)jTableHabitacion.getValueAt(fila,5);
-            String tipocama=(String)jTableHabitacion.getValueAt(fila,6);
-            double precio=(Double)jTableHabitacion.getValueAt(fila,7);
-            
-              dispose();
-            }}
+    
     }//GEN-LAST:event_jTableHabitacionMouseClicked
 
     private void jTextBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscarActionPerformed

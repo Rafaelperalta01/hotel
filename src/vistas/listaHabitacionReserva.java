@@ -143,10 +143,14 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jTextBuscarFocusGained
 
     private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
-         borrarFilas();
-        for (Habitacion hab : habitacion.listarHabitacion()) {
+        borrarFilas();
+        fecha1 = VistaReserva.jDCfechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        fecha2 = VistaReserva.jDCfechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int personas = Integer.parseInt(VistaReserva.jTCantPersonas.getText());
+
+        for (Habitacion hab : habitacion.listarReserva_X_fechasYcantDePersonas(fecha1, fecha2, personas)) {
             if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
-//              if(hab.getNumHabitacion()).startsWith(jTextBuscar.getText()){
+                
                 modeloTabla.addRow(new Object[]{
                     hab.getNumHabitacion(),
                     hab.getPiso(),
