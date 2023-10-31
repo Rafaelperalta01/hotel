@@ -45,9 +45,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         setClosable(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
-        jTextbuscar.setBackground(new java.awt.Color(255, 204, 153));
+        jTextbuscar.setBackground(new java.awt.Color(0, 102, 255));
         jTextbuscar.setText("Busca por nombre");
         jTextbuscar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -63,7 +63,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
-        jTProductoServicio.setBackground(new java.awt.Color(255, 204, 153));
         jTProductoServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -82,7 +81,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTProductoServicio);
 
-        jTnroRegistro.setBackground(new java.awt.Color(255, 204, 153));
+        jTnroRegistro.setBackground(new java.awt.Color(0, 102, 255));
         jTnroRegistro.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,7 +99,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTnroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTnroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
@@ -115,7 +114,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(19, 19, 19))
         );
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei", 1, 16)); // NOI18N
         jLabel1.setText("Listado de Producto o Servicio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

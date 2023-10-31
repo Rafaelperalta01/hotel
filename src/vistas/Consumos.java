@@ -70,51 +70,59 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jBEditar = new javax.swing.JButton();
         jTextNumeroHabitacion = new javax.swing.JTextField();
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
 
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Reserva de:");
 
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Unidades:");
 
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Producto o Servicio:");
 
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Costo total:");
 
-        jTextProYServ.setBackground(new java.awt.Color(255, 204, 153));
+        jTextProYServ.setBackground(new java.awt.Color(0, 102, 255));
 
-        jTextUnidades.setBackground(new java.awt.Color(255, 204, 153));
+        jTextUnidades.setBackground(new java.awt.Color(0, 102, 255));
         jTextUnidades.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextUnidadesKeyTyped(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextUnidadesKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextUnidadesKeyTyped(evt);
+            }
         });
 
-        jBGuardar.setBackground(new java.awt.Color(255, 204, 153));
+        jBGuardar.setBackground(new java.awt.Color(0, 102, 255));
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
 
-        jBNuevo.setBackground(new java.awt.Color(255, 204, 153));
+        jBNuevo.setBackground(new java.awt.Color(0, 102, 255));
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nuevo.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
+        jBNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
             }
         });
 
-        jTextReservaNombre.setBackground(new java.awt.Color(255, 204, 153));
+        jTextReservaNombre.setBackground(new java.awt.Color(0, 102, 255));
 
-        jBproductoYservicio.setBackground(new java.awt.Color(255, 204, 153));
+        jBproductoYservicio.setBackground(new java.awt.Color(0, 102, 255));
         jBproductoYservicio.setText("Buscar");
         jBproductoYservicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +130,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
-        jTextCostoTotal.setBackground(new java.awt.Color(255, 204, 153));
+        jTextCostoTotal.setBackground(new java.awt.Color(0, 102, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -133,7 +141,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addComponent(jBNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBGuardar)
-                .addGap(68, 68, 68))
+                .addGap(36, 36, 36))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
@@ -153,7 +161,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextProYServ, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBproductoYservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBproductoYservicio)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -186,19 +194,22 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel5.setText("Consumos de la habitación");
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
-        jBEliminar.setBackground(new java.awt.Color(255, 204, 153));
+        jBEliminar.setBackground(new java.awt.Color(0, 102, 255));
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nuevo.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
+        jBEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
             }
         });
 
-        jTextConsumoTotal.setBackground(new java.awt.Color(255, 204, 153));
+        jTextConsumoTotal.setBackground(new java.awt.Color(0, 102, 255));
         jTextConsumoTotal.setText("Consumo Total:");
 
+        jTableConsumo.setBackground(new java.awt.Color(204, 204, 255));
         jTableConsumo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -217,19 +228,22 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTableConsumo);
 
-        jTextRegistroTotal.setBackground(new java.awt.Color(255, 204, 153));
+        jTextRegistroTotal.setBackground(new java.awt.Color(0, 102, 255));
         jTextRegistroTotal.setText("Total de registros:");
 
-        jBsalir.setBackground(new java.awt.Color(255, 204, 153));
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
         jBsalir.setText("Salir");
+        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
 
-        jBEditar.setBackground(new java.awt.Color(255, 204, 153));
+        jBEditar.setBackground(new java.awt.Color(0, 102, 255));
+        jBEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escritura.png"))); // NOI18N
         jBEditar.setText("Editar");
+        jBEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEditarActionPerformed(evt);
@@ -243,11 +257,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
+                        .addGap(233, 233, 233)
                         .addComponent(jBEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jBEliminar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
