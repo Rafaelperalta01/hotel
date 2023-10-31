@@ -63,13 +63,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(741, 506));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Habitaciones"));
 
-        jTextField1.setBackground(new java.awt.Color(255, 204, 153));
+        jTextField1.setBackground(new java.awt.Color(0, 102, 255));
         jTextField1.setText("Busca por n° de Habitacion");
 
-        jTable1.setBackground(new java.awt.Color(255, 204, 153));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -88,7 +87,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField2.setBackground(new java.awt.Color(255, 204, 153));
+        jTextField2.setBackground(new java.awt.Color(0, 102, 255));
         jTextField2.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

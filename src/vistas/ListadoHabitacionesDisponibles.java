@@ -46,9 +46,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         setPreferredSize(new java.awt.Dimension(750, 500));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
-        jTextBuscar.setBackground(new java.awt.Color(255, 204, 153));
+        jTextBuscar.setBackground(new java.awt.Color(60, 63, 65));
         jTextBuscar.setText("Busca por n° de Habitacion");
         jTextBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -59,7 +59,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
-        jTableHabitacion.setBackground(new java.awt.Color(255, 204, 153));
         jTableHabitacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -78,17 +77,13 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTableHabitacion);
 
-        jTextField2.setBackground(new java.awt.Color(255, 204, 153));
+        jTextField2.setBackground(new java.awt.Color(60, 63, 65));
         jTextField2.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -97,7 +92,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

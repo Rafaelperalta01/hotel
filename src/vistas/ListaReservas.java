@@ -69,12 +69,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jTReservas = new javax.swing.JTable();
         jTnroRegistro = new javax.swing.JTextField();
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 16)); // NOI18N
         jLabel1.setText("Listado Reservas");
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
-        jTextbuscar.setBackground(new java.awt.Color(255, 204, 153));
+        jTextbuscar.setBackground(new java.awt.Color(0, 102, 255));
         jTextbuscar.setText("Busca por nombre");
         jTextbuscar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -90,7 +90,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
-        jTReservas.setBackground(new java.awt.Color(255, 204, 153));
         jTReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,7 +108,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTReservas);
 
-        jTnroRegistro.setBackground(new java.awt.Color(255, 204, 153));
+        jTnroRegistro.setBackground(new java.awt.Color(0, 102, 255));
         jTnroRegistro.setText("Total de registros:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -149,7 +148,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addContainerGap(602, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()

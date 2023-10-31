@@ -51,7 +51,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(729, 487));
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Huespedes"));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -74,7 +74,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         jLabel11.setText("Ingresa un huesped");
 
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
         jBsalir.setText("Salir");
+        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
@@ -84,6 +86,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jLabel14.setText("Total Registros: ");
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
@@ -95,11 +98,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jBNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBsalir)
@@ -122,15 +125,16 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addComponent(jBNuevo))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel14))
+                .addGap(45, 45, 45)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGap(0, 752, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -139,7 +143,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 521, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()

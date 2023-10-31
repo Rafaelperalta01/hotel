@@ -46,8 +46,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jTBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Huespedes"));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jTHuespedRes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,15 +68,20 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(jTHuespedRes);
 
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Ingresa un huesped");
 
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
         jBsalir.setText("Salir");
+        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
 
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Total Registros: ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -92,9 +98,11 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(39, 39, 39))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)))
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
@@ -107,8 +115,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addComponent(jTBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel14))
+                .addGap(57, 57, 57)
+                .addComponent(jLabel14)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +133,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 521, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()

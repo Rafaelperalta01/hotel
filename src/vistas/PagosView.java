@@ -108,39 +108,47 @@ public class PagosView extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(361, 308));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jBRegistrarPago.setBackground(new java.awt.Color(0, 102, 255));
+        jBRegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/money.png"))); // NOI18N
         jBRegistrarPago.setText("Registrar Pago");
+        jBRegistrarPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBRegistrarPagoActionPerformed(evt);
             }
         });
-        jPanel1.add(jBRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+        jPanel1.add(jBRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Reserva del Sr.");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
         jPanel1.add(jTextNombreReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 160, -1));
 
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Habitacion");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
         jPanel1.add(jTextNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 160, -1));
 
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Fecha emision");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 14));
         jPanel1.add(jTextFechaemision, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
 
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Importe alojamiento");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
         jPanel1.add(jTextImporteAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 160, -1));
 
-        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Adelanto");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
@@ -151,12 +159,14 @@ public class PagosView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jTextAdelanto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 160, -1));
 
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Importe total");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 20));
         jPanel1.add(jTextImporteTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 160, -1));
 
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Forma de Pago");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 100, 20));
 
@@ -167,31 +177,33 @@ public class PagosView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCbFormaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 190, -1));
 
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Medio de pago");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 20));
 
         jPanel1.add(jCbMedioDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 190, -1));
 
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Comprobante");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 20));
 
         jPanel1.add(jCbComprobante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, -1));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("PAGOS");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Registro de Pagos");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Listado de consumos");
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabelConsumoTotal.setText("Consumo total: ");
 
@@ -208,15 +220,19 @@ public class PagosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTablaConsumo);
 
+        jBeditar.setBackground(new java.awt.Color(0, 102, 255));
+        jBeditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escritura.png"))); // NOI18N
         jBeditar.setText("Editar");
+        jBeditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBeditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBeditarActionPerformed(evt);
             }
         });
 
-        jBImprimirDetalleDeConsumos.setBackground(new java.awt.Color(255, 204, 153));
+        jBImprimirDetalleDeConsumos.setBackground(new java.awt.Color(0, 102, 255));
         jBImprimirDetalleDeConsumos.setText("Detalle de consumos");
+        jBImprimirDetalleDeConsumos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBImprimirDetalleDeConsumos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBImprimirDetalleDeConsumosActionPerformed(evt);
@@ -239,7 +255,7 @@ public class PagosView extends javax.swing.JInternalFrame {
                         .addComponent(jBImprimirDetalleDeConsumos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelConsumoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(164, 164, 164))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,19 +263,19 @@ public class PagosView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelConsumoTotal)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBeditar)
-                        .addComponent(jBImprimirDetalleDeConsumos)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBeditar)
+                    .addComponent(jBImprimirDetalleDeConsumos)
+                    .addComponent(jLabelConsumoTotal))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 255));
 
-        jBimprimirComprobante.setBackground(new java.awt.Color(255, 204, 153));
+        jBimprimirComprobante.setBackground(new java.awt.Color(0, 102, 255));
         jBimprimirComprobante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/print.png"))); // NOI18N
         jBimprimirComprobante.setText("Imprimir comprobante");
+        jBimprimirComprobante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBimprimirComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBimprimirComprobanteActionPerformed(evt);
@@ -279,16 +295,20 @@ public class PagosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTablaPagos);
 
-        jBEliminarPago.setBackground(new java.awt.Color(255, 204, 153));
+        jBEliminarPago.setBackground(new java.awt.Color(0, 102, 255));
+        jBEliminarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         jBEliminarPago.setText("Eliminar");
+        jBEliminarPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEliminarPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarPagoActionPerformed(evt);
             }
         });
 
-        jBsalir.setBackground(new java.awt.Color(255, 204, 153));
+        jBsalir.setBackground(new java.awt.Color(0, 102, 255));
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
         jBsalir.setText("Salir");
+        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
@@ -304,26 +324,27 @@ public class PagosView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jBimprimirComprobante)
-                        .addGap(197, 197, 197)
+                        .addGap(152, 152, 152)
                         .addComponent(jBEliminarPago)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBsalir))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBimprimirComprobante)
                     .addComponent(jBEliminarPago)
-                    .addComponent(jBsalir))
+                    .addComponent(jBsalir)
+                    .addComponent(jBimprimirComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Listado de pagos");
 
@@ -345,7 +366,8 @@ public class PagosView extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(7, 7, 7))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
