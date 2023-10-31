@@ -335,7 +335,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
         habitacion=habData.buscarHabitacion(numeroHabitacion);
         if(habitacion!=null){
               JOptionPane.showMessageDialog(null,
-                        "El numero de la habitacion ingresada ya se encuentra cargado,por favor ingrese un nuevo numero",  "Habitacion encontrada", JOptionPane.INFORMATION_MESSAGE);
+                        "El número de la habitación ingresada ya se encuentra cargado,por favor ingrese un nuevo número",  "Habitación encontrada", JOptionPane.INFORMATION_MESSAGE);
         }
             if(habitacion==null){
                   
@@ -363,7 +363,10 @@ private ButtonGroup buttonGroup = new ButtonGroup();
             
         
                 }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Debe ingresar numeros");
+            JOptionPane.showMessageDialog(this, "Debe ingresar números");
+           
+                }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "No deben haber campos vacíos");
            
                 }
            
