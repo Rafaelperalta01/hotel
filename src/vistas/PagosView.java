@@ -508,28 +508,27 @@ public class PagosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBRegistrarPagoActionPerformed
 
     private void jBImprimirDetalleDeConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirDetalleDeConsumosActionPerformed
-
-        PrinterJob job = PrinterJob.getPrinterJob();
-
-        if (job.printDialog()) {
-            try {
-                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
-            } catch (PrinterException e) {
-                e.printStackTrace();
-            }
-        }
+  ImprimirConsumos imp = new ImprimirConsumos();
+        Menu.escritorio.add(imp);
+        imp.moveToFront();
+        imp.setVisible(true);
     }//GEN-LAST:event_jBImprimirDetalleDeConsumosActionPerformed
 
     private void jBimprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBimprimirComprobanteActionPerformed
-        PrinterJob job = PrinterJob.getPrinterJob();
+   if (modeloTablaPagos.getRowCount() == 0) {
+           JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+       } else {
+           int ultima = modeloTablaPagos.getRowCount() - 1;
+           jTablaPagos.setRowSelectionInterval(ultima, ultima);// selecciono la ultima fila de la tabla
 
-        if (job.printDialog()) {
-            try {
-                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
-            } catch (PrinterException e) {
-                e.printStackTrace();
-            }
-        }
+           String seleccion = jTablaPagos.getValueAt(ultima, 0).toString(); // envio el id de pagos 
+           
+           ImprimirFacturasORecibos factura = new ImprimirFacturasORecibos(seleccion);
+           Menu.escritorio.add(factura);
+           factura.moveToFront();
+           factura.setVisible(true);        
+       }
+     
     }//GEN-LAST:event_jBimprimirComprobanteActionPerformed
 
     private void jBEliminarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarPagoActionPerformed
