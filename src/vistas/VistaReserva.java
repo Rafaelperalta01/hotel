@@ -98,7 +98,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanelRegistroReserva = new javax.swing.JPanel();
         jTHabitacion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -118,30 +117,31 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jDCfechaEntrada = new com.toedter.calendar.JDateChooser();
         jDCfechaSalida = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         jPanelListadoRegistroReserva = new javax.swing.JPanel();
         jTBuscaReservas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablareservas = new javax.swing.JTable();
         jBConsumos = new javax.swing.JButton();
         jBpago = new javax.swing.JButton();
-        jBsalir = new javax.swing.JButton();
         jBCheckIn = new javax.swing.JButton();
         jBcancelarReserva = new javax.swing.JButton();
         jTTotalRegistros = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel1.setText("Registro de reservas");
+        setClosable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelRegistroReserva.setBackground(new java.awt.Color(0, 102, 255));
+        jPanelRegistroReserva.setBackground(new java.awt.Color(151, 60, 0));
 
-        jTHabitacion.setBackground(new java.awt.Color(60, 63, 65));
+        jTHabitacion.setBackground(new java.awt.Color(151, 60, 0));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Habitacion: ");
 
-        jBBuscarTipoH.setBackground(new java.awt.Color(0, 102, 255));
+        jBBuscarTipoH.setBackground(new java.awt.Color(151, 60, 0));
+        jBBuscarTipoH.setForeground(new java.awt.Color(255, 255, 255));
         jBBuscarTipoH.setText("buscar tipo hab");
         jBBuscarTipoH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBBuscarTipoH.addActionListener(new java.awt.event.ActionListener() {
@@ -150,13 +150,14 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Huesped:");
 
-        jTHusped.setBackground(new java.awt.Color(60, 63, 65));
+        jTHusped.setBackground(new java.awt.Color(151, 60, 0));
 
-        jBbuscarHuesped.setBackground(new java.awt.Color(0, 102, 255));
+        jBbuscarHuesped.setBackground(new java.awt.Color(151, 60, 0));
+        jBbuscarHuesped.setForeground(new java.awt.Color(255, 255, 255));
         jBbuscarHuesped.setText("buscar H");
         jBbuscarHuesped.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBbuscarHuesped.addActionListener(new java.awt.event.ActionListener() {
@@ -165,25 +166,26 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Administrador:");
 
-        jTAdmin.setBackground(new java.awt.Color(60, 63, 65));
+        jTAdmin.setBackground(new java.awt.Color(151, 60, 0));
 
-        jLabel7.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cantidad Personas:");
 
-        jTCantPersonas.setBackground(new java.awt.Color(60, 63, 65));
+        jTCantPersonas.setBackground(new java.awt.Color(151, 60, 0));
 
-        jLabel8.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Importe:");
 
-        jTImporte.setBackground(new java.awt.Color(60, 63, 65));
+        jTImporte.setBackground(new java.awt.Color(151, 60, 0));
 
-        jBCancelar.setBackground(new java.awt.Color(0, 102, 255));
+        jBCancelar.setBackground(new java.awt.Color(151, 60, 0));
+        jBCancelar.setForeground(new java.awt.Color(255, 255, 255));
         jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         jBCancelar.setText("Cancelar");
         jBCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,7 +195,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jBGuardar.setBackground(new java.awt.Color(0, 102, 255));
+        jBGuardar.setBackground(new java.awt.Color(151, 60, 0));
+        jBGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -203,13 +206,21 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha de Entrada:");
 
-        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha de Salida:");
+
+        jDCfechaEntrada.setBackground(new java.awt.Color(151, 60, 0));
+
+        jDCfechaSalida.setBackground(new java.awt.Color(151, 60, 0));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Registro de reservas");
 
         javax.swing.GroupLayout jPanelRegistroReservaLayout = new javax.swing.GroupLayout(jPanelRegistroReserva);
         jPanelRegistroReserva.setLayout(jPanelRegistroReservaLayout);
@@ -222,93 +233,100 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 .addComponent(jBCancelar)
                 .addGap(51, 51, 51))
             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDCfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jDCfechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
                         .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel3))
                             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel2))
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDCfechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDCfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(49, 49, 49))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistroReservaLayout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(40, 40, 40))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                        .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTHusped, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jTHusped, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBBuscarTipoH)
-                        .addGap(25, 25, 25))))
+                            .addComponent(jTAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBBuscarTipoH, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBbuscarHuesped, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))))
         );
         jPanelRegistroReservaLayout.setVerticalGroup(
             jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(33, 33, 33)
                 .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jDCfechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDCfechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(23, 23, 23)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscarTipoH))
-                .addGap(21, 21, 21)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTHusped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBbuscarHuesped))
-                .addGap(33, 33, 33)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(51, 51, 51)
-                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jBBuscarTipoH))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jBbuscarHuesped))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel8)
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanelRegistroReservaLayout.createSequentialGroup()
+                        .addComponent(jTCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jTHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jTHusped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jTAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanelRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
                     .addComponent(jBCancelar))
                 .addGap(48, 48, 48))
         );
 
-        jPanelListadoRegistroReserva.setBackground(new java.awt.Color(0, 102, 255));
+        getContentPane().add(jPanelRegistroReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 1, 390, 610));
 
-        jTBuscaReservas.setBackground(new java.awt.Color(60, 63, 65));
-        jTBuscaReservas.setForeground(new java.awt.Color(128, 128, 128));
+        jPanelListadoRegistroReserva.setBackground(new java.awt.Color(151, 60, 0));
+
+        jTBuscaReservas.setBackground(new java.awt.Color(151, 60, 0));
+        jTBuscaReservas.setForeground(new java.awt.Color(255, 255, 255));
         jTBuscaReservas.setText("Busca reserva por Nombre, DNI o Nª habitación");
         jTBuscaReservas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -324,6 +342,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
+        jTablareservas.setBackground(new java.awt.Color(151, 60, 0));
+        jTablareservas.setForeground(new java.awt.Color(255, 255, 255));
         jTablareservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -342,7 +362,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTablareservas);
 
-        jBConsumos.setBackground(new java.awt.Color(0, 102, 255));
+        jBConsumos.setBackground(new java.awt.Color(151, 60, 0));
+        jBConsumos.setForeground(new java.awt.Color(255, 255, 255));
         jBConsumos.setText("Consumos");
         jBConsumos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBConsumos.addActionListener(new java.awt.event.ActionListener() {
@@ -351,7 +372,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jBpago.setBackground(new java.awt.Color(0, 102, 255));
+        jBpago.setBackground(new java.awt.Color(151, 60, 0));
+        jBpago.setForeground(new java.awt.Color(255, 255, 255));
         jBpago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plata.png"))); // NOI18N
         jBpago.setText("Realizar Pago");
         jBpago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -361,17 +383,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jBsalir.setBackground(new java.awt.Color(0, 102, 255));
-        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
-        jBsalir.setText("Salir");
-        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalirActionPerformed(evt);
-            }
-        });
-
-        jBCheckIn.setBackground(new java.awt.Color(0, 102, 255));
+        jBCheckIn.setBackground(new java.awt.Color(151, 60, 0));
+        jBCheckIn.setForeground(new java.awt.Color(255, 255, 255));
         jBCheckIn.setText("CheckIn");
         jBCheckIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBCheckIn.addActionListener(new java.awt.event.ActionListener() {
@@ -380,7 +393,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jBcancelarReserva.setBackground(new java.awt.Color(0, 102, 255));
+        jBcancelarReserva.setBackground(new java.awt.Color(151, 60, 0));
+        jBcancelarReserva.setForeground(new java.awt.Color(255, 255, 255));
         jBcancelarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         jBcancelarReserva.setText("Cancelar Reserva");
         jBcancelarReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -390,94 +404,65 @@ public class VistaReserva extends javax.swing.JInternalFrame {
             }
         });
 
-        jTTotalRegistros.setBackground(new java.awt.Color(60, 63, 65));
+        jTTotalRegistros.setBackground(new java.awt.Color(151, 60, 0));
+        jTTotalRegistros.setForeground(new java.awt.Color(255, 255, 255));
         jTTotalRegistros.setText("Total de registros:");
+
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Listado de Reservas...");
 
         javax.swing.GroupLayout jPanelListadoRegistroReservaLayout = new javax.swing.GroupLayout(jPanelListadoRegistroReserva);
         jPanelListadoRegistroReserva.setLayout(jPanelListadoRegistroReservaLayout);
         jPanelListadoRegistroReservaLayout.setHorizontalGroup(
             jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jBConsumos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jBpago)
                 .addGap(18, 18, 18)
                 .addComponent(jBCheckIn)
-                .addGap(52, 52, 52)
-                .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListadoRegistroReservaLayout.createSequentialGroup()
+                .addGap(290, 290, 290))
+            .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
-                        .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBcancelarReserva)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBsalir)))
-                .addGap(28, 28, 28))
+                .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
+                                .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBcancelarReserva))))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelListadoRegistroReservaLayout.setVerticalGroup(
             jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListadoRegistroReservaLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(31, 31, 31)
                 .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBsalir)
                     .addComponent(jTBuscaReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBcancelarReserva))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(jPanelListadoRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBConsumos)
                     .addComponent(jBpago)
-                    .addComponent(jBCheckIn)
-                    .addComponent(jTTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
+                    .addComponent(jBCheckIn))
+                .addGap(49, 49, 49))
         );
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel9.setText("Listado de Reservas...");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(196, 196, 196)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelRegistroReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelListadoRegistroReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelRegistroReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelListadoRegistroReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(68, 68, 68))
-        );
+        getContentPane().add(jPanelListadoRegistroReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 1, 650, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBbuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarHuespedActionPerformed
         listaHuespedes huesped = new listaHuespedes();
@@ -708,7 +693,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBbuscarHuesped;
     private javax.swing.JButton jBcancelarReserva;
     private javax.swing.JButton jBpago;
-    private javax.swing.JButton jBsalir;
     public static com.toedter.calendar.JDateChooser jDCfechaEntrada;
     public static com.toedter.calendar.JDateChooser jDCfechaSalida;
     private javax.swing.JLabel jLabel1;

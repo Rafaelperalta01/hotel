@@ -89,30 +89,31 @@ public class PagosView extends javax.swing.JInternalFrame {
         jCbMedioDePago = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jCbComprobante1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabelConsumoTotal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablaConsumo = new javax.swing.JTable();
         jBeditar = new javax.swing.JButton();
         jBImprimirDetalleDeConsumos = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jBimprimirComprobante = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaPagos = new javax.swing.JTable();
         jBEliminarPago = new javax.swing.JButton();
-        jBsalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(java.awt.Color.darkGray);
+        setClosable(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(361, 308));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBRegistrarPago.setBackground(new java.awt.Color(0, 102, 255));
+        jBRegistrarPago.setBackground(new java.awt.Color(151, 60, 0));
+        jBRegistrarPago.setForeground(new java.awt.Color(255, 255, 255));
         jBRegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/money.png"))); // NOI18N
         jBRegistrarPago.setText("Registrar Pago");
         jBRegistrarPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -123,35 +124,49 @@ public class PagosView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jBRegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Reserva del Sr.");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jTextNombreReserva.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.add(jTextNombreReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 160, -1));
 
-        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Habitacion");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jTextNumeroHabitacion.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.add(jTextNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 160, -1));
 
-        jLabel10.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Fecha emision");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 14));
+
+        jTextFechaemision.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.add(jTextFechaemision, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
 
-        jLabel7.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Importe alojamiento");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jTextImporteAlojamiento.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.add(jTextImporteAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 160, -1));
 
-        jLabel13.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Adelanto");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
+        jTextAdelanto.setBackground(new java.awt.Color(151, 60, 0));
         jTextAdelanto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextAdelantoFocusGained(evt);
@@ -159,17 +174,23 @@ public class PagosView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jTextAdelanto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 160, -1));
 
-        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Importe total");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 20));
+
+        jTextImporteTotal.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.add(jTextImporteTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 160, -1));
 
-        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Forma de Pago");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 100, 20));
 
+        jCbFormaDePago.setBackground(new java.awt.Color(151, 60, 0));
+        jCbFormaDePago.setForeground(new java.awt.Color(255, 255, 255));
         jCbFormaDePago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCbFormaDePagoActionPerformed(evt);
@@ -177,36 +198,43 @@ public class PagosView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jCbFormaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 190, -1));
 
-        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Medio de pago");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 20));
 
+        jCbMedioDePago.setBackground(new java.awt.Color(151, 60, 0));
+        jCbMedioDePago.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jCbMedioDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 190, -1));
 
-        jLabel8.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setBackground(new java.awt.Color(151, 60, 0));
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Comprobante");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 20));
 
+        jCbComprobante1.setBackground(new java.awt.Color(151, 60, 0));
+        jCbComprobante1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jCbComprobante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 190, -1));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Registro de Pagos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PAGOS");
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Registro de Pagos");
+        jPanel2.setBackground(new java.awt.Color(151, 60, 0));
 
-        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Listado de consumos");
-
-        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
-
+        jLabelConsumoTotal.setForeground(new java.awt.Color(255, 255, 255));
         jLabelConsumoTotal.setText("Consumo total: ");
 
+        jTablaConsumo.setBackground(new java.awt.Color(151, 60, 0));
+        jTablaConsumo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTablaConsumo.setForeground(new java.awt.Color(255, 255, 255));
         jTablaConsumo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -220,7 +248,8 @@ public class PagosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTablaConsumo);
 
-        jBeditar.setBackground(new java.awt.Color(0, 102, 255));
+        jBeditar.setBackground(new java.awt.Color(151, 60, 0));
+        jBeditar.setForeground(new java.awt.Color(255, 255, 255));
         jBeditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escritura.png"))); // NOI18N
         jBeditar.setText("Editar");
         jBeditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -230,7 +259,8 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
-        jBImprimirDetalleDeConsumos.setBackground(new java.awt.Color(0, 102, 255));
+        jBImprimirDetalleDeConsumos.setBackground(new java.awt.Color(151, 60, 0));
+        jBImprimirDetalleDeConsumos.setForeground(new java.awt.Color(255, 255, 255));
         jBImprimirDetalleDeConsumos.setText("Detalle de consumos");
         jBImprimirDetalleDeConsumos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBImprimirDetalleDeConsumos.addActionListener(new java.awt.event.ActionListener() {
@@ -239,40 +269,49 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Listado de consumos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jBeditar)
                         .addGap(26, 26, 26)
                         .addComponent(jBImprimirDetalleDeConsumos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelConsumoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelConsumoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBeditar)
                     .addComponent(jBImprimirDetalleDeConsumos)
                     .addComponent(jLabelConsumoTotal))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel3.setBackground(new java.awt.Color(151, 60, 0));
 
-        jBimprimirComprobante.setBackground(new java.awt.Color(0, 102, 255));
+        jBimprimirComprobante.setBackground(new java.awt.Color(151, 60, 0));
+        jBimprimirComprobante.setForeground(new java.awt.Color(255, 255, 255));
         jBimprimirComprobante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/print.png"))); // NOI18N
         jBimprimirComprobante.setText("Imprimir comprobante");
         jBimprimirComprobante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -282,6 +321,9 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
+        jTablaPagos.setBackground(new java.awt.Color(151, 60, 0));
+        jTablaPagos.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTablaPagos.setForeground(new java.awt.Color(255, 255, 255));
         jTablaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -295,7 +337,8 @@ public class PagosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTablaPagos);
 
-        jBEliminarPago.setBackground(new java.awt.Color(0, 102, 255));
+        jBEliminarPago.setBackground(new java.awt.Color(151, 60, 0));
+        jBEliminarPago.setForeground(new java.awt.Color(255, 255, 255));
         jBEliminarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         jBEliminarPago.setText("Eliminar");
         jBEliminarPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -305,66 +348,57 @@ public class PagosView extends javax.swing.JInternalFrame {
             }
         });
 
-        jBsalir.setBackground(new java.awt.Color(0, 102, 255));
-        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
-        jBsalir.setText("Salir");
-        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalirActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Listado de pagos");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jBimprimirComprobante)
-                        .addGap(152, 152, 152)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBEliminarPago)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBsalir))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(123, 123, 123))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBEliminarPago)
-                    .addComponent(jBsalir)
-                    .addComponent(jBimprimirComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBimprimirComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEliminarPago))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Listado de pagos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel3))
+                        .addContainerGap(26, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(918, 918, 918))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(7, 7, 7))
@@ -374,64 +408,18 @@ public class PagosView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-   
-         if (!jBRegistrarPago.isEnabled()){
-              if (JOptionPane.showConfirmDialog(null, "Al salir se borrará la reserva de este usuario "
-               + ". Desea continuar ? ", "Salir", JOptionPane.YES_NO_OPTION)== 0) {
-              // hacer el checkOut
-              res.modificarCheckOutReserva(idReserva, fechaActual);
-              
-              // eliminar los pagos              
-              for (Pagos x : pagos.listarPagosporIdReserva(idReserva)){
-                    pagos.eliminadoLogicoPago(x.getIdPagos());
-                }
-                // eliminar los consumos
-                for (Consumo x : c.listarProductoServicioPorIdRegistro(idReserva)) {
-                    c.eliminarConsumo(x.getIdConsumo());
-                }
-                
-                // tiene que devolver el valor de la habitacion a habitacion libre
-                
-                Habitacion hab = habitacion.buscarHabitacionId(reserva.getIdHabitacion().getIdHabitacion());               
-                hab.setEstado(true);            
-                habitacion.modificarHabitacion(hab);
-              
-                res.cancelarReserva(idReserva);          
-               
-                JOptionPane.showMessageDialog(null, "Finalizo su reserva");  
-                limpiaCampos();
-                listaRegistros();
-                dispose();
-            }                
-        } else {
-
-            VistaReserva.jBGuardar.setEnabled(true);
-            limpiaCampos();
-            VistaReserva.jTablareservas.clearSelection();
-            dispose();
-        }
-
-    }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
        // editar consumo
@@ -651,7 +639,6 @@ public class PagosView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBRegistrarPago;
     private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBimprimirComprobante;
-    private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<String> jCbComprobante1;
     private javax.swing.JComboBox<String> jCbFormaDePago;
     private javax.swing.JComboBox<String> jCbMedioDePago;

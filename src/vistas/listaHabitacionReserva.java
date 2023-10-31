@@ -51,25 +51,34 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        jTableHabitacion = new javax.swing.JTable();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setPreferredSize(new java.awt.Dimension(741, 506));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Habitaciones"));
+        jPanel1.setBackground(new java.awt.Color(151, 60, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Habitaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 16), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(0, 102, 255));
-        jTextField1.setText("Busca por n° de Habitacion");
+        jTextBuscar.setBackground(new java.awt.Color(151, 60, 0));
+        jTextBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jTextBuscar.setText("Busca por n° de Habitacion");
+        jTextBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextBuscarFocusGained(evt);
+            }
+        });
+        jTextBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextBuscarKeyReleased(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableHabitacion.setBackground(new java.awt.Color(151, 60, 0));
+        jTableHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        jTableHabitacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,73 +89,83 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableHabitacionMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-
-        jTextField2.setBackground(new java.awt.Color(0, 102, 255));
-        jTextField2.setText("Total de registros:");
+        jScrollPane1.setViewportView(jTableHabitacion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                    .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(41, 41, 41))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 721, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 740, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHabitacionMouseClicked
         if (evt.getClickCount() == 2) {
 
-            int fila = jTable1.getSelectedRow();
+            int fila = jTableHabitacion.getSelectedRow();
 
             if (fila != -1) {
-                VistaReserva.jTHabitacion.setText(jTable1.getValueAt(fila, 0).toString());
+                VistaReserva.jTHabitacion.setText(jTableHabitacion.getValueAt(fila, 0).toString());
                 //calcula los dias y los multiplica por el precio de la habitacion
-                double n = (Double.parseDouble(jTable1.getValueAt(fila, 7).toString()) * ChronoUnit.DAYS.between(fecha1, fecha2));
+                double n = (Double.parseDouble(jTableHabitacion.getValueAt(fila, 7).toString()) * ChronoUnit.DAYS.between(fecha1, fecha2));
                 VistaReserva.jTImporte.setText(n + "");
                 jTAdmin.setText(user.getNombre() + " , " + user.getCargo());
             }
             dispose();
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTableHabitacionMouseClicked
+
+    private void jTextBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusGained
+       jTextBuscar.setText("");
+    }//GEN-LAST:event_jTextBuscarFocusGained
+
+    private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
+         borrarFilas();
+        for (Habitacion hab : habitacion.listarHabitacion()) {
+            if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
+//              if(hab.getNumHabitacion()).startsWith(jTextBuscar.getText()){
+                modeloTabla.addRow(new Object[]{
+                    hab.getNumHabitacion(),
+                    hab.getPiso(),
+                    hab.isEstado(),
+                    hab.getIdTipoHabitacion().getCategoria(),
+                    hab.getIdTipoHabitacion().getCantPersonas(),
+                    hab.getIdTipoHabitacion().getCantCamas(),
+                    hab.getIdTipoHabitacion().getTipoCama(),
+                    hab.getIdTipoHabitacion().getPrecio(),
+                });
+            }
+        }
+    }//GEN-LAST:event_jTextBuscarKeyReleased
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public static javax.swing.JTable jTableHabitacion;
+    private javax.swing.JTextField jTextBuscar;
     // End of variables declaration//GEN-END:variables
   
     private void armarCabecera() {
@@ -158,7 +177,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         modeloTabla.addColumn("Cant.Camas");
         modeloTabla.addColumn("Tipo de Camas");
         modeloTabla.addColumn("Precio");
-        jTable1.setModel(modeloTabla);
+        jTableHabitacion.setModel(modeloTabla);
     }
 
 private void cargarTabla(Habitacion hab) {
@@ -181,6 +200,13 @@ private void cargarTabla(Habitacion hab) {
 
         for (Habitacion hab : habitacion.listarReserva_X_fechasYcantDePersonas(fecha1, fecha2, personas)) {
             cargarTabla(hab);
+        }
+    }
+     private void borrarFilas() {
+
+        int filas = jTableHabitacion.getRowCount() - 1;
+        for (; filas >= 0; filas--) {
+            modeloTabla.removeRow(filas);
         }
     }
 }

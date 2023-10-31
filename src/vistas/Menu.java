@@ -6,6 +6,7 @@
 package vistas;
 
 import entidades.Usuarios;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,17 +19,10 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menú
      */
     private static Usuarios usuario;
-    
     public Menu(Usuarios usuario) {
         this.usuario = usuario;
         initComponents();
-        String c = usuario.getCargo();
         setLocationRelativeTo(null);
-        if(c.equals("admin") || c.equals("Admin") || c.equals("Administrador") || c.equals("administrador")){
-            menuAdmin.setEnabled(true);
-        } else {
-            menuAdmin.setEnabled(false);
-        }
     }
 
     /**
@@ -44,7 +38,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         escritorio = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMGestionReserva = new javax.swing.JMenuItem();
@@ -54,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        menuAdmin = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -72,35 +65,22 @@ public class Menu extends javax.swing.JFrame {
 
         escritorio.setPreferredSize(new java.awt.Dimension(1059, 627));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.jpg"))); // NOI18N
-
-        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
-                .addContainerGap(246, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(233, 233, 233))
+            .addGap(0, 1059, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+            .addGap(0, 645, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 102));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(523, 51));
 
         jMenu2.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reserva.png"))); // NOI18N
         jMenu2.setText("Reservas");
-        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu2.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 18)); // NOI18N
+        jMenu2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMGestionReserva.setText("Gestion de reservas");
         jMGestionReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -122,10 +102,8 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu1.setBackground(new java.awt.Color(0, 0, 102));
         jMenu1.setBorder(null);
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cliente.png"))); // NOI18N
         jMenu1.setText("Huesped");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu1.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 18)); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem1.setText("Lista  huesped");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,10 +124,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cama.png"))); // NOI18N
         jMenu3.setText("Habitaciones");
-        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu3.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 18)); // NOI18N
+        jMenu3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem4.setText("Lista de Habitaciones");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -161,11 +137,9 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        menuAdmin.setBackground(new java.awt.Color(0, 0, 102));
-        menuAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.png"))); // NOI18N
-        menuAdmin.setText("Administrador");
-        menuAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuAdmin.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 18)); // NOI18N
+        jMenu4.setBackground(new java.awt.Color(0, 0, 102));
+        jMenu4.setText("Administrador");
+        jMenu4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem8.setText("Gestion Usuario");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +147,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        menuAdmin.add(jMenuItem8);
+        jMenu4.add(jMenuItem8);
 
         jMenuItem9.setText("Gestion tipo de Habitacion");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +155,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem9ActionPerformed(evt);
             }
         });
-        menuAdmin.add(jMenuItem9);
+        jMenu4.add(jMenuItem9);
 
         jMenuItem10.setText("Gestion Producto/Servicio");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +163,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        menuAdmin.add(jMenuItem10);
+        jMenu4.add(jMenuItem10);
 
         jMenuItem11.setText("Gestion Habitacion");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -197,15 +171,13 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem11ActionPerformed(evt);
             }
         });
-        menuAdmin.add(jMenuItem11);
+        jMenu4.add(jMenuItem11);
 
-        jMenuBar1.add(menuAdmin);
+        jMenuBar1.add(jMenu4);
 
         jMenu8.setBackground(new java.awt.Color(0, 0, 102));
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
         jMenu8.setText("Usuario");
-        jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu8.setFont(new java.awt.Font("Microsoft New Tai Lue", 0, 18)); // NOI18N
+        jMenu8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         jMenuItem13.setText("Cambiar Sesion");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
@@ -223,11 +195,13 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
         );
 
         pack();
@@ -240,23 +214,17 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(gestionReserva);
         gestionReserva.setVisible(true);
         gestionReserva.moveToFront();
-        
     }//GEN-LAST:event_jMGestionReservaActionPerformed
 
     private void jMListaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListaReservaActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        ListaReservas listareserva= new ListaReservas();
-        escritorio.add(listareserva);
-        listareserva.setVisible(true);
-        listareserva.moveToFront();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMListaReservaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         //Abrir vista Lista huespedes
         escritorio.removeAll();
         escritorio.repaint();
-        ListaHuespedesReserva listaHuesped = new ListaHuespedesReserva();
+        listaHuespedes listaHuesped = new listaHuespedes();
         escritorio.add(listaHuesped);
         listaHuesped.setVisible(true);
         listaHuesped.moveToFront();
@@ -307,7 +275,7 @@ public class Menu extends javax.swing.JFrame {
         // gestion Productos / servicios
         escritorio.removeAll();
         escritorio.repaint();
-        GestionProductoServicio gps = new  GestionProductoServicio();
+        ListaProductoServicio gps = new ListaProductoServicio();
         escritorio.add(gps);
         gps.setVisible(true);
         gps.moveToFront();
@@ -332,7 +300,7 @@ public class Menu extends javax.swing.JFrame {
             Login log = new Login();
             log.setVisible(true);
     }
-  
+        
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
@@ -373,12 +341,12 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMGestionReserva;
     private javax.swing.JMenuItem jMListaReserva;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu8;
@@ -392,6 +360,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenu menuAdmin;
     // End of variables declaration//GEN-END:variables
 }

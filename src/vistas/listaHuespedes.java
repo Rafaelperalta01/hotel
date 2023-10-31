@@ -8,6 +8,7 @@ package vistas;
 import accesoADatos.HuespedData;
 import javax.swing.table.DefaultTableModel;
 import entidades.Huesped;
+import static vistas.ListaHuespedesReserva.jTHuespedRes;
 
 
 public class listaHuespedes extends javax.swing.JInternalFrame {
@@ -36,25 +37,25 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTTablaHuesped = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-        jBsalir = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        jTBuscar = new javax.swing.JTextField();
         jBNuevo = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setPreferredSize(new java.awt.Dimension(729, 487));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Huespedes"));
+        jPanel2.setBackground(new java.awt.Color(151, 60, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Huespedes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTTablaHuesped.setBackground(new java.awt.Color(151, 60, 0));
+        jTTablaHuesped.setForeground(new java.awt.Color(255, 255, 255));
+        jTTablaHuesped.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,27 +66,28 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTTablaHuesped.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTTablaHuespedMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTTablaHuesped);
 
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Ingresa un huesped");
 
-        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
-        jBsalir.setText("Salir");
-        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalirActionPerformed(evt);
+        jTBuscar.setBackground(new java.awt.Color(151, 60, 0));
+        jTBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTBuscarKeyReleased(evt);
             }
         });
 
-        jLabel14.setText("Total Registros: ");
-
-        jBNuevo.setText("Nuevo");
+        jBNuevo.setBackground(new java.awt.Color(151, 60, 0));
+        jBNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        jBNuevo.setText("Agregar Huesped");
         jBNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,94 +103,81 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(jTBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159)
                 .addComponent(jBNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBsalir)
-                .addGap(39, 39, 39))
+                .addGap(39, 82, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBNuevo))
-                .addGap(30, 30, 30)
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel14)
-                .addGap(18, 18, 18))
+                .addGap(79, 79, 79))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 752, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 6, 740, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_jBsalirActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTTablaHuespedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTTablaHuespedMouseClicked
         if (evt.getClickCount() == 2){
             
-         int fila = jTable1.getSelectedRow();
+         int fila = jTTablaHuesped.getSelectedRow();
 
         if (fila != -1) {                      
-            VistaReserva.jTHusped.setText(jTable1.getValueAt(fila,0).toString());
-            VistaReserva.numDniHuesped = jTable1.getValueAt(fila,3).toString();
+            VistaReserva.jTHusped.setText(jTTablaHuesped.getValueAt(fila,0).toString());
+            VistaReserva.numDniHuesped = jTTablaHuesped.getValueAt(fila,3).toString();
         }
         dispose();
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTTablaHuespedMouseClicked
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         GestionHuesped h = new GestionHuesped();
         Menu.escritorio.add(h);
         h.moveToFront();
         h.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
+          borrarFilas();
+        for (Huesped hu : huesped.listarHuesped()) {
+            if(hu.getNumeroDocumento().startsWith(jTBuscar.getText())){
+                modeloTabla.addRow(new Object[]{
+                hu.getNombre(),
+                hu.getApellido(),
+                hu.getTipoDocumento(),
+                hu.getNumeroDocumento(),
+                hu.getDomicilio(),
+                hu.getCorreo(),
+                hu.getCelular(),
+                hu.isEstado(),
+                });
+        }
+        }
+    }//GEN-LAST:event_jTBuscarKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTBuscar;
+    public static javax.swing.JTable jTTablaHuesped;
     // End of variables declaration//GEN-END:variables
  
     private void armarCabecera() {
@@ -200,7 +189,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         modeloTabla.addColumn("Email");
         modeloTabla.addColumn("Celular");
         modeloTabla.addColumn("Estado"); 
-        jTable1.setModel(modeloTabla);
+        jTTablaHuesped.setModel(modeloTabla);
     }
 
     private void cargarTabla(Huesped h) {
@@ -223,5 +212,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             cargarTabla(h);
         }
 
+    }
+     private void borrarFilas() {
+
+        int filas = jTTablaHuesped.getRowCount() - 1;
+        for (; filas >= 0; filas--) {
+            modeloTabla.removeRow(filas);
+        }
     }
 }
