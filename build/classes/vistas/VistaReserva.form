@@ -476,7 +476,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Busca reserva por Nombre, DNI o N&#xaa; habitaci&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Busca reserva por Nombre, DNI o N&#xaa;de Reserva "/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTBuscaReservasFocusGained"/>
