@@ -76,6 +76,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
+        jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTBuscarKeyReleased(evt);
+            }
+        });
+
         jLabel14.setText("Total Registros: ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -145,13 +151,40 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
           int fila = jTHuespedRes.getSelectedRow();
 
           if (fila != -1) {                      
-            VistaReserva.jTHusped.setText(jTHuespedRes.getValueAt(fila,0).toString());
-            VistaReserva.numDniHuesped = jTHuespedRes.getValueAt(fila,3).toString();
-            
+//            VistaReserva.jTHusped.setText(jTHuespedRes.getValueAt(fila,0).toString());
+//            VistaReserva.numDniHuesped = jTHuespedRes.getValueAt(fila,3).toString();
+           String nom=(String)jTHuespedRes.getValueAt(fila,0);
+           String ape=(String)jTHuespedRes.getValueAt(fila,1);
+           String tipodoc=(String)jTHuespedRes.getValueAt(fila,2);
+           String numdoc=(String)jTHuespedRes.getValueAt(fila,3);
+           String domi=(String)jTHuespedRes.getValueAt(fila,4);
+           String email=(String)jTHuespedRes.getValueAt(fila,5);
+           int celu=(Integer)jTHuespedRes.getValueAt(fila,6);
+           boolean estado=(Boolean)jTHuespedRes.getValueAt(fila,7);
+           
+           
+         dispose();
+        }}  
     }//GEN-LAST:event_jTHuespedResMouseClicked
-        dispose();
-        }}
 
+    private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
+        borrarFilas();
+        for (Huesped hu : huespedres.listarHuesped()) {
+            if(hu.getNumeroDocumento().startsWith(jTBuscar.getText())){
+                modeloTabla.addRow(new Object[]{
+                hu.getNombre(),
+                hu.getApellido(),
+                hu.getTipoDocumento(),
+                hu.getNumeroDocumento(),
+                hu.getDomicilio(),
+                hu.getCorreo(),
+                hu.getCelular(),
+                hu.isEstado(),
+                });
+        }
+        }
+    }//GEN-LAST:event_jTBuscarKeyReleased
+                
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBsalir;
     private javax.swing.JLabel jLabel11;

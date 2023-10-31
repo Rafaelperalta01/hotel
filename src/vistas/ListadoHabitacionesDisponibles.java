@@ -8,6 +8,7 @@ package vistas;
 import accesoADatos.HabitacionData;
 import entidades.Habitacion;
 import entidades.Usuarios;
+import java.time.temporal.ChronoUnit;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +43,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHabitacion = new javax.swing.JTable();
         jTextField2 = new javax.swing.JTextField();
+        jBSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(750, 500));
@@ -71,15 +73,22 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTableHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTableHabitacionKeyReleased(evt);
+        jTableHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableHabitacionMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTableHabitacion);
 
         jTextField2.setBackground(new java.awt.Color(255, 204, 153));
         jTextField2.setText("Total de registros:");
+
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,20 +99,23 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBSalir)
+                .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBSalir))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
@@ -125,7 +137,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,25 +152,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableHabitacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableHabitacionKeyReleased
-        borrarFilas();
-        for (Habitacion hab : habitacion.listarHabitacion_X_estado(true)) {
-            if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
-
-                modeloTabla.addRow(new Object[]{
-                    hab.getNumHabitacion(),
-                    hab.getPiso(),
-                    hab.isEstado(),
-                    hab.getIdTipoHabitacion().getCategoria(),
-                    hab.getIdTipoHabitacion().getCantPersonas(),
-                    hab.getIdTipoHabitacion().getCantCamas(),
-                    hab.getIdTipoHabitacion().getTipoCama(),
-                    hab.getIdTipoHabitacion().getPrecio()
-                });
-            }
-        }
-    }//GEN-LAST:event_jTableHabitacionKeyReleased
-
     private void jTextBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBuscarFocusGained
         jTextBuscar.setText("");
     }//GEN-LAST:event_jTextBuscarFocusGained
@@ -167,8 +160,50 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
        jTextBuscar.setText("Buscar por Nª de habitación");  
     }//GEN-LAST:event_jTextBuscarFocusLost
 
+    private void jTextBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscarKeyReleased
+        borrarFilas();
+        for (Habitacion hab : habitacion.listarHabitacion()) {
+            if (Integer.toString(hab.getNumHabitacion()).startsWith(jTextBuscar.getText())) {
+//              if(hab.getNumHabitacion()).startsWith(jTextBuscar.getText()){
+                modeloTabla.addRow(new Object[]{
+                    hab.getNumHabitacion(),
+                    hab.getPiso(),
+                    hab.isEstado(),
+                    hab.getIdTipoHabitacion().getCategoria(),
+                    hab.getIdTipoHabitacion().getCantPersonas(),
+                    hab.getIdTipoHabitacion().getCantCamas(),
+                    hab.getIdTipoHabitacion().getTipoCama(),
+                    hab.getIdTipoHabitacion().getPrecio(),
+                });
+            }
+        }
+    }//GEN-LAST:event_jTextBuscarKeyReleased
 
+    private void jTableHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHabitacionMouseClicked
+        if (evt.getClickCount() == 2) {
+
+            int fila = jTableHabitacion.getSelectedRow();
+
+            if (fila != -1) {
+            int nunhab=(Integer)jTableHabitacion.getValueAt(fila,0);
+            int piso=(Integer)jTableHabitacion.getValueAt(fila,1);
+            boolean estado=(Boolean)jTableHabitacion.getValueAt(fila,2);
+            String categoria=(String)jTableHabitacion.getValueAt(fila, 3);
+            int cantpers=(Integer)jTableHabitacion.getValueAt(fila,4);
+            int cantcamas=(Integer)jTableHabitacion.getValueAt(fila,5);
+            String tipocama=(String)jTableHabitacion.getValueAt(fila,6);
+            double precio=(Double)jTableHabitacion.getValueAt(fila,7);
+            
+              dispose();
+            }}
+    }//GEN-LAST:event_jTableHabitacionMouseClicked
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -209,7 +244,7 @@ private void cargarTabla(Habitacion hab) {
     }
     private void llenarTabla() {
 
-        for (Habitacion hab : habitacion.listarHabitacion_X_estado(true)) {
+        for (Habitacion hab : habitacion.listarHabitacion()) {
             cargarTabla(hab);
         }
     }

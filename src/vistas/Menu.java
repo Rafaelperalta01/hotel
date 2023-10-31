@@ -256,7 +256,7 @@ public class Menu extends javax.swing.JFrame {
         //Abrir vista Lista huespedes
         escritorio.removeAll();
         escritorio.repaint();
-        listaHuespedes listaHuesped = new listaHuespedes();
+        ListaHuespedesReserva listaHuesped = new ListaHuespedesReserva();
         escritorio.add(listaHuesped);
         listaHuesped.setVisible(true);
         listaHuesped.moveToFront();
