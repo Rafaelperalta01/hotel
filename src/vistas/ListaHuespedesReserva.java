@@ -135,25 +135,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTHuespedResMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTHuespedResMouseClicked
-//         if (evt.getClickCount() == 2){
-//            
-//          int fila = jTHuespedRes.getSelectedRow();
-//
-//          if (fila != -1) {                      
-//            VistaReserva.jTHusped.setText(jTHuespedRes.getValueAt(fila,0).toString());
-//            VistaReserva.numDniHuesped = jTHuespedRes.getValueAt(fila,3).toString();
-//           String nom=(String)jTHuespedRes.getValueAt(fila,0);
-//           String ape=(String)jTHuespedRes.getValueAt(fila,1);
-//           String tipodoc=(String)jTHuespedRes.getValueAt(fila,2);
-//           String numdoc=(String)jTHuespedRes.getValueAt(fila,3);
-//           String domi=(String)jTHuespedRes.getValueAt(fila,4);
-//           String email=(String)jTHuespedRes.getValueAt(fila,5);
-//           int celu=(Integer)jTHuespedRes.getValueAt(fila,6);
-//           boolean estado=(Boolean)jTHuespedRes.getValueAt(fila,7);
-//           
-//           
-//         dispose();
-//        }}  
     }//GEN-LAST:event_jTHuespedResMouseClicked
 
     private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
