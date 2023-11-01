@@ -28,7 +28,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     public ListadoHabitacionesDisponibles() {
         initComponents();
         armarCabecera();
-        llenarTabla();
+//        llenarTabla();
+        listaRegistros();
+        
     }
 
     /**
@@ -43,9 +45,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHabitacion = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jTNRegistro = new javax.swing.JTextField();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(750, 500));
+        setPreferredSize(new java.awt.Dimension(1050, 530));
 
         jPanel1.setBackground(new java.awt.Color(151, 60, 0));
 
@@ -95,6 +98,13 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Habitaciones Disponibles");
 
+        jTNRegistro.setText("Total de registros");
+        jTNRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTNRegistroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,18 +115,24 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                     .addComponent(jLabel1)
                     .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTNRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jTextBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTNRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,9 +143,10 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,11 +186,16 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void jTextBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextBuscarActionPerformed
+
+    private void jTNRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNRegistroActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTNRegistro;
     private javax.swing.JTable jTableHabitacion;
     private javax.swing.JTextField jTextBuscar;
     // End of variables declaration//GEN-END:variables
@@ -213,5 +235,15 @@ private void cargarTabla(Habitacion hab) {
         for (Habitacion hab : habitacion.listarHabitacion()) {
             cargarTabla(hab);
         }
+    }
+    
+    public void listaRegistros() {
+        int registro = 0;
+        for (Habitacion x : habitacion.listarHabitacion()) {
+            cargarTabla(x);
+            registro++;
+        }
+        jTNRegistro.setText("Total de registros: " + registro);
+
     }
 }
