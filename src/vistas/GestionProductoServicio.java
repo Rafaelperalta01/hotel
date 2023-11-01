@@ -380,7 +380,12 @@ public boolean isCellEditable(int fila,int columna){
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
             return;// sale del metodo sin guardar nada
         }
-        
+         if (precio <= 0 || stock <= 0) {
+       
+              JOptionPane.showMessageDialog(this, "Debe ingresar numeros mayores a cero", "Ingreso incorrecto", JOptionPane.WARNING_MESSAGE);
+            return; // Sale del método si hay campos vacíos
+            
+        }
        
         
             prodserv = new ProductoServicio(categoria,nombre,descripcion,precio,stock,true);
