@@ -108,7 +108,7 @@ public boolean isCellEditable(int fila,int columna){
 
         jCCategoria.setBackground(new java.awt.Color(151, 60, 0));
         jCCategoria.setForeground(new java.awt.Color(255, 255, 255));
-        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estandar Individual", "Estandar Doble", "Estandar Triple", "Premium Individual", "Premium Doble", "Premium Triple", "Suite Lujo" }));
+        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estandar Individual", "Estandar Doble", "Estandar Triple", "Premium Individual", "Premium Doble", "Premium Triple", " " }));
 
         jTCantPersonas.setBackground(new java.awt.Color(151, 60, 0));
         jTCantPersonas.setForeground(new java.awt.Color(255, 255, 255));
@@ -383,13 +383,20 @@ public boolean isCellEditable(int fila,int columna){
       
         String tipoCama = (String) jCTipoCama.getSelectedItem();
         Integer cantidadCamas =  Integer.parseInt(jTCantCamas.getText());
-      
+         Double precio = Double.parseDouble(jTPrecio.getText());
          if (categoria.isEmpty()||tipoCama.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
             return;// sale del metodo sin guardar nada
         }
-        
-        Double precio = Double.parseDouble(jTPrecio.getText());
+         
+         
+         if (cantidadCamas < 0 || precio < 0 || cantidadPersonas<0) {
+       
+              JOptionPane.showMessageDialog(this, "Debe ingresar numeros mayores a cero", "Ingreso incorrecto", JOptionPane.WARNING_MESSAGE);
+            return; // Sale del método si hay campos vacíos
+            
+        }
+     
         
             tipoHabitacion  = new TipoHabitacion(categoria,cantidadPersonas,cantidadCamas,tipoCama,precio,true);
             tipoData.guardarTipoHabitacion(tipoHabitacion);

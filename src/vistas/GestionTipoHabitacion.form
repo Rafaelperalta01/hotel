@@ -263,7 +263,7 @@
                 <StringItem index="3" value="Premium Individual"/>
                 <StringItem index="4" value="Premium Doble"/>
                 <StringItem index="5" value="Premium Triple"/>
-                <StringItem index="6" value="Suite Lujo"/>
+                <StringItem index="6" value=" "/>
               </StringArray>
             </Property>
           </Properties>
