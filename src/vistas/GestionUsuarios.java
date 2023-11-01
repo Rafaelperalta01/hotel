@@ -401,11 +401,12 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-   try{         
+  
+        try{         
         String nombre = tfNombre.getText();
         String ape = tfApellido.getText();
         int dni = Integer.parseInt(tfDni.getText());
-       
+       tfDni.setEnabled(false);
          String sexo = (String) jCsexo.getSelectedItem();
         String dir = tfDireccion.getText();
         String cargo = (String) jCcargo.getSelectedItem();
@@ -489,7 +490,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             limpiarCampos();
             return;
         }
-
+        
             user = userD.obtenerUsuarioPorDni(dni);
 
             if (user != null) {
