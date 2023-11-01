@@ -327,7 +327,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
         jTBuscaReservas.setBackground(new java.awt.Color(151, 60, 0));
         jTBuscaReservas.setForeground(new java.awt.Color(255, 255, 255));
-        jTBuscaReservas.setText("Busca reserva por Nombre, DNI o Nª habitación");
+        jTBuscaReservas.setText("Busca reserva por Nombre, DNI o Nªde Reserva ");
         jTBuscaReservas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTBuscaReservasFocusGained(evt);

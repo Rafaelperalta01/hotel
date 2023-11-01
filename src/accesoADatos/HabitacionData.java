@@ -85,7 +85,8 @@ public class HabitacionData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Se modificó la habitación exitosamente.");
+              //  JOptionPane.showMessageDialog(null, "Se modificó la habitación exitosamente.");
+                System.out.println("se modifico la habitacion con exito");
             } else {
               //  JOptionPane.showMessageDialog(null, "La habitación no existe!!!");
             }

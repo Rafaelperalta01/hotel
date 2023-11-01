@@ -104,6 +104,7 @@ public class PagosView extends javax.swing.JInternalFrame {
         jTablaPagos = new javax.swing.JTable();
         jBEliminarPago = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jBsalir = new javax.swing.JButton();
 
         setBackground(java.awt.Color.darkGray);
         setClosable(true);
@@ -352,6 +353,16 @@ public class PagosView extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Listado de pagos");
 
+        jBsalir.setBackground(new java.awt.Color(0, 102, 255));
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
+        jBsalir.setText("Salir");
+        jBsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -360,29 +371,34 @@ public class PagosView extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jBimprimirComprobante)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jBimprimirComprobante)
+                                .addGap(44, 44, 44)
+                                .addComponent(jBEliminarPago)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBEliminarPago)
-                        .addGap(123, 123, 123))))
+                        .addComponent(jBsalir)
+                        .addGap(82, 82, 82))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBimprimirComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBEliminarPago))
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBimprimirComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBEliminarPago)))
+                    .addComponent(jBsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(87, 87, 87))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -492,28 +508,27 @@ public class PagosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBRegistrarPagoActionPerformed
 
     private void jBImprimirDetalleDeConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirDetalleDeConsumosActionPerformed
-
-        PrinterJob job = PrinterJob.getPrinterJob();
-
-        if (job.printDialog()) {
-            try {
-                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
-            } catch (PrinterException e) {
-                e.printStackTrace();
-            }
-        }
+  ImprimirConsumos imp = new ImprimirConsumos();
+        Menu.escritorio.add(imp);
+        imp.moveToFront();
+        imp.setVisible(true);
     }//GEN-LAST:event_jBImprimirDetalleDeConsumosActionPerformed
 
     private void jBimprimirComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBimprimirComprobanteActionPerformed
-        PrinterJob job = PrinterJob.getPrinterJob();
+   if (modeloTablaPagos.getRowCount() == 0) {
+           JOptionPane.showMessageDialog(null, "La tabla esta vacía");
+       } else {
+           int ultima = modeloTablaPagos.getRowCount() - 1;
+           jTablaPagos.setRowSelectionInterval(ultima, ultima);// selecciono la ultima fila de la tabla
 
-        if (job.printDialog()) {
-            try {
-                job.print(); // Esta línea envía el trabajo de impresión a la impresora seleccionada.
-            } catch (PrinterException e) {
-                e.printStackTrace();
-            }
-        }
+           String seleccion = jTablaPagos.getValueAt(ultima, 0).toString(); // envio el id de pagos 
+           
+           ImprimirFacturasORecibos factura = new ImprimirFacturasORecibos(seleccion);
+           Menu.escritorio.add(factura);
+           factura.moveToFront();
+           factura.setVisible(true);        
+       }
+     
     }//GEN-LAST:event_jBimprimirComprobanteActionPerformed
 
     private void jBEliminarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarPagoActionPerformed
@@ -572,6 +587,45 @@ public class PagosView extends javax.swing.JInternalFrame {
          jTextAdelanto.setEditable(false);
         }
     }//GEN-LAST:event_jCbFormaDePagoActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+
+        if (!jBRegistrarPago.isEnabled()){
+            if (JOptionPane.showConfirmDialog(null, "Al salir se borrará la reserva de este usuario "
+                + ". Desea continuar ? ", "Salir", JOptionPane.YES_NO_OPTION)== 0) {
+            // hacer el checkOut
+            res.modificarCheckOutReserva(idReserva, fechaActual);
+
+            // eliminar los pagos
+            for (Pagos x : pagos.listarPagosporIdReserva(idReserva)){
+                pagos.eliminadoLogicoPago(x.getIdPagos());
+            }
+            // eliminar los consumos
+            for (Consumo x : c.listarProductoServicioPorIdRegistro(idReserva)) {
+                c.eliminarConsumo(x.getIdConsumo());
+            }
+
+            // tiene que devolver el valor de la habitacion a habitacion libre
+
+            Habitacion hab = habitacion.buscarHabitacionId(reserva.getIdHabitacion().getIdHabitacion());
+            hab.setEstado(true);
+            habitacion.modificarHabitacion(hab);
+
+            res.cancelarReserva(idReserva);
+
+            JOptionPane.showMessageDialog(null, "Finalizo su reserva");
+            limpiaCampos();
+            listaRegistros();
+            dispose();
+        }
+        } else {
+
+            VistaReserva.jBGuardar.setEnabled(true);
+            limpiaCampos();
+            VistaReserva.jTablareservas.clearSelection();
+            dispose();
+        }
+    }//GEN-LAST:event_jBsalirActionPerformed
    
     public void pagoParcial() {
         String adelanto = jTextAdelanto.getText().toString();// adelanto
@@ -639,6 +693,7 @@ public class PagosView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBRegistrarPago;
     private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBimprimirComprobante;
+    private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<String> jCbComprobante1;
     private javax.swing.JComboBox<String> jCbFormaDePago;
     private javax.swing.JComboBox<String> jCbMedioDePago;

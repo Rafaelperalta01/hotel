@@ -457,7 +457,7 @@ public boolean isCellEditable(int fila,int columna){
             int filaSeleccionada = Tablaprodserv.getSelectedRow();// traigo la fila seleccionada
           
             if (filaSeleccionada != -1) {
-                      String nombre1=(String)Tablaprodserv.getValueAt(filaSeleccionada, 1);
+                      String nombre1=(String)Tablaprodserv.getValueAt(filaSeleccionada, 2);
                 prodserv = psData.buscarProductoServicio(nombre1);
                 if (prodserv != null) {
                    prodserv.setCategoria(categoria);
