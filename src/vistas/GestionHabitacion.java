@@ -457,34 +457,63 @@ private ButtonGroup buttonGroup = new ButtonGroup();
             
         }
           
-        
-        // Obtén el código de la habitación seleccionada en la tabla
-        int filaSeleccionada = jTTablaHabitacion.getSelectedRow();
+         int filaSeleccionada = jTTablaHabitacion.getSelectedRow();
         if (filaSeleccionada != -1) {
             Integer cod = (Integer) jTTablaHabitacion.getValueAt(filaSeleccionada, 0);
-           Habitacion otraHabitacion = habData.buscarHabitacion(numeroHabitacion);
-           
-           
-           
-            if (otraHabitacion != null) {
-                // Procede con la modificación
-                Habitacion habEncontrada = habData.buscarHabitacionId(cod);
-                if (habEncontrada != null) {
-                    habEncontrada.setIdTipoHabitacion(thab);
-                    habEncontrada.setNumHabitacion(numeroHabitacion);
-                    habEncontrada.setPiso(piso);
-                    habEncontrada.setEstado(estado);
-                    habData.modificarHabitacion(habEncontrada);
-                    
-                     JOptionPane.showMessageDialog(this, "Modificación exitosa");
-                }
-            } else {
-                // El número de habitación no está en uso por otra habitación, por lo que puedes continuar
-                JOptionPane.showMessageDialog(this, "El número de habitación ingresado ya está en uso por otra habitación.");
-            }
-            
-        }
+            Habitacion habitacionActual = habData.buscarHabitacionId(cod);
 
+            if (habitacionActual != null) {
+                if (habitacionActual.getNumHabitacion()==(numeroHabitacion)) {
+                    // El nuevo número de habitación es igual al número de habitación actual
+                    habitacionActual.setIdTipoHabitacion(thab);
+                    habitacionActual.setPiso(piso);
+                    habitacionActual.setEstado(estado);
+                    habData.modificarHabitacion(habitacionActual);
+                    JOptionPane.showMessageDialog( this, "Modificación exitosa");
+                } else {
+                    // El nuevo número de habitación es diferente del número de habitación actual
+                    Habitacion otraHabitacion = habData.buscarHabitacion(numeroHabitacion);
+                    if (otraHabitacion == null) {
+                        // El nuevo número de habitación no está en uso por otra habitación
+                        habitacionActual.setIdTipoHabitacion(thab);
+                        habitacionActual.setNumHabitacion(numeroHabitacion);
+                        habitacionActual.setPiso(piso);
+                        habitacionActual.setEstado(estado);
+                        habData.modificarHabitacion(habitacionActual);
+                        JOptionPane.showMessageDialog(this, "Modificación exitosa");
+                    } else {
+                        // El nuevo número de habitación ya está en uso
+                        JOptionPane.showMessageDialog(this, "El número de habitación ingresado ya está en uso por otra habitación.");
+                    }
+                
+                }
+//        // Obtén el código de la habitación seleccionada en la tabla
+//        int filaSeleccionada = jTTablaHabitacion.getSelectedRow();
+//        if (filaSeleccionada != -1) {
+//            Integer cod = (Integer) jTTablaHabitacion.getValueAt(filaSeleccionada, 0);
+//           Habitacion otraHabitacion = habData.buscarHabitacion(numeroHabitacion);
+//           
+//            if (otraHabitacion != null) {
+//                // Procede con la modificación
+//                
+//                Habitacion habEncontrada = habData.buscarHabitacionId(cod);
+//                if (habEncontrada != null) {
+//                    habEncontrada.setIdTipoHabitacion(thab);
+//                    habEncontrada.setNumHabitacion(numeroHabitacion);
+//                    habEncontrada.setPiso(piso);
+//                    habEncontrada.setEstado(estado);
+//                    habData.modificarHabitacion(habEncontrada);
+//                    
+//                     JOptionPane.showMessageDialog(this, "Modificación exitosa");
+//                }
+//            } else {
+//                // El número de habitación no está en uso por otra habitación, por lo que puedes continuar
+//                JOptionPane.showMessageDialog(this, "El número de habitación ingresado ya está en uso por otra habitación.");
+//            }
+//            
+//        }
+            }
+        }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros ");
