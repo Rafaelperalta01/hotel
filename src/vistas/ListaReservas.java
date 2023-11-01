@@ -49,8 +49,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     public ListaReservas() {
         initComponents();
         armarCabecera();
-        llenarTabla();
-        
+//        llenarTabla();
+        listaRegistros();
+           
     }
 
     /**
@@ -62,29 +63,24 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTReservas = new javax.swing.JTable();
         jTnroRegistro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Lista de Reservas");
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(743, 551));
+        setPreferredSize(new java.awt.Dimension(1050, 534));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(151, 60, 0));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(741, 529));
+        jPanel1.setPreferredSize(new java.awt.Dimension(941, 551));
 
         jTextbuscar.setBackground(new java.awt.Color(153, 51, 0));
         jTextbuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jTextbuscar.setText("Busca por nombre");
         jTextbuscar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextbuscarFocusGained(evt);
@@ -112,6 +108,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTReservas.setPreferredSize(new java.awt.Dimension(700, 250));
         jTReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTReservasMouseClicked(evt);
@@ -128,13 +125,9 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Buscar reserva por documento:");
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Lista de Reservas");
+        jLabel2.setText("Lista de Reservas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,45 +135,34 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jTnroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(jLabel4)
-                    .addContainerGap(561, Short.MAX_VALUE)))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 803, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTnroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(364, 364, 364))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99)
                 .addComponent(jTnroRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(jLabel4)
-                    .addContainerGap(454, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 740, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,7 +172,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jTextbuscarFocusGained
 
     private void jTextbuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextbuscarFocusLost
-       jTextbuscar.setText("Busca por numero de documento");
+        jTextbuscar.setText("Busca por numero de documento");
     }//GEN-LAST:event_jTextbuscarFocusLost
 
     private void jTextbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextbuscarKeyReleased
@@ -218,7 +200,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             res.getFechaEntrada(),
             res.getFechaSalida(),
             res.getImporteTotal(),
-            res.getIdUsuarios().toString(),
+            res.getIdUsuarios().getIdUsuario(),
                 });
     }
             
@@ -270,14 +252,12 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     }//GEN-LAST:event_jTReservasMouseClicked
 
     private void jTnroRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnroRegistroActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTnroRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTReservas;
@@ -332,7 +312,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
 
         for (Reserva r : resd.listarReserva()) {
             cargarTabla(r);
-        }
+     }
 
     }
       
