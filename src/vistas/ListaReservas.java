@@ -178,10 +178,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
     private void jTextbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextbuscarKeyReleased
         borrarFilas();
         for (Reserva res : resd.listarReserva()) {
-//            String numDocHuesped = h.getNumeroDocumento();
-//            numDocHuesped=null;
-//            if (numDocHuesped!=null && numDocHuesped.startsWith(jTextbuscar.getText())) {
-//            cargarTabla(res); 
+
         if(res.getIdHuesped().getNumeroDocumento().startsWith(jTextbuscar.getText())){
             modeloTabla.addRow(new Object[]{
             res.getIdReserva(),
@@ -209,46 +206,6 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
   
 
     private void jTReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTReservasMouseClicked
-//        if (evt.getClickCount() == 2){
-//
-//            int fila = jTReservas.getSelectedRow();
-//
-//            if (fila != -1) {
-//                    String fechaE =jTReservas.getValueAt(fila, 13).toString();
-//                    String fechaS =jTReservas.getValueAt(fila, 14).toString();
-//                    java.util.Date f =forma.parse(fechaE);
-//                    java.util.Date s = forma.parse(fechaS);
-//                    jDCfechaEntrada.setDate(f);
-//                    jDCfechaSalida.setDate(s);
-//                    jTCantPersonas.setText(jTReservas.getValueAt(fila, 5).toString());
-//                    jTHabitacion.setText(jTReservas.getValueAt(fila, 0).toString());
-//                    jTHusped.setText(jTReservas.getValueAt(fila, 1).toString() + jTReservas.getValueAt(fila, 2).toString());
-//                    jTImporte.setText(jTReservas.getValueAt(fila, 8).toString());                    
-//                    Usuarios us = user.obtenerUsuarioId(Integer.parseInt(jTReservas.getValueAt(fila, 9).toString()));
-//                    jTAdmin.setText(us.getNombre()+", "+us.getCargo());
-
-//            int nunres=(Integer)jTReservas.getValueAt(fila,0);
-//            int numhab=(Integer)jTReservas.getValueAt(fila,1);
-//            int numpiso=(Integer)jTReservas.getValueAt(fila,2);
-//            boolean estado=(Boolean)jTReservas.getValueAt(fila,3);
-//            String nomhues=(String)jTReservas.getValueAt(fila,4);
-//            String apelhues=(String)jTReservas.getValueAt(fila,5);
-//            String tipdoc=(String)jTReservas.getValueAt(fila,6);
-//            String numdoc=(String)jTReservas.getValueAt(fila,7);
-//            String categ=(String)jTReservas.getValueAt(fila,8);
-//            int cantpers=(Integer)jTReservas.getValueAt(fila,9);
-//            int cantcamas=(Integer)jTReservas.getValueAt(fila,10);
-//            String tipocama=(String)jTReservas.getValueAt(fila,11);
-//            double precio=(Double)jTReservas.getValueAt(fila,12);
-//            LocalDate FE=(LocalDate)jTReservas.getValueAt(fila,13);
-//            LocalDate FS=(LocalDate)jTReservas.getValueAt(fila,14);
-//            double imptot=(Double)jTReservas.getValueAt(fila,15);
-//            int iDusu=(Integer)jTReservas.getValueAt(fila,16);
-
-            
-//            }
-//            dispose();
-//                    }
     }//GEN-LAST:event_jTReservasMouseClicked
 
     private void jTnroRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnroRegistroActionPerformed
