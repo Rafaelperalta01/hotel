@@ -29,7 +29,7 @@ public class TipoHabitacion {
         this.estado=estado;
     }
 
-    public TipoHabitacion(String categoria,int cantCamas, int cantPersonas, String tipoCama, double precio,boolean estado) {
+    public TipoHabitacion(String categoria,int cantPersonas, int cantCamas, String tipoCama, double precio,boolean estado) {
         this.categoria=categoria;
         this.cantCamas = cantCamas;
         this.cantPersonas = cantPersonas;

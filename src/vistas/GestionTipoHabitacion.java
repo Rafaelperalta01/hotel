@@ -380,9 +380,9 @@ public boolean isCellEditable(int fila,int columna){
         try{ 
         String categoria = (String) jCCategoria.getSelectedItem();
         Integer cantidadPersonas = Integer.parseInt( jTCantPersonas.getText());
-      
-        String tipoCama = (String) jCTipoCama.getSelectedItem();
         Integer cantidadCamas =  Integer.parseInt(jTCantCamas.getText());
+        String tipoCama = (String) jCTipoCama.getSelectedItem();
+      
          Double precio = Double.parseDouble(jTPrecio.getText());
          if (categoria.isEmpty()||tipoCama.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No pueden haber campos vacios");
