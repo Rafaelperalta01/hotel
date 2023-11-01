@@ -32,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         this.usuario = usuario;
         initComponents();
         setLocationRelativeTo(null);
+        setSize(1060 , 676);
     }
 
     /**

@@ -494,7 +494,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         
         if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
                 || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
-                || tfContraseña.getText().isEmpty()) {
+                || tfContraseña.getText().isEmpty() || tfEmail.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Hay campos vacios");
             limpiarCampos();
@@ -523,7 +523,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
             if (user == null) {
                 user = new Usuarios(nombre, ape, dni, sexo, dir, cargo, true, contra, email);
                 userD.crearUsuario(user);
-
+                
+                limpiarTabla();
+                llenarTabla();
                 limpiarCampos();
                 btnNuevo.setEnabled(true);
 
