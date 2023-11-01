@@ -261,7 +261,7 @@ private DefaultTableModel modeloTabla = new DefaultTableModel() {
             res.getFechaEntrada(),
             res.getFechaSalida(),
             res.getImporteTotal(),
-            res.getIdUsuarios(),
+            res.getIdUsuarios().getIdUsuario(),
         });
     }
 
