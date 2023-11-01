@@ -59,21 +59,20 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfNombre = new javax.swing.JTextField();
         tfApellido = new javax.swing.JTextField();
         tfDni = new javax.swing.JTextField();
-        tfSexo = new javax.swing.JTextField();
         tfDireccion = new javax.swing.JTextField();
-        tfCargo = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         tfContraseña = new javax.swing.JTextField();
-        btnRefresh = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jCcargo = new javax.swing.JComboBox<>();
+        jCsexo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablaUsuario = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
         btnDefault = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -137,24 +136,8 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfDni.setBackground(new java.awt.Color(151, 60, 0));
         tfDni.setForeground(new java.awt.Color(255, 255, 255));
 
-        tfSexo.setBackground(new java.awt.Color(151, 60, 0));
-        tfSexo.setForeground(new java.awt.Color(255, 255, 255));
-        tfSexo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfSexoKeyTyped(evt);
-            }
-        });
-
         tfDireccion.setBackground(new java.awt.Color(151, 60, 0));
         tfDireccion.setForeground(new java.awt.Color(255, 255, 255));
-
-        tfCargo.setBackground(new java.awt.Color(151, 60, 0));
-        tfCargo.setForeground(new java.awt.Color(255, 255, 255));
-        tfCargo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfCargoKeyTyped(evt);
-            }
-        });
 
         btnModificar.setBackground(new java.awt.Color(151, 60, 0));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,15 +168,6 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfContraseña.setBackground(new java.awt.Color(151, 60, 0));
         tfContraseña.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnRefresh.setBackground(new java.awt.Color(151, 60, 0));
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/actualizar.png"))); // NOI18N
-        btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
         btnNuevo.setBackground(new java.awt.Color(151, 60, 0));
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevo.setText("Nuevo");
@@ -214,6 +188,14 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registro de usuario");
 
+        jCcargo.setBackground(new java.awt.Color(151, 60, 0));
+        jCcargo.setForeground(new java.awt.Color(255, 255, 255));
+        jCcargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recepcionista", "Aministrador" }));
+
+        jCsexo.setBackground(new java.awt.Color(151, 60, 0));
+        jCsexo.setForeground(new java.awt.Color(255, 255, 255));
+        jCsexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "femenino" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -231,8 +213,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfEmail))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfEmail)
+                        .addGap(12, 12, 12))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,14 +235,18 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfNombre)
                                     .addComponent(tfDni)
-                                    .addComponent(tfSexo)
                                     .addComponent(tfDireccion)
-                                    .addComponent(tfCargo)
                                     .addComponent(tfContraseña)
-                                    .addComponent(tfApellido))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                                    .addComponent(tfApellido)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jCcargo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                .addGap(50, 50, 50))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(108, 108, 108)
+                    .addComponent(jCsexo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(172, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,11 +254,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,18 +266,16 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(32, 32, 32)
+                    .addComponent(jLabel9)
+                    .addComponent(jCcargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -306,14 +289,19 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(239, 239, 239)
+                    .addComponent(jCsexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(334, Short.MAX_VALUE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(151, 60, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setBackground(new java.awt.Color(151, 60, 0));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablaUsuario.setBackground(new java.awt.Color(151, 60, 0));
+        jTablaUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jTablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {}
@@ -322,12 +310,12 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
 
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTablaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTablaUsuarioMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablaUsuario);
 
         btnEliminar.setBackground(new java.awt.Color(151, 60, 0));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -417,15 +405,16 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         String nombre = tfNombre.getText();
         String ape = tfApellido.getText();
         int dni = Integer.parseInt(tfDni.getText());
-        String sexo = tfSexo.getText();
+       
+         String sexo = (String) jCsexo.getSelectedItem();
         String dir = tfDireccion.getText();
-        String cargo = tfCargo.getText();
+        String cargo = (String) jCcargo.getSelectedItem();
+       
         String contra = tfContraseña.getText();
         String email = tfEmail.getText();
         
         if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
-                || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
-                || tfContraseña.getText().isEmpty())  {
+                 || tfDireccion.getText().isEmpty() || tfContraseña.getText().isEmpty())  {
 
             JOptionPane.showMessageDialog(null, "Hay campos vacios");
             limpiarCampos();
@@ -433,7 +422,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         }
 
      
-            int filaSeleccionada = jTable1.getSelectedRow();// traigo la fila seleccionada
+            int filaSeleccionada = jTablaUsuario.getSelectedRow();// traigo la fila seleccionada
 
             if (filaSeleccionada != -1) {
 
@@ -486,15 +475,15 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         String nombre = tfNombre.getText();
         String ape = tfApellido.getText();
         int dni = Integer.parseInt(tfDni.getText());
-        String sexo = tfSexo.getText();
+     
+         String sexo = (String) jCsexo.getSelectedItem();
         String dir = tfDireccion.getText();
-        String cargo = tfCargo.getText();
+      String cargo = (String) jCcargo.getSelectedItem();
         String contra = tfContraseña.getText();
         String email = tfEmail.getText();
         
         if (tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfDni.getText().isEmpty()
-                || tfSexo.getText().isEmpty() || tfDireccion.getText().isEmpty() || tfCargo.getText().isEmpty()
-                || tfContraseña.getText().isEmpty() || tfEmail.getText().isEmpty()) {
+              || tfDireccion.getText().isEmpty() || tfContraseña.getText().isEmpty() || tfEmail.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Hay campos vacios");
             limpiarCampos();
@@ -513,9 +502,11 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
                 tfNombre.setText(user.getNombre());
                 tfApellido.setText(user.getApellido());
                 tfDni.setText(Integer.toString(user.getDni()));
-                tfSexo.setText(user.getSexo());
+             
+                jCsexo.setSelectedItem(user.getSexo());
                 tfDireccion.setText(user.getDireccion());
-                tfCargo.setText(user.getCargo());
+                jCcargo.setSelectedItem(user.getCargo());
+
                 tfContraseña.setText(user.getContraseña());
                 tfEmail.setText(user.getEmail());
             }
@@ -548,10 +539,10 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         UsuariosData userD = new UsuariosData();
         int respuesta = JOptionPane.showConfirmDialog(null,
                 "Desea eliminar este usuario", "Eliminar Usuario", JOptionPane.OK_OPTION);
-        int filaSeleccionada = jTable1.getSelectedRow();
+        int filaSeleccionada = jTablaUsuario.getSelectedRow();
 
         if (respuesta == 0 && filaSeleccionada != -1) {
-            int dni = Integer.parseInt(jTable1.getValueAt(filaSeleccionada, 2).toString());
+            int dni = Integer.parseInt(jTablaUsuario.getValueAt(filaSeleccionada, 2).toString());
             userD.eliminarUsuarioPorDni(dni);
             limpiarCampos();
             limpiarTabla();
@@ -561,45 +552,36 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        activarCampos(false); 
-        btnModificar.setEnabled(false);
-        btnCrear.setEnabled(false);
-        btnNuevo.setEnabled(true);
-        limpiarCampos();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTablaUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaUsuarioMouseClicked
 
         btnEliminar.setEnabled(true);
         btnModificar.setEnabled(true);
         btnCrear.setEnabled(false);
         btnNuevo.setEnabled(false);
         activarCampos(true);
-        int filaSeleccionada = jTable1.getSelectedRow();// traigo la fila seleccionada
+        int filaSeleccionada = jTablaUsuario.getSelectedRow();// traigo la fila seleccionada
 
         if (filaSeleccionada != -1) {//nos aseguramos que haya una fila seleccionada
-            String nombre = (String) jTable1.getValueAt(filaSeleccionada, 0);
-            String apellido = (String) jTable1.getValueAt(filaSeleccionada, 1);
-            int dni = (Integer) jTable1.getValueAt(filaSeleccionada, 2);
-            String sexo = (String) jTable1.getValueAt(filaSeleccionada, 3);
-            String domicilio = (String) jTable1.getValueAt(filaSeleccionada, 4);
-            String cargo = (String) jTable1.getValueAt(filaSeleccionada, 5);
-            String contra = jTable1.getValueAt(filaSeleccionada, 7).toString();
-            String email = (String) jTable1.getValueAt(filaSeleccionada , 8);
+            String nombre = (String) jTablaUsuario.getValueAt(filaSeleccionada, 0);
+            String apellido = (String) jTablaUsuario.getValueAt(filaSeleccionada, 1);
+            int dni = (Integer) jTablaUsuario.getValueAt(filaSeleccionada, 2);
+            String sexo = (String) jTablaUsuario.getValueAt(filaSeleccionada, 3);
+            String domicilio = (String) jTablaUsuario.getValueAt(filaSeleccionada, 4);
+            String cargo = (String) jTablaUsuario.getValueAt(filaSeleccionada, 5);
+            String contra = jTablaUsuario.getValueAt(filaSeleccionada, 7).toString();
+            String email = (String) jTablaUsuario.getValueAt(filaSeleccionada , 8);
 
             tfNombre.setText(nombre);
             tfApellido.setText(apellido);
             tfDni.setText(Integer.toString(dni));
-            tfSexo.setText(sexo);
+            jCsexo.setSelectedItem(sexo);
             tfDireccion.setText(domicilio);
-            tfCargo.setText(cargo);
+             jCcargo.setSelectedItem(cargo);
             tfContraseña.setText(contra);
             tfEmail.setText(email);
 
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_jTablaUsuarioMouseClicked
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
        activarCampos(true);
@@ -624,35 +606,19 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tfApellidoKeyTyped
 
-    private void tfSexoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSexoKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!(Character.isLetter(c)||c==' ')){
-        evt.consume();
-        }
-    }//GEN-LAST:event_tfSexoKeyTyped
-
-    private void tfCargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCargoKeyTyped
-         char c = evt.getKeyChar();
-        
-        if (!(Character.isLetter(c)||c==' ')){
-        evt.consume();
-        }
-    }//GEN-LAST:event_tfCargoKeyTyped
-
     private void activarCampos(boolean a){
         tfNombre.setEnabled(a);
         tfApellido.setEnabled(a);
         tfDni.setEnabled(a);
         tfDireccion.setEnabled(a);
-        tfSexo.setEnabled(a);
-        tfCargo.setEnabled(a);
+        jCsexo.setEnabled(a);
+        jCcargo.setEnabled(a);
         tfContraseña.setEnabled(a);
         tfEmail.setEnabled(a);
   }
     
     private void limpiarTabla() {
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
+        for (int i = 0; i < jTablaUsuario.getRowCount(); i++) {
             modelo.removeRow(i);
             i -= 1;
         }
@@ -664,7 +630,8 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnRefresh;
+    private javax.swing.JComboBox<String> jCcargo;
+    private javax.swing.JComboBox<String> jCsexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -679,15 +646,13 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablaUsuario;
     private javax.swing.JTextField tfApellido;
-    private javax.swing.JTextField tfCargo;
     private javax.swing.JTextField tfContraseña;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfDni;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfSexo;
     // End of variables declaration//GEN-END:variables
 
 
@@ -695,9 +660,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         tfNombre.setText("");
         tfApellido.setText("");
         tfDni.setText("");
-        tfSexo.setText("");
+        
         tfDireccion.setText("");
-        tfCargo.setText("");
+    
         tfContraseña.setText("");;
         tfEmail.setText("");
     }
@@ -712,7 +677,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame {
         modelo.addColumn("estado");
         modelo.addColumn("contraseña");
         modelo.addColumn("email");
-        jTable1.setModel(modelo);
+        jTablaUsuario.setModel(modelo);
     }
 
     private void cargarTabla(Usuarios users) {
