@@ -38,7 +38,7 @@ public class HabitacionData {
 
             if (rs.next()) {
                 hab.setIdHabitacion(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Se agregó un Habitación con éxito");
+                JOptionPane.showMessageDialog(null, "Se agregó una Habitación con éxito");
             }
             ps.close();
             
@@ -175,7 +175,7 @@ public class HabitacionData {
                 hab.setPiso(rs.getInt("piso"));
                 hab.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No habitación no existe ");
+               // JOptionPane.showMessageDialog(null, "No habitación no existe ");
             }
             ps.close();
             
