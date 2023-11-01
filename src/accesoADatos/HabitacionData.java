@@ -86,7 +86,7 @@ public class HabitacionData {
 
             if (exito == 1) {
               //  JOptionPane.showMessageDialog(null, "Se modificó la habitación exitosamente.");
-                System.out.println("se modifico la habitacion con exito");
+               // System.out.println("se modifico la habitacion con exito");
             } else {
               //  JOptionPane.showMessageDialog(null, "La habitación no existe!!!");
             }
@@ -421,25 +421,29 @@ public class HabitacionData {
 
         return hab;
     }
+    
+    
+    
+    
       
-   // public void eliminarHabitacion (int numHab){
-//          String sql = "DELETE FROM habitacion WHERE numHabitacion = ?";
-//      PreparedStatement ps = null;
-//      
-//        try {
-//            ps = con.prepareStatement(sql);
-//            ps.setInt(1, numHab);
-//            
-//            int fila = ps.executeUpdate();
-//            
-//            if(fila == 1){
-//                JOptionPane.showMessageDialog(null,"Se eliminó la habitacion");                           
-//            }
-//            ps.close();
-//            
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Habitacion " +ex.getMessage());
-//        }
-//   }
-//    
+    public void eliminarHabitacion (int id){
+          String sql = "DELETE FROM habitacion WHERE idHabitacion = ?";
+      PreparedStatement ps = null;
+      
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila == 1){
+                JOptionPane.showMessageDialog(null,"Se eliminó la habitacion");                           
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Habitacion " +ex.getMessage());
+        }
+   }
+    
 }//------------------fin-------------------
