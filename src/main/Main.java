@@ -34,13 +34,13 @@ import vistas.PagosView;
  */
 public class Main {
     public static void main(String[] args) {
-        Connection con=Conexion.getConexion();
-        
-        ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
-        
-   Huesped reserva1 = new Huesped(4,"Mario","Perez","dni","26974349","Libertador 432","glopez@gmail.com",1134424564,true);
-    HuespedData data = new HuespedData();
-    
+//        Connection con=Conexion.getConexion();
+//        
+//        ///////////////////////////////////PRUEBAS HUESPED DATA///////////////////////////////////
+//        
+//   Huesped reserva1 = new Huesped(4,"Mario","Perez","dni","26974349","Libertador 432","glopez@gmail.com",1134424564,true);
+//    HuespedData data = new HuespedData();
+//    
     //data.guardarHuesped(reserva1);
      
     // data.guardarHuesped(reserva1);
@@ -216,13 +216,13 @@ public class Main {
     
     //******************************pruebas Habitacion*****************************
     
-    TipoHabitacionData idata = new TipoHabitacionData();
-    TipoHabitacion habit = idata.buscarTipoHabPorId(1);
-
-        
-        
-    HabitacionData habD = new HabitacionData();
-    Habitacion hab = new Habitacion(5,habit,1,3,true);
+//    TipoHabitacionData idata = new TipoHabitacionData();
+//    TipoHabitacion habit = idata.buscarTipoHabPorId(1);
+//
+//        
+//        
+//    HabitacionData habD = new HabitacionData();
+//    Habitacion hab = new Habitacion(5,habit,1,3,true);
     
     //habD.guardarHabitacion(hab);
     //habD.Alta_o_Baja_Habitacion(1, true);

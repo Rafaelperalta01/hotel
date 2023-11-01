@@ -322,9 +322,19 @@ private ButtonGroup buttonGroup = new ButtonGroup();
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-           try{ 
-                 
-        TipoHabitacion thab = (  TipoHabitacion) jCtipoHab.getSelectedItem();
+           try {
+        TipoHabitacion thab = (TipoHabitacion) jCtipoHab.getSelectedItem();
+        String numHabitacionStr = jTNumHab.getText();
+        String pisoStr = jTPiso.getText();
+
+        // Verifica si los campos de texto están vacíos
+        if (numHabitacionStr.isEmpty() || pisoStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos antes de guardar.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return; // Sale del método si hay campos vacíos
+        }
+        
+        
+        
         Integer numeroHabitacion = Integer.parseInt( jTNumHab.getText());
         Integer piso =  Integer.parseInt(jTPiso.getText());
        boolean estado = false; // Inicializa como false por defecto
@@ -332,6 +342,14 @@ private ButtonGroup buttonGroup = new ButtonGroup();
         if (jRDisponible.isSelected()) {
             estado = true; // Si jRDisponible está seleccionado, establece estado en true
         }
+        if (numeroHabitacion < 0 || piso < 0) {
+       
+              JOptionPane.showMessageDialog(this, "Debe ingresar numeros mayores a cero", "Ingreso incorrecto", JOptionPane.WARNING_MESSAGE);
+            return; // Sale del método si hay campos vacíos
+            
+        }
+        
+        
         habitacion=habData.buscarHabitacion(numeroHabitacion);
         if(habitacion!=null){
               JOptionPane.showMessageDialog(null,
@@ -351,7 +369,6 @@ private ButtonGroup buttonGroup = new ButtonGroup();
             jTTablaHabitacion.setModel(modelo);
 
             
-            
               limpiarCampos();
             camposDeshabilitados();;    
             jBGuardar.setEnabled(false);
@@ -359,9 +376,6 @@ private ButtonGroup buttonGroup = new ButtonGroup();
                 
             }
        
-       
-            
-        
                 }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "Debe ingresar números");
            
@@ -434,31 +448,43 @@ private ButtonGroup buttonGroup = new ButtonGroup();
         if (jRDisponible.isSelected()) {
             estado = true; // Si jRDisponible está seleccionado, establece estado en true
         }
+        
          
-            int filaSeleccionada =   jTTablaHabitacion.getSelectedRow();// traigo la fila seleccionada
+          if (numeroHabitacion < 0 || piso < 0) {
+       
+              JOptionPane.showMessageDialog(this, "Debe ingresar numeros mayores a cero", "Ingreso incorrecto", JOptionPane.WARNING_MESSAGE);
+            return; // Sale del método si hay campos vacíos
+            
+        }
           
-            if (filaSeleccionada != -1) {
-                      Integer cod=(Integer)  jTTablaHabitacion.getValueAt(filaSeleccionada, 0);
+        
+        // Obtén el código de la habitación seleccionada en la tabla
+        int filaSeleccionada = jTTablaHabitacion.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            Integer cod = (Integer) jTTablaHabitacion.getValueAt(filaSeleccionada, 0);
+           Habitacion otraHabitacion = habData.buscarHabitacion(numeroHabitacion);
+           
+           
+           
+            if (otraHabitacion != null) {
+                // Procede con la modificación
                 Habitacion habEncontrada = habData.buscarHabitacionId(cod);
                 if (habEncontrada != null) {
-                   habEncontrada.setIdTipoHabitacion(thab);
-                     
-                  
-                            
-              
-                       
+                    habEncontrada.setIdTipoHabitacion(thab);
                     habEncontrada.setNumHabitacion(numeroHabitacion);
                     habEncontrada.setPiso(piso);
-                         habEncontrada.setEstado(estado);
-                
-              
-                   
+                    habEncontrada.setEstado(estado);
                     habData.modificarHabitacion(habEncontrada);
-                  
+                    
+                     JOptionPane.showMessageDialog(this, "Modificación exitosa");
                 }
-            }  else {
-    JOptionPane.showMessageDialog(this, "Debes seleccionar una fila antes de editar.");
-}
+            } else {
+                // El número de habitación no está en uso por otra habitación, por lo que puedes continuar
+                JOptionPane.showMessageDialog(this, "El número de habitación ingresado ya está en uso por otra habitación.");
+            }
+            
+        }
+
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros ");
@@ -470,6 +496,7 @@ private ButtonGroup buttonGroup = new ButtonGroup();
         llenarTabla();
 
         jTTablaHabitacion.clearSelection();
+        camposDeshabilitados();
           
     
     }//GEN-LAST:event_jBModificarActionPerformed
